@@ -1,4 +1,4 @@
-package it.unibo.oop.views;
+package it.unibo.pixArt.View;
 
 public class AnimationView {
     

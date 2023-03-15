@@ -1,4 +1,4 @@
-package it.unibo.oop.controllers;
+package it.unibo.pixArt.Controller;
 
 public interface AnimationViewController {
     

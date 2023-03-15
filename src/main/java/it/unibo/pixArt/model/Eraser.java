@@ -1,4 +1,4 @@
-package it.unibo.oop.model;
+package it.unibo.pixArt.Model;
 
 public interface Eraser {
     
