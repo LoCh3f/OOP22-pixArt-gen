@@ -1,4 +1,4 @@
-package it.unibo.pixArt.Controller;
+package it.unibo.pixArt.controller.impl;
 
 public interface HomeController {
     

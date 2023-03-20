@@ -1,4 +1,4 @@
-package it.unibo.pixArt.View;
+package it.unibo.pixArt.view.impl;
 
 public class ProjectView {
     
