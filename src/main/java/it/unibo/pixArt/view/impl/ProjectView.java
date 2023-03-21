@@ -1,5 +1,7 @@
 package it.unibo.pixArt.view.impl;
 
-public class ProjectView {
-    
+import it.unibo.pixArt.view.SimpleView;
+
+public class ProjectView extends SimpleView {
+
 }

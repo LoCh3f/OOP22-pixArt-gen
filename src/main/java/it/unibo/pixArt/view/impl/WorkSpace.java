@@ -1,5 +1,7 @@
 package it.unibo.pixArt.view.impl;
 
-public class WorkSpace {
-    
+import it.unibo.pixArt.view.SimpleView;
+
+public class WorkSpace extends SimpleView {
+
 }

@@ -1,5 +1,7 @@
 package it.unibo.pixArt.controller.impl;
 
-public interface HomeController {
+import it.unibo.pixArt.controller.SimpleController;
+
+public class HomeController extends SimpleController {
     
 }

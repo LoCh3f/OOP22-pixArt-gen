@@ -4,7 +4,13 @@ import it.unibo.pixArt.controller.Controller;
 
 public interface View {
 
+    /**
+     * @return controller of this view
+     */
     Controller getController();
 
-    void setController(final Controller controller);
+    /**
+     * @param controller to set for this view
+     */
+    void setController(Controller controller);
 }
