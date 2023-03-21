@@ -1,4 +1,5 @@
-package it.unibo.pixArt.model;
+package it.unibo.pixArt.model.impl;
+
 
 public abstract class Tool {
     
