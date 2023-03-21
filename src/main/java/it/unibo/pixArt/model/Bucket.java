@@ -1,4 +1,4 @@
-package it.unibo.pixArt.Model;
+package it.unibo.pixArt.model;
 
 public interface Bucket {
     
