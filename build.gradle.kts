@@ -20,11 +20,11 @@ repositories {
 }
 
 val javaFXModules = listOf(
-    "base",
-    "controls",
-    "fxml",
-    "swing",
-    "graphics"
+        "base",
+        "controls",
+        "fxml",
+        "swing",
+        "graphics"
 )
 
 val supportedPlatforms = listOf("linux", "mac", "win") // All required for OOP
@@ -57,9 +57,6 @@ tasks.withType<Test> {
 
 application {
     // Define the main class for the application
-<<<<<<< HEAD
-    mainClass.set("it.unibo.samplejavaf.App")
-=======
+
     mainClass.set("it.unibo.pixArt.App")
->>>>>>> 1ad43a92ef9b9dfd6215a23195cb6b5a297c89f2
 }
