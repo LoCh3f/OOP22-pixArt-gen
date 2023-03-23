@@ -86,7 +86,7 @@
          </children>
       </GridPane>
       <ColorPicker layoutX="454.0" layoutY="34.0" prefHeight="26.0" prefWidth="98.0" />
-      <ScrollPane layoutX="37.0" layoutY="278.0" prefHeight="108.0" prefWidth="538.0">
+      <ScrollPane layoutX="31.0" layoutY="272.0" prefHeight="108.0" prefWidth="538.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="86.0" prefWidth="546.0">
                <children>
