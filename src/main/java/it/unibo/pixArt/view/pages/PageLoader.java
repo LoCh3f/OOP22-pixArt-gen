@@ -15,6 +15,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.Optional;
 
+
 public class PageLoader {
     private final static String PATH_START = "pages/";
 
