@@ -72,7 +72,7 @@ public class PageLoader {
         final JavaFXView view = loader.getController();
         controller.setView(view);
         view.setController(controller);
-        view.setStage();
+        view.setStage(stage);
         view.init();
 
         final FadeTransition fadeIn = new FadeTransition((Duration.millis(ANIMATION_TIME)));
