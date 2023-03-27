@@ -5,12 +5,16 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-
+<?import javafx.scene.paint.Color?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -85,8 +89,12 @@
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="42.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
+<<<<<<< HEAD
+      <ScrollPane layoutX="37.0" layoutY="278.0" prefHeight="108.0" prefWidth="538.0">
+=======
       <ColorPicker layoutX="454.0" layoutY="34.0" prefHeight="26.0" prefWidth="98.0" />
       <ScrollPane layoutX="31.0" layoutY="272.0" prefHeight="108.0" prefWidth="538.0">
+>>>>>>> 17158efbb7db9df3eaea803ba4ce3e36e45fd39b
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="86.0" prefWidth="546.0">
                <children>
@@ -95,23 +103,39 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <MenuButton layoutX="454.0" layoutY="155.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Actions">
+      <ToolBar layoutX="413.0" layoutY="34.0" orientation="VERTICAL" prefHeight="155.0" prefWidth="101.0">
         <items>
-          <MenuItem mnemonicParsing="false" text="Save" />
-          <MenuItem mnemonicParsing="false" text="Delete" />
+            <MenuButton contentDisplay="TOP" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Brush">
+              <items>
+                <MenuItem mnemonicParsing="false" text="ciao" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+            <Separator prefHeight="0.0" prefWidth="82.0" />
+            <ColorPicker prefHeight="26.0" prefWidth="98.0" />
+            <Separator prefHeight="0.0" prefWidth="127.0" />
+            <MenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Size">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+            <Separator prefHeight="0.0" prefWidth="141.0" />
+            <MenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Actions">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Save" />
+                <MenuItem mnemonicParsing="false" text="Delete" />
+              </items>
+            </MenuButton>
         </items>
-      </MenuButton>
-      <MenuButton layoutX="454.0" layoutY="75.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Brush">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </MenuButton>
-      <MenuButton layoutX="454.0" layoutY="117.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Size">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </MenuButton>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color opacity="0.3037690818309784" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </ToolBar>
    </children>
 </AnchorPane>
