@@ -15,6 +15,6 @@ public class App extends  Application {
 
     @Override
     public void start(final Stage primaryStage) {
-        PageLoader.getInstance().switchPage(primaryStage, Pages.MENU, new );
+        PageLoader.getInstance().switchPage(primaryStage, Pages.MENU, new Abstr );
     }
 }
