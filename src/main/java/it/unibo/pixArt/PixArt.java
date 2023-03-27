@@ -1,8 +1,9 @@
-package  it.unibo.pixArt;
+package it.unibo.pixArt;
 
-public class PixArt {
+public final class PixArt {
 
-    public static  void main(String[] args) {
+
+    public static void main(String[] args) {
         App.launch();
     }
 }

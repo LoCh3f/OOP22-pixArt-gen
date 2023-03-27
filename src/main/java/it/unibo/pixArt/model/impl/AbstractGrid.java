@@ -40,9 +40,9 @@ public abstract class AbstractGrid implements PixelGrid {
     }
 
     @Override
-    public void draw(final Pair<Integer, Integer> pixel, final Color color) {
+    public void draw(final Pair<Integer, Integer> position, final Color color) {
         this.pixels.forEach(p -> {
-            if (p.getPosition().equals(pixel)) {
+            if (p.getPosition().equals(position)) {
                 p.setColor(color);
             }
         });
