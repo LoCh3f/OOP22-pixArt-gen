@@ -89,7 +89,12 @@
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="42.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
+<<<<<<< HEAD
       <ScrollPane layoutX="37.0" layoutY="278.0" prefHeight="108.0" prefWidth="538.0">
+=======
+      <ColorPicker layoutX="454.0" layoutY="34.0" prefHeight="26.0" prefWidth="98.0" />
+      <ScrollPane layoutX="31.0" layoutY="272.0" prefHeight="108.0" prefWidth="538.0">
+>>>>>>> 17158efbb7db9df3eaea803ba4ce3e36e45fd39b
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="86.0" prefWidth="546.0">
                <children>
