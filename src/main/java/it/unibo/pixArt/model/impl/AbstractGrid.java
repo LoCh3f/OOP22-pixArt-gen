@@ -50,7 +50,11 @@ public abstract class AbstractGrid implements PixelGrid {
         });
     }
 
+    /**
+     * @param consumer the consumer to apply to each pixel
+     */
     private void update(final Consumer<Pixel> consumer) {
         this.pixels.forEach(consumer);
+
     }
 }
