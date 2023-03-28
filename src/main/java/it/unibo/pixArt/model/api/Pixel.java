@@ -1,10 +1,9 @@
 package it.unibo.pixArt.model.api;
 
-import it.unibo.pixArt.model.Model;
 import it.unibo.pixArt.utilities.Pair;
 import javafx.scene.paint.Color;
 
-public interface Pixel extends Model {
+public interface Pixel {
 
     /**
      * @return position of the pixel.

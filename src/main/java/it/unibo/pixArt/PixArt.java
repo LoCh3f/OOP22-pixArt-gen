@@ -1,4 +1,4 @@
-package  it.unibo.pixArt;
+package it.unibo.pixArt;
 
 public class PixArt {
 

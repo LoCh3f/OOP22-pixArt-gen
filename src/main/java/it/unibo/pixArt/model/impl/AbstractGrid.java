@@ -7,8 +7,10 @@ import javafx.scene.paint.Color;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public abstract class AbstractGrid implements PixelGrid {
+
 
     private final Set<Pixel> pixels;
 
@@ -27,7 +29,7 @@ public abstract class AbstractGrid implements PixelGrid {
 
     @Override
     public void delete(final Pair<Integer, Integer> pixel) {
-        this.pixels.forEach(p -> {
+        this.update(p -> {
             if (p.getPosition().equals(pixel)) {
                 p.setColor(Color.WHITE);
             }
@@ -36,15 +38,23 @@ public abstract class AbstractGrid implements PixelGrid {
 
     @Override
     public void deleteAll() {
-        this.pixels.forEach(p -> p.setColor(Color.WHITE));
+        this.update(p -> p.setColor(Color.WHITE));
     }
 
     @Override
-    public void draw(final Pair<Integer, Integer> pixel, final Color color) {
-        this.pixels.forEach(p -> {
-            if (p.getPosition().equals(pixel)) {
+    public void draw(final Pair<Integer, Integer> position, final Color color) {
+        this.update(p -> {
+            if (p.getPosition().equals(position)) {
                 p.setColor(color);
             }
         });
+    }
+
+    /**
+     * @param consumer the consumer to apply to each pixel
+     */
+    private void update(final Consumer<Pixel> consumer) {
+        this.pixels.forEach(consumer);
+
     }
 }
