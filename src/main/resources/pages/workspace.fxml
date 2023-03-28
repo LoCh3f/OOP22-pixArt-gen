@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixArt.view.impl.WorkSpace">
    <children>
       <GridPane layoutX="37.0" layoutY="34.0" prefHeight="206.0" prefWidth="211.0">
         <columnConstraints>
@@ -134,5 +134,6 @@
             </InnerShadow>
          </effect>
       </ToolBar>
+      <Button layoutX="37.0" layoutY="240.0" mnemonicParsing="false" onAction="#onMenuClicked" text="Menu" />
    </children>
 </AnchorPane>

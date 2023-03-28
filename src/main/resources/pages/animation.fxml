@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixArt.view.impl.AnimationView">
    <children>
       <ImageView fitHeight="265.0" fitWidth="331.0" layoutX="30.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
       <ButtonBar layoutX="181.0" layoutY="296.0" prefHeight="40.0" prefWidth="200.0" />

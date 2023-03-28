@@ -5,6 +5,7 @@ import it.unibo.pixArt.controller.impl.AnimationController;
 import it.unibo.pixArt.controller.impl.HistoryController;
 import it.unibo.pixArt.controller.impl.HomeController;
 import it.unibo.pixArt.controller.impl.WorkSpaceController;
+import it.unibo.pixArt.view.impl.HomeView;
 
 public enum Pages {
     /**
@@ -25,7 +26,7 @@ public enum Pages {
     /**
      * history view
      */
-    HISTORY("historyproject", new HistoryController());
+    HISTORY("projects", new HistoryController());
 
     private final String name;
 
