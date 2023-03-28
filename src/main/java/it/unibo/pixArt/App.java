@@ -2,7 +2,7 @@ package  it.unibo.pixArt;
 
 import java.io.IOException;
 
-import it.unibo.pixArt.model.ApplicationInstance;
+import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.application.Application;
@@ -16,6 +16,6 @@ public class App extends  Application {
 
     @Override
     public void start(final Stage primaryStage) throws IOException {
-        PageLoader.getInstance().switchPage(primaryStage, Pages.MENU, new ApplicationInstance());
+        PageLoader.getInstance().switchPage(primaryStage, Pages.MENU, new ModelImpl());
     }
 }

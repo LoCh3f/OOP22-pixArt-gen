@@ -1,7 +1,5 @@
 package  it.unibo.pixArt;
 
-import javafx.application.Application;
-
 public class PixArt {
 
     private static void startJavaFx(final String[] args) {
