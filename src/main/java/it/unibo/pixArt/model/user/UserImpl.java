@@ -1,6 +1,4 @@
-package it.unibo.pixArt.model.impl;
-
-import it.unibo.pixArt.model.api.User;
+package it.unibo.pixArt.model.user;
 
 public class UserImpl implements User {
     private String name;

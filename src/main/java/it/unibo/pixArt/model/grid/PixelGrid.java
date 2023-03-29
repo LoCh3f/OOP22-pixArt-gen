@@ -1,5 +1,6 @@
-package it.unibo.pixArt.model.api;
+package it.unibo.pixArt.model.grid;
 
+import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.utilities.Pair;
 import javafx.scene.paint.Color;
 

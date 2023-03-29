@@ -1,8 +1,8 @@
 package it.unibo.pixArt.model;
 
 
-import it.unibo.pixArt.model.api.User;
-import it.unibo.pixArt.model.impl.UserImpl;
+import it.unibo.pixArt.model.user.User;
+import it.unibo.pixArt.model.user.UserImpl;
 
 public class ModelImpl implements Model {
 

@@ -1,4 +1,4 @@
-package it.unibo.pixArt.model.api;
+package it.unibo.pixArt.model.user;
 
 public interface User {
 
