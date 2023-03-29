@@ -24,7 +24,7 @@ public abstract class AbstractGrid implements PixelGrid {
     }
 
     public Set<Pixel> getPixels() {
-        return this.pixels;
+        return new HashSet<>(this.pixels);
     }
 
     @Override
