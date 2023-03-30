@@ -18,8 +18,6 @@ public class App extends  Application {
     @Override
  
     public void start(final Stage primaryStage) throws IOException {
-
-   
         PageLoader.getInstance().switchPage(primaryStage, Pages.MENU, new ModelImpl());
     }
 }

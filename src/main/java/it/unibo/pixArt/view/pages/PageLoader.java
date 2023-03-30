@@ -70,8 +70,6 @@ public class PageLoader {
             root.get().scaleXProperty().bind(Bindings.min(stage.widthProperty().divide(stage.minWidthProperty())
             , stage.heightProperty().divide(stage.minHeightProperty())));
         }*/
-        System.out.println(root.getChildrenUnmodifiable());
-        System.out.println("ciao\n");
         
         final JavaFXView view = loader.getController();
         controller.setView(view);
