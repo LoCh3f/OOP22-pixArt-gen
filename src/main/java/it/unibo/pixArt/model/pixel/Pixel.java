@@ -5,8 +5,9 @@ import javafx.scene.paint.Color;
 
 public interface Pixel {
 
+
     /**
-     * @return position of the pixel.
+     * @return the position of the pixel.
      */
     Pair<Integer, Integer> getPosition();
 
