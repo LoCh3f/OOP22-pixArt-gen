@@ -1,5 +1,6 @@
 package it.unibo.pixArt.view.impl;
 
+import it.unibo.pixArt.model.workspace.WorkSpaceModelImpl;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.SimpleView;
 import it.unibo.pixArt.view.pages.PageLoader;
@@ -13,7 +14,7 @@ public class HomeView extends AbstractFXView {
     
    @FXML
     public void onWorkSpaceClick(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, this.getController().getModel());
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, new WorkSpaceModelImpl());
     }
 
     @FXML
