@@ -5,6 +5,8 @@ public interface ToolFactory {
     /**
      * @return
      */
-    public Tool createNormalBrush();
+    public Tool createTool(String name);
+
+    Tool createNormalBrush();
     
 }

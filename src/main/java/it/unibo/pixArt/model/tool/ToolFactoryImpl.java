@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 
 public class ToolFactoryImpl implements ToolFactory{
 
-    @Override
+   @Override
     public Tool createNormalBrush() {
         return new Tool(){
             @Override
@@ -19,7 +19,21 @@ public class ToolFactoryImpl implements ToolFactory{
             }
         };
     }
-    
+
+    @Override
+    public Tool createTool(final String name) {
+
+        switch (name) {
+            case "BRUSH": 
+                return this.createNormalBrush();
+            default:
+               return this.createNormalBrush();
+
+        }
+        
+    }
+
+
 
 
 }
