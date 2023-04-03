@@ -10,16 +10,16 @@ public class GridGeneratorImpl implements GridGenerator {
 
     @Override
     public PixelGrid smallGrid() {
-        return null;
+        return new GridImpl(SMALL, SMALL);
     }
 
     @Override
     public PixelGrid mediumGrid() {
-        return null;
+        return new GridImpl(MEDIUM, MEDIUM);
     }
 
     @Override
     public PixelGrid largeGrid() {
-        return null;
+        return new GridImpl(LARGE, LARGE);
     }
 }
