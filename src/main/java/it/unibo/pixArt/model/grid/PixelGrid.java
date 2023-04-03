@@ -4,14 +4,14 @@ import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.utilities.Pair;
 import javafx.scene.paint.Color;
 
-import java.util.HashSet;
+import java.util.Set;
 
 public interface PixelGrid {
 
     /**
      * @return the collection of pixel.
      */
-    HashSet<Pixel> getPixel();
+    Set<Pixel> getPixels();
 
     /**
      * set all the pixel white color.
