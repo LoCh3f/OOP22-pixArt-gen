@@ -9,12 +9,12 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public abstract class AbstractGrid implements PixelGrid {
+public class GridImpl implements PixelGrid {
 
 
     private final Set<Pixel> pixels;
 
-    public AbstractGrid(final Integer row, final Integer column) {
+    public GridImpl(final Integer row, final Integer column) {
         pixels = new HashSet<>(row * column);
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
