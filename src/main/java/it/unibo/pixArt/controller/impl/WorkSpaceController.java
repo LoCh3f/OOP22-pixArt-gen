@@ -4,4 +4,5 @@ import it.unibo.pixArt.controller.SimpleController;
 
 public class WorkSpaceController extends SimpleController {
 
+   
 }

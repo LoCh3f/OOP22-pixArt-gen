@@ -12,5 +12,13 @@ public interface Project {
      */
     public String getName();
 
-    
+    /**
+     * @return the path for the cover image of the project
+     */
+    public String getCoverImage();
+
+    /**
+     * sets the path of the cover image of the progect.
+     */
+    public void setCoverImage();
 }

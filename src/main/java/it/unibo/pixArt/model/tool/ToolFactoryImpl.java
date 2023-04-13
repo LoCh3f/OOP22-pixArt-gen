@@ -1,5 +1,9 @@
 package it.unibo.pixArt.model.tool;
 
+import java.util.Collections;
+
+import javafx.scene.paint.Color;
+
 public class ToolFactoryImpl implements ToolFactory{
 
     @Override
