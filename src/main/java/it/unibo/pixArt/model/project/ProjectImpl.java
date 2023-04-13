@@ -1,9 +1,18 @@
 package it.unibo.pixArt.model.project;
 
+import java.util.List;
+
+import it.unibo.pixArt.model.grid.GridImpl;
+
 public class ProjectImpl implements Project {
     private String projectName;
     private String path;
     private String coverImage;
+    private List<GridImpl> frames;
+
+    public ProjectImpl() {
+
+    }
     
 
     @Override
@@ -18,14 +27,27 @@ public class ProjectImpl implements Project {
 
     @Override
     public String getCoverImage() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCoverImage'");
+        return this.coverImage;
     }
 
     @Override
-    public void setCoverImage() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setCoverImage'");
+    public void setCoverImage(final String path) {
+        this.coverImage = path;
+    }
+
+    @Override
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    @Override
+    public String getPath() {
+        return this.path;
+    }
+
+    @Override
+    public List<GridImpl> getAllFrames() {
+        return this.frames;
     }
     
 }

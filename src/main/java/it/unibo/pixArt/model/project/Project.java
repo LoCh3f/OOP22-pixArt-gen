@@ -1,24 +1,43 @@
 package it.unibo.pixArt.model.project;
 
+import java.util.List;
+
+import it.unibo.pixArt.model.grid.GridImpl;
+
 public interface Project {
     /**
-     * @param newName
+     * @param newName the project's name
      */
     public void setName(final String newName);
 
     /**
-     * 
-     * @return
+     * @return the project's name
      */
     public String getName();
 
     /**
-     * @return the path for the cover image of the project
+     * @return the cover image's path
      */
     public String getCoverImage();
 
     /**
-     * sets the path of the cover image of the progect.
+     * @param path cover image's path
      */
-    public void setCoverImage();
+    public void setCoverImage(final String path);
+
+    /**
+     * @param path project's path
+     */
+    public void setPath(final String path);
+
+    /**
+     * @return the project's path
+     */
+    public String getPath();
+
+    /**
+     * @return the list of frames
+     */
+    public List<GridImpl> getAllFrames();
+
 }
