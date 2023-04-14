@@ -28,4 +28,12 @@ public class ImplPixel implements Pixel {
     public void setColor(final Color color) {
         this.color = color;
     }
+
+    /**
+     * @param pixel to compare
+     * @return true if the pixels are the same, i.e. if the positions is the same
+     */
+    public boolean comparePixel(final Pixel pixel) {
+        return this.position.equals(pixel.getPosition());
+    }
 }
