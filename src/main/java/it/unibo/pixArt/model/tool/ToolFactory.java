@@ -1,12 +1,12 @@
 package it.unibo.pixArt.model.tool;
 
+import java.util.HashMap;
+
+import it.unibo.pixArt.model.pixel.Pixel;
+
 public interface ToolFactory {
 
-    /**
-     * @return
-     */
-    public Tool createTool(String name);
-
     Tool createNormalBrush();
+    Tool createBucket(HashMap<Pixel, Pixel> frame);
     
 }
