@@ -7,6 +7,7 @@ import it.unibo.pixArt.model.pixel.Pixel;
 public interface ToolFactory {
 
     Tool createNormalBrush();
+    Tool createEraser();
     Tool createBucket(HashMap<Pixel, Pixel> frame);
     
 }

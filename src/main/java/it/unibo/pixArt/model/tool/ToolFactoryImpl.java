@@ -26,7 +26,7 @@ public class ToolFactoryImpl implements ToolFactory{
 
     
     @Override
-    public Tool createBucket(HashMap<Pixel, Pixel> frame) {
+    public Tool createBucket(final HashMap<Pixel, Pixel> frame) {
         return new Tool(){
             @Override
             public Set<Pixel> color(final Pixel pixel, final Color color) {
@@ -60,6 +60,18 @@ public class ToolFactoryImpl implements ToolFactory{
                     return false;
                 }  
                 return true;
+            }
+        };
+    }
+
+
+    @Override
+    public Tool createEraser() {
+        return new Tool(){
+            @Override
+            public Set<Pixel> color(final Pixel pixel, final Color color) {
+                pixel.setColor(Color.WHITE);
+                return Collections.singleton(pixel);
             }
         };
     }
