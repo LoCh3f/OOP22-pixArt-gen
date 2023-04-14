@@ -31,7 +31,7 @@ public class ImplPixel implements Pixel {
 
     /**
      * @param pixel to compare
-     * @return true if the pixels are the same, i.e. if the positions is the same
+     * @return true if the pixels are the same, i.e. the position is the same
      */
     public boolean comparePixel(final Pixel pixel) {
         return this.position.equals(pixel.getPosition());
