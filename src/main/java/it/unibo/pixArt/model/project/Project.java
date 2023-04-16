@@ -3,6 +3,7 @@ package it.unibo.pixArt.model.project;
 import java.util.List;
 
 import it.unibo.pixArt.model.grid.GridImpl;
+import it.unibo.pixArt.model.historyframe.HistoryFrame;
 
 public interface Project {
     /**

@@ -11,7 +11,6 @@ import java.util.function.Consumer;
 
 public class GridImpl implements PixelGrid {
 
-
     private final Set<Pixel> pixels;
 
     public GridImpl(final Integer row, final Integer column) {

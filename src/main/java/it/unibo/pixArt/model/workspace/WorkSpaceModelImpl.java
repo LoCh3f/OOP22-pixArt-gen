@@ -1,9 +1,12 @@
 package it.unibo.pixArt.model.workspace;
 
+import java.util.Optional;
+
 import it.unibo.pixArt.controller.impl.WorkSpaceController;
 import it.unibo.pixArt.model.Model;
 import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.model.grid.PixelGrid;
+import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.tool.Tool;
 import it.unibo.pixArt.model.tool.ToolFactory;
 import it.unibo.pixArt.model.tool.ToolFactoryImpl;
@@ -12,14 +15,18 @@ import javafx.scene.paint.Color;
 
 public class WorkSpaceModelImpl extends ModelImpl implements WorkSpaceModel{
     private WorkSpaceController controller;
+    private Project project;
     private PixelGrid frame;
     private final ToolFactory toolFactory = new ToolFactoryImpl();
     private Tool tool;
     private Color selectedColor;
     private Boolean inUse;
 
-    public WorkSpaceModelImpl(){
-        System.out.println("ciao\n");
+    public WorkSpaceModelImpl(final Optional<Project> proj){
+        if(proj.isPresent()) {
+            this.project = proj.get();
+            this.frame = proj.get().getAllFrames().get(0);
+        }
     }
 
     @Override
