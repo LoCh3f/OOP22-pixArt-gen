@@ -10,4 +10,8 @@ public class AnimationView extends AbstractFXView {
         //throw new UnsupportedOperationException("Unimplemented method 'init'");
     }
 
+    public void animateImage(final String path) {
+        
+    }
+
 }

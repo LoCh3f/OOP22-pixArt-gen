@@ -4,6 +4,11 @@ public class HistoryFrameImpl implements HistoryFrame {
     private String imagePath;
     private int animationDuration;
 
+    public HistoryFrameImpl(final String path) {
+        this.imagePath = path;
+        this.animationDuration = 100;
+    }
+
     @Override
     public String getPath() {
         return this.imagePath;
