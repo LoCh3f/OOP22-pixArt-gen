@@ -25,6 +25,11 @@ public interface AnimationModel {
     public void setDirection(final String direction);
 
     /**
+     * @return
+     */
+    public Directions getDirection();
+
+    /**
      * @param index
      * @return
      */

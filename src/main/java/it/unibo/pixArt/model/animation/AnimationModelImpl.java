@@ -40,5 +40,10 @@ public class AnimationModelImpl implements AnimationModel {
     public boolean getPause() {
         return this.inPause;
     }
+
+    @Override
+    public Directions getDirection() {
+       return this.direction;
+    }
     
 }
