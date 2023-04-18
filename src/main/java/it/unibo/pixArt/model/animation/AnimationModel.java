@@ -33,5 +33,5 @@ public interface AnimationModel {
      * @param index
      * @return
      */
-    public HistoryFrame getCurrentFrame(final int index);
+    public HistoryFrame getCurrentFrame();
 }

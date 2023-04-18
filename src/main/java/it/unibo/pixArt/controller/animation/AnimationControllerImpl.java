@@ -2,28 +2,36 @@ package it.unibo.pixArt.controller.animation;
 
 import it.unibo.pixArt.model.animation.AnimationModel;
 import it.unibo.pixArt.model.animation.AnimationModelImpl;
-import it.unibo.pixArt.view.impl.AnimationView;
+import it.unibo.pixArt.view.animation.AnimationView;
 
 public class AnimationControllerImpl implements AnimationController{
     private AnimationView view = new AnimationView();
     private AnimationModel model = new AnimationModelImpl();
+    private Thread th;
 
+    public class Animator implements Runnable {
 
-    @Override
-    public void getImage(String path) {
-        int counter = 0;
-        while(this.model.getPause()) {
-            var currentFrame = this.model.getCurrentFrame(counter);
-            this.view.animateImage(currentFrame.getPath());
-            try {
-                Thread.sleep(currentFrame.getAnimationDuration());
-            } catch (InterruptedException e) {
+        @Override
+        public void run() {
+            while(getModel().getPause()) {
+                var frame = getModel().getCurrentFrame();
+                getView().animateImage(frame.getPath());
+                try {
+                    Thread.sleep(frame.getAnimationDuration());
+                } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
+                    e.printStackTrace();
+                }
             }
-            counter = counter + this.model.getDirection().value;
         }
-        
+    }
+    
+    public AnimationModel getModel() {
+        return this.model;
+    }
+
+    public AnimationView getView() {
+        return this.view;
     }
 
 
@@ -41,6 +49,11 @@ public class AnimationControllerImpl implements AnimationController{
 
     @Override
     public void setAnimationPause() {
+        if(!this.model.getPause()){
+            Animator anim = new Animator();
+            this.th = new Thread(anim);
+            this.th.start();
+        }
         this.model.setPause();
     }
 

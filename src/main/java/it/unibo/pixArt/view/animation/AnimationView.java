@@ -11,7 +11,7 @@ public class AnimationView extends AbstractFXView {
     }
 
     public void animateImage(final String path) {
-        
+        //Image.setImage(path)
     }
 
 }
