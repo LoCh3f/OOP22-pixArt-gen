@@ -1,6 +1,5 @@
 package it.unibo.pixArt.controller.animation;
 
-import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.animation.AnimationModel;
 import it.unibo.pixArt.model.animation.AnimationModelImpl;
 import it.unibo.pixArt.view.impl.AnimationView;
@@ -11,7 +10,7 @@ public class AnimationControllerImpl implements AnimationController{
 
 
     @Override
-    public void sendImage(String path) {
+    public void getImage(String path) {
         int counter = 0;
         while(this.model.getPause()) {
             var currentFrame = this.model.getCurrentFrame(counter);
@@ -22,9 +21,27 @@ public class AnimationControllerImpl implements AnimationController{
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            counter = counter + 1;//will become this.model.getDirection().getValue()
+            counter = counter + this.model.getDirection().value;
         }
         
+    }
+
+
+    @Override
+    public void setAnimationDirection(String newDir) {
+       this.model.setDirection(newDir);
+    }
+
+
+    @Override
+    public void setFrameDuration(int frameIndex, int duration) {
+       this.model.selectFrameDuration(frameIndex, duration);
+    }
+
+
+    @Override
+    public void setAnimationPause() {
+        this.model.setPause();
     }
 
 }

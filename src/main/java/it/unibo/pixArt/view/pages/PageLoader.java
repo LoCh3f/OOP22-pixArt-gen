@@ -63,24 +63,12 @@ public class PageLoader {
             stage.getScene().setRoot(root);
         }
         
-        //stage.setMinHeight(((AnchorPane) stage.getScene().getRoot()).getMinHeight());
-        //stage.setMinWidth(((AnchorPane) stage.getScene().getRoot()).getMinWidth());
-        
-        /*if (!(root.isEmpty())) {
-            root.get().scaleXProperty().bind(Bindings.min(stage.widthProperty().divide(stage.minWidthProperty())
-            , stage.heightProperty().divide(stage.minHeightProperty())));
-        }*/
-        
         final JavaFXView view = loader.getController();
         controller.setView(view);
         view.setController(controller);
         view.setStage(stage);
         view.init();
 
-        /*final FadeTransition fadeIn = new FadeTransition((Duration.millis(ANIMATION_TIME)));
-        fadeIn.setFromValue(0.5);
-        fadeIn.setToValue(1.0);
-        fadeIn.play();*/
         stage.show();
     }
 
