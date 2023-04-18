@@ -17,6 +17,20 @@ public class ProjectView extends AbstractFXView {
         //throw new UnsupportedOperationException("Unimplemented method 'init'");
     }
 
+    public void onHomeClick(final ActionEvent event){
+        PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
+    }
+
+    public void onEditClick(final ActionEvent event){
+
+    }
+
+    public void onDeleteClick(ActionEvent event){
+
+    }
   
+    public void onChangeDirClick(ActionEvent event){
+        
+    }
 
 }
