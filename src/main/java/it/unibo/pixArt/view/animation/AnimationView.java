@@ -1,4 +1,4 @@
-package it.unibo.pixArt.view.impl;
+package it.unibo.pixArt.view.animation;
 
 import it.unibo.pixArt.view.AbstractFXView;
 
