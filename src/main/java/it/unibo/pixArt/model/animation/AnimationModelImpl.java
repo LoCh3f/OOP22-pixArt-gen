@@ -2,9 +2,10 @@ package it.unibo.pixArt.model.animation;
 
 import java.util.List;
 
+import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 
-public class AnimationModelImpl implements AnimationModel {
+public class AnimationModelImpl extends ModelImpl implements AnimationModel {
 
     private List<HistoryFrame> frames;
     private boolean inPause = true;
