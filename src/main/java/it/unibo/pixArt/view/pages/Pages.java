@@ -21,7 +21,7 @@ public enum Pages {
     /**
      * animation view
      */
-    ANIMATION("animation", new HomeController()),
+    ANIMATION("animation", new WorkSpaceController()),
 
     /**
      * history view

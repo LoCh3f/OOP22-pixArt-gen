@@ -1,5 +1,6 @@
 package it.unibo.pixArt.controller.animation;
 
+import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.animation.AnimationModel;
 import it.unibo.pixArt.model.animation.AnimationModelImpl;
 import it.unibo.pixArt.view.animation.AnimationView;
