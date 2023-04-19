@@ -6,21 +6,55 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
+import it.unibo.pixArt.utilities.Pair;
 import javafx.scene.paint.Color;
 
 public class ToolFactoryImpl implements ToolFactory{
 
-   @Override
-    public Tool createNormalBrush() {
-        return new Tool(){
+    @Override
+    public Tool createBrush(final int brushSize, final Set<Pixel> frame) {
+        
+        return new Tool() {
+
             @Override
             public Set<Pixel> color(final Pixel pixel, final Color color) {
-                pixel.setColor(color);
-                return Collections.singleton(pixel);
+                Set<Pixel> newPixSet = new HashSet<>();
+                var p2Position = calculatePosition(pixel); 
+                Pixel p2 = new ImplPixel(p2Position.getX(), p2Position.getY());
+                Pixel tempPix;
+
+                for (var x: range(pixel.getPosition().getX(), p2.getPosition().getX())){
+                    for (var y: range(pixel.getPosition().getY(), p2.getPosition().getY())){
+                        tempPix = new ImplPixel(x,y);
+                        tempPix.setColor(color);
+                        newPixSet.add(tempPix);
+                    }
+                }
+
+                return newPixSet;
+
             }
+
+            private Iterable<Integer> range(int x, int x2) {
+                return ()->IntStream.rangeClosed(x, x2).iterator();
+            }
+
+            private Pair<Integer, Integer> calculatePosition(final Pixel p1){
+                int x = p1.getPosition().getX() + (brushSize-1);
+                int y = p1.getPosition().getY() + (brushSize-1);
+                if (x > frame.size()){
+                    x = frame.size();
+                }
+                if (y > frame.size()){
+                    y = frame.size();
+                }
+                return new Pair<>(x,y);
+            }
+
         };
     }
 
