@@ -13,7 +13,13 @@ public class GridImpl implements PixelGrid {
 
     private final Set<Pixel> pixels;
 
+    private final Integer row;
+
+    private final Integer column;
+
     public GridImpl(final Integer row, final Integer column) {
+        this.row = row;
+        this.column = column;
         pixels = new HashSet<>(row * column);
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -56,5 +62,13 @@ public class GridImpl implements PixelGrid {
     private void update(final Consumer<Pixel> consumer) {
         this.pixels.forEach(consumer);
 
+    }
+
+    public Integer getColumn() {
+        return column;
+    }
+
+    public Integer getRow() {
+        return row;
     }
 }
