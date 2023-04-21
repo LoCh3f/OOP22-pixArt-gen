@@ -17,7 +17,7 @@ public class GridImpl implements PixelGrid {
 
     private final Integer column;
 
-    public GridImpl(final Integer row, final Integer column) {
+    protected GridImpl(final Integer row, final Integer column) {
         this.row = row;
         this.column = column;
         pixels = new HashSet<>(row * column);

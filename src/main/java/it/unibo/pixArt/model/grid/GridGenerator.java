@@ -1,10 +1,25 @@
 package it.unibo.pixArt.model.grid;
 
-public interface GridGenerator {
+public class GridGenerator {
 
-    PixelGrid smallGrid();
+    private static final int SMALL = 16;
 
-    PixelGrid mediumGrid();
+    private static final int MEDIUM = 32;
 
-    PixelGrid largeGrid();
+    private static final int LARGE = 64;
+
+    public static PixelGrid smallGrid() {
+        return new GridImpl(SMALL, SMALL);
+    }
+
+
+    public static PixelGrid mediumGrid() {
+        return new GridImpl(MEDIUM, MEDIUM);
+    }
+
+
+
+    public static PixelGrid largeGrid() {
+        return new GridImpl(LARGE, LARGE);
+    }
 }
