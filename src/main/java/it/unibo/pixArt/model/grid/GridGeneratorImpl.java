@@ -8,6 +8,9 @@ public class GridGeneratorImpl implements GridGenerator {
 
     private static final int LARGE = 64;
 
+    public GridGeneratorImpl() {
+    }
+
     @Override
     public PixelGrid smallGrid() {
         return new GridImpl(SMALL, SMALL);
