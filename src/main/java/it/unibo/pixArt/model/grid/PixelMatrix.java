@@ -47,6 +47,9 @@ public class PixelMatrix {
         }
 
         public PixelMatrix build() throws  IllegalStateException {
+            if (this.rows < 16 || this.columns < 16 ) {
+                throw new IllegalStateException("Rows and columns must be greater than 16");
+            }
 
             return new PixelMatrix(this.rows, this.columns);
         }
@@ -56,4 +59,9 @@ public class PixelMatrix {
     public void update(final Consumer<Pixel> consumer, Pixel pixel) {
         this.pixels.forEach(consumer);
     }
+
+    public Set<Pixel> getPixels() {
+        return new HashSet<>(this.pixels);
+    }
+
 }
