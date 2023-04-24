@@ -16,12 +16,12 @@ import javafx.scene.paint.Color;
 public class ToolFactoryImpl implements ToolFactory{
 
     @Override
-    public Tool createBrush(final int brushSize, final Set<Pixel> frame) {
+    public Tool createPencil(final int pencilSize, final Set<Pixel> frame, final Color color) {
         
         return new Tool() {
 
             @Override
-            public Set<Pixel> color(final Pixel pixel, final Color color) {
+            public Set<Pixel> color(final Pixel pixel) {
                 Set<Pixel> newPixSet = new HashSet<>();
                 var p2Position = calculatePosition(pixel); 
                 Pixel p2 = new ImplPixel(p2Position.getX(), p2Position.getY());
@@ -44,8 +44,8 @@ public class ToolFactoryImpl implements ToolFactory{
             }
 
             private Pair<Integer, Integer> calculatePosition(final Pixel p1){
-                int x = p1.getPosition().getX() + (brushSize-1);
-                int y = p1.getPosition().getY() + (brushSize-1);
+                int x = p1.getPosition().getX() + (pencilSize-1);
+                int y = p1.getPosition().getY() + (pencilSize-1);
                 if (x > frame.size()){
                     x = frame.size();
                 }
@@ -60,10 +60,10 @@ public class ToolFactoryImpl implements ToolFactory{
 
     
     @Override
-    public Tool createBucket(final HashMap<Pixel, Pixel> frame) {
+    public Tool createBucket(final HashMap<Pixel, Pixel> frame, final Color Color) {
         return new Tool(){
             @Override
-            public Set<Pixel> color(final Pixel pixel, final Color color) {
+            public Set<Pixel> color(final Pixel pixel) {
                 Set<Pixel> newSet = new HashSet<>();
                 Color old_color = pixel.getColor();
                 if (old_color.equals(color)) {
@@ -103,11 +103,39 @@ public class ToolFactoryImpl implements ToolFactory{
     public Tool createEraser() {
         return new Tool(){
             @Override
-            public Set<Pixel> color(final Pixel pixel, final Color color) {
+            public Set<Pixel> color(final Pixel pixel) {
                 pixel.setColor(Color.WHITE);
                 return Collections.singleton(pixel);
             }
         };
+    }
+
+    @Override
+    public Tool createLightenTool() {
+        return new Tool() {
+            @Override
+            public Set<Pixel> color(final Pixel pixel) {
+                pixel.setColor(pixel.getColor().brighter());
+            }
+        };
+    }
+
+
+    @Override
+    public Tool createDarkenTool() {
+        return new Tool() {
+            @Override
+            public Set<Pixel> color(final Pixel pixel) {
+                pixel.setColor(pixel.getColor().darker());
+            }
+        };
+    }
+
+
+    @Override
+    public Tool createBrush(int brushSize, Set<Pixel> frame, Color color) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'createBrush'");
     }
 
 
