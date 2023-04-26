@@ -60,7 +60,7 @@ public class ToolFactoryImpl implements ToolFactory{
 
     
     @Override
-    public Tool createBucket(final HashMap<Pixel, Pixel> frame, final Color Color) {
+    public Tool createBucket(final HashMap<Pixel, Pixel> frame, final Color color) {
         return new Tool(){
             @Override
             public Set<Pixel> color(final Pixel pixel) {
