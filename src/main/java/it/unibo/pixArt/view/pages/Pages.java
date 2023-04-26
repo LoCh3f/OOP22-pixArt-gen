@@ -1,6 +1,7 @@
 package it.unibo.pixArt.view.pages;
 
 import it.unibo.pixArt.controller.Controller;
+import it.unibo.pixArt.controller.animation.AnimationController;
 import it.unibo.pixArt.controller.animation.AnimationControllerImpl;
 import it.unibo.pixArt.controller.impl.HistoryController;
 import it.unibo.pixArt.controller.impl.HomeController;
@@ -21,7 +22,7 @@ public enum Pages {
     /**
      * animation view
      */
-    ANIMATION("animation", new WorkSpaceController()),
+    ANIMATION("animation", new AnimationControllerImpl()),
 
     /**
      * history view

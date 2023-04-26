@@ -1,6 +1,7 @@
 package it.unibo.pixArt.model;
 
 
+import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.user.User;
 
 public interface Model {
@@ -16,4 +17,13 @@ public interface Model {
      */
     void setUser(final String name, final String path);
 
+    /**
+     * @return the project the user is currently working on(null if no project has been selected).
+     */
+    Project getProject();
+
+    /**
+     * @param project set the project the use is working on.
+     */
+    void setProject(final Project project);
 }

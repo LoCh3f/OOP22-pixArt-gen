@@ -1,5 +1,6 @@
 package it.unibo.pixArt.view.impl;
 
+import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.SimpleView;
 import it.unibo.pixArt.view.pages.PageLoader;
@@ -17,6 +18,6 @@ public class WorkSpace extends AbstractFXView {
 
     @FXML
     public void onMenuClicked(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
+        PageLoader.getInstance().switchPage(getStage(), Pages.MENU, new ModelImpl(null, null, null));
     }
 }

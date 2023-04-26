@@ -1,8 +1,9 @@
 package it.unibo.pixArt.model.workspace;
 
+import it.unibo.pixArt.model.Model;
 import javafx.scene.paint.Color;
 
-public interface WorkSpaceModel {
+public interface WorkSpaceModel extends Model {
     
     /**
      * @param string Method used to set the tool based on the type selected by the user.

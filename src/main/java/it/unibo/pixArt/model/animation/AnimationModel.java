@@ -1,8 +1,9 @@
 package it.unibo.pixArt.model.animation;
 
+import it.unibo.pixArt.model.Model;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 
-public interface AnimationModel {
+public interface AnimationModel extends Model {
     /**
      * @param frameIndex the historyFrame's index inside the list
      * @param duration the animation's duration for that specific frame
