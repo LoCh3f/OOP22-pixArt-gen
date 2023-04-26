@@ -20,4 +20,6 @@ public interface Pixel {
      * @param color to set for the pixel.
      */
     void setColor(final Color color);
+
+    boolean comparePixel(final Pixel pixel);
 }
