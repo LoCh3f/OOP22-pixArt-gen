@@ -5,7 +5,6 @@ import it.unibo.pixArt.view.View;
 
 public abstract class SimpleController implements Controller {
 
-
     private Model model;
 
     private View view;

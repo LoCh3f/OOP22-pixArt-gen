@@ -1,14 +1,17 @@
 package it.unibo.pixArt.controller.animation;
 
 import it.unibo.pixArt.controller.SimpleController;
+import it.unibo.pixArt.model.Model;
 import it.unibo.pixArt.model.animation.AnimationModel;
 import it.unibo.pixArt.model.animation.AnimationModelImpl;
+import it.unibo.pixArt.view.View;
 import it.unibo.pixArt.view.animation.AnimationView;
 
-public class AnimationControllerImpl implements AnimationController{
+public class AnimationControllerImpl extends SimpleController implements AnimationController {
     private AnimationView view = new AnimationView();
     private AnimationModel model = new AnimationModelImpl();
     private Thread th;
+
 
     public class Animator implements Runnable {
 
@@ -27,6 +30,7 @@ public class AnimationControllerImpl implements AnimationController{
         }
     }
     
+   
     public AnimationModel getModel() {
         return this.model;
     }

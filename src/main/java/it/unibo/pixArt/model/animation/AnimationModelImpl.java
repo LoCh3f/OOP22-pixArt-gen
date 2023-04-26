@@ -4,6 +4,7 @@ import java.util.List;
 
 import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
+import it.unibo.pixArt.model.project.Project;
 
 public class AnimationModelImpl extends ModelImpl implements AnimationModel {
 
@@ -12,6 +13,9 @@ public class AnimationModelImpl extends ModelImpl implements AnimationModel {
     private Directions direction = Directions.FORWARD;
     private int counter = 0;
 
+    public AnimationModelImpl(final Project project) {
+        super(null, null, project);
+    }
     @Override
     public void selectFrameDuration(final int frameIndex,final int duration) {
         this.frames.get(frameIndex).setAnimationDuration(duration);

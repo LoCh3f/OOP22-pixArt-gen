@@ -14,19 +14,14 @@ import it.unibo.pixArt.model.user.User;
 import javafx.scene.paint.Color;
 
 public class WorkSpaceModelImpl extends ModelImpl implements WorkSpaceModel{
-    private WorkSpaceController controller;
-    private Project project;
     private PixelGrid frame;
     private final ToolFactory toolFactory = new ToolFactoryImpl();
     private Tool tool;
     private Color selectedColor;
     private Boolean inUse;
 
-    public WorkSpaceModelImpl(final Optional<Project> proj){
-        if(proj.isPresent()) {
-            this.project = proj.get();
-            this.frame = proj.get().getAllFrames().get(0);
-        }
+    public WorkSpaceModelImpl(final Project project){
+        super(null, null, project);
     }
 
     @Override

@@ -1,6 +1,8 @@
 package it.unibo.pixArt.controller.animation;
 
-public interface AnimationController {
+import it.unibo.pixArt.controller.Controller;
+
+public interface AnimationController extends Controller {
 
     /**Method to change the direction of the animation.
      * 
