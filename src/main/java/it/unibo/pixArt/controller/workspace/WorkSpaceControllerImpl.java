@@ -18,8 +18,7 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
 
     @Override
     public void selectTool(String toolName) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'selectTool'");
+        
     }
 
     @Override
@@ -28,27 +27,24 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
         throw new UnsupportedOperationException("Unimplemented method 'colorGrid'");
     }
 
-    private WorkSpaceModel getWorkSpaceModel() {
-        return (WorkSpaceModel) this.getModel();
-    }
-
+    
     @Override
-    public void setCurrentFrame(int index) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setCurrentFrame'");
+    public void setCurrentFrame(final int index) {
+        throw new UnsupportedOperationException("Unimplemented method 'colorGrid'");
     }
-
+    
     @Override
     public Set<Pixel> getFrameState() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getFrameState'");
     }
 
-
-    @Override
-    public Color getCurrentColor() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCurrentColor'");
+    public void colorGrid(Pixel p) {
+        throw new UnsupportedOperationException("Unimplemented method 'getFrameState'");
+    }
+    
+    private WorkSpaceModel getWorkSpaceModel() {
+        return (WorkSpaceModel) this.getModel();
     }
     
 }

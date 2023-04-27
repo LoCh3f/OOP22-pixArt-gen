@@ -15,10 +15,6 @@ public interface WorkSpaceController extends Controller {
     * @param color the new color.
     */
    public void selectCurrentColor(final Color newColor);
-   /**
-    * @return the color that is in use.
-    */
-   public Color getCurrentColor();
 
    /**Method to set the tool that is being currently used.
     * 
@@ -38,8 +34,11 @@ public interface WorkSpaceController extends Controller {
    public void colorGrid();
 
    public Set<Pixel> getFrameState();
-   /*To be done:
-    * .Method to get previous state
+   /*TO BE DONE:
+    * 1) Method to get previous state.
+    * 2) Method to save the file.
+    * 3) Method to add new frame.
+    * 4) Method to delete current frame.
     */
 
 }
