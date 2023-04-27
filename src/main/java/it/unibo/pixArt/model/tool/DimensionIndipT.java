@@ -21,7 +21,7 @@ public enum DimensionIndipT {
      * @param tool the name of the tool
      * @return wheter the tool is present in this enum
      */
-    public boolean isPresent(final String tool){
+    public static boolean isPresent(final String tool){
         for(var elem : DimensionIndipT.values()) {
             if(elem.name == tool) {
                 return true;
