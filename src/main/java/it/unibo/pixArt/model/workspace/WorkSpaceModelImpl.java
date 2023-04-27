@@ -3,7 +3,7 @@ package it.unibo.pixArt.model.workspace;
 
 import java.util.Optional;
 
-import it.unibo.pixArt.controller.impl.WorkSpaceController;
+import it.unibo.pixArt.controller.workspace.WorkSpaceController;
 import it.unibo.pixArt.model.Model;
 import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.model.grid.PixelGrid;
