@@ -1,4 +1,4 @@
-package it.unibo.pixArt.view.impl;
+package it.unibo.pixArt.view.GraphicComponent;
 
 
 import javafx.scene.control.Button;
