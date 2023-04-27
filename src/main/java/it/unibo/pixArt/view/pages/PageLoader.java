@@ -3,18 +3,13 @@ package it.unibo.pixArt.view.pages;
 import it.unibo.pixArt.controller.Controller;
 import it.unibo.pixArt.model.Model;
 import it.unibo.pixArt.view.JavaFXView;
-import javafx.animation.FadeTransition;
-import javafx.application.Application;
-import javafx.beans.binding.Bindings;
+import it.unibo.pixArt.view.impl.WorkSpaceBuilder;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.Optional;
 
 
 public class PageLoader {
@@ -48,21 +43,27 @@ public class PageLoader {
     public void switchPageWithSpecificController(final Stage stage, final Pages page, final Controller controller) {
 
         final FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource(PATH_START + page.getName() + PATH_END));
-       
-       // Optional<Parent> root = Optional.empty();
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-        if (stage.getScene() == null) {
-            stage.setScene(new Scene(root));
-        } else {
+
+        if (Pages.WORKSPACE.getName() == page.getName()) {
+            Parent root = null;
+            root = WorkSpaceBuilder.root(16, 16);
             stage.getScene().setRoot(root);
+        } else {
+            // Optional<Parent> root = Optional.empty();
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (stage.getScene() == null) {
+                stage.setScene(new Scene(root));
+            } else {
+                stage.getScene().setRoot(root);
+            }
         }
-        
+
         final JavaFXView view = loader.getController();
         controller.setView(view);
         view.setController(controller);
