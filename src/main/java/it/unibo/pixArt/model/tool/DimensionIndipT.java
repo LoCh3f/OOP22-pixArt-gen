@@ -16,4 +16,24 @@ public enum DimensionIndipT {
     DimensionIndipT(final String name) {
         this.name = name;
     }
+
+    /**
+     * @param tool the name of the tool
+     * @return wheter the tool is present in this enum
+     */
+    public boolean isPresent(final String tool){
+        for(var elem : DimensionIndipT.values()) {
+            if(elem.name == tool) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return the name of the tool
+     */
+    public String getName() {
+        return this.name;
+    }
 }
