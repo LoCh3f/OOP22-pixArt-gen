@@ -10,12 +10,13 @@ import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.tool.Tool;
 import it.unibo.pixArt.model.tool.ToolFactory;
 import it.unibo.pixArt.model.tool.ToolFactoryImpl;
+import it.unibo.pixArt.model.tool.ToolFactoryProvider;
 import it.unibo.pixArt.model.user.User;
 import javafx.scene.paint.Color;
 
 public class WorkSpaceModelImpl extends ModelImpl implements WorkSpaceModel{
     private PixelGrid frame;
-    private final ToolFactory toolFactory = new ToolFactoryImpl();
+    private final ToolFactory toolFactory = new ToolFactory();
     private Tool tool;
     private Color selectedColor;
     private Boolean inUse;
