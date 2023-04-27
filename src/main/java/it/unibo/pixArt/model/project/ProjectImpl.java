@@ -1,20 +1,19 @@
 package it.unibo.pixArt.model.project;
 
-import java.util.List;
+import it.unibo.pixArt.model.grid.PixelGrid;
 
-import it.unibo.pixArt.model.grid.GridImpl;
-import it.unibo.pixArt.model.historyframe.HistoryFrame;
+import java.util.List;
 
 public class ProjectImpl implements Project {
     private String projectName;
     private String path;
     private String coverImage;
-    private List<GridImpl> frames;
+    private List<PixelGrid> frames;
 
     public ProjectImpl() {
 
     }
-    
+
 
     @Override
     public void setName(String newName) {
@@ -47,7 +46,7 @@ public class ProjectImpl implements Project {
     }
 
     @Override
-    public List<GridImpl> getAllFrames() {
+    public List<PixelGrid> getAllFrames() {
         return this.frames;
     }
 

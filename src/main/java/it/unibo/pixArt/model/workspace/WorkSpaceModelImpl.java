@@ -1,30 +1,26 @@
 package it.unibo.pixArt.model.workspace;
 
-import java.util.Collection;
-import java.util.HashMap;
+import it.unibo.pixArt.model.ModelImpl;
+import it.unibo.pixArt.model.grid.PixelGrid;
+import it.unibo.pixArt.model.pixel.Pixel;
+import it.unibo.pixArt.model.project.Project;
+import it.unibo.pixArt.model.tool.ToolFactory;
+import it.unibo.pixArt.model.tool.ToolFactoryProvider;
+import javafx.scene.paint.Color;
+
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import it.unibo.pixArt.model.ModelImpl;
-import it.unibo.pixArt.model.grid.PixelGrid;
-import it.unibo.pixArt.model.pixel.Pixel;
-import it.unibo.pixArt.model.project.Project;
-import it.unibo.pixArt.model.tool.DrawingTool;
-import it.unibo.pixArt.model.tool.FillTool;
-import it.unibo.pixArt.model.tool.ToolFactory;
-import it.unibo.pixArt.model.tool.ToolFactoryProvider;
-import javafx.scene.paint.Color;
-
-public class WorkSpaceModelImpl<T> extends ModelImpl implements WorkSpaceModel{
+public class WorkSpaceModelImpl<T> extends ModelImpl implements WorkSpaceModel {
     private PixelGrid currentframe;
     private ToolFactory<T> toolFactory;
     private T tool;
     private Color selectedColor;
     private Boolean inUse = false;
 
-    public WorkSpaceModelImpl(final Project project){
+    public WorkSpaceModelImpl(final Project project) {
         super(null, null, project);
     }
 
@@ -57,7 +53,7 @@ public class WorkSpaceModelImpl<T> extends ModelImpl implements WorkSpaceModel{
 
     @Override
     public void colorGrid(Pixel pixel) {
-        
+
         //serve metodo getSize nel frame che ritorni la dimensione del tool da utilizzare
         /*if (this.tool instanceof DrawingTool) {
             this.currentframe.update(((DrawingTool) this.tool).updatePixel(pixel, size, this.currentframe));

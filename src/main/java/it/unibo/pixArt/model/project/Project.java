@@ -1,9 +1,8 @@
 package it.unibo.pixArt.model.project;
 
-import java.util.List;
+import it.unibo.pixArt.model.grid.PixelGrid;
 
-import it.unibo.pixArt.model.grid.GridImpl;
-import it.unibo.pixArt.model.historyframe.HistoryFrame;
+import java.util.List;
 
 public interface Project {
     /**
@@ -39,6 +38,7 @@ public interface Project {
     /**
      * @return the list of frames
      */
-    public List<GridImpl> getAllFrames();
+    public List<PixelGrid> getAllFrames();
+
 
 }
