@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class PixelMatrix {
+public class PixelMatrix implements PixelGrid {
 
     private final int rows;
 
@@ -46,8 +46,8 @@ public class PixelMatrix {
             return this;
         }
 
-        public PixelMatrix build() throws  IllegalStateException {
-            if (this.rows < 16 || this.columns < 16 ) {
+        public PixelMatrix build() throws IllegalStateException {
+            if (this.rows < 16 || this.columns < 16) {
                 throw new IllegalStateException("Rows and columns must be greater than 16");
             }
 
@@ -63,5 +63,17 @@ public class PixelMatrix {
     public Set<Pixel> getPixels() {
         return new HashSet<>(this.pixels);
     }
+
+    @Override
+    public void setPixel(Set<Pixel> pixels) {
+        for (Pixel pixel : pixels) {
+            this.pixels.forEach(p -> {
+                if (p.comparePixel(pixel)) {
+                    p.setColor(pixel.getColor());
+                }
+            });
+        }
+    }
+
 
 }
