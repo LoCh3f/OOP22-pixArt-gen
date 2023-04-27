@@ -5,7 +5,8 @@ import it.unibo.pixArt.controller.animation.AnimationController;
 import it.unibo.pixArt.controller.animation.AnimationControllerImpl;
 import it.unibo.pixArt.controller.impl.HistoryController;
 import it.unibo.pixArt.controller.impl.HomeController;
-import it.unibo.pixArt.controller.impl.WorkSpaceController;
+import it.unibo.pixArt.controller.workspace.WorkSpaceController;
+import it.unibo.pixArt.controller.workspace.WorkSpaceControllerImpl;
 import it.unibo.pixArt.view.impl.HomeView;
 
 public enum Pages {
@@ -17,7 +18,7 @@ public enum Pages {
     /**
      * workspace view
      */
-    WORKSPACE("workspace", new WorkSpaceController()),
+    WORKSPACE("workspace", new WorkSpaceControllerImpl()),
 
     /**
      * animation view
