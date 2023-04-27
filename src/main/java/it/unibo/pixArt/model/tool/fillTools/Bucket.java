@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
@@ -21,7 +22,7 @@ public class Bucket implements FillTool{
     }
 
     @Override
-    public Set<Pixel> updatePixel(Pixel pixel, HashMap<Pixel, Pixel> frame) {
+    public Set<Pixel> updatePixel(Pixel pixel, Map<Pixel, Pixel> frame) {
         Set<Pixel> newSet = new HashSet<>();
         Color old_color = pixel.getColor();
 
@@ -50,7 +51,7 @@ public class Bucket implements FillTool{
         return newSet;
     }
 
-        private boolean isValid(final HashMap<Pixel, Pixel> frame, final int x, final int y, final Color oldColor, final Color newColor) {
+        private boolean isValid(final Map<Pixel, Pixel> frame, final int x, final int y, final Color oldColor, final Color newColor) {
             if (x < 0 || x >= frame.size() || y < 0 || y >= frame.size() || frame.get(new ImplPixel(x, y)).getColor() != oldColor 
                 || frame.get(new ImplPixel(x, y)).getColor() == newColor) {
                 return false;
