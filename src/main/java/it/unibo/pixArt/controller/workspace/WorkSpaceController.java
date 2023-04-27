@@ -31,7 +31,7 @@ public interface WorkSpaceController extends Controller {
    /**Method to color the pixels of the grid.TO BE DONE.
     * 
     */
-   public void colorGrid();
+   public void colorGrid(final int x, final int y);
 
    public Set<Pixel> getFrameState();
    /*TO BE DONE:
