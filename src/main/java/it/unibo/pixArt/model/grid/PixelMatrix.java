@@ -56,10 +56,22 @@ public class PixelMatrix implements PixelGrid {
 
     }
 
+    @Override
     public void update(final Consumer<Pixel> consumer, Pixel pixel) {
         this.pixels.forEach(consumer);
     }
 
+    @Override
+    public int getRows() {
+        return this.rows;
+    }
+
+    @Override
+    public int getColumns() {
+        return this.columns;
+    }
+
+    @Override
     public Set<Pixel> getPixels() {
         return new HashSet<>(this.pixels);
     }

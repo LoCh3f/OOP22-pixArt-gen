@@ -17,5 +17,9 @@ public interface PixelGrid {
 
     public void update(final Consumer<Pixel> consumer, Pixel pixel);
 
+    int getRows();
+
+    int getColumns();
+
 
 }
