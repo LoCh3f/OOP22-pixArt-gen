@@ -47,8 +47,8 @@ public class WorkSpaceModelImpl<T> extends ModelImpl implements WorkSpaceModel {
     }
 
     @Override
-    public Set<Pixel> getFrameState() {
-        return Set.copyOf(this.currentframe.getPixels());
+    public PixelGrid getFrameState() {
+        return this.currentframe;
     }
 
     @Override

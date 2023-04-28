@@ -1,6 +1,7 @@
 package it.unibo.pixArt.controller.workspace;
 
 import it.unibo.pixArt.controller.Controller;
+import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.pixel.Pixel;
 import javafx.scene.paint.Color;
 
@@ -36,7 +37,9 @@ public interface WorkSpaceController extends Controller {
     /**
      * @return The set of pixels that make up the frame.
      */
-    public Set<Pixel> getFrameState();
+    public PixelGrid getFrameState();
+
+    
     /*TO BE DONE:
      * 1) Method to get previous state.
      * 2) Method to save the file.

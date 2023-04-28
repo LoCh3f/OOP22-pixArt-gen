@@ -3,6 +3,7 @@ package it.unibo.pixArt.model.workspace;
 import java.util.Set;
 
 import it.unibo.pixArt.model.Model;
+import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.pixel.Pixel;
 import javafx.scene.paint.Color;
 
@@ -31,7 +32,7 @@ public interface WorkSpaceModel extends Model {
     /**
      * @return pixels of current frame
      */
-    public Set<Pixel> getFrameState();
+    public PixelGrid getFrameState();
 
     /**
      * @param pixel

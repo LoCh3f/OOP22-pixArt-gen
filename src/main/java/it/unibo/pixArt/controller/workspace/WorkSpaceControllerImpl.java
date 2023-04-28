@@ -3,6 +3,7 @@ package it.unibo.pixArt.controller.workspace;
 import java.util.Set;
 
 import it.unibo.pixArt.controller.SimpleController;
+import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.tool.DimensionDipT;
@@ -42,7 +43,7 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     }
     
     @Override
-    public Set<Pixel> getFrameState() {
+    public PixelGrid getFrameState() {
         return this.getWorkSpaceModel().getFrameState();
     }
     
