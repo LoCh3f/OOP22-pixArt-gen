@@ -49,6 +49,7 @@ public class PageLoader {
             //final var c = (WorkSpaceController) controller;
             root = WorkSpaceBuilder.root(64, 64);
 
+
             stage.getScene().setRoot(root);
         } else {
             // Optional<Parent> root = Optional.empty();
