@@ -1,4 +1,4 @@
-package it.unibo.pixArt.view.GraphicComponent;
+package it.unibo.pixArt.view.workspace;
 
 
 import javafx.geometry.Insets;
@@ -6,6 +6,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+
+/* This is not a "Builder"!!  */
 
 
 public class WorkSpaceBuilder {

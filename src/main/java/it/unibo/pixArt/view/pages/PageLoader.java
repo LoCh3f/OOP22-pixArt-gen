@@ -2,8 +2,8 @@ package it.unibo.pixArt.view.pages;
 
 import it.unibo.pixArt.controller.Controller;
 import it.unibo.pixArt.model.Model;
-import it.unibo.pixArt.view.GraphicComponent.WorkSpaceBuilder;
 import it.unibo.pixArt.view.JavaFXView;
+import it.unibo.pixArt.view.workspace.WorkSpaceBuilder;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
