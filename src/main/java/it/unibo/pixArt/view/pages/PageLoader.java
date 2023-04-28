@@ -46,7 +46,7 @@ public class PageLoader {
 
         if (Pages.WORKSPACE.getName() == page.getName()) {
             Parent root = null;
-            root = WorkSpaceBuilder.root(16, 16);
+            root = WorkSpaceBuilder.root(20, 20);
             stage.getScene().setRoot(root);
         } else {
             // Optional<Parent> root = Optional.empty();
