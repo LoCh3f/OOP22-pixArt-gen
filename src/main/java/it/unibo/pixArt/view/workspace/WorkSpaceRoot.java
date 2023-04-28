@@ -3,6 +3,7 @@ package it.unibo.pixArt.view.workspace;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -10,7 +11,7 @@ import javafx.scene.layout.GridPane;
 /* This is not a "Builder"!!  */
 
 
-public class WorkSpaceBuilder {
+public class WorkSpaceRoot implements RootFactory {
 
     private final static Double SIZE = 500.0;
 
@@ -18,12 +19,12 @@ public class WorkSpaceBuilder {
 
     private final static Double MIN_SIZE = 300.0;
 
-
-    public static GridPane grid(final int rows, final int columns) {
+    @Override
+    public GridPane createGrid(final int rows, final int columns) {
         final GridPane grid = new GridPane();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                final var b = gridButton();
+                final var b = createButton();
                 b.prefHeightProperty().bind(grid.heightProperty());
                 b.prefWidthProperty().bind(grid.widthProperty());
                 grid.add(b, i, j);
@@ -34,7 +35,8 @@ public class WorkSpaceBuilder {
         return grid;
     }
 
-    public static Button gridButton() {
+    @Override
+    public Button createButton() {
         final var b = new Button() {
             public void setBackground(final String color) {
                 super.setStyle(color);
@@ -45,9 +47,10 @@ public class WorkSpaceBuilder {
         return b;
     }
 
-    public static BorderPane root(final int rows, final int columns) {
+    @Override
+    public Parent root(final int rows, final int columns) {
         final var root = new BorderPane();
-        final var center = grid(rows, columns);
+        final var center = createGrid(rows, columns);
         final var right = new ColorPicker();
         final var bottom = new ScrollPane();
         final var left = new ButtonBar();
@@ -55,7 +58,7 @@ public class WorkSpaceBuilder {
 
 
         root.setPadding(new Insets(5));
-        root.setStyle("-fx-background-color:purple");
+        root.setStyle("-fx-background-color:pink");
         root.setTop(top);
         root.setRight(right);
         root.setCenter(center);

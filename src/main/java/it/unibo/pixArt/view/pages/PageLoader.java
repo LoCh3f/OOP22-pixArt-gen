@@ -3,7 +3,7 @@ package it.unibo.pixArt.view.pages;
 import it.unibo.pixArt.controller.Controller;
 import it.unibo.pixArt.model.Model;
 import it.unibo.pixArt.view.JavaFXView;
-import it.unibo.pixArt.view.workspace.WorkSpaceBuilder;
+import it.unibo.pixArt.view.workspace.WorkSpaceRoot;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -46,8 +46,9 @@ public class PageLoader {
 
         if (Pages.WORKSPACE.getName() == page.getName()) {
             Parent root = null;
+            final var factory = new WorkSpaceRoot();
             //final var c = (WorkSpaceController) controller;
-            root = WorkSpaceBuilder.root(64, 64);
+            root = factory.root(64, 64);
 
 
             stage.getScene().setRoot(root);
