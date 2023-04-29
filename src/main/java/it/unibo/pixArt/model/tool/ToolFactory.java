@@ -1,8 +1,8 @@
 package it.unibo.pixArt.model.tool;
 import javafx.scene.paint.Color;
 
-public interface ToolFactory<T> {
+public interface ToolFactory {
     
-    T createTool(String toolType, Color selectedColor);
+    public AbstractTool createTool(final String toolType, final Color selectedColor, final int toolSize);
     
 }
