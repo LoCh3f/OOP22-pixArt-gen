@@ -2,7 +2,6 @@ package it.unibo.pixArt.view.pages;
 
 import it.unibo.pixArt.controller.Controller;
 import it.unibo.pixArt.model.Model;
-import it.unibo.pixArt.view.GraphicComponent.WorkSpaceBuilder;
 import it.unibo.pixArt.view.JavaFXView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -42,33 +41,37 @@ public class PageLoader {
 
     public void switchPageWithSpecificController(final Stage stage, final Pages page, final Controller controller) {
 
-        final FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource(PATH_START + page.getName() + PATH_END));
 
-        if (Pages.WORKSPACE.getName() == page.getName()) {
-            Parent root = null;
-            root = WorkSpaceBuilder.root(20, 20);
+       /* if (Pages.WORKSPACE.getName() == page.getName()) {
+
+            final var factory = new WorkSpaceRoot();                    // probably will be removed
+            //final var c = (WorkSpaceController) controller;
+            final Parent root = factory.root(32, 32);
+
             stage.getScene().setRoot(root);
-        } else {
-            // Optional<Parent> root = Optional.empty();
-            Parent root = null;
-            try {
-                root = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } else {*/
 
-            if (stage.getScene() == null) {
-                stage.setScene(new Scene(root));
-            } else {
-                stage.getScene().setRoot(root);
-            }
+        final FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource(PATH_START + page.getName() + PATH_END));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
+        if (stage.getScene() == null) {
+            stage.setScene(new Scene(root));
+        } else {
+            stage.getScene().setRoot(root);
+        }
         final JavaFXView view = loader.getController();
         controller.setView(view);
         view.setController(controller);
         view.setStage(stage);
         view.init();
+
+        //}
+
 
         stage.show();
     }

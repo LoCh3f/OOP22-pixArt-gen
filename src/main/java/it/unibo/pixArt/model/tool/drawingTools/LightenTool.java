@@ -8,8 +8,13 @@ import it.unibo.pixArt.model.tool.AbstractDrawingTool;
 
 public class LightenTool extends AbstractDrawingTool{
 
+    public LightenTool(int toolSize) {
+        super(toolSize);
+        //TODO Auto-generated constructor stub
+    }
+
     @Override
-    public Set<Pixel> updatePixel(Pixel pixel, int size, Set<Pixel> frame) {
+    public Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame) {
         pixel.setColor(pixel.getColor().brighter());
         return Collections.singleton(pixel);
     }

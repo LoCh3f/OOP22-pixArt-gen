@@ -10,16 +10,18 @@ import javafx.scene.paint.Color;
 
 public class Pencil extends AbstractDrawingTool {
 
-    private final Color selectedColor;
+    private Color selectedColor;
+    private int size;
 
-    public Pencil(final Color selectedColor) {
+    public Pencil(final Color selectedColor, final int size) {
+        super(size);
         this.selectedColor = selectedColor;
     }
 
     @Override
-    public Set<Pixel> updatePixel(Pixel pixel, int size, Set<Pixel> frame) {
+    public Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame) {
         Set<Pixel> newPixSet = new HashSet<>();
-        var p2Position = super.calculatePosition(pixel, size, frame.size()); 
+        var p2Position = super.calculatePosition(pixel, this.size, frame.size()); 
         Pixel p2 = new ImplPixel(p2Position.getX(), p2Position.getY());
         Pixel tempPix;
 

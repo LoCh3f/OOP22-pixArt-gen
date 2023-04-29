@@ -8,11 +8,8 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 public class PixelMatrix implements PixelGrid {
-
     private final int rows;
-
     private final int columns;
-
     private final Set<Pixel> pixels;
 
     private PixelMatrix(final int rows, final int columns) {
@@ -27,7 +24,6 @@ public class PixelMatrix implements PixelGrid {
     }
 
     public static class MatrixBuilder {
-
         private int rows;
         private int columns;
 
@@ -40,6 +36,7 @@ public class PixelMatrix implements PixelGrid {
             this.rows = rows;
             return this;
         }
+
 
         public MatrixBuilder setColumns(final int columns) {
             this.columns = columns;

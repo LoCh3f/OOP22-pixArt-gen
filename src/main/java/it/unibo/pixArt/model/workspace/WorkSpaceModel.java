@@ -12,7 +12,7 @@ public interface WorkSpaceModel extends Model {
     /**
      * @param string Method used to set the tool based on the type selected by the user.
      */
-    public void setTool(final String toolName, final boolean fill);
+    public void setTool(final String toolName);
 
     /**
      * @param newColor Method to set the selected color.

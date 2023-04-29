@@ -6,30 +6,32 @@ import it.unibo.pixArt.model.tool.drawingTools.Eraser;
 import it.unibo.pixArt.model.tool.drawingTools.LightenTool;
 import it.unibo.pixArt.model.tool.drawingTools.Pencil;
 import it.unibo.pixArt.model.tool.drawingTools.SprayTool;
+import it.unibo.pixArt.model.tool.fillTools.Bucket;
 import javafx.scene.paint.Color;
 
-public class DrawingToolFactory implements ToolFactory<DrawingTool>{
+public class ToolFactoryImpl implements ToolFactory {
 
-    public DrawingTool createTool(final String toolType, final Color selectedColor) {
-
+    @Override
+    public AbstractTool createTool(String toolType, Color selectedColor, int toolSize) {
         switch (toolType) {
             case "PENCIL":
-                return new Pencil(selectedColor);
+                return new Pencil(selectedColor, toolSize);
             case "BRUSH":
-                return new Brush();
+                return new Brush(toolSize);
             case "ERASER":
-                return new Eraser();
+                return new Eraser(toolSize);
             case "LIGHTEN":
-                return new LightenTool();
+                return new LightenTool(toolSize);
             case "DARKEN":
-                return new DarkenTool();
+                return new DarkenTool(toolSize);
             case "SPRAY":
-                return new SprayTool(selectedColor);
+                return new SprayTool(selectedColor, toolSize);
+            case "BUCKET":
+                return new Bucket(selectedColor);
             default:
                 break;
         }
         return null;
-
     }
     
 }

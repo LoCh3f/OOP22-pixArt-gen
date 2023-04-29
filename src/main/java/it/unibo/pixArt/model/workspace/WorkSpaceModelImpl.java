@@ -4,31 +4,27 @@ import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.project.Project;
+import it.unibo.pixArt.model.tool.AbstractTool;
 import it.unibo.pixArt.model.tool.ToolFactory;
-import it.unibo.pixArt.model.tool.ToolFactoryProvider;
+import it.unibo.pixArt.model.tool.ToolFactoryImpl;
 import javafx.scene.paint.Color;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-public class WorkSpaceModelImpl<T> extends ModelImpl implements WorkSpaceModel {
+public class WorkSpaceModelImpl extends ModelImpl implements WorkSpaceModel {
     private PixelGrid currentframe;
-    private ToolFactory<T> toolFactory;
-    private T tool;
+    private ToolFactory toolFactory;
+    private AbstractTool tool;
     private Color selectedColor;
+    private int toolSize;
     private Boolean inUse = false;
 
     public WorkSpaceModelImpl(final Project project) {
         super(null, null, project);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public void setTool(String toolName, final boolean fill) {
-        this.toolFactory = ToolFactoryProvider.getFactory(fill);
-        this.tool = (T) toolFactory.createTool(toolName, selectedColor);
+    public void setTool(String toolName) {
+        this.toolFactory = new ToolFactoryImpl();
+        this.tool = toolFactory.createTool(toolName, this.selectedColor, this.toolSize);
     }
 
     @Override
@@ -60,10 +56,6 @@ public class WorkSpaceModelImpl<T> extends ModelImpl implements WorkSpaceModel {
         } else {
             this.currentframe.update(((FillTool) this.tool).updatePixel(pixel, getFrameMap(this.currentframe.getPixels())));
         }*/
-    }
-
-    private Map<Pixel, Pixel> getFrameMap(Set<Pixel> frame) {
-        return frame.stream().collect(Collectors.toMap(Function.identity(), Function.identity()));
     }
 
     /*
