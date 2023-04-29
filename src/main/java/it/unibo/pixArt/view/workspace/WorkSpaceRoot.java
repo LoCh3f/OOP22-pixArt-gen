@@ -37,11 +37,7 @@ public class WorkSpaceRoot implements RootFactory {
 
     @Override
     public Button createButton() {
-        final var b = new Button() {
-            public void setBackground(final String color) {
-                super.setStyle(color);
-            }
-        };
+        final var b = new Button();
         b.setMinSize(Double.MIN_VALUE, Double.MIN_VALUE);
         b.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         return b;
