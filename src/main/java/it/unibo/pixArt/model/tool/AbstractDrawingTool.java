@@ -6,10 +6,16 @@ import java.util.stream.IntStream;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.utilities.Pair;
 
-public abstract class AbstractDrawingTool implements DrawingTool {
-    
+public abstract class AbstractDrawingTool extends AbstractTool {
+
+    private int toolSize;
+
+    public AbstractDrawingTool(final int toolSize){
+        this.toolSize = toolSize;
+    }
+
     @Override
-    public abstract Set<Pixel> updatePixel(Pixel pixel, int size, Set<Pixel> frame);
+    public abstract Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame);
 
     public Pair<Integer, Integer> calculatePosition(final Pixel p, final int increment, final int frameSize) {
         int x;

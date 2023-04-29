@@ -7,8 +7,12 @@ import it.unibo.pixArt.model.tool.AbstractDrawingTool;
 
 public class Brush extends AbstractDrawingTool{
 
+    public Brush(int toolSize) {
+        super(toolSize);
+    }
+
     @Override
-    public Set<Pixel> updatePixel(Pixel pixel, int size, Set<Pixel> frame) {
+    public Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updatePixel'");
     }

@@ -9,8 +9,13 @@ import javafx.scene.paint.Color;
 
 public class Eraser extends AbstractDrawingTool{
 
+    public Eraser(int toolSize) {
+        super(toolSize);
+        //TODO Auto-generated constructor stub
+    }
+
     @Override
-    public Set<Pixel> updatePixel(Pixel pixel, int size, Set<Pixel> frame) {
+    public Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame) {
         pixel.setColor(Color.WHITE);
         return Collections.singleton(pixel);
     }
