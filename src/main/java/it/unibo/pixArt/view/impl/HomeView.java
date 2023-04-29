@@ -15,10 +15,15 @@ import javafx.scene.input.MouseEvent;
 
 public class HomeView extends AbstractFXView {
 
+    @FXML
+    public void onSetUpClick(final ActionEvent event) {
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.SETTINGS, new ModelImpl(null, null, null));
+    }
     
    @FXML
     public void onWorkSpaceClick(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, new WorkSpaceModelImpl(this.getController().getModel().getProject()));
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.SETTINGS, new ModelImpl(null, null, null));
+       // PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, new WorkSpaceModelImpl(this.getController().getModel().getProject()));
     }
 
     @FXML

@@ -22,13 +22,14 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
 
     @Override
     public void selectTool(String toolName) throws Exception {
-        if(DimensionDipT.isPresent(toolName)) {
+       /*  if(DimensionDipT.isPresent(toolName)) {
             this.getWorkSpaceModel().setTool(toolName, true);
         } else if(DimensionIndipT.isPresent(toolName)) {
             this.getWorkSpaceModel().setTool(toolName, false);
         } else {
             throw new Exception();
-        }
+        }*/
+        this.getWorkSpaceModel().setTool(toolName);
     }
 
     @Override

@@ -13,7 +13,7 @@
                 <Image url="@../image/nameLogo.png" />
             </image>
         </ImageView>
-        <Button alignment="CENTER" layoutX="14.0" layoutY="178.0" mnemonicParsing="false" onAction="#onWorkSpaceClick" text="New File" textFill="#c722c5" textOverrun="WORD_ELLIPSIS">
+        <Button alignment="CENTER" layoutX="14.0" layoutY="178.0" mnemonicParsing="false" onAction="#onSetUpClick" text="New File" textFill="#c722c5" textOverrun="WORD_ELLIPSIS">
             <font>
                 <Font name="System Italic" size="10.0" />
             </font>

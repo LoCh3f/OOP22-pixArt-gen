@@ -16,16 +16,6 @@ public interface Project {
     public String getName();
 
     /**
-     * @return the cover image's path
-     */
-    public String getCoverImage();
-
-    /**
-     * @param path cover image's path
-     */
-    public void setCoverImage(final String path);
-
-    /**
      * @param path project's path
      */
     public void setPath(final String path);
@@ -40,5 +30,19 @@ public interface Project {
      */
     public List<PixelGrid> getAllFrames();
 
+    /**
+     * @return String format of a project.
+     */
+    public String toString();
+
+    /**
+     * @return size(num of rows, columns) of each frame.
+     */
+    public Integer getSize();
+
+    /**
+     * @return string format of the file format for each image of each frame
+     */
+    public String getFileType();
 
 }
