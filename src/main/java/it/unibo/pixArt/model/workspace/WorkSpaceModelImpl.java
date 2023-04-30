@@ -51,13 +51,7 @@ public class WorkSpaceModelImpl extends ModelImpl implements WorkSpaceModel {
 
     @Override
     public void colorGrid(Pixel pixel) {
-
-        //serve metodo getSize nel frame che ritorni la dimensione del tool da utilizzare
-        /*if (this.tool instanceof DrawingTool) {
-            this.currentframe.update(((DrawingTool) this.tool).updatePixel(pixel, size, this.currentframe));
-        } else {
-            this.currentframe.update(((FillTool) this.tool).updatePixel(pixel, getFrameMap(this.currentframe.getPixels())));
-        }*/
+        this.currentframe.setPixel(this.tool.updateGrid(pixel, this.currentframe.getPixels()));
     }
 
     /*
