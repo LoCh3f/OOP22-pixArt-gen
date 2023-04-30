@@ -37,7 +37,7 @@ public class Bucket extends AbstractTool{
 
         while (!queue.isEmpty()) {
             Pixel temp = queue.poll();
-            if (!isValid(frameMap, temp.getPosition().getX(), temp.getPosition().getY(), old_color, selectedColor)) {
+            if (!isValid(frameMap, temp.getPosition().getX(), temp.getPosition().getY(),super.getFrameSize(frame), old_color, selectedColor)) {
                 continue;
             }
             else {
@@ -53,8 +53,8 @@ public class Bucket extends AbstractTool{
         return newSet;
     }
 
-    private boolean isValid(final Map<Pixel, Pixel> frame, final int x, final int y, final Color oldColor, final Color newColor) {
-        if (x < 0 || x >= frame.size() || y < 0 || y >= frame.size() || frame.get(new ImplPixel(x, y)).getColor() != oldColor 
+    private boolean isValid(final Map<Pixel, Pixel> frame, final int x, final int y, int frameSize, final Color oldColor, final Color newColor) {
+        if (x < 0 || x >= frameSize || y < 0 || y >= frameSize || frame.get(new ImplPixel(x, y)).getColor() != oldColor 
             || frame.get(new ImplPixel(x, y)).getColor() == newColor) {
             return false;
         }  

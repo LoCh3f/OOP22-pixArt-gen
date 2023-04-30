@@ -23,7 +23,7 @@ public class SprayTool extends AbstractDrawingTool{
     @Override
     public Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame) {
         Set<Pixel> newPixSet = new HashSet<>();
-        Pair<Integer, Integer> p2Position = calculatePosition(pixel, size*2, frame.size());
+        Pair<Integer, Integer> p2Position = calculatePosition(pixel, size*2, super.getFrameSize(frame));
         Pixel p2 = new ImplPixel(p2Position.getX(), p2Position.getY());
         Pixel tempPix;
         Random rand = new Random();

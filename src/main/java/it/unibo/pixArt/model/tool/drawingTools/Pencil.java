@@ -21,7 +21,7 @@ public class Pencil extends AbstractDrawingTool {
     @Override
     public Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame) {
         Set<Pixel> newPixSet = new HashSet<>();
-        var p2Position = super.calculatePosition(pixel, this.size, frame.size()); 
+        var p2Position = super.calculatePosition(pixel, this.size, super.getFrameSize(frame)); 
         Pixel p2 = new ImplPixel(p2Position.getX(), p2Position.getY());
         Pixel tempPix;
 
