@@ -1,7 +1,5 @@
 package it.unibo.pixArt.model.workspace;
 
-import java.util.Set;
-
 import it.unibo.pixArt.model.Model;
 import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.pixel.Pixel;
@@ -18,6 +16,11 @@ public interface WorkSpaceModel extends Model {
      * @param newColor Method to set the selected color.
      */
     public void setColor(final Color newColor);
+
+    /**
+     * @param size Method to set the size of the selected tool
+     */
+    public void setToolSize(final int toolSize);
 
     /**
      * Method to set the inUse flag
@@ -38,5 +41,6 @@ public interface WorkSpaceModel extends Model {
      * @param pixel
      */
     public void colorGrid(final Pixel pixel);
+
 
 }
