@@ -40,8 +40,9 @@ public class WorkSpace extends AbstractFXView {
                 final var button = (Button) event.getSource();
                 button.setStyle(FX_BACKGROUND_COLOR + colorPicker.getValue().toString().replace("0x", "#"));
                 getController().getModel().getProject().getAllFrames().get(0).getPixels().forEach(p -> {
-                    if (p.comparePixel(new ImplPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button))))
+                    if (p.comparePixel(new ImplPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button)))) {
                         p.setColor(new Color(colorPicker.getValue().getRed(), colorPicker.getValue().getGreen(), colorPicker.getValue().getBlue(), colorPicker.getValue().getOpacity()));
+                    }
                 });
             }
         };
