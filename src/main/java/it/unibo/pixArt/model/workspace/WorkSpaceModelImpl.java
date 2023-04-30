@@ -10,15 +10,17 @@ import it.unibo.pixArt.model.tool.ToolFactoryImpl;
 import javafx.scene.paint.Color;
 
 public class WorkSpaceModelImpl extends ModelImpl implements WorkSpaceModel {
-    private PixelGrid currentframe;
-    private ToolFactory toolFactory;
-    private AbstractTool tool;
-    private Color selectedColor;
-    private int toolSize;
-    private Boolean inUse = false;
+    private PixelGrid currentframe;//To controller
+    private ToolFactory toolFactory;//To controller
+    private AbstractTool tool;//To controller
+    private Color selectedColor;//From view
+    private int toolSize;//From view
+    private Boolean inUse = false;//View or controller?
 
     public WorkSpaceModelImpl(final Project project) {
         super(null, null, project);
+        System.out.println(this.getProject().getAllFrames().get(0).getColumns());
+        System.out.println(this.getProject().getAllFrames().get(0).getColumns());
     }
 
     @Override
