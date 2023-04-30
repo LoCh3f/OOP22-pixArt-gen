@@ -50,8 +50,7 @@ public class SettingsView extends AbstractFXView {
          */
         this.getSettingsController().createProject(projectName.getText(),pathName.getText(),fileFormat.getValue(),Integer.parseInt(sizeChoice.getValue()));
         System.out.println(getController().getModel().getProject().toString());
-        //Then move to WorkSpaceView
-        //PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, new WorkSpaceModelImpl(this.getController().getModel().getProject()));
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, new WorkSpaceModelImpl(this.getController().getModel().getProject()));
     }
 
     @FXML

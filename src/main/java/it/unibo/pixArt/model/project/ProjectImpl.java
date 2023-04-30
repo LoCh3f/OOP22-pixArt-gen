@@ -21,6 +21,7 @@ public class ProjectImpl implements Project {
         this.size = size;
         this.frames = new LinkedList<>();
         /*Build the first first grid */
+        this.frames.add(0, new PixelMatrix.MatrixBuilder().setColumns(size).setRows(size).build());
     }
 
     @Override
