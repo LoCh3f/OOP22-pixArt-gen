@@ -1,6 +1,8 @@
 package it.unibo.pixArt.view.workspace;
 
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
@@ -13,11 +15,13 @@ public class CenterPane {
                        final int columns,
                        final ObservableValue<? extends Number> rootW,
                        final ObservableValue<? extends Number> rootH,
-                       final boolean lineVisible) {
+                       final boolean lineVisible,
+                       final EventHandler<ActionEvent> e) {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 final var b = new Button();
+                b.setOnAction(e);
                 b.prefHeightProperty().bind(this.matrix.heightProperty());
                 b.prefWidthProperty().bind(this.matrix.widthProperty());
                 this.matrix.add(b, j, i);
@@ -41,6 +45,8 @@ public class CenterPane {
         private int rows;
 
         private int columns;
+
+        private EventHandler<ActionEvent> e;
 
         public GridPaneBuilder() {
             this.columns = 0;
@@ -77,9 +83,14 @@ public class CenterPane {
             return this;
         }
 
+        public GridPaneBuilder setAction(final EventHandler<ActionEvent> e) {
+            this.e = e;
+            return this;
+        }
+
         public CenterPane build() {
 
-            return new CenterPane(this.rows, this.columns, this.rootWProperty, this.rootHProperty, this.lineVisible);
+            return new CenterPane(this.rows, this.columns, this.rootWProperty, this.rootHProperty, this.lineVisible, this.e);
         }
 
     }
