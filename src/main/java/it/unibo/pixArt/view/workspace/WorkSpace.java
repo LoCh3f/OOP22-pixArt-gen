@@ -1,6 +1,8 @@
 package it.unibo.pixArt.view.workspace;
 
 import it.unibo.pixArt.view.AbstractFXView;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.MenuBar;
@@ -28,14 +30,24 @@ public class WorkSpace extends AbstractFXView {
     @Override
     public void init() {
         root.setStyle(BACKGROUND_COLOR);
+        final var e = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent event) {
+                center.setStyle(FX_BACKGROUND_COLOR + colorPicker.getValue().toString().replace("0x", "#"));
+            }
+        };
+
         final var rows = this.getController().getModel().getProject().getAllFrames().get(0).getRows();
         final var columns = this.getController().getModel().getProject().getAllFrames().get(0).getColumns();
+
         this.center = new CenterPane.GridPaneBuilder()
                 .setColumns(columns).setRows(rows)
                 .setGridLinesVisible(true)
                 .setHeight(root.heightProperty().subtract(frames.heightProperty().add(menubar.heightProperty())))
-                .setHeight(root.widthProperty().subtract(colorPicker.widthProperty())).build().get();
+                .setHeight(root.widthProperty().subtract(colorPicker.widthProperty())).setAction(e).build().get();
+
         this.root.setCenter(center);
+
 
     }
 }
