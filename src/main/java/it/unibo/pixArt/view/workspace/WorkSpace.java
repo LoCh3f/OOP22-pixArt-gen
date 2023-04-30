@@ -20,9 +20,14 @@ public class WorkSpace extends AbstractFXView {
     private ScrollPane frames;
     private GridPane center;
 
+    private static final String BACKGROUND_COLOR = "-fx-background-color:pink";
+
+    private static final String FX_BACKGROUND_COLOR = "-fx-background-color:";
+
 
     @Override
     public void init() {
+        root.setStyle(BACKGROUND_COLOR);
         final var rows = this.getController().getModel().getProject().getAllFrames().get(0).getRows();
         final var columns = this.getController().getModel().getProject().getAllFrames().get(0).getColumns();
         this.center = new CenterPane.GridPaneBuilder()
