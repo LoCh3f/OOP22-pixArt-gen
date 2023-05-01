@@ -8,7 +8,7 @@ import it.unibo.pixArt.utilities.Pair;
 
 public abstract class AbstractDrawingTool extends AbstractTool {
 
-    private int toolSize;
+    protected int toolSize;
 
     public AbstractDrawingTool(final int toolSize){
         this.toolSize = toolSize;

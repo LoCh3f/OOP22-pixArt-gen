@@ -13,7 +13,6 @@ import javafx.scene.paint.Color;
 public class SprayTool extends AbstractDrawingTool{
 
     private final Color selectedColor;
-    private int size;
 
     public SprayTool(final Color selectedColor, final int size) {
         super(size);
@@ -23,7 +22,7 @@ public class SprayTool extends AbstractDrawingTool{
     @Override
     public Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame) {
         Set<Pixel> newPixSet = new HashSet<>();
-        Pair<Integer, Integer> p2Position = calculatePosition(pixel, size*2, super.getFrameSize(frame));
+        Pair<Integer, Integer> p2Position = calculatePosition(pixel, super.toolSize*2, super.getFrameSize(frame));
         Pixel p2 = new ImplPixel(p2Position.getX(), p2Position.getY());
         Pixel tempPix;
         Random rand = new Random();
