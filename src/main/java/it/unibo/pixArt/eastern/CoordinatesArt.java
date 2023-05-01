@@ -1,6 +1,6 @@
 package it.unibo.pixArt.eastern;
 
-import it.unibo.pixArt.model.grid.PixelMatrix;
+import it.unibo.pixArt.eastern.core.ArtEngine;
 
 public class CoordinatesArt {
 
@@ -9,9 +9,6 @@ public class CoordinatesArt {
     public static void main(String[] args) {
 
         ArtEngine artEngine = new ArtEngine();
-
-
-
-
+        artEngine.mainLoop();
     }
 }
