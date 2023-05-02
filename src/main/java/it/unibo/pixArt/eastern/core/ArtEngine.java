@@ -1,5 +1,6 @@
 package it.unibo.pixArt.eastern.core;
 
+import it.unibo.pixArt.eastern.common.AnsiColors;
 import it.unibo.pixArt.eastern.logic.Logic;
 import it.unibo.pixArt.eastern.logic.LogicImpl;
 import it.unibo.pixArt.model.grid.PixelGrid;
@@ -21,6 +22,8 @@ public class ArtEngine implements EngineaApi {
 
     @Override
     public void mainLoop() {
+        System.out.println(AnsiColors.ANSI_PURPLE + LogicImpl.WELCOME_MESSAGE + AnsiColors.ANSI_RESET);
+        System.out.println(AnsiColors.ANSI_PURPLE + LogicImpl.HELP_MESSAGE + AnsiColors.ANSI_RESET);
         while (!gameOver) {
             processInput();
         }
