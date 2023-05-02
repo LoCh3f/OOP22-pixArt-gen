@@ -1,5 +1,7 @@
 package it.unibo.pixArt.controller.animation;
 
+import java.util.List;
+
 import it.unibo.pixArt.controller.Controller;
 
 public interface AnimationController extends Controller {
@@ -20,4 +22,14 @@ public interface AnimationController extends Controller {
      * 
      */
     public void setAnimationPause();
+
+    /**
+     * @return the list of all available sizes for the image preview.
+     */
+    public List<String> getListSizes();
+
+    /**
+     * @return a list containing the available directions for an animation.
+     */
+    public List<String> getListDirections();
 }

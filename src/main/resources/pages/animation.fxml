@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixArt.view.animation.AnimationView">
    <children>
-      <ImageView fitHeight="265.0" fitWidth="331.0" layoutX="30.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
-      <ButtonBar layoutX="181.0" layoutY="296.0" prefHeight="40.0" prefWidth="200.0" />
-      <ToolBar layoutX="36.0" layoutY="331.0" prefHeight="40.0" prefWidth="317.0">
-        <items>
-          <Button mnemonicParsing="false" text="Backward" />
-            <Button mnemonicParsing="false" text="Start/Stop" />
-            <Button mnemonicParsing="false" text="Forward" />
-        </items>
-      </ToolBar>
-      <ScrollPane layoutX="381.0" layoutY="33.0" prefHeight="341.0" prefWidth="200.0">
+      <ScrollPane layoutX="447.0" layoutY="51.0" prefHeight="320.0" prefWidth="138.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="346.0" prefWidth="184.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="122.0">
+               <children>
+                  <ListView fx:id="frameList" layoutX="2.0" layoutY="2.0" prefHeight="336.0" prefWidth="122.0" />
+               </children></AnchorPane>
         </content>
       </ScrollPane>
+      <Button layoutX="146.0" layoutY="344.0" mnemonicParsing="false" onAction="#switchAnimation" prefHeight="26.0" prefWidth="78.0" text="&gt;" AnchorPane.topAnchor="344.0" />
+      <ChoiceBox fx:id="dimensionChoice" layoutX="51.0" layoutY="344.0" prefHeight="26.0" prefWidth="58.0" />
+      <ChoiceBox fx:id="directionChoice" layoutX="255.0" layoutY="344.0" prefHeight="26.0" prefWidth="65.0" />
+      <AnchorPane layoutX="50.0" layoutY="66.0" prefHeight="267.0" prefWidth="269.0">
+         <children>
+            <ImageView fx:id="imageContainer" fitHeight="200.0" fitWidth="200.0" layoutX="35.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+      <Button layoutX="39.0" layoutY="26.0" mnemonicParsing="false" onAction="#onWorkSpaceClick" text="WorkSpace" />
    </children>
 </AnchorPane>

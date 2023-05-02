@@ -3,7 +3,6 @@ package it.unibo.pixArt.view.impl;
 import java.util.Optional;
 
 import it.unibo.pixArt.model.ModelImpl;
-import it.unibo.pixArt.model.animation.AnimationModelImpl;
 import it.unibo.pixArt.model.workspace.WorkSpaceModelImpl;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.SimpleView;
@@ -33,7 +32,7 @@ public class HomeView extends AbstractFXView {
 
     @FXML
     public void onAnimationClick(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.ANIMATION, new AnimationModelImpl(this.getController().getModel().getProject()));
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.ANIMATION, this.getController().getModel());
     }
 
     @Override
