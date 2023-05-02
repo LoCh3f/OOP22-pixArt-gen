@@ -1,4 +1,9 @@
-package it.unibo.pixArt.model.animation;
+package it.unibo.pixArt.controller.animation;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
 
 public enum Directions {
     FORWARD("Forward",1),BACKWARD("Backward",-1);
@@ -27,5 +32,12 @@ public enum Directions {
      */
     public String getName() {
         return this.name;
+    }
+
+    /**
+     * @return list of directions as string.
+     */
+    public static List<String> getListDirections() {
+       return Stream.of(values()).map(e -> e.getName()).toList();
     }
 }

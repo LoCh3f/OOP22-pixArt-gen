@@ -1,11 +1,9 @@
 package it.unibo.pixArt.controller.animation;
 
+import java.util.List;
+
 import it.unibo.pixArt.controller.SimpleController;
-import it.unibo.pixArt.model.Model;
-import it.unibo.pixArt.model.animation.AnimationModel;
-import it.unibo.pixArt.model.animation.AnimationModelImpl;
-import it.unibo.pixArt.view.View;
-import it.unibo.pixArt.view.animation.AnimationView;
+
 
 public class AnimationControllerImpl extends SimpleController implements AnimationController {
 
@@ -27,8 +25,15 @@ public class AnimationControllerImpl extends SimpleController implements Animati
         throw new UnsupportedOperationException("Unimplemented method 'setAnimationPause'");
     }
 
-    private AnimationModel getAnimationModel() {
-        return (AnimationModel) this.getModel();
+    @Override
+    public List<String> getListSizes() {
+        return PreviewSizes.getListSizes();
     }
+
+    @Override
+    public List<String> getListDirections() {
+        return Directions.getListDirections();
+    }
+
 
 }
