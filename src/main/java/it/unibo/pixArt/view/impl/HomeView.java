@@ -33,7 +33,7 @@ public class HomeView extends AbstractFXView {
 
     @FXML
     public void onAnimationClick(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.ANIMATION, new AnimationModelImpl(this.getController().getModel().getProject()));
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.ANIMATION, this.getController().getModel());
     }
 
     @Override

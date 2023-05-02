@@ -13,16 +13,16 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="122.0">
                <children>
-                  <ListView layoutX="2.0" layoutY="2.0" prefHeight="336.0" prefWidth="122.0" />
+                  <ListView fx:id="frameList" layoutX="2.0" layoutY="2.0" prefHeight="336.0" prefWidth="122.0" />
                </children></AnchorPane>
         </content>
       </ScrollPane>
       <Button layoutX="146.0" layoutY="344.0" mnemonicParsing="false" onAction="#switchAnimation" prefHeight="26.0" prefWidth="78.0" text="&gt;" AnchorPane.topAnchor="344.0" />
-      <ChoiceBox layoutX="51.0" layoutY="344.0" prefHeight="26.0" prefWidth="58.0" />
-      <ChoiceBox layoutX="255.0" layoutY="344.0" prefHeight="26.0" prefWidth="65.0" />
+      <ChoiceBox fx:id="dimensionChoice" layoutX="51.0" layoutY="344.0" prefHeight="26.0" prefWidth="58.0" />
+      <ChoiceBox fx:id="directionChoice" layoutX="255.0" layoutY="344.0" prefHeight="26.0" prefWidth="65.0" />
       <AnchorPane layoutX="50.0" layoutY="66.0" prefHeight="267.0" prefWidth="269.0">
          <children>
-            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="35.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageContainer" fitHeight="200.0" fitWidth="200.0" layoutX="35.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
       <Button layoutX="39.0" layoutY="26.0" mnemonicParsing="false" onAction="#onWorkSpaceClick" text="WorkSpace" />
