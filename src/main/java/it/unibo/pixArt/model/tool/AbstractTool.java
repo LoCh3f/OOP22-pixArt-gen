@@ -8,4 +8,8 @@ public abstract class AbstractTool {
 
     public abstract Set<Pixel> updateGrid(final Pixel pixel, Set<Pixel> frame);
 
+    public int getFrameSize(Set<Pixel> frame) {
+        return (int) Math.sqrt(frame.size());
+    }
+
 }

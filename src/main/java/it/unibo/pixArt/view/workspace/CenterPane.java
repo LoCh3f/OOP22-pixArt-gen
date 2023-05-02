@@ -9,6 +9,8 @@ public class CenterPane {
 
     private final GridPane matrix = new GridPane();
 
+    private static final Double MAX_SIZE = 800.0;
+
 
     private CenterPane(final int rows,
                        final int columns,
@@ -16,13 +18,13 @@ public class CenterPane {
                        final EventHandler<ActionEvent> e) {
 
         this.matrix.setGridLinesVisible(lineVisible);
-
+        this.matrix.setMinSize(Double.MIN_VALUE, Double.MIN_VALUE);
+        this.matrix.setMaxSize(MAX_SIZE, MAX_SIZE);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 final var b = new Button();
                 b.setOnAction(e);
-                b.prefHeightProperty().bind(this.matrix.heightProperty());
-                b.prefWidthProperty().bind(this.matrix.widthProperty());
+                b.setMinSize(Double.MIN_VALUE, Double.MIN_VALUE);
                 this.matrix.add(b, j, i);
             }
         }
