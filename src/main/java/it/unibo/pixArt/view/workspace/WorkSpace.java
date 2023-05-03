@@ -2,6 +2,8 @@ package it.unibo.pixArt.view.workspace;
 
 import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.view.AbstractFXView;
+import it.unibo.pixArt.view.pages.PageLoader;
+import it.unibo.pixArt.view.pages.Pages;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -24,7 +26,6 @@ public class WorkSpace extends AbstractFXView {
     private ColorPicker colorPicker;
     @FXML
     private ScrollPane frames;
-    private GridPane center;
 
     private static final String BACKGROUND_COLOR = "-fx-background-color:pink";
 
@@ -50,14 +51,22 @@ public class WorkSpace extends AbstractFXView {
         final var rows = this.getController().getModel().getProject().getAllFrames().get(0).getRows();
         final var columns = this.getController().getModel().getProject().getAllFrames().get(0).getColumns();
 
-        this.center = new CenterPane.GridPaneBuilder()
+        final GridPane center = new CenterPane.GridPaneBuilder()
                 .setColumns(columns).setRows(rows)
                 .setGridLinesVisible(true)
                 .setAction(e).build().get();
         center.alignmentProperty().set(Pos.CENTER);
-        center.prefWidthProperty().bind(this.center.heightProperty());
+        center.prefWidthProperty().bind(center.heightProperty());
         center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty().add(frames.heightProperty())));
-        this.root.setCenter(this.center);
+        this.root.setCenter(center);
+
+
+        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setEventH(new EventHandler<>() {
+            @Override
+            public void handle(ActionEvent event) {
+                PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
+            }
+        }).build().get());
 
 
     }
