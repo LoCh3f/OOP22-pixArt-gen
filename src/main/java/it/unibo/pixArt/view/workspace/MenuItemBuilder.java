@@ -4,15 +4,18 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
 
-public class ButtonBuilder {
+public class MenuItemBuilder {
 
-    private final MenuItem b = new MenuItem();
+    private MenuItem b;
 
-    private ButtonBuilder(final EventHandler<ActionEvent> e) {
+    private MenuItemBuilder(final EventHandler<ActionEvent> e, final String name) {
+        this.b = new MenuItem("name");
         this.b.setOnAction(e);
     }
 
     public static class Builder {
+
+        private String name;
 
         private EventHandler<ActionEvent> e = null;
 
@@ -21,8 +24,13 @@ public class ButtonBuilder {
             return this;
         }
 
-        public ButtonBuilder build() {
-            return new ButtonBuilder(this.e);
+        public Builder setName(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public MenuItemBuilder build() {
+            return new MenuItemBuilder(this.e, this.name);
         }
 
 
