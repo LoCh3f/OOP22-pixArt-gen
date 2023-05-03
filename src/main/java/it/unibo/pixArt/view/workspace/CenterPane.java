@@ -10,6 +10,7 @@ public class CenterPane {
     private final GridPane matrix = new GridPane();
 
     private static final Double MAX_SIZE = 800.0;
+    public static final String FX_BORDER_COLOR = "-fx-border-color:black";
 
 
     private CenterPane(final int rows,
@@ -24,6 +25,8 @@ public class CenterPane {
             for (int j = 0; j < columns; j++) {
                 final var b = new Button();
                 b.setOnAction(e);
+                b.setStyle(FX_BORDER_COLOR);
+                b.setPrefSize(30.0, 30.0);
                 b.setMinSize(Double.MIN_VALUE, Double.MIN_VALUE);
                 this.matrix.add(b, j, i);
             }

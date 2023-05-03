@@ -23,4 +23,8 @@ public class UserImpl implements User {
     public void setPathToFile(final String path) {
         this.pathToFile = path;
     }
+
+    public String getPathToFile(){
+        return this.pathToFile;
+    }
 }

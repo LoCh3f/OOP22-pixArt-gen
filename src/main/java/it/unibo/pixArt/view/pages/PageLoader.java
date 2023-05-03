@@ -42,15 +42,6 @@ public class PageLoader {
     public void switchPageWithSpecificController(final Stage stage, final Pages page, final Controller controller) {
 
 
-       /* if (Pages.WORKSPACE.getName() == page.getName()) {
-
-            final var factory = new WorkSpaceRoot();                    // probably will be removed
-            //final var c = (WorkSpaceController) controller;
-            final Parent root = factory.root(32, 32);
-
-            stage.getScene().setRoot(root);
-        } else {*/
-
         final FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource(PATH_START + page.getName() + PATH_END));
         Parent root = null;
         try {
@@ -69,8 +60,6 @@ public class PageLoader {
         view.setController(controller);
         view.setStage(stage);
         view.init();
-
-        //}
 
 
         stage.show();
