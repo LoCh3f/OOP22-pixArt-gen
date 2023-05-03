@@ -10,8 +10,9 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -25,7 +26,7 @@ public class WorkSpace extends AbstractFXView {
     @FXML
     private ColorPicker colorPicker;
     @FXML
-    private ScrollPane frames;
+    private ListView<ImageView> frames;
 
     private static final String BACKGROUND_COLOR = "-fx-background-color:pink";
 
