@@ -31,6 +31,8 @@ public class WorkSpace extends AbstractFXView {
 
     private static final String FX_BACKGROUND_COLOR = "-fx-background-color:";
 
+    private static final String FX_BORDER_WIDTH = "-fx-border-width:1";
+
 
     @Override
     public void init() {
@@ -39,7 +41,7 @@ public class WorkSpace extends AbstractFXView {
             @Override
             public void handle(final ActionEvent event) {
                 final var button = (Button) event.getSource();
-                button.setStyle(FX_BACKGROUND_COLOR + colorPicker.getValue().toString().replace("0x", "#"));
+                button.setStyle(FX_BACKGROUND_COLOR + colorPicker.getValue().toString().replace("0x", "#") + ";" + CenterPane.FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
                 getController().getModel().getProject().getAllFrames().get(0).getPixels().forEach(p -> {
                     if (p.comparePixel(new ImplPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button)))) {
                         p.setColor(new Color(colorPicker.getValue().getRed(), colorPicker.getValue().getGreen(), colorPicker.getValue().getBlue(), colorPicker.getValue().getOpacity()));
@@ -61,7 +63,7 @@ public class WorkSpace extends AbstractFXView {
         this.root.setCenter(center);
 
 
-        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setEventH(new EventHandler<>() {
+        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(new EventHandler<>() {
             @Override
             public void handle(ActionEvent event) {
                 PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
