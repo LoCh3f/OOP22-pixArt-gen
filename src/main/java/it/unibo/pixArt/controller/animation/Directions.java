@@ -4,7 +4,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
-
+/**
+ * An enum containing the possible directions for an animation.
+ */
 public enum Directions {
     FORWARD("Forward",1),BACKWARD("Backward",-1);
 

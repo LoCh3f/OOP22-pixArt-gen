@@ -1,11 +1,18 @@
 package it.unibo.pixArt.controller.animation;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import it.unibo.pixArt.controller.SimpleController;
+import it.unibo.pixArt.model.historyframe.HistoryFrame;
 
 
 public class AnimationControllerImpl extends SimpleController implements AnimationController {
+    private List<HistoryFrame> historyFrames;
+
+    public AnimationControllerImpl() {
+        //Initialize the historyFrames list by getting each HistoryFrame from the project.
+    }
 
     @Override
     public void setAnimationDirection(String newDir) {
