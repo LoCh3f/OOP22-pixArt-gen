@@ -30,9 +30,9 @@
         </MenuBar>
     </top>
    <bottom>
-      <ListView prefHeight="89.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="frames" prefHeight="89.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
    </bottom>
    <right>
-      <ColorPicker BorderPane.alignment="CENTER" />
+      <ColorPicker fx:id="colorPicker" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>

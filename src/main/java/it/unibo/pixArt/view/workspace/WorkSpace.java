@@ -13,9 +13,14 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+
+import static it.unibo.pixArt.utilities.FXStyleVariable.*;
+import static javafx.scene.input.MouseDragEvent.MOUSE_DRAG_ENTERED;
 
 public class WorkSpace extends AbstractFXView {
 
@@ -28,11 +33,7 @@ public class WorkSpace extends AbstractFXView {
     @FXML
     private ListView<ImageView> frames;
 
-    private static final String BACKGROUND_COLOR = "-fx-background-color:pink";
-
-    private static final String FX_BACKGROUND_COLOR = "-fx-background-color:";
-
-    private static final String FX_BORDER_WIDTH = "-fx-border-width:1";
+    private final Logic logics = new WorkSpaceLogic();
 
 
     @Override
@@ -42,7 +43,8 @@ public class WorkSpace extends AbstractFXView {
             @Override
             public void handle(final ActionEvent event) {
                 final var button = (Button) event.getSource();
-                button.setStyle(FX_BACKGROUND_COLOR + colorPicker.getValue().toString().replace("0x", "#") + ";" + CenterPane.FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+                logics.changeState();
+                button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + CenterPane.FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
                 getController().getModel().getProject().getAllFrames().get(0).getPixels().forEach(p -> {
                     if (p.comparePixel(new ImplPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button)))) {
                         p.setColor(new Color(colorPicker.getValue().getRed(), colorPicker.getValue().getGreen(), colorPicker.getValue().getBlue(), colorPicker.getValue().getOpacity()));
@@ -58,18 +60,27 @@ public class WorkSpace extends AbstractFXView {
                 .setColumns(columns).setRows(rows)
                 .setGridLinesVisible(true)
                 .setAction(e).build().get();
+        center.getChildren().forEach(b -> {
+            b.addEventHandler(MOUSE_DRAG_ENTERED, event -> {
+                final var b1 = (Button) event.getSource();
+                b1.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + CenterPane.FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+
+            });
+        });
+        center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
+            if (logics.isDrawing()) {
+                final var button = (Button) event.getSource();
+                button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + CenterPane.FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+            }
+        }));
+        center.getChildren().forEach(b -> b.addEventHandler(KeyEvent.KEY_PRESSED, event -> logics.changeState()));
         center.alignmentProperty().set(Pos.CENTER);
         center.prefWidthProperty().bind(center.heightProperty());
         center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty().add(frames.heightProperty())));
         this.root.setCenter(center);
 
 
-        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(new EventHandler<>() {
-            @Override
-            public void handle(ActionEvent event) {
-                PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
-            }
-        }).build().get());
+        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel())).build().get());
 
 
     }
