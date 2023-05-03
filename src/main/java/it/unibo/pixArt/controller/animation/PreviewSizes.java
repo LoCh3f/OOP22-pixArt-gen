@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**An enum containing all the different preview size. */
 public enum PreviewSizes {
     DEFAULT("Default"),FOUR("4x4"),TWO("2x2"),ONE("1x1");
 

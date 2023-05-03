@@ -1,8 +1,10 @@
 package it.unibo.pixArt.controller.animation;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import it.unibo.pixArt.controller.Controller;
+import it.unibo.pixArt.model.historyframe.HistoryFrame;
 
 public interface AnimationController extends Controller {
 
@@ -18,6 +20,7 @@ public interface AnimationController extends Controller {
      */
     public void setFrameDuration(final int frameIndex, final int duration);
 
+
     /**Method to set wether the animation is on or off.
      * 
      */
@@ -32,4 +35,5 @@ public interface AnimationController extends Controller {
      * @return a list containing the available directions for an animation.
      */
     public List<String> getListDirections();
+
 }

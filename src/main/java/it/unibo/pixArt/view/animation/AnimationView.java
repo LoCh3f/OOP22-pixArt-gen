@@ -9,16 +9,18 @@ import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.image.ImageView;
 
 public class AnimationView extends AbstractFXView {
-    private List<String> directions;
-    private List<String> previewSizes;
 
     @FXML
     private ChoiceBox<String> dimensionChoice;
 
     @FXML
     private ChoiceBox<String> directionChoice;
+
+    @FXML
+    private ImageView imageContainer;
 
     @FXML
     public void switchAnimation() {
@@ -32,12 +34,10 @@ public class AnimationView extends AbstractFXView {
 
     @Override
     public void init() {
-        this.directions = new LinkedList<>(this.getAnimationController().getListDirections());
-        this.previewSizes = new LinkedList<>(this.getAnimationController().getListSizes());
-        this.dimensionChoice.getItems().addAll(this.previewSizes);
-        this.dimensionChoice.setValue(this.previewSizes.get(0));
-        this.directionChoice.getItems().addAll(this.directions);
-        this.directionChoice.setValue(this.directions.get(0));
+        this.dimensionChoice.getItems().addAll(this.getAnimationController().getListSizes());
+        this.dimensionChoice.setValue(this.getAnimationController().getListSizes().get(0));
+        this.directionChoice.getItems().addAll(this.getAnimationController().getListDirections());
+        this.directionChoice.setValue(this.getAnimationController().getListDirections().get(0));
     }
 
     public void animateImage(final String path) {
