@@ -1,5 +1,6 @@
 package it.unibo.pixArt.model.grid;
 
+import it.unibo.pixArt.model.framestate.FrameState;
 import it.unibo.pixArt.model.pixel.Pixel;
 
 import java.util.Set;
@@ -20,6 +21,8 @@ public interface PixelGrid {
     int getRows();
 
     int getColumns();
+
+    FrameState getMemento();
 
 
 }

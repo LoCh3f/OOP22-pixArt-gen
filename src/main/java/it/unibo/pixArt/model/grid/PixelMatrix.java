@@ -1,5 +1,7 @@
 package it.unibo.pixArt.model.grid;
 
+import it.unibo.pixArt.model.framestate.FrameState;
+import it.unibo.pixArt.model.framestate.FrameStateImpl;
 import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 
@@ -11,6 +13,7 @@ public class PixelMatrix implements PixelGrid {
     private final int rows;
     private final int columns;
     private final Set<Pixel> pixels;
+    private final FrameState memento = new FrameStateImpl();
 
     private PixelMatrix(final int rows, final int columns) {
         this.rows = rows;
@@ -67,6 +70,12 @@ public class PixelMatrix implements PixelGrid {
     public int getColumns() {
         return this.columns;
     }
+
+    @Override
+    public FrameState getMemento() {
+        return this.memento;
+    }
+
 
     @Override
     public Set<Pixel> getPixels() {
