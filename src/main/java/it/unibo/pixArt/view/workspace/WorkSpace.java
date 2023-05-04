@@ -7,20 +7,20 @@ import it.unibo.pixArt.view.pages.Pages;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
 import static it.unibo.pixArt.utilities.FXStyleVariable.*;
-import static javafx.scene.input.MouseDragEvent.MOUSE_DRAG_ENTERED;
+
 
 public class WorkSpace extends AbstractFXView {
 
@@ -32,13 +32,19 @@ public class WorkSpace extends AbstractFXView {
     private ColorPicker colorPicker;
     @FXML
     private ListView<ImageView> frames;
+    @FXML
+    private BorderPane leftPane;
 
-    private final Logic logics = new WorkSpaceLogic();
+
+    private final Logic logics = new WorkSpaceLogic(this.getController().getModel().getProject().getAllFrames().get(0).getRows(),
+            this.getController().getModel().getProject().getAllFrames().get(0).getColumns());
 
 
     @Override
     public void init() {
         root.setStyle(BACKGROUND_COLOR);
+        getStage().setFullScreen(true);
+        root.setPadding(new Insets(5));
         final var e = new EventHandler<ActionEvent>() {
             @Override
             public void handle(final ActionEvent event) {
@@ -49,6 +55,7 @@ public class WorkSpace extends AbstractFXView {
                     if (p.comparePixel(new ImplPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button)))) {
                         p.setColor(new Color(colorPicker.getValue().getRed(), colorPicker.getValue().getGreen(), colorPicker.getValue().getBlue(), colorPicker.getValue().getOpacity()));
                     }
+                    logics.changeState();
                 });
             }
         };
@@ -60,20 +67,14 @@ public class WorkSpace extends AbstractFXView {
                 .setColumns(columns).setRows(rows)
                 .setGridLinesVisible(true)
                 .setAction(e).build().get();
-        center.getChildren().forEach(b -> {
-            b.addEventHandler(MOUSE_DRAG_ENTERED, event -> {
-                final var b1 = (Button) event.getSource();
-                b1.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + CenterPane.FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
 
-            });
-        });
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             if (logics.isDrawing()) {
                 final var button = (Button) event.getSource();
                 button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + CenterPane.FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             }
         }));
-        center.getChildren().forEach(b -> b.addEventHandler(KeyEvent.KEY_PRESSED, event -> logics.changeState()));
+
         center.alignmentProperty().set(Pos.CENTER);
         center.prefWidthProperty().bind(center.heightProperty());
         center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty().add(frames.heightProperty())));
@@ -81,7 +82,6 @@ public class WorkSpace extends AbstractFXView {
 
 
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel())).build().get());
-
 
     }
 }

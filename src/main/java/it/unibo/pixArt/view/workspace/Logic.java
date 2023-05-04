@@ -1,10 +1,14 @@
 package it.unibo.pixArt.view.workspace;
 
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
+
 public interface Logic {
 
-    Boolean isDrawing();
+    boolean isDrawing();
 
     void changeState();
 
-    void setState(final boolean isDrawing);
+    boolean isValid(final int index, final ObservableList<Node> buttons, final int father);
+
 }
