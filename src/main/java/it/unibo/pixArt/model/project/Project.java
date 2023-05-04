@@ -31,6 +31,11 @@ public interface Project {
     public List<PixelGrid> getAllFrames();
 
     /**
+     * Method to add a new frame in the list of frames.
+     */
+    public void addNewFrame();
+
+    /**
      * @return String format of a project.
      */
     public String toString();
