@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixArt.view.impl.HomeView">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixArt.view.impl.HomeView">
     <children>
-        <ImageView fitHeight="250.0" fitWidth="200.0" layoutX="184.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="imageView" fitHeight="250.0" fitWidth="200.0" layoutX="184.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../image/nameLogo.png" />
             </image>
+         <effect>
+            <Bloom threshold="1.0" />
+         </effect>
         </ImageView>
-        <Button alignment="CENTER" layoutX="14.0" layoutY="178.0" mnemonicParsing="false" onAction="#onSetUpClick" text="New File" textFill="#c722c5" textOverrun="WORD_ELLIPSIS">
+        <Button fx:id="newFile" alignment="CENTER" layoutX="14.0" layoutY="178.0" mnemonicParsing="false" onAction="#onSetUpClick" text="New File" textOverrun="WORD_ELLIPSIS">
             <font>
                 <Font name="System Italic" size="10.0" />
             </font>
         </Button>
-        <Button alignment="CENTER" layoutX="14.0" layoutY="210.0" mnemonicParsing="false" onAction="#onWorkSpaceClick" text="New Project" textFill="#c722c5" textOverrun="WORD_ELLIPSIS">
+        <Button fx:id="newProject" alignment="CENTER" layoutX="14.0" layoutY="210.0" mnemonicParsing="false" onAction="#onWorkSpaceClick" text="New Project" textOverrun="WORD_ELLIPSIS">
             <font>
                 <Font name="System Italic" size="10.0" />
             </font>
         </Button>
-        <Button alignment="CENTER" layoutX="14.0" layoutY="276.0" mnemonicParsing="false" onAction="#onProjectHistoryClick" text="Project History" textFill="#c722c5" textOverrun="WORD_ELLIPSIS">
+        <Button fx:id="projectHistory" alignment="CENTER" layoutX="14.0" layoutY="276.0" mnemonicParsing="false" onAction="#onProjectHistoryClick" text="Project History" textOverrun="WORD_ELLIPSIS">
             <font>
                 <Font name="System Italic" size="10.0" />
             </font>
         </Button>
-        <Button alignment="CENTER" layoutX="14.0" layoutY="242.0" mnemonicParsing="false" onAction="#onAnimationClick" text="New Animation" textFill="#c722c5" textOverrun="WORD_ELLIPSIS">
+        <Button fx:id="newAnimation" alignment="CENTER" layoutX="14.0" layoutY="242.0" mnemonicParsing="false" onAction="#onAnimationClick" text="New Animation" textOverrun="WORD_ELLIPSIS">
             <font>
                 <Font name="System Italic" size="10.0" />
             </font>

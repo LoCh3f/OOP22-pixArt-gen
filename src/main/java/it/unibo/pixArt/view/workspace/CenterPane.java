@@ -9,7 +9,7 @@ public class CenterPane {
 
     private final GridPane matrix = new GridPane();
 
-    private static final Double MAX_SIZE = 900.0;
+    public static final Double MAX_SIZE = 900.0;
     public static final String FX_BORDER_COLOR = "-fx-border-color:black";
 
 
