@@ -31,7 +31,7 @@ public class HomeView extends AbstractFXView {
 
     @FXML
     public void onSetUpClick(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.SETTINGS, new ModelImpl(null, null, null));
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.SETTINGS, this.getController().getModel());
     }
 
     @FXML
@@ -41,7 +41,7 @@ public class HomeView extends AbstractFXView {
 
     @FXML
     public void onProjectHistoryClick(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.HISTORY, new ModelImpl(null, null, null));
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.HISTORY, this.getController().getModel());
     }
 
     @FXML

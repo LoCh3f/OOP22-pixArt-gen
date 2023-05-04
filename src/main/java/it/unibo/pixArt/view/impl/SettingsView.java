@@ -45,7 +45,7 @@ public class SettingsView extends AbstractFXView {
     @FXML
     public void createProject() {
         /*
-         * Create the project based on the values.
+         * Create the project based on the values taken from the javafx components.
          */
         this.getSettingsController().createProject(projectName.getText(),pathName.getText(),fileFormat.getValue(),Integer.parseInt(sizeChoice.getValue()));
         System.out.println(getController().getModel().getProject().toString());

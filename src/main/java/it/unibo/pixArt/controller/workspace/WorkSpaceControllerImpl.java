@@ -17,7 +17,7 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     private AbstractTool tool;
 
     public WorkSpaceControllerImpl() {
-        this.currentframe = getModel().getProject().getAllFrames().get(0);
+        //this.currentframe = getModel().getProject().getAllFrames().get(0);
         //Default tool?
     }    
 
