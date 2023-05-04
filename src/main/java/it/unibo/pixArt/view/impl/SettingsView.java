@@ -9,7 +9,6 @@ import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.model.project.FileTypes;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.project.ProjectImpl;
-import it.unibo.pixArt.model.workspace.WorkSpaceModelImpl;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
@@ -50,7 +49,7 @@ public class SettingsView extends AbstractFXView {
          */
         this.getSettingsController().createProject(projectName.getText(),pathName.getText(),fileFormat.getValue(),Integer.parseInt(sizeChoice.getValue()));
         System.out.println(getController().getModel().getProject().toString());
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, new WorkSpaceModelImpl(this.getController().getModel().getProject()));
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, this.getController().getModel());
     }
 
     @FXML
