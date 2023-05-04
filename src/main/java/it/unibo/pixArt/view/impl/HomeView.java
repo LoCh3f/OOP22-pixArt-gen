@@ -56,6 +56,7 @@ public class HomeView extends AbstractFXView {
         //throw new UnsupportedOperationException("Unimplemented method 'init'");
 
         final var bPane = new BorderPane();
+        bPane.setPrefSize(900.0, 700.0);
         bPane.setPadding(new Insets(5));
         bPane.setStyle(FX_BACKGROUND_COLOR_START + "white");
         bPane.setCenter(imageView);
@@ -65,9 +66,14 @@ public class HomeView extends AbstractFXView {
         bPane.setBottom(this.projectHistory);
 
         this.newProject.prefHeightProperty().bind(bPane.heightProperty().subtract(projectHistory.heightProperty().add(newFile.heightProperty())));
+        this.newProject.prefWidthProperty().bind(bPane.widthProperty().divide(7));
         this.newAnimation.prefHeightProperty().bind(bPane.heightProperty().subtract(this.newFile.heightProperty().add(this.projectHistory.heightProperty())));
+        this.newAnimation.prefWidthProperty().bind(bPane.widthProperty().divide(7));
         this.newFile.prefWidthProperty().bind(bPane.widthProperty());
+        this.newFile.prefHeightProperty().bind(bPane.heightProperty().divide(7));
         this.projectHistory.prefWidthProperty().bind(bPane.widthProperty());
+        this.projectHistory.prefHeightProperty().bind(bPane.heightProperty().divide(7));
+
 
         bPane.getChildren().forEach(c -> c.setStyle(FX_BACKGROUND_COLOR_START + "magenta"));
         getStage().getScene().setRoot(bPane);

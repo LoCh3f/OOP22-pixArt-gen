@@ -40,6 +40,11 @@ public class BorderParent implements ParentGetter {
             return this;
         }
 
+        public Builder setCenter(final Node center) {
+            this.center = center;
+            return this;
+        }
+
         public Builder setRight(final Node right) {
             this.right = right;
             return this;
@@ -56,7 +61,7 @@ public class BorderParent implements ParentGetter {
         }
 
         public BorderParent build() {
-            return new BorderParent(this.right,this.left,this.bottom,this.top,this.center);
+            return new BorderParent(this.right, this.left, this.bottom, this.top, this.center);
         }
 
     }

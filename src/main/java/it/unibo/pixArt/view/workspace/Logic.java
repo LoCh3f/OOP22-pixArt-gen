@@ -11,4 +11,5 @@ public interface Logic {
 
     boolean isValid(final int index, final ObservableList<Node> buttons, final int father);
 
+    String getImagePath();
 }
