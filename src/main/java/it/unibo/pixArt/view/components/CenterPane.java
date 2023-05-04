@@ -1,4 +1,4 @@
-package it.unibo.pixArt.view.workspace;
+package it.unibo.pixArt.view.components;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
