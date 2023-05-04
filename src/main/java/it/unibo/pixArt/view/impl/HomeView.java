@@ -1,16 +1,13 @@
 package it.unibo.pixArt.view.impl;
 
-import java.util.Optional;
-
 import it.unibo.pixArt.model.ModelImpl;
-import it.unibo.pixArt.model.workspace.WorkSpaceModelImpl;
 import it.unibo.pixArt.view.AbstractFXView;
-import it.unibo.pixArt.view.SimpleView;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.input.MouseEvent;
+
+import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BACKGROUND_COLOR_START;
 
 public class HomeView extends AbstractFXView {
 
@@ -18,11 +15,11 @@ public class HomeView extends AbstractFXView {
     public void onSetUpClick(final ActionEvent event) {
         PageLoader.getInstance().switchPage(this.getStage(), Pages.SETTINGS, new ModelImpl(null, null, null));
     }
-    
-   @FXML
+
+    @FXML
     public void onWorkSpaceClick(final ActionEvent event) {
         PageLoader.getInstance().switchPage(this.getStage(), Pages.SETTINGS, new ModelImpl(null, null, null));
-       // PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, new WorkSpaceModelImpl(this.getController().getModel().getProject()));
+        // PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, new WorkSpaceModelImpl(this.getController().getModel().getProject()));
     }
 
     @FXML
@@ -39,6 +36,7 @@ public class HomeView extends AbstractFXView {
     public void init() {
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'init'");
+        getStage().getScene().getRoot().setStyle(FX_BACKGROUND_COLOR_START + "purple");
     }
 
     private HomeView getHomeController() {

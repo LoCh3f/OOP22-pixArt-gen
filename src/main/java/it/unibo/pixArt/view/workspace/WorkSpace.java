@@ -36,12 +36,13 @@ public class WorkSpace extends AbstractFXView {
     private BorderPane leftPane;
 
 
-    private final Logic logics = new WorkSpaceLogic(this.getController().getModel().getProject().getAllFrames().get(0).getRows(),
-            this.getController().getModel().getProject().getAllFrames().get(0).getColumns());
+    private Logic logics;
 
 
     @Override
     public void init() {
+        this.logics = new WorkSpaceLogic(this.getController().getModel().getProject().getAllFrames().get(0).getRows(),
+                this.getController().getModel().getProject().getAllFrames().get(0).getColumns());
         root.setStyle(BACKGROUND_COLOR);
         getStage().setFullScreen(true);
         root.setPadding(new Insets(5));
