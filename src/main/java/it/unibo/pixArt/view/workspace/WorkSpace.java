@@ -2,6 +2,8 @@ package it.unibo.pixArt.view.workspace;
 
 import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.view.AbstractFXView;
+import it.unibo.pixArt.view.components.CenterPane;
+import it.unibo.pixArt.view.components.MenuItemBuilder;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.event.ActionEvent;
