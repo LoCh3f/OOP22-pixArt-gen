@@ -68,7 +68,7 @@ public class WorkSpace extends AbstractFXView {
             public void handle(final ActionEvent event) {
                 final var button = (Button) event.getSource();
                 logics.changeState();
-                button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + CenterPane.FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+                button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
                 getController().getModel().getProject().getAllFrames().get(0).getPixels().forEach(p -> {
                     if (p.comparePixel(new ImplPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button)))) {
                         p.setColor(new Color(colorPicker.getValue().getRed(), colorPicker.getValue().getGreen(), colorPicker.getValue().getBlue(), colorPicker.getValue().getOpacity()));
@@ -86,19 +86,20 @@ public class WorkSpace extends AbstractFXView {
                 .setGridLinesVisible(true)
                 .setAction(e).build().get();
         this.root.setCenter(center);
-        root.getChildren().forEach(c -> setStyle(c, "yellow"));
+        root.getChildren().forEach(c -> setBackGroundStyle(c, "yellow"));
+        setBackGroundStyle(root.getCenter(), "black");
 
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             if (logics.isDrawing()) {
                 final var button = (Button) event.getSource();
-                button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + CenterPane.FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+                button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             }
         }));
 
         center.alignmentProperty().set(Pos.CENTER);
         center.prefWidthProperty().bind(center.heightProperty());
         center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty().add(frames.heightProperty())));
-        rightPane.getChildren().forEach(c -> setStyle(c, "orange"));
+        rightPane.getChildren().forEach(c -> setBackGroundStyle(c, "orange" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
 
 
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel())).build().get());
@@ -112,7 +113,7 @@ public class WorkSpace extends AbstractFXView {
 
     }
 
-    private void setStyle(final Node node, final String color) {
+    private void setBackGroundStyle(final Node node, final String color) {
         node.setStyle(FX_BACKGROUND_COLOR_START + color);
     }
 

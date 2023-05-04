@@ -32,5 +32,7 @@ public class FXStyleVariable {
 
     public static final String TOAD_IMAGE = "toad.png";
 
+    public static final String FX_BORDER_COLOR = "-fx-border-color:black";
+
 
 }

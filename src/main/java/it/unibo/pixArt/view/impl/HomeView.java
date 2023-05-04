@@ -12,7 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
-import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BACKGROUND_COLOR_START;
+import static it.unibo.pixArt.utilities.FXStyleVariable.*;
+import static it.unibo.pixArt.view.components.StageDistribution.PREF_HEIGHT;
+import static it.unibo.pixArt.view.components.StageDistribution.PREF_WIDTH;
 
 public class HomeView extends AbstractFXView {
 
@@ -51,11 +53,8 @@ public class HomeView extends AbstractFXView {
 
     @Override
     public void init() {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'init'");
-
         final var bPane = new BorderPane();
-        bPane.setPrefSize(900.0, 700.0);
+        bPane.setPrefSize(PREF_WIDTH, PREF_HEIGHT);
         bPane.setPadding(new Insets(5));
         bPane.setStyle(FX_BACKGROUND_COLOR_START + "white");
         bPane.setCenter(imageView);
@@ -63,6 +62,7 @@ public class HomeView extends AbstractFXView {
         bPane.setRight(this.newProject);
         bPane.setTop(this.newFile);
         bPane.setBottom(this.projectHistory);
+
 
         this.newProject.prefHeightProperty().bind(bPane.heightProperty().subtract(projectHistory.heightProperty().add(newFile.heightProperty())));
         this.newProject.prefWidthProperty().bind(bPane.widthProperty().divide(7));
@@ -74,7 +74,7 @@ public class HomeView extends AbstractFXView {
         this.projectHistory.prefHeightProperty().bind(bPane.heightProperty().divide(7));
 
 
-        bPane.getChildren().forEach(c -> c.setStyle(FX_BACKGROUND_COLOR_START + "magenta"));
+        bPane.getChildren().forEach(c -> c.setStyle(FX_BACKGROUND_COLOR_START + "magenta" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
         getStage().getScene().setRoot(bPane);
 
 

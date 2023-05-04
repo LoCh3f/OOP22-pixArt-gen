@@ -5,12 +5,13 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
+import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BORDER_COLOR;
+
 public class CenterPane {
 
     private final GridPane matrix = new GridPane();
 
-    public static final Double MAX_SIZE = 900.0;
-    public static final String FX_BORDER_COLOR = "-fx-border-color:black";
+    private static final Double MAX_SIZE = 900.0;
 
 
     private CenterPane(final int rows,

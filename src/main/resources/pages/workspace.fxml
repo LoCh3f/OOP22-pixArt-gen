@@ -50,7 +50,7 @@
             <ImageView fx:id="templateView" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
-            <Button fx:id="swapper" mnemonicParsing="false" onAction="#changeImage" prefHeight="26.0" prefWidth="210.0" text="new image" BorderPane.alignment="CENTER" />
+            <Button fx:id="swapper" mnemonicParsing="false" onAction="#changeImage" prefHeight="26.0" prefWidth="210.0" text="New Template" BorderPane.alignment="CENTER" />
          </bottom>
         </BorderPane>
     </right>
