@@ -67,6 +67,11 @@ public class ProjectImpl implements Project {
         return this.fileType;
     }
 
+    @Override
+    public void addNewFrame() {
+        this.frames.add(this.frames.size() - 1, new PixelMatrix.MatrixBuilder().setColumns(size).setRows(size).build());
+    }
+
     public static class Builder {
         protected String projectName;
         protected String path;
@@ -87,8 +92,6 @@ public class ProjectImpl implements Project {
             return this;
         }
 
-
     }
-
 
 }
