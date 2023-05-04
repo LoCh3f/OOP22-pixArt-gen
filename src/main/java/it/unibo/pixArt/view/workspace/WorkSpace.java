@@ -11,7 +11,6 @@ import it.unibo.pixArt.view.pages.Pages;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -57,12 +56,9 @@ public class WorkSpace extends AbstractFXView {
         this.root.setCenter(new ImageView(IMAGE_PATH + "mainIcon.png"));
         this.logics = new WorkSpaceLogic(this.getController().getModel().getProject().getAllFrames().get(0).getRows(),
                 this.getController().getModel().getProject().getAllFrames().get(0).getColumns());
-        root.setStyle(BACKGROUND_COLOR);
-        root.setPadding(new Insets(5));
         colorPicker.prefWidthProperty().bind(rightPane.widthProperty());
         swapper.prefWidthProperty().bind(rightPane.widthProperty());
-        rightPane.setRight(new Button("Start\n(Beta)"));
-        rightPane.setLeft(new Button("Stop\n(Beta)"));
+
         final var e = new EventHandler<ActionEvent>() {
             @Override
             public void handle(final ActionEvent event) {
@@ -86,8 +82,6 @@ public class WorkSpace extends AbstractFXView {
                 .setGridLinesVisible(true)
                 .setAction(e).build().get();
         this.root.setCenter(center);
-        root.getChildren().forEach(c -> setBackGroundStyle(c, "yellow"));
-        setBackGroundStyle(root.getCenter(), "black");
 
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             if (logics.isDrawing()) {
@@ -99,7 +93,6 @@ public class WorkSpace extends AbstractFXView {
         center.alignmentProperty().set(Pos.CENTER);
         center.prefWidthProperty().bind(center.heightProperty());
         center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty().add(frames.heightProperty())));
-        rightPane.getChildren().forEach(c -> setBackGroundStyle(c, "orange" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
 
 
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel())).build().get());
