@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -39,14 +40,17 @@ public class WorkSpace extends AbstractFXView {
     @FXML
     private ListView<ImageView> frames;
     @FXML
-    private BorderPane leftPane;
+    private VBox leftPane;
     @FXML
     private ImageView templateView;
     @FXML
     private Button swapper;
     @FXML
     private BorderPane rightPane;
-
+    @FXML
+    private Button discard;
+    @FXML
+    private Button undo;
 
     private Logic logics;
 
@@ -73,7 +77,7 @@ public class WorkSpace extends AbstractFXView {
                 });
             }
         };
-
+        rightPane.getChildren().forEach(n -> n.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
         final var rows = this.getController().getModel().getProject().getAllFrames().get(0).getRows();
         final var columns = this.getController().getModel().getProject().getAllFrames().get(0).getColumns();
 
@@ -86,6 +90,7 @@ public class WorkSpace extends AbstractFXView {
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             if (logics.isDrawing()) {
                 final var button = (Button) event.getSource();
+
                 button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             }
         }));
