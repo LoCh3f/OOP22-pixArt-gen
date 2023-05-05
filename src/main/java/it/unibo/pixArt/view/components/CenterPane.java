@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
 import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BORDER_COLOR;
+import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BORDER_WIDTH;
 
 public class CenterPane {
 
@@ -26,13 +27,14 @@ public class CenterPane {
             for (int j = 0; j < columns; j++) {
                 final var b = new Button();
                 b.setOnAction(e);
-                b.setStyle(FX_BORDER_COLOR);
-                b.prefWidthProperty().bind(matrix.heightProperty().divide(rows));
-                b.prefHeightProperty().bind(matrix.heightProperty().divide(columns));
+                b.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+                b.prefWidthProperty().bind(matrix.widthProperty().divide(columns));
+                b.prefHeightProperty().bind(matrix.heightProperty().divide(rows));
                 b.setMinSize(Double.MIN_VALUE, Double.MIN_VALUE);
                 this.matrix.add(b, j, i);
             }
         }
+        this.matrix.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
     }
 
     public static class GridPaneBuilder {

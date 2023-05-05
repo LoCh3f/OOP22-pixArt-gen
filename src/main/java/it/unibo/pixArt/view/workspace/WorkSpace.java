@@ -47,10 +47,7 @@ public class WorkSpace extends AbstractFXView {
     private Button swapper;
     @FXML
     private BorderPane rightPane;
-    @FXML
-    private Button discard;
-    @FXML
-    private Button undo;
+
 
     private Logic logics;
 
@@ -78,6 +75,8 @@ public class WorkSpace extends AbstractFXView {
             }
         };
         rightPane.getChildren().forEach(n -> n.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
+        menubar.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+
         final var rows = this.getController().getModel().getProject().getAllFrames().get(0).getRows();
         final var columns = this.getController().getModel().getProject().getAllFrames().get(0).getColumns();
 
@@ -87,10 +86,10 @@ public class WorkSpace extends AbstractFXView {
                 .setAction(e).build().get();
         this.root.setCenter(center);
 
+
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             if (logics.isDrawing()) {
                 final var button = (Button) event.getSource();
-
                 button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             }
         }));
@@ -119,11 +118,16 @@ public class WorkSpace extends AbstractFXView {
     @FXML
     private void discardMatrix() {
         final var grid = (GridPane) this.root.getCenter();
-        grid.getChildren().forEach(b -> b.setStyle(FX_BACKGROUND_COLOR_START + "white" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
+        grid.getChildren().forEach(b -> b.setStyle(FX_BACKGROUND_COLOR_START + "transparent" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
     }
 
     @FXML
     private void changeImage() {
         this.templateView.setImage(new Image(logics.getImagePath()));
+    }
+
+    @FXML
+    private void rubberActivate() {
+        colorPicker.setValue(Color.TRANSPARENT);
     }
 }
