@@ -2,9 +2,6 @@ package it.unibo.pixArt.model.project;
 
 import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.grid.PixelMatrix;
-import it.unibo.pixArt.model.grid.PixelMatrix.MatrixBuilder;
-
-import java.util.LinkedList;
 import java.util.List;
 
 public class ProjectImpl implements Project {

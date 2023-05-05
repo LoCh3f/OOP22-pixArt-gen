@@ -31,7 +31,6 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
         final Set<Pixel> result = tool.updateGrid(p, this.currentframe.getPixels());
         this.currentframe.setPixel(result);
        //this.view.updateView(result); METHOD TO UPDATE VIEW.
-       
     }
 
     @Override
