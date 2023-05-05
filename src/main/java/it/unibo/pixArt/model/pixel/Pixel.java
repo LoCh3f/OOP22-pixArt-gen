@@ -22,4 +22,6 @@ public interface Pixel {
     void setColor(final Color color);
 
     boolean comparePixel(final Pixel pixel);
+
+
 }

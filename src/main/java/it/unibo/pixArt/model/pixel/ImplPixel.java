@@ -31,9 +31,15 @@ public class ImplPixel implements Pixel {
 
     /**
      * @param pixel to compare
-     * @return true if the pixels are the same, i.e. the position is the same
+     * @return true if the pixels  have the same position
      */
     public boolean comparePixel(final Pixel pixel) {
         return this.position.equals(pixel.getPosition());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        final var pixel = (Pixel) obj;
+        return comparePixel(pixel) && 0 == pixel.getColor().toString().compareTo(this.color.toString());
     }
 }
