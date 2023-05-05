@@ -12,7 +12,7 @@ plugins {
      * The runnable jar will be found in build/libs/projectname-all.jar
      */
     id("com.github.johnrengelman.shadow") version "8.1.0"
-    id("org.danilopianini.gradle-java-qa") version "1.0.0"
+   // id("org.danilopianini.gradle-java-qa") version "1.0.0"
 }
 
 repositories {
@@ -24,10 +24,12 @@ val javaFXModules = listOf(
         "controls",
         "fxml",
         "swing",
-        "graphics"
+        "graphics",
+        "media"
 )
 
 val supportedPlatforms = listOf("linux", "mac", "win") // All required for OOP
+
 
 dependencies {
     // Suppressions for SpotBugs
@@ -38,7 +40,7 @@ dependencies {
     // implementation("com.google.guava:guava:28.1-jre")
 
     // JavaFX: comment out if you do not need them
-    val javaFxVersion = 15
+    val javaFxVersion = 17
     for (platform in supportedPlatforms) {
         for (module in javaFXModules) {
             implementation("org.openjfx:javafx-$module:$javaFxVersion:$platform")
@@ -53,11 +55,11 @@ dependencies {
 
 tasks.withType<Test> {
     // Enables JUnit 5 Jupiter module
-    useJUnitPlatform()
+    //useJUnitPlatform()
 }
 
 application {
     // Define the main class for the application
 
-    mainClass.set("it.unibo.pixArt.App")
+    mainClass.set("it.unibo.pixArt.PixArt")
 }
