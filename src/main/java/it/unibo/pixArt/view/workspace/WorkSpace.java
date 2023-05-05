@@ -13,6 +13,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ListView;
@@ -57,7 +58,6 @@ public class WorkSpace extends AbstractFXView {
         this.logics = new WorkSpaceLogic(this.getController().getModel().getProject().getAllFrames().get(0).getRows(),
                 this.getController().getModel().getProject().getAllFrames().get(0).getColumns());
         root.setStyle(BACKGROUND_COLOR);
-        getStage().setFullScreen(true);
         root.setPadding(new Insets(5));
         colorPicker.prefWidthProperty().bind(rightPane.widthProperty());
         swapper.prefWidthProperty().bind(rightPane.widthProperty());
@@ -68,7 +68,7 @@ public class WorkSpace extends AbstractFXView {
             public void handle(final ActionEvent event) {
                 final var button = (Button) event.getSource();
                 logics.changeState();
-                button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + CenterPane.FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+                button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
                 getController().getModel().getProject().getAllFrames().get(0).getPixels().forEach(p -> {
                     if (p.comparePixel(new ImplPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button)))) {
                         p.setColor(new Color(colorPicker.getValue().getRed(), colorPicker.getValue().getGreen(), colorPicker.getValue().getBlue(), colorPicker.getValue().getOpacity()));
@@ -86,18 +86,20 @@ public class WorkSpace extends AbstractFXView {
                 .setGridLinesVisible(true)
                 .setAction(e).build().get();
         this.root.setCenter(center);
+        root.getChildren().forEach(c -> setBackGroundStyle(c, "yellow"));
+        setBackGroundStyle(root.getCenter(), "black");
 
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             if (logics.isDrawing()) {
                 final var button = (Button) event.getSource();
-                button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + CenterPane.FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+                button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             }
         }));
 
         center.alignmentProperty().set(Pos.CENTER);
         center.prefWidthProperty().bind(center.heightProperty());
         center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty().add(frames.heightProperty())));
-        rightPane.getChildren().forEach(c -> c.setStyle(FX_BACKGROUND_COLOR_START + "magenta"));
+        rightPane.getChildren().forEach(c -> setBackGroundStyle(c, "orange" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
 
 
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel())).build().get());
@@ -109,6 +111,10 @@ public class WorkSpace extends AbstractFXView {
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("AbilityTester").setEventH(event -> secondStage.show()).build().get());
 
 
+    }
+
+    private void setBackGroundStyle(final Node node, final String color) {
+        node.setStyle(FX_BACKGROUND_COLOR_START + color);
     }
 
     @FXML
