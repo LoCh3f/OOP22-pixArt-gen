@@ -24,10 +24,12 @@ val javaFXModules = listOf(
         "controls",
         "fxml",
         "swing",
-        "graphics"
+        "graphics",
+        "media"
 )
 
 val supportedPlatforms = listOf("linux", "mac", "win") // All required for OOP
+
 
 dependencies {
     // Suppressions for SpotBugs
@@ -38,7 +40,7 @@ dependencies {
     // implementation("com.google.guava:guava:28.1-jre")
 
     // JavaFX: comment out if you do not need them
-    val javaFxVersion = 15
+    val javaFxVersion = 17
     for (platform in supportedPlatforms) {
         for (module in javaFXModules) {
             implementation("org.openjfx:javafx-$module:$javaFxVersion:$platform")
@@ -59,5 +61,5 @@ tasks.withType<Test> {
 application {
     // Define the main class for the application
 
-    mainClass.set("it.unibo.pixArt.App")
+    mainClass.set("it.unibo.pixArt.PixArt")
 }
