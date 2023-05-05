@@ -107,12 +107,19 @@ public class WorkSpace extends AbstractFXView {
         final var testerImageView = (ImageView) secondRoot.getCenter();
         testerImageView.setImage(new Image(IMAGE_PATH + IMAGE_VERY_GOOD));
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("AbilityTester").setEventH(event -> secondStage.show()).build().get());
-        
+
 
     }
 
     private void setBackGroundStyle(final Node node, final String color) {
         node.setStyle(FX_BACKGROUND_COLOR_START + color);
+    }
+
+
+    @FXML
+    private void discardMatrix() {
+        final var grid = (GridPane) this.root.getCenter();
+        grid.getChildren().forEach(b -> b.setStyle(FX_BACKGROUND_COLOR_START + "white" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
     }
 
     @FXML
