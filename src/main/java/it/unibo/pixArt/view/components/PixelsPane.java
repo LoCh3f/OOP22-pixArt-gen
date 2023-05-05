@@ -8,33 +8,32 @@ import javafx.scene.layout.GridPane;
 import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BORDER_COLOR;
 import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BORDER_WIDTH;
 
-public class CenterPane {
+public class PixelsPane extends GridPane {
 
-    private final GridPane matrix = new GridPane();
 
     private static final Double MAX_SIZE = 900.0;
 
 
-    private CenterPane(final int rows,
+    private PixelsPane(final int rows,
                        final int columns,
                        final boolean lineVisible,
                        final EventHandler<ActionEvent> e) {
-
-        this.matrix.setGridLinesVisible(lineVisible);
-        this.matrix.setMinSize(Double.MIN_VALUE, Double.MIN_VALUE);
-        this.matrix.setMaxSize(MAX_SIZE, MAX_SIZE);
+        super();
+        this.setGridLinesVisible(lineVisible);
+        this.setMinSize(Double.MIN_VALUE, Double.MIN_VALUE);
+        this.setMaxSize(MAX_SIZE, MAX_SIZE);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 final var b = new Button();
                 b.setOnAction(e);
                 b.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
-                b.prefWidthProperty().bind(matrix.widthProperty().divide(columns));
-                b.prefHeightProperty().bind(matrix.heightProperty().divide(rows));
+                b.prefWidthProperty().bind(widthProperty().divide(columns));
+                b.prefHeightProperty().bind(heightProperty().divide(rows));
                 b.setMinSize(Double.MIN_VALUE, Double.MIN_VALUE);
-                this.matrix.add(b, j, i);
+                this.add(b, j, i);
             }
         }
-        this.matrix.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+        setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
     }
 
     public static class GridPaneBuilder {
@@ -75,14 +74,12 @@ public class CenterPane {
             return this;
         }
 
-        public CenterPane build() {
+        public PixelsPane build() {
 
-            return new CenterPane(this.rows, this.columns, this.lineVisible, this.e);
+            return new PixelsPane(this.rows, this.columns, this.lineVisible, this.e);
         }
 
     }
 
-    public GridPane get() {
-        return this.matrix;
-    }
+
 }

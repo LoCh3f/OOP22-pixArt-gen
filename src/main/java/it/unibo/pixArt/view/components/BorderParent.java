@@ -1,28 +1,21 @@
 package it.unibo.pixArt.view.components;
 
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
-public class BorderParent implements ParentGetter {
-    private final Parent root;
+public class BorderParent extends BorderPane {
 
-    private BorderParent(final Node right, final Node left,
-                         final Node bottom, final Node top,
-                         final Node center) {
-        final var pane = new BorderPane();
-        pane.setCenter(center);
-        pane.setBottom(bottom);
-        pane.setTop(top);
-        pane.setLeft(left);
-        pane.setRight(right);
-        this.root = pane;
+
+    private BorderParent(final Node right, final Node left, final Node bottom, final Node top, final Node center) {
+        super();
+        this.setCenter(center);
+        this.setBottom(bottom);
+        this.setTop(top);
+        this.setLeft(left);
+        this.setRight(right);
+
     }
 
-    @Override
-    public Parent get() {
-        return this.root;
-    }
 
     public static class Builder {
         private Node right = null;
