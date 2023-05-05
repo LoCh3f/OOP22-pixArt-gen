@@ -5,20 +5,11 @@ import it.unibo.pixArt.model.grid.PixelGrid;
 import java.util.List;
 
 public interface Project {
-    /**
-     * @param newName the project's name
-     */
-    public void setName(final String newName);
 
     /**
      * @return the project's name
      */
     public String getName();
-
-    /**
-     * @param path project's path
-     */
-    public void setPath(final String path);
 
     /**
      * @return the project's path
@@ -39,11 +30,6 @@ public interface Project {
      * @return String format of a project.
      */
     public String toString();
-
-    /**
-     * @return size(num of rows, columns) of each frame.
-     */
-    public Integer getSize();
 
     /**
      * @return string format of the file format for each image of each frame

@@ -7,6 +7,7 @@ import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.project.FileTypes;
 import it.unibo.pixArt.model.project.Project;
+import it.unibo.pixArt.model.project.ProjectBuilderImpl;
 import it.unibo.pixArt.model.project.ProjectImpl;
 
 public class SettingsControllerImpl extends SimpleController implements SettingsController {
@@ -22,7 +23,8 @@ public class SettingsControllerImpl extends SimpleController implements Settings
 
     @Override
     public void createProject(final String name, final String path, final String fileType, final int size) {
-        this.getModel().setProject(new ProjectImpl(name,path,fileType,size));
+       // final Project newProject = new ProjectBuilderImpl().projectName(name).path(path).fileType(fileType).frames(size).build();
+        this.getModel().setProject(new ProjectBuilderImpl().projectName(name).path(path).fileType(fileType).frames(size).build());
     }
 
     @Override
