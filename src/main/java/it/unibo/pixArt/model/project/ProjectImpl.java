@@ -11,32 +11,20 @@ public class ProjectImpl implements Project {
     private String projectName;
     private String path;
     private String fileType;
-    private int size;
     private List<PixelGrid> frames;
+    
 
-    public ProjectImpl(String projectName,String path,String fileType, int size) {
+
+    public ProjectImpl(final String projectName, final String path, final String fileType, final List<PixelGrid> frames) {
         this.projectName = projectName;
         this.path = path;
         this.fileType = fileType;
-        this.size = size;
-        this.frames = new LinkedList<>();
-        /*Build the first first grid */
-        this.frames.add(0, new PixelMatrix.MatrixBuilder().setColumns(size).setRows(size).build());
-    }
-
-    @Override
-    public void setName(String newName) {
-        this.projectName = newName;
+        this.frames = frames;
     }
 
     @Override
     public String getName() {
         return this.projectName;
-    }
-
-    @Override
-    public void setPath(String path) {
-        this.path = path;
     }
 
     @Override
@@ -53,13 +41,7 @@ public class ProjectImpl implements Project {
     public String toString() {
         return "Project name:\t" + this.projectName
         + "\n" + "Path name:\t" + this.path
-        + "\n" + "File type:\t" + this.fileType
-        + "\n" + "Size\t" + this.size;
-    }
-    
-    @Override
-    public Integer getSize() {
-        return this.size;
+        + "\n" + "File type:\t" + this.fileType;
     }
 
     @Override
@@ -69,7 +51,9 @@ public class ProjectImpl implements Project {
 
     @Override
     public void addNewFrame() {
-        this.frames.add(this.frames.size() - 1, new PixelMatrix.MatrixBuilder().setColumns(size).setRows(size).build());
+        this.frames.add(this.frames.size() - 1, new PixelMatrix.MatrixBuilder()
+                                            .setColumns(getAllFrames().get(0).getColumns())
+                                            .setRows(getAllFrames().get(0).getRows()).build());
     }
 
     public static class Builder {

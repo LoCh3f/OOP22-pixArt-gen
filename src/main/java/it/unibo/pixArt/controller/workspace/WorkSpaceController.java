@@ -40,10 +40,4 @@ public interface WorkSpaceController extends Controller {
      */
     public void addNewFrame();
 
-    
-    /*TO BE DONE:
-     * 2) Method to save the file.
-     * 4) Method to delete current frame.
-     */
-
 }
