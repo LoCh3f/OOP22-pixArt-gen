@@ -107,7 +107,7 @@ public class WorkSpace extends AbstractFXView {
         final var testerImageView = (ImageView) secondRoot.getCenter();
         testerImageView.setImage(new Image(IMAGE_PATH + IMAGE_VERY_GOOD));
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("AbilityTester").setEventH(event -> secondStage.show()).build().get());
-
+        
 
     }
 
