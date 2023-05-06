@@ -39,7 +39,7 @@ public enum Directions {
     /**
      * @return list of directions as string.
      */
-    public static List<String> getListDirections() {
-       return Stream.of(values()).map(e -> e.getName()).toList();
+    public static List<Directions> getListDirections() {
+       return Stream.of(values()).toList();
     }
 }

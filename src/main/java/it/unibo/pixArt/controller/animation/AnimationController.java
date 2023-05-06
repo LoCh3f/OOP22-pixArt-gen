@@ -24,7 +24,7 @@ public interface AnimationController extends Controller {
     /**Method to set wether the animation is on or off.
      * 
      */
-    public void setAnimationPause();
+    public void setAnimationIsRunning();
 
     /**
      * @return the list of all available sizes for the image preview.
@@ -34,6 +34,11 @@ public interface AnimationController extends Controller {
     /**
      * @return a list containing the available directions for an animation.
      */
-    public List<String> getListDirections();
+    public List<Directions> getListDirections();
+
+    /**
+     * @return
+     */
+    public HistoryFrame getCurrentImage();
 
 }
