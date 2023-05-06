@@ -38,7 +38,7 @@ public class ImplPixel implements Pixel {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         final var pixel = (Pixel) obj;
         return comparePixel(pixel) && 0 == pixel.getColor().toString().compareTo(this.color.toString());
     }

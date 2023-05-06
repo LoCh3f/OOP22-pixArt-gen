@@ -56,32 +56,49 @@ public class PixelMatrix implements PixelGrid {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(final Consumer<Pixel> consumer, Pixel pixel) {
         this.pixels.forEach(consumer);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getRows() {
         return this.rows;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getColumns() {
         return this.columns;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public FrameState getMemento() {
         return this.memento;
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Set<Pixel> getPixels() {
         return new HashSet<>(this.pixels);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setPixel(Set<Pixel> pixels) {
         for (Pixel pixel : pixels) {

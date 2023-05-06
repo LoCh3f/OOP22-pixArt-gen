@@ -13,15 +13,31 @@ public interface PixelGrid {
      */
     Set<Pixel> getPixels();
 
+    /**
+     * @param pixels the set of pixels that must be copied;
+     */
     void setPixel(final Set<Pixel> pixels);
 
 
+    /**
+     * @param consumer change to apply to a pixel,
+     * @param pixel    is the new state of the pixel that need to be consumed;
+     */
     public void update(final Consumer<Pixel> consumer, Pixel pixel);
 
+    /**
+     * @return the rows of the grid;
+     */
     int getRows();
 
+    /**
+     * @return the columns of the grid,
+     */
     int getColumns();
 
+    /**
+     * @return the memento field;
+     */
     FrameState getMemento();
 
 
