@@ -21,5 +21,11 @@ public interface Pixel {
      */
     void setColor(final Color color);
 
+    /**
+     * @param pixel to compare to this pixel,
+     * @return true if pixel coordinates are the same otherwise false;
+     */
     boolean comparePixel(final Pixel pixel);
+
+
 }

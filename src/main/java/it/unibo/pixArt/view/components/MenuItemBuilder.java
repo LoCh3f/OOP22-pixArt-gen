@@ -4,13 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
 
-public class MenuItemBuilder {
+public class MenuItemBuilder extends MenuItem {
 
-    private MenuItem b;
 
     private MenuItemBuilder(final EventHandler<ActionEvent> e, final String name) {
-        this.b = new MenuItem(name);
-        this.b.setOnAction(e);
+        super(name);
+        this.setOnAction(e);
     }
 
     public static class Builder {
@@ -34,10 +33,6 @@ public class MenuItemBuilder {
         }
 
 
-    }
-
-    public MenuItem get() {
-        return this.b;
     }
 
 

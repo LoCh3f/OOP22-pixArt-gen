@@ -3,8 +3,8 @@ package it.unibo.pixArt.view.workspace;
 import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.components.BorderParent;
-import it.unibo.pixArt.view.components.CenterPane;
 import it.unibo.pixArt.view.components.MenuItemBuilder;
+import it.unibo.pixArt.view.components.PixelsPane;
 import it.unibo.pixArt.view.components.StageDistribution;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
@@ -47,10 +47,7 @@ public class WorkSpace extends AbstractFXView {
     private Button swapper;
     @FXML
     private BorderPane rightPane;
-    @FXML
-    private Button discard;
-    @FXML
-    private Button undo;
+
 
     private Logic logics;
 
@@ -78,19 +75,21 @@ public class WorkSpace extends AbstractFXView {
             }
         };
         rightPane.getChildren().forEach(n -> n.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
+        menubar.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+
         final var rows = this.getController().getModel().getProject().getAllFrames().get(0).getRows();
         final var columns = this.getController().getModel().getProject().getAllFrames().get(0).getColumns();
 
-        final GridPane center = new CenterPane.GridPaneBuilder()
+        final GridPane center = new PixelsPane.GridPaneBuilder()
                 .setColumns(columns).setRows(rows)
                 .setGridLinesVisible(true)
-                .setAction(e).build().get();
+                .setAction(e).build();
         this.root.setCenter(center);
+
 
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             if (logics.isDrawing()) {
                 final var button = (Button) event.getSource();
-
                 button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             }
         }));
@@ -100,13 +99,13 @@ public class WorkSpace extends AbstractFXView {
         center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty().add(frames.heightProperty())));
 
 
-        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel())).build().get());
+        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel())).build());
 
-        final Stage secondStage = new StageDistribution.ParallelStage(new BorderParent.Builder().setCenter(new ImageView()).build().get(), "AbilityTester", new Image(IMAGE_PATH + MAIN_ICON));
+        final Stage secondStage = new StageDistribution.ParallelStage(new BorderParent.Builder().setCenter(new ImageView()).build(), "AbilityTester", new Image(IMAGE_PATH + MAIN_ICON));
         final var secondRoot = (BorderPane) secondStage.getScene().getRoot();
         final var testerImageView = (ImageView) secondRoot.getCenter();
         testerImageView.setImage(new Image(IMAGE_PATH + IMAGE_VERY_GOOD));
-        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("AbilityTester").setEventH(event -> secondStage.show()).build().get());
+        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("AbilityTester").setEventH(event -> secondStage.show()).build());
 
 
     }
@@ -115,8 +114,22 @@ public class WorkSpace extends AbstractFXView {
         node.setStyle(FX_BACKGROUND_COLOR_START + color);
     }
 
+
+    @FXML
+    private void discardMatrix() {
+        final var grid = (GridPane) this.root.getCenter();
+        grid.getChildren().forEach(b -> b.setStyle(FX_BACKGROUND_COLOR_START + "transparent" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
+    }
+
     @FXML
     private void changeImage() {
-        this.templateView.setImage(new Image(logics.getImagePath()));
+        final var string = logics.getImagePath();
+        System.out.println(string);
+        this.templateView.setImage(new Image(string));
+    }
+
+    @FXML
+    private void rubberActivate() {
+        colorPicker.setValue(Color.TRANSPARENT);
     }
 }

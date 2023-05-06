@@ -10,7 +10,7 @@ public class FXStyleVariable {
 
     public static final String FX_BORDER_WIDTH = "-fx-border-width:1";
 
-    public static final String IMAGE_PATH = "image" + File.separator;
+    public static final String IMAGE_PATH = "image" + File.separatorChar;
 
     public static final String IMAGE_BAD = "bad.jpg";
 
