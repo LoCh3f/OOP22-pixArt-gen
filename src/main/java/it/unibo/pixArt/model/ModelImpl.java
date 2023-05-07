@@ -9,8 +9,8 @@ public class ModelImpl implements Model {
     private Project project;
     private User user;
 
-    public ModelImpl(final String name, final String path, final Project project) {
-        this.user = new UserImpl(name, path);
+    public ModelImpl(final String name, final String password, final String path, final Project project) {
+        this.user = new UserImpl(name, password, path);
         this.project = project;
     }
 
@@ -21,8 +21,8 @@ public class ModelImpl implements Model {
     }
 
     @Override
-    public void setUser(final String name, final String path) {
-        this.user = new UserImpl(name, path);
+    public void setUser(final String name, final String password, final String path) {
+        this.user = new UserImpl(name, password, path);
     }
 
     @Override

@@ -22,6 +22,6 @@ public class App extends Application {
         primaryStage.getIcons().add(new Image("image/mainIcon.png"));
 
 
-        PageLoader.getInstance().switchPage(primaryStage, Pages.MENU, new ModelImpl(null, null, null));
+        PageLoader.getInstance().switchPage(primaryStage, Pages.MENU, new ModelImpl(null, null, null, null));
     }
 }
