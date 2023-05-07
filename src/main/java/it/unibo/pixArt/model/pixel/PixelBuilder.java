@@ -16,22 +16,22 @@ public class PixelBuilder extends ImplPixel {
 
         private Color color = Color.TRANSPARENT;
 
-        PxlBuilder setX(final Integer x) {
+        public PxlBuilder setX(final Integer x) {
             this.x = x;
             return this;
         }
 
-        PxlBuilder setY(final Integer y) {
+        public PxlBuilder setY(final Integer y) {
             this.y = y;
             return this;
         }
 
-        PxlBuilder setColor(final Color color) {
+        public PxlBuilder setColor(final Color color) {
             this.color = color;
             return this;
         }
 
-        PixelBuilder build() throws IllegalStateException {
+        public PixelBuilder build() throws IllegalStateException {
             if (this.x < -1 || this.y < -1) {
                 throw new IllegalStateException(" X and Y can't be < 0");
             }
