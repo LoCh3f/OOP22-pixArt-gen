@@ -1,12 +1,12 @@
 package it.unibo.pixArt.view.workspace;
 
+import it.unibo.pixArt.model.pixel.Pixel;
+import it.unibo.pixArt.utilities.AbstractGenericMirror;
+import it.unibo.pixArt.utilities.Mirror;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 import static it.unibo.pixArt.utilities.FXStyleVariable.*;
 
@@ -15,11 +15,11 @@ public class WorkSpaceLogic implements Logic {
 
     private boolean isDrawing = false;
 
-    public static final Set<String> imagePaths = new HashSet<String>(List.of(IMAGE_PATH + TOAD_IMAGE, IMAGE_PATH + SONIC_IMAGE, IMAGE_PATH + HOMER_IMAGE, IMAGE_PATH + FLOPPY_BIRD));
+    public static final Set<String> imagePaths = new HashSet<>(List.of(IMAGE_PATH + TOAD_IMAGE, IMAGE_PATH + SONIC_IMAGE, IMAGE_PATH + HOMER_IMAGE, IMAGE_PATH + FLOPPY_BIRD));
 
     private final int columns;
     private final int rows;
-
+    private final Mirror<Pixel> gridMirror = new AbstractGenericMirror<>();
 
     public WorkSpaceLogic(final int rows, final int columns) {
         this.rows = rows;
@@ -55,6 +55,19 @@ public class WorkSpaceLogic implements Logic {
     @Override
     public String getImagePath() {
         return imagePaths.stream().toList().get(new Random().nextInt(0, imagePaths.size()));
+    }
+
+    public String test(final Collection<Pixel> userGrid) {
+        return null; //templatePath(this.gridMirror.getDifference(   ,userGrid).size());
+    }
+
+    private String templatePath(final int difference) {
+        return switch (difference) {
+            case 0 -> IMAGE_PATH + IMAGE_VERY_GOOD;
+            case 10 -> IMAGE_PATH + IMAGE_GOOD;
+            case 30 -> IMAGE_PATH + IMAGE_BAD;
+            default -> IMAGE_PATH + IMAGE_VERY_BAD;
+        };
     }
 
 

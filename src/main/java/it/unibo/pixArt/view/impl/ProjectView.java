@@ -28,7 +28,7 @@ public class ProjectView extends AbstractFXView {
 
     @FXML
     private ListView<String> listView = new ListView<>();
-    private UserImpl user = new UserImpl(null, System.getProperty("user.dir"));
+    private UserImpl user = new UserImpl(null, null, System.getProperty("user.dir"));
     private String selectedFolder;
 
     @Override

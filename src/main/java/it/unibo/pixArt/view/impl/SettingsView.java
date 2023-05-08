@@ -54,7 +54,7 @@ public class SettingsView extends AbstractFXView {
 
     @FXML
     public void discardProject(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, new ModelImpl(null, null, null));
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, new ModelImpl(null, null, null, null));
     }
 
     @Override

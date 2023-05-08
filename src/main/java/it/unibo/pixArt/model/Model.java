@@ -15,7 +15,7 @@ public interface Model {
      * @param name of the user
      * @param path where to save the files created by the user.
      */
-    void setUser(final String name, final String path);
+    void setUser(final String name, final String password, final String path);
 
     /**
      * @return the project the user is currently working on(null if no project has been selected).

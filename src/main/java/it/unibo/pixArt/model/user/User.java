@@ -11,4 +11,10 @@ public interface User {
      * @param name to set for the user
      */
     void setName(final String name);
+
+    /**
+     * @return the password of the user
+     */
+    String getPassword();
+
 }
