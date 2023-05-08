@@ -1,18 +1,23 @@
 package it.unibo.pixArt.controller.workspace;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.grid.PixelGrid;
+import it.unibo.pixArt.model.historyframe.HistoryFrame;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.tool.AbstractTool;
+import it.unibo.pixArt.model.tool.ToolEnum;
 import it.unibo.pixArt.model.tool.ToolFactory;
 import it.unibo.pixArt.model.tool.ToolFactoryImpl;
 import javafx.scene.paint.Color;
 
 public class WorkSpaceControllerImpl extends SimpleController implements WorkSpaceController {
-    private PixelGrid currentframe;
+    private PixelGrid currentframe; //= this.getModel().getProject().getAllFrames().get(0);
     private final ToolFactory toolFactory = new ToolFactoryImpl();
     private AbstractTool tool;
 
@@ -50,11 +55,23 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
         setCurrentFrame(this.getModel().getProject().getAllFrames().size() - 1);
         //this.view.updateView(result); METHOD TO UPDATE VIEW.
     }
+
+    @Override
+    public List<HistoryFrame> getHistoryFrames() {//I need a method in the PixelGrid to return its HistoryFrame.
+       // return this.getModel().getProject().getAllFrames().stream().map(e -> e.getHistoryFrame()).toList();
+       return null;
+    }
+
+    @Override
+    public List<ToolEnum> getTools() {
+        return Stream.of(ToolEnum.values()).toList();
+    }
+
     
       /*TO BE DONE:
      * Method to save the file.
      * Method to delete current frame.
-     * Method to get all history frames and send them in the view.
+     * Method to get all history frames and send them in the view.---ALMOST DONE.
      */
     
 }

@@ -44,7 +44,8 @@ public class AnimationView extends AbstractFXView {
     }
 
     public void displayImage(final String path) {
-        imageContainer.setImage(new Image(path));
+        //imageContainer.setImage(new Image(path));
+        
     }
 
     private AnimationController getAnimationController() {

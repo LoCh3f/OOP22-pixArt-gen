@@ -2,9 +2,12 @@ package it.unibo.pixArt.controller.workspace;
 
 import it.unibo.pixArt.controller.Controller;
 import it.unibo.pixArt.model.grid.PixelGrid;
+import it.unibo.pixArt.model.historyframe.HistoryFrame;
 import it.unibo.pixArt.model.pixel.Pixel;
+import it.unibo.pixArt.model.tool.ToolEnum;
 import javafx.scene.paint.Color;
 
+import java.util.List;
 import java.util.Set;
 
 public interface WorkSpaceController extends Controller {
@@ -39,5 +42,15 @@ public interface WorkSpaceController extends Controller {
      * Method to create and add a new frame in the list of frames.
      */
     public void addNewFrame();
+
+    /**
+     * @return list of all the historyframes of the project
+     */
+    public List<HistoryFrame> getHistoryFrames();
+
+    /**
+     * @return List containing all the available tools.
+     */
+    public List<ToolEnum> getTools();
 
 }
