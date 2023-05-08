@@ -17,4 +17,5 @@ public interface Logic {
     String getImagePath();
 
     String test(final Collection<Pixel> userGrid);
+
 }
