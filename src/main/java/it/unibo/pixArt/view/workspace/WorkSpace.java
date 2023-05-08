@@ -41,14 +41,13 @@ public class WorkSpace extends AbstractFXView {
     private ListView<ImageView> frames;
     @FXML
     private VBox leftPane;
+
     @FXML
     private ImageView templateView;
     @FXML
     private Button swapper;
     @FXML
     private BorderPane rightPane;
-
-
     private Logic logics;
 
 
@@ -59,6 +58,11 @@ public class WorkSpace extends AbstractFXView {
                 this.getController().getModel().getProject().getAllFrames().get(0).getColumns());
         colorPicker.prefWidthProperty().bind(rightPane.widthProperty());
         swapper.prefWidthProperty().bind(rightPane.widthProperty());
+
+        final Stage secondStage = new StageDistribution.ParallelStage(new BorderParent.Builder().setCenter(new ImageView()).build(), "AbilityTester", new Image(IMAGE_PATH + MAIN_ICON));
+        final var secondRoot = (BorderPane) secondStage.getScene().getRoot();
+        final var testerImageView = (ImageView) secondRoot.getCenter();
+        testerImageView.setImage(new Image(IMAGE_PATH + IMAGE_VERY_BAD));
 
         final var e = new EventHandler<ActionEvent>() {
             @Override
@@ -92,6 +96,9 @@ public class WorkSpace extends AbstractFXView {
                 final var button = (Button) event.getSource();
                 button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             }
+            if (secondStage.isShowing()) {
+                testerImageView.setImage(new Image(logics.test(Parser.GridParser.parseGrid(center))));
+            }
         }));
 
         center.alignmentProperty().set(Pos.CENTER);
@@ -101,10 +108,7 @@ public class WorkSpace extends AbstractFXView {
 
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel())).build());
 
-        final Stage secondStage = new StageDistribution.ParallelStage(new BorderParent.Builder().setCenter(new ImageView()).build(), "AbilityTester", new Image(IMAGE_PATH + MAIN_ICON));
-        final var secondRoot = (BorderPane) secondStage.getScene().getRoot();
-        final var testerImageView = (ImageView) secondRoot.getCenter();
-        testerImageView.setImage(new Image(IMAGE_PATH + IMAGE_VERY_GOOD));
+
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("AbilityTester").setEventH(event -> secondStage.show()).build());
 
 
@@ -123,9 +127,7 @@ public class WorkSpace extends AbstractFXView {
 
     @FXML
     private void changeImage() {
-        final var string = logics.getImagePath();
-        System.out.println(string);
-        this.templateView.setImage(new Image(string));
+        this.templateView.setImage(new Image(logics.getImagePath()));
     }
 
     @FXML

@@ -17,4 +17,6 @@ public class AbstractGenericMirror<X> implements Mirror<X> {
     public Set<X> getDifference(final Collection<X> fromM, final Collection<X> fromV) {
         return fromM.stream().filter(m -> fromV.stream().anyMatch(v -> !v.equals(m))).collect(Collectors.toSet());
     }
+
+
 }
