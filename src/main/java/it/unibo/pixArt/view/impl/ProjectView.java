@@ -2,7 +2,8 @@ package it.unibo.pixArt.view.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -39,7 +40,7 @@ public class ProjectView extends AbstractFXView {
         listView.getItems().clear();
         listView.getItems().addAll(Stream.of((new File(user.getPathToFile()).listFiles()))
                                   .filter(file -> file.isDirectory() && !file.isHidden())
-                                  .map(File::getName).collect(Collectors.toCollection(ArrayList::new)));
+                                  .map(File::getName).collect(Collectors.toList()));
 
         MultipleSelectionModel<String> selModel = listView.getSelectionModel();
         selModel.selectedItemProperty().addListener(new ChangeListener<String>() {

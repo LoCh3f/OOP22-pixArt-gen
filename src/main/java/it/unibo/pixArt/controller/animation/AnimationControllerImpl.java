@@ -1,15 +1,11 @@
 package it.unibo.pixArt.controller.animation;
 
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 import it.unibo.pixArt.model.historyframe.HistoryFrameImpl;
 import it.unibo.pixArt.view.animation.AnimationView;
-import javafx.scene.control.skin.TextInputControlSkin.Direction;
 
 
 public class AnimationControllerImpl extends SimpleController implements AnimationController {
@@ -27,8 +23,9 @@ public class AnimationControllerImpl extends SimpleController implements Animati
         public void run() {
             final HistoryFrame currentFrame = getCurrentImage();
             getAnimationView().displayImage(currentFrame.getPath());
+            System.out.println("ciao");
             try {
-                Thread.sleep(currentFrame.getAnimationDuration());
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -48,6 +45,10 @@ public class AnimationControllerImpl extends SimpleController implements Animati
 
     @Override
     public void setAnimationIsRunning() {
+        if(!this.isRunning) {
+            final Thread th = new Animator();
+            th.start();
+        }
         this.isRunning = !this.isRunning;
     }
 

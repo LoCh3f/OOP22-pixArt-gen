@@ -11,7 +11,6 @@ public class ProjectImpl implements Project {
     private List<PixelGrid> frames;
     
 
-
     public ProjectImpl(final String projectName, final String path, final String fileType, final List<PixelGrid> frames) {
         this.projectName = projectName;
         this.path = path;
