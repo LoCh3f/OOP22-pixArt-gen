@@ -30,7 +30,6 @@ public class JsonFileHandler {
                         .registerTypeAdapter(FrameState.class, InterfaceSerializer.interfaceSerializer(FrameStateImpl.class))
                         .create();
     private char fileSeparator = File.separatorChar;
-    private User user = new UserImpl("user1", System.getProperty("user.dir"));
     
     private static class LazyHolder{
         private static final JsonFileHandler SINGLETON = new JsonFileHandler();

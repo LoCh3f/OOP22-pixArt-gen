@@ -19,8 +19,8 @@ final class InterfaceSerializer<T> implements JsonSerializer<T>, JsonDeserialize
     @Override
     public JsonElement serialize(final T value, final Type type, final JsonSerializationContext context) {
         final Type targetType = value != null 
-                ? value.getClass() // `type` can be an interface so Gson would not even try to traverse the fields, just pick the implementation class 
-                : type;            // if not, then delegate further
+                ? value.getClass() 
+                : type;            
         return context.serialize(value, targetType);
     }
 
