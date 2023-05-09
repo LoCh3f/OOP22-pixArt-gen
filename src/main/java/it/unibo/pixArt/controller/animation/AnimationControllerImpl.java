@@ -16,10 +16,10 @@ public class AnimationControllerImpl extends SimpleController implements Animati
     private static final String TOAD_IMAGE = "/image/toad.png";
     private static final String SONIC_IMAGE = "/image/sonic.jpg";
     private static final String HOMER_IMAGE = "/image/homer.jpg";
-    static final HistoryFrame h1 = new HistoryFrameImpl(TOAD_IMAGE);
-    static final HistoryFrame h2 = new HistoryFrameImpl(HOMER_IMAGE);
-    static final HistoryFrame h3 = new HistoryFrameImpl(SONIC_IMAGE);
-    public static final List<HistoryFrame> imagePaths = new LinkedList<HistoryFrame>(List.of(h1,h2,h3));
+    HistoryFrame h1 = new HistoryFrameImpl(TOAD_IMAGE);
+    HistoryFrame h2 = new HistoryFrameImpl(HOMER_IMAGE);
+    HistoryFrame h3 = new HistoryFrameImpl(SONIC_IMAGE);
+    public final List<HistoryFrame> imagePaths = new LinkedList<HistoryFrame>(List.of(h1,h2,h3));
 
     public AnimationControllerImpl() {
         //Initialize the historyFrames list by getting each HistoryFrame from the project.
@@ -50,8 +50,7 @@ public class AnimationControllerImpl extends SimpleController implements Animati
     @Override
     public void setFrameDuration(final int frameIndex, final int duration) {
         //this.getModel().getProject().getAllFrames().get(frameIndex).getHistoryFrame().setAnimationDuration(duration);
-        //imagePaths.get(frameIndex).setAnimationDuration(duration);
-        System.out.println(frameIndex + ""+duration);
+        imagePaths.get(frameIndex).setAnimationDuration(duration);
     }
 
     @Override

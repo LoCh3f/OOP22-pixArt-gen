@@ -50,6 +50,7 @@ public class AnimationView extends AbstractFXView {
 
     @FXML
     public void setDuration() {
+        //System.out.println(selectedFrame.getText() + frameDurationField.getText());
         this.getAnimationController().setFrameDuration(Integer.parseInt(selectedFrame.getText()), Integer.parseInt(frameDurationField.getText()));
     }
 
@@ -68,7 +69,7 @@ public class AnimationView extends AbstractFXView {
             @Override
             public void changed(ObservableValue<? extends ImageView> observable, ImageView oldValue, ImageView newValue) {
                 imageContainer.setImage(frameList.getSelectionModel().getSelectedItem().getImage());
-                selectedFrame.setText("Frame: " + frameList.getSelectionModel().getSelectedIndex());
+                selectedFrame.setText(Integer.toString(frameList.getSelectionModel().getSelectedIndex()));
                 selectedFrameDuration.setText(getAnimationController().getHistoryFrames().get(frameList.getSelectionModel().getSelectedIndex()).getAnimationDuration() + "ms");
             }
            
