@@ -1,5 +1,6 @@
 package it.unibo.pixArt.controller.animation;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import it.unibo.pixArt.controller.SimpleController;
@@ -11,8 +12,14 @@ import it.unibo.pixArt.view.animation.AnimationView;
 public class AnimationControllerImpl extends SimpleController implements AnimationController {
     private Boolean isRunning = false;
     private Directions animationDirection = Directions.FORWARD;
-    private int index;
-   // public static final Set<String> imagePaths = new HashSet<String>(List.of(IMAGE_PATH + TOAD_IMAGE, IMAGE_PATH + SONIC_IMAGE, IMAGE_PATH + HOMER_IMAGE, IMAGE_PATH + FLOPPY_BIRD));
+    private int index = 0;
+    private static final String TOAD_IMAGE = "/image/toad.png";
+    private static final String SONIC_IMAGE = "/image/sonic.jpg";
+    private static final String HOMER_IMAGE = "/image/homer.jpg";
+    static final HistoryFrame h1 = new HistoryFrameImpl(TOAD_IMAGE);
+    static final HistoryFrame h2 = new HistoryFrameImpl(HOMER_IMAGE);
+    static final HistoryFrame h3 = new HistoryFrameImpl(SONIC_IMAGE);
+    public static final List<HistoryFrame> imagePaths = new LinkedList<HistoryFrame>(List.of(h1,h2,h3));
 
     public AnimationControllerImpl() {
         //Initialize the historyFrames list by getting each HistoryFrame from the project.
@@ -21,14 +28,16 @@ public class AnimationControllerImpl extends SimpleController implements Animati
     private class Animator extends Thread {
         @Override
         public void run() {
-            final HistoryFrame currentFrame = getCurrentImage();
-            getAnimationView().displayImage(currentFrame.getPath());
-            System.out.println("ciao");
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            while(isRunning){
+                final HistoryFrame currentFrame = getCurrentImage();
+                getAnimationView().displayImage(currentFrame.getPath());
+        
+                try {
+                    Thread.sleep(currentFrame.getAnimationDuration());
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -41,11 +50,14 @@ public class AnimationControllerImpl extends SimpleController implements Animati
     @Override
     public void setFrameDuration(final int frameIndex, final int duration) {
         //this.getModel().getProject().getAllFrames().get(frameIndex).getHistoryFrame().setAnimationDuration(duration);
+        //imagePaths.get(frameIndex).setAnimationDuration(duration);
+        System.out.println(frameIndex + ""+duration);
     }
 
     @Override
     public void setAnimationIsRunning() {
         if(!this.isRunning) {
+            this.index = 0;
             final Thread th = new Animator();
             th.start();
         }
@@ -63,11 +75,18 @@ public class AnimationControllerImpl extends SimpleController implements Animati
     }
 
     @Override
-    public HistoryFrame getCurrentImage() {
+    public HistoryFrame getCurrentImage() { 
+        if(this.index == 3 || this.index == 0) {
+            this.index = 0;
+        }
         final int prev = this.index;
-        this.index = this.index + 1;
-        System.out.println(this.index);
-        return new HistoryFrameImpl("/ciao"); //this.getModel().getProject().getAllFrames().get(prev).getHistoryFrame();
+        this.index = this.index + animationDirection.getValue();
+        return imagePaths.get(prev); //this.getModel().getProject().getAllFrames().get(prev).getHistoryFrame();
+    }
+
+    @Override
+    public List<HistoryFrame> getHistoryFrames() {
+        return imagePaths;
     }
 
     private AnimationView getAnimationView() {
