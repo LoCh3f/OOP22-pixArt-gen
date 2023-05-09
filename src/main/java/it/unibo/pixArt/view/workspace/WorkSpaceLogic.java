@@ -61,6 +61,7 @@ public class WorkSpaceLogic implements Logic {
         return null; //templatePath(this.gridMirror.getDifference(   ,userGrid).size());
     }
 
+
     private String templatePath(final int difference) {
         return switch (difference) {
             case 0 -> IMAGE_PATH + IMAGE_VERY_GOOD;
@@ -69,6 +70,4 @@ public class WorkSpaceLogic implements Logic {
             default -> IMAGE_PATH + IMAGE_VERY_BAD;
         };
     }
-
-
 }
