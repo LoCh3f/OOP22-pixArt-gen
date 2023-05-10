@@ -24,7 +24,7 @@ import com.google.gson.reflect.TypeToken;
 
 public class UserDataStorageImpl implements UserDataStorage{
 
-    private final String USERDATAPATH; 
+    private final String USERDATAPATH = "/"; 
 
     private Type userListType = new TypeToken<List<User>>(){}.getType();
     private List<User> userList= new LinkedList<>();
@@ -40,7 +40,7 @@ public class UserDataStorageImpl implements UserDataStorage{
         }
     }
 
-    private void update() {
+    private void update() throws IOException {
         this.load();
         Gson gson= new Gson();
         String json = gson.toJson(userList, userListType);
@@ -50,20 +50,20 @@ public class UserDataStorageImpl implements UserDataStorage{
 
 
     @Override
-    public Optional<User> getUser(final String name) {
+    public Optional<User> getUser(final String name) throws IOException {
         this.load();
         return this.userList.stream().filter(u-> u.getName().equals(name)).findFirst();
     }
 
     @Override
-    public void addNewUser(final User user) {
+    public void addNewUser(final User user) throws IOException {
         this.load();
         this.userList.add(user);
         this.update();
     }
 
     @Override
-    public boolean exists(String name) {
+    public boolean exists(String name) throws IOException {
         this.load();
         return this.userList.stream().anyMatch(u->u.getName().equals(name));
     }

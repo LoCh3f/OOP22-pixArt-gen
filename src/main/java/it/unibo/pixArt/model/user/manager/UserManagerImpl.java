@@ -1,5 +1,6 @@
 package it.unibo.pixArt.model.user.manager;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import it.unibo.pixArt.model.user.User;
@@ -15,7 +16,7 @@ public class UserManagerImpl implements UserManager{
     }
 
     @Override
-    public Optional<User> login(String name, String password) {
+    public Optional<User> login(String name, String password) throws IOException {
 
         Optional<User> users = this.dataStorage.getUser(name);
         if (users.isEmpty()) {
@@ -27,7 +28,7 @@ public class UserManagerImpl implements UserManager{
     }
 
     @Override
-    public Optional<User> register(final String name, final String password, final String path) {
+    public Optional<User> register(final String name, final String password, final String path) throws IOException {
         
         //controlla se l'utente esiste
         //se già esiste ritorna un optional vuoto
