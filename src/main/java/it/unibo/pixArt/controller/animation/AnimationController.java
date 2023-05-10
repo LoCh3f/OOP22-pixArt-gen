@@ -1,6 +1,5 @@
 package it.unibo.pixArt.controller.animation;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import it.unibo.pixArt.controller.Controller;
@@ -37,8 +36,13 @@ public interface AnimationController extends Controller {
     public List<Directions> getListDirections();
 
     /**
-     * @return
+     * @return 
      */
     public HistoryFrame getCurrentImage();
+
+    /**
+     * @return
+     */
+    public List<HistoryFrame> getHistoryFrames();
 
 }

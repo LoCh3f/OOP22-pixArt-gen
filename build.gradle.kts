@@ -51,6 +51,10 @@ dependencies {
     // JUnit API and testing engine
     testImplementation("org.junit.jupiter:junit-jupiter-api:$jUnitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jUnitVersion")
+
+
+    //Gson library
+    implementation("com.google.code.gson:gson:2.10.1")
 }
 
 tasks.withType<Test> {
