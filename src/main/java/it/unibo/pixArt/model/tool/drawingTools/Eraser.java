@@ -1,23 +1,34 @@
 package it.unibo.pixArt.model.tool.drawingTools;
-
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
+import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.tool.AbstractDrawingTool;
+import it.unibo.pixArt.utilities.Pair;
 import javafx.scene.paint.Color;
 
 public class Eraser extends AbstractDrawingTool{
 
     public Eraser(int toolSize) {
         super(toolSize);
-        //TODO Auto-generated constructor stub
     }
 
     @Override
     public Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame) {
-        pixel.setColor(Color.WHITE);
-        return Collections.singleton(pixel);
+        Set<Pixel> newPixSet = new HashSet<>();
+        Pair<Integer, Integer> oppositePixPos = super.calculatePosition(pixel, super.toolSize, super.getFrameSize(frame)); 
+        Pixel tempPix;
+
+        for (var x: range(pixel.getPosition().getX(), oppositePixPos.getX())){
+            for (var y: range(pixel.getPosition().getY(), oppositePixPos.getY())){
+                tempPix = new ImplPixel(x,y);
+                tempPix.setColor(Color.WHITE);
+                newPixSet.add(tempPix);
+            }
+        }
+
+        return newPixSet;
     }
 
 }
