@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.user.UserImpl;
+import it.unibo.pixArt.utilities.JsonFileHandler;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.SimpleView;
 import it.unibo.pixArt.view.pages.PageLoader;
@@ -62,12 +63,13 @@ public class ProjectView extends AbstractFXView {
             alert.setContentText(null);
             alert.showAndWait();
         }
-        /*try {
-            Project project = JsonFileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selItems)));
-            PageLoader.getInstance().switchPage(getStage(), Pages.WORKSPACE, new WorkSpaceModelImpl(Optional.of(project)));;
+        try {
+            Project project = JsonFileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selectedFolder)));
+            this.getController().getModel().setProject(project);
+            PageLoader.getInstance().switchPage(getStage(), Pages.WORKSPACE, this.getController().getModel());
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     public void onDeleteClick(ActionEvent event){
