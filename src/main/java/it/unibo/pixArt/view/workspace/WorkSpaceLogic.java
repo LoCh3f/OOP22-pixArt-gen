@@ -3,8 +3,6 @@ package it.unibo.pixArt.view.workspace;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.utilities.AbstractGenericMirror;
 import it.unibo.pixArt.utilities.Mirror;
-import javafx.collections.ObservableList;
-import javafx.scene.Node;
 
 import java.util.*;
 
@@ -37,20 +35,6 @@ public class WorkSpaceLogic implements Logic {
         this.isDrawing = !this.isDrawing;
     }
 
-    public boolean isValid(final int index, ObservableList<Node> buttons, final int father) {
-
-        return index == buttons.indexOf(buttons.get(father + 1)) ||
-                index == buttons.indexOf(buttons.get(father - 1)) ||
-                index == buttons.indexOf(buttons.get(father + rows)) ||
-                index == buttons.indexOf(buttons.get(father + columns)) ||
-                index == buttons.indexOf(buttons.get(father - columns)) ||
-                index == buttons.indexOf(buttons.get(father + columns + 1)) ||
-                index == buttons.indexOf(buttons.get(father + columns - 1)) ||
-                index == buttons.indexOf(buttons.get(father - columns + 1)) ||
-                index == buttons.indexOf(buttons.get(father - columns - 1));
-
-
-    }
 
     @Override
     public String getImagePath() {
