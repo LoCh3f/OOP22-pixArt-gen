@@ -28,7 +28,7 @@ public interface WorkSpaceController extends Controller {
    /**Method to color the pixels of the grid.TO BE DONE.
     * 
     */
-    public void colorGrid(final Pixel p);
+    public void colorGrid(final int x, final int y);
 
     /**
      *Method to get the previous state of the frame.
@@ -50,6 +50,10 @@ public interface WorkSpaceController extends Controller {
     /**
      * @return List containing all the available tools.
      */
-    public List<ToolEnum> getTools();
+    public List<String> getTools();
+
+    public void setIsDrawing();
+
+    public boolean getIsDrawing();
 
 }

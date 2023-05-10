@@ -1,5 +1,6 @@
 package it.unibo.pixArt.view.workspace;
 
+import it.unibo.pixArt.controller.workspace.WorkSpaceController;
 import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.utilities.GridPaneParser;
@@ -11,14 +12,17 @@ import it.unibo.pixArt.view.components.PixelsPane;
 import it.unibo.pixArt.view.components.StageDistribution;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -28,6 +32,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.Set;
+
+import javafx.beans.value.ChangeListener;
 
 import static it.unibo.pixArt.utilities.FXStyleVariable.*;
 
@@ -48,6 +54,13 @@ public class WorkSpace extends AbstractFXView {
     private Button swapper;
     @FXML
     private BorderPane rightPane;
+
+    @FXML
+    private ChoiceBox<String> toolBox;
+
+    @FXML
+    private Slider toolSizeSlider;
+
     private PixelsParser pixelsParser;
     private GridPaneParser paneParser;
     private Logic logics;
@@ -55,6 +68,29 @@ public class WorkSpace extends AbstractFXView {
 
     @Override
     public void init() {
+        this.getWorkSpaceController().setCurrentFrame(0);//Set the first frame
+        this.getWorkSpaceController().selectTool("PENCIL", colorPicker.getValue(),(int) toolSizeSlider.getValue());//select the default tool.
+
+        this.toolBox.getItems().addAll(this.getWorkSpaceController().getTools());//Init toolBox and add event listeneers
+        this.toolBox.setValue("PENCIL");
+        this.toolBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                getWorkSpaceController().selectTool(newValue, colorPicker.getValue(),(int) toolSizeSlider.getValue());
+            }
+            
+        });
+
+        this.toolSizeSlider.valueProperty().addListener(new ChangeListener<Number>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                final int newSize = (int) toolSizeSlider.getValue();
+                getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(), newSize);
+            }
+            
+        });
         paneParser = new GridPaneParser();
         pixelsParser = new PixelsParser();
         this.root.setCenter(new ImageView(IMAGE_PATH + "mainIcon.png"));
@@ -140,7 +176,21 @@ public class WorkSpace extends AbstractFXView {
     }
 
     @FXML
+    private void onColorChanged(final ActionEvent event) {
+        this.getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(),(int) toolSizeSlider.getValue());
+    }
+
+    private void color(final int x, int y) {
+        this.getWorkSpaceController().colorGrid(x, y);
+    }
+
+   /*  @FXML
     private void rubberActivate() {
         colorPicker.setValue(Color.TRANSPARENT);
+    }*/
+
+    private WorkSpaceController getWorkSpaceController() {
+        return (WorkSpaceController) getController();
     }
 }
+
