@@ -1,7 +1,6 @@
 package it.unibo.pixArt.view.workspace;
 
 import it.unibo.pixArt.controller.workspace.WorkSpaceController;
-import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.utilities.GridPaneParser;
 import it.unibo.pixArt.utilities.PixelsParser;
@@ -12,28 +11,21 @@ import it.unibo.pixArt.view.components.PixelsPane;
 import it.unibo.pixArt.view.components.StageDistribution;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.Slider;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.Set;
-
-import javafx.beans.value.ChangeListener;
 
 import static it.unibo.pixArt.utilities.FXStyleVariable.*;
 
@@ -69,7 +61,7 @@ public class WorkSpace extends AbstractFXView {
     @Override
     public void init() {
         this.getWorkSpaceController().setCurrentFrame(0);//Set the first frame
-        this.getWorkSpaceController().selectTool("PENCIL", colorPicker.getValue(),(int) toolSizeSlider.getValue());//select the default tool.
+        this.getWorkSpaceController().selectTool("PENCIL", colorPicker.getValue(), (int) toolSizeSlider.getValue());//select the default tool.
 
         this.toolBox.getItems().addAll(this.getWorkSpaceController().getTools());//Init toolBox and add event listeneers
         this.toolBox.setValue("PENCIL");
@@ -77,9 +69,9 @@ public class WorkSpace extends AbstractFXView {
 
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                getWorkSpaceController().selectTool(newValue, colorPicker.getValue(),(int) toolSizeSlider.getValue());
+                getWorkSpaceController().selectTool(newValue, colorPicker.getValue(), (int) toolSizeSlider.getValue());
             }
-            
+
         });
 
         this.toolSizeSlider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -89,7 +81,7 @@ public class WorkSpace extends AbstractFXView {
                 final int newSize = (int) toolSizeSlider.getValue();
                 getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(), newSize);
             }
-            
+
         });
         paneParser = new GridPaneParser();
         pixelsParser = new PixelsParser();
@@ -108,14 +100,7 @@ public class WorkSpace extends AbstractFXView {
             @Override
             public void handle(final ActionEvent event) {
                 final var button = (Button) event.getSource();
-                logics.changeState();
-                button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
-                getController().getModel().getProject().getAllFrames().get(0).getPixels().forEach(p -> {
-                    if (p.comparePixel(new ImplPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button)))) {
-                        p.setColor(new Color(colorPicker.getValue().getRed(), colorPicker.getValue().getGreen(), colorPicker.getValue().getBlue(), colorPicker.getValue().getOpacity()));
-                    }
-                    logics.changeState();
-                });
+                color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button));
             }
         };
         rightPane.getChildren().forEach(n -> n.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
@@ -177,7 +162,7 @@ public class WorkSpace extends AbstractFXView {
 
     @FXML
     private void onColorChanged(final ActionEvent event) {
-        this.getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(),(int) toolSizeSlider.getValue());
+        this.getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(), (int) toolSizeSlider.getValue());
     }
 
     private void color(final int x, int y) {
