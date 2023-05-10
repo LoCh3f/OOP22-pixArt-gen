@@ -4,7 +4,6 @@ public class UserImpl implements User {
     
     private String name;
     private String password;
-
     private String pathToFile;
 
     public UserImpl(final String name, final String password, final String path) {
