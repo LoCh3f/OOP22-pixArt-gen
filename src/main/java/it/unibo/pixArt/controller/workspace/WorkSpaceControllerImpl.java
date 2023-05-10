@@ -1,7 +1,5 @@
 package it.unibo.pixArt.controller.workspace;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -41,12 +39,12 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     @Override
     public void setCurrentFrame(final int index) {
         this.currentframe = this.getModel().getProject().getAllFrames().get(index);
-        //this.view.updateView(this.currentframe.getState()) Need all the pixels in the currentframe.
+        //this.view.updateView(this.currentframe.getState()); Need all the pixels in the currentframe.
     }
 
     @Override
     public Set<Pixel> getPreviousState() {
-        return this.currentframe.getMemento().getState();//I shouldn't be able to access the memento. Should be changed.
+        return this.currentframe.getMemento().getState();
     }
 
     @Override
@@ -66,8 +64,6 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     public List<ToolEnum> getTools() {
         return Stream.of(ToolEnum.values()).toList();
     }
-
-    
       /*TO BE DONE:
      * Method to save the file.
      * Method to delete current frame.
