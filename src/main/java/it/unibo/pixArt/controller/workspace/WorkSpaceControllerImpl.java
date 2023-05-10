@@ -87,5 +87,10 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
      * Method to delete current frame.
      * Method to get all history frames and send them in the view.---ALMOST DONE.
      */
+
+    @Override
+    public void saveProject() {
+       
+    }
     
 }

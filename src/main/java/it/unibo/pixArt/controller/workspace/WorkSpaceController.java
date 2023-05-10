@@ -56,4 +56,6 @@ public interface WorkSpaceController extends Controller {
 
     public boolean getIsDrawing();
 
+    public void saveProject();
+
 }
