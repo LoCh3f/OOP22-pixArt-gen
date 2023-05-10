@@ -22,6 +22,6 @@ public class PixelsParser implements Function<Collection<Pixel>, GridPane> {
     }
 
     public String parseColor(final Color color) {
-        return "".concat(FX_BACKGROUND_COLOR_START).concat(color.toString()).concat(";").concat(FX_BORDER_COLOR).concat(";").concat(FX_BORDER_WIDTH);
+        return "".concat(FX_BACKGROUND_COLOR_START).concat(color.toString().replace("0x", "#")).concat(";").concat(FX_BORDER_COLOR).concat(";").concat(FX_BORDER_WIDTH);
     }
 }
