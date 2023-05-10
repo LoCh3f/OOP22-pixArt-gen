@@ -20,7 +20,6 @@ import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.project.ProjectImpl;
 import it.unibo.pixArt.model.user.User;
-import it.unibo.pixArt.model.user.UserImpl;
 
 public class JsonFileHandler {
     private Gson gson = new GsonBuilder().setLenient().setPrettyPrinting()
@@ -30,8 +29,6 @@ public class JsonFileHandler {
                         .registerTypeAdapter(FrameState.class, InterfaceSerializer.interfaceSerializer(FrameStateImpl.class))
                         .create();
     private char fileSeparator = File.separatorChar;
-
-    private User user = new UserImpl(null, null, null);
 
     private static class LazyHolder{
         private static final JsonFileHandler SINGLETON = new JsonFileHandler();
@@ -49,7 +46,7 @@ public class JsonFileHandler {
      * @param project The project to convert in a Json File
      * @throws IOException
      */
-    public void fromProjectToJson(Project project) throws IOException{
+    public void fromProjectToJson(Project project, User user) throws IOException{
         FileWriter fWriter = new FileWriter(new File(user.getPathToFile() + project.getPath() + fileSeparator + project.getName() + ".json"));
         fWriter.write(gson.toJson(project));
         System.out.println(project.getAllFrames().get(0).getPixels().stream().collect(Collectors.toList()).get(0).getColor().toString());
@@ -63,7 +60,7 @@ public class JsonFileHandler {
      * @return The Project with the Json file spec
      * @throws IOException
      */
-    public Project fromJsonToProject(File jsonFile) throws IOException{
+    public Project fromJsonToProject(File jsonFile, User user) throws IOException{
         BufferedReader fReader = new BufferedReader(new FileReader(user.getPathToFile() + jsonFile));
         StringBuilder sBuilder = new StringBuilder();
         String line = null;

@@ -64,7 +64,7 @@ public class ProjectView extends AbstractFXView {
             alert.showAndWait();
         }
         try {
-            Project project = JsonFileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selectedFolder)));
+            Project project = JsonFileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selectedFolder)), this.getController().getModel().getUser());
             this.getController().getModel().setProject(project);
             PageLoader.getInstance().switchPage(getStage(), Pages.WORKSPACE, this.getController().getModel());
         } catch (IOException e) {
