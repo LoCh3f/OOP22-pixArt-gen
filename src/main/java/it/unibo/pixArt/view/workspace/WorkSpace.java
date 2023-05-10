@@ -1,6 +1,9 @@
 package it.unibo.pixArt.view.workspace;
 
 import it.unibo.pixArt.model.pixel.ImplPixel;
+import it.unibo.pixArt.model.pixel.Pixel;
+import it.unibo.pixArt.utilities.GridPaneParser;
+import it.unibo.pixArt.utilities.PixelsParser;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.components.BorderParent;
 import it.unibo.pixArt.view.components.MenuItemBuilder;
@@ -12,7 +15,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ListView;
@@ -22,9 +24,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.util.Set;
 
 import static it.unibo.pixArt.utilities.FXStyleVariable.*;
 
@@ -40,19 +43,20 @@ public class WorkSpace extends AbstractFXView {
     @FXML
     private ListView<ImageView> frames;
     @FXML
-    private VBox leftPane;
-
-    @FXML
     private ImageView templateView;
     @FXML
     private Button swapper;
     @FXML
     private BorderPane rightPane;
+    private PixelsParser pixelsParser;
+    private GridPaneParser paneParser;
     private Logic logics;
 
 
     @Override
     public void init() {
+        paneParser = new GridPaneParser();
+        pixelsParser = new PixelsParser();
         this.root.setCenter(new ImageView(IMAGE_PATH + "mainIcon.png"));
         this.logics = new WorkSpaceLogic(this.getController().getModel().getProject().getAllFrames().get(0).getRows(),
                 this.getController().getModel().getProject().getAllFrames().get(0).getColumns());
@@ -97,7 +101,7 @@ public class WorkSpace extends AbstractFXView {
                 button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             }
             if (secondStage.isShowing()) {
-                testerImageView.setImage(new Image(logics.test(Parser.GridParser.parseGrid(center))));
+                testerImageView.setImage(new Image(logics.test(paneParser.apply(center))));
             }
         }));
 
@@ -114,8 +118,13 @@ public class WorkSpace extends AbstractFXView {
 
     }
 
-    private void setBackGroundStyle(final Node node, final String color) {
-        node.setStyle(FX_BACKGROUND_COLOR_START + color);
+    public void updateView(final Set<Pixel> toUpdate) {
+        final var center = (GridPane) this.root.getCenter();
+        toUpdate.forEach(p -> center.getChildren().forEach(b -> {
+            if (GridPane.getColumnIndex(b) == p.getPosition().getX() && GridPane.getRowIndex(b) == p.getPosition().getY()) {
+                b.setStyle(pixelsParser.parseColor(p.getColor()));
+            }
+        }));
     }
 
 
