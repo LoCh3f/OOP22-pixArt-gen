@@ -30,7 +30,9 @@ public class JsonFileHandler {
                         .registerTypeAdapter(FrameState.class, InterfaceSerializer.interfaceSerializer(FrameStateImpl.class))
                         .create();
     private char fileSeparator = File.separatorChar;
-    
+
+    private User user = new UserImpl(null, null, null);
+
     private static class LazyHolder{
         private static final JsonFileHandler SINGLETON = new JsonFileHandler();
     }
@@ -48,7 +50,7 @@ public class JsonFileHandler {
      * @throws IOException
      */
     public void fromProjectToJson(Project project) throws IOException{
-        FileWriter fWriter = new FileWriter(new File(user.getPath() + project.getPath() + fileSeparator + project.getName() + ".json"));
+        FileWriter fWriter = new FileWriter(new File(user.getPathToFile() + project.getPath() + fileSeparator + project.getName() + ".json"));
         fWriter.write(gson.toJson(project));
         System.out.println(project.getAllFrames().get(0).getPixels().stream().collect(Collectors.toList()).get(0).getColor().toString());
         fWriter.flush();
@@ -62,7 +64,7 @@ public class JsonFileHandler {
      * @throws IOException
      */
     public Project fromJsonToProject(File jsonFile) throws IOException{
-        BufferedReader fReader = new BufferedReader(new FileReader(user.getPath() + jsonFile));
+        BufferedReader fReader = new BufferedReader(new FileReader(user.getPathToFile() + jsonFile));
         StringBuilder sBuilder = new StringBuilder();
         String line = null;
         while((line = fReader.readLine()) != null){
