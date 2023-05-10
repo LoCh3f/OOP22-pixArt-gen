@@ -2,6 +2,7 @@ package it.unibo.pixArt.controller.workspace;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import it.unibo.pixArt.controller.SimpleController;
@@ -65,7 +66,7 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
 
     @Override
     public List<String> getTools() {
-        return Stream.of(ToolEnum.values()).map(e -> e.getName()).toList();
+        return Stream.of(ToolEnum.values()).map(e -> e.getName()).collect(Collectors.toList());
     }
 
     @Override

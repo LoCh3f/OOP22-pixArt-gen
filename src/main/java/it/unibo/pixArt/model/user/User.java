@@ -17,4 +17,8 @@ public interface User {
      */
     String getPassword();
 
+    String getPathToFile();
+
+    void setPathToFile(final String path);
+
 }

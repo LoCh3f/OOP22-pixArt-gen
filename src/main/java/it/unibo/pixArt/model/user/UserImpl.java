@@ -27,10 +27,12 @@ public class UserImpl implements User {
         return this.password;
     }
 
+    @Override
     public void setPathToFile(final String path) {
         this.pathToFile = path;
     }
 
+    @Override
     public String getPathToFile(){
         return this.pathToFile;
     }
