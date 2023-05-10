@@ -100,6 +100,7 @@ public class WorkSpace extends AbstractFXView {
             @Override
             public void handle(final ActionEvent event) {
                 final var button = (Button) event.getSource();
+                logics.changeState();
                 color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button));
             }
         };
