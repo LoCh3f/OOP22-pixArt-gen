@@ -37,10 +37,9 @@ public class ProjectView extends AbstractFXView {
     public void init() {
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'init'");
-        
         listView.getItems().clear();
         listView.getItems().addAll(Stream.of((new File(user.getPathToFile()).listFiles()))
-                                  .filter(file -> file.isDirectory() && !file.isHidden())
+                                  .filter(file -> file.isDirectory() && !file.isHidden() && checkIfJsonInFolder(file))
                                   .map(File::getName).collect(Collectors.toList()));
 
         MultipleSelectionModel<String> selModel = listView.getSelectionModel();
@@ -56,13 +55,6 @@ public class ProjectView extends AbstractFXView {
     }
 
     public void onEditClick(final ActionEvent event){
-        if(!(new File(getJsonPath(selectedFolder)).exists())){
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("File doesn't exist");
-            alert.setContentText(null);
-            alert.showAndWait();
-        }
         try {
             Project project = JsonFileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selectedFolder)), this.getController().getModel().getUser());
             this.getController().getModel().setProject(project);
@@ -107,5 +99,10 @@ public class ProjectView extends AbstractFXView {
 
     public String fileNameToPathString(String fileName){
         return fileName.replace('[', File.separatorChar).substring(0, fileName.length()-1);
+    }
+
+    private boolean checkIfJsonInFolder(File folder){
+        return Stream.of(folder.listFiles()).anyMatch(f -> f.getAbsolutePath()
+                .equals(folder.getAbsolutePath() + File.separatorChar + folder.getName()+ ".json"));
     }
 }
