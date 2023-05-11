@@ -12,7 +12,12 @@ public interface FrameState {
     public void setState(final Set<Pixel> snapshot);
 
     /**
-     * @return Returns the previous state of the frame.
+     * @return Returns the previous state of the frame and pops it from the stack.
      */
     public Set<Pixel> getState();
+
+    /**
+     * @return Returns a copy of the previous state of the frame, without poping it from the stack.
+     */
+    public Set<Pixel> peekState();
 }

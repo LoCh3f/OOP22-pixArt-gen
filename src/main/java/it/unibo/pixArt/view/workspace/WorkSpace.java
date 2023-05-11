@@ -20,6 +20,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -100,7 +101,7 @@ public class WorkSpace extends AbstractFXView {
             @Override
             public void handle(final ActionEvent event) {
                 final var button = (Button) event.getSource();
-                logics.changeState();
+                getWorkSpaceController().setIsDrawing();
                 color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button));
             }
         };
@@ -118,14 +119,24 @@ public class WorkSpace extends AbstractFXView {
 
 
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
-            if (logics.isDrawing()) {
+            if (getWorkSpaceController().getIsDrawing()) {
                 final var button = (Button) event.getSource();
-                button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+                color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button));
+               // button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             }
             if (secondStage.isShowing()) {
                 testerImageView.setImage(new Image(logics.test(paneParser.apply(center))));
             }
         }));
+
+        center.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(mouseEvent.getButton() == MouseButton.SECONDARY) {
+                    getWorkSpaceController().setIsDrawing();
+                }
+            }
+        });
 
         center.alignmentProperty().set(Pos.CENTER);
         center.prefWidthProperty().bind(center.heightProperty());
@@ -141,12 +152,12 @@ public class WorkSpace extends AbstractFXView {
     }
 
     public void updateView(final Set<Pixel> toUpdate) {
-        final var center = (GridPane) this.root.getCenter();
+         final var center = (GridPane) this.root.getCenter();
         toUpdate.forEach(p -> center.getChildren().forEach(b -> {
             if (GridPane.getColumnIndex(b) == p.getPosition().getX() && GridPane.getRowIndex(b) == p.getPosition().getY()) {
                 b.setStyle(pixelsParser.parseColor(p.getColor()));
             }
-        }));
+        })); 
     }
 
 
@@ -169,11 +180,6 @@ public class WorkSpace extends AbstractFXView {
     private void color(final int x, int y) {
         this.getWorkSpaceController().colorGrid(x, y);
     }
-
-   /*  @FXML
-    private void rubberActivate() {
-        colorPicker.setValue(Color.TRANSPARENT);
-    }*/
 
     private WorkSpaceController getWorkSpaceController() {
         return (WorkSpaceController) getController();

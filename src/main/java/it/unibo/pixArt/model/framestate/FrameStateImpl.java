@@ -10,7 +10,7 @@ public class FrameStateImpl implements FrameState {
     private Stack<Set<Pixel>> stateStack = new Stack<>();
 
     public FrameStateImpl() {
-
+        
     }
     
     @Override
@@ -21,6 +21,11 @@ public class FrameStateImpl implements FrameState {
     @Override
     public Set<Pixel> getState() {
         return this.stateStack.pop();
+    }
+
+    @Override
+    public Set<Pixel> peekState() {
+        return this.stateStack.peek();
     }
     
 }

@@ -50,7 +50,7 @@ public class Bucket extends AbstractTool{
         }
         return newSet;
     }
-
+    
     private boolean isValid(final Map<Pair<Integer, Integer>, Pixel> frame, final int x, final int y, final Color oldColor, final Color newColor) {
         if (frame.get(new Pair<>(x, y)).getColor() != oldColor || frame.get(new Pair<>(x, y)).getColor() == newColor) {
             return false;

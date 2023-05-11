@@ -94,3 +94,8 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
         return (WorkSpace) getView();
     }
 }
+/*Problemi:
+ * 1)Bucket: al bucket passo un pixel nuovo, che di default è bianco.
+ * 2)Lighten/Darken tool: stesso problema del bucket.
+ * 3)Lagga troppo rispetto al drawTest.
+ */
