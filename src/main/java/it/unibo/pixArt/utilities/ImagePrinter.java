@@ -56,70 +56,28 @@ public class ImagePrinter {
                 }
             }
         }
-
-        switch(project.getFileType()){
-            case ".png": imagePNG(wImg);
-            break;
-            case ".jpg": imageJpg(wImg);
-            break;
-            case ".jpeg": imageJpeg(wImg);
-            break;
-        }
-        
-       //Save JPG image:
-       /*try {
-            BufferedImage jpgImage = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
-            jpgImage.createGraphics().drawImage(jpgImage, 0, 0, null);
-            ImageIO.write(jpgImage, "jpg", new File("image.jpg"));            
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        //Save JPEG Image:
-
-        try {
-            BufferedImage jpegImage = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
-            jpegImage.createGraphics().drawImage(img, 0, 0, null);
-            ImageIO.write(jpegImage, "jpeg", new File("image.jpeg"));            
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }*/
-
-        //Save PNG Image:
-
-        
+        if(project.getFileType().equals("png")){
+            imagePNG(wImg);
+        }else{
+            imageJpgOrJpeg(wImg, project.getFileType());
+        }      
     } 
+    
     private void imagePNG(WritableImage wImg){
         try {
             ImageIO.write(SwingFXUtils.fromFXImage(wImg, null), "png", new File("image.png"));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     };
 
-    private void imageJpg(WritableImage wImg){
+    private void imageJpgOrJpeg(WritableImage wImg, String fyleFormat){
         try {
             BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
             BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
             jpgImage.createGraphics().drawImage(bImg, 0, 0, null);
-            ImageIO.write(jpgImage, "jpg", new File("image.jpg"));   
+            ImageIO.write(jpgImage, fyleFormat, new File("image" + fyleFormat));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-    private void imageJpeg(WritableImage wImg){
-        try {
-            BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
-            BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
-            jpgImage.createGraphics().drawImage(bImg, 0, 0, null);
-            ImageIO.write(jpgImage, "jpeg", new File("image.jpeg"));   
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
