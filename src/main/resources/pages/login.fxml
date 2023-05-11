@@ -6,22 +6,25 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="752.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField fx:id="usernameField" layoutX="447.0" layoutY="173.0" prefHeight="26.0" prefWidth="177.0" />
-      <TextField fx:id="passwordField" layoutX="446.0" layoutY="252.0" prefHeight="26.0" prefWidth="178.0" />
+      <TextField fx:id="passwordField" layoutX="445.0" layoutY="236.0" prefHeight="26.0" prefWidth="178.0" />
       <ImageView fitHeight="241.0" fitWidth="241.0" layoutX="83.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../OOP-pixArt-gen/src/main/resources/image/nameLogo.png" />
          </image>
       </ImageView>
-      <Button layoutX="447.0" layoutY="395.0" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="26.0" prefWidth="59.0" text="Login" />
-      <Button layoutX="565.0" layoutY="395.0" mnemonicParsing="false" onAction="#onRegisterClick" text="Register" />
-      <Label layoutX="447.0" layoutY="142.0" text="Username" />
-      <Label layoutX="447.0" layoutY="225.0" text="Password" />
-      <TextField fx:id="pathField" layoutX="446.0" layoutY="321.0" prefHeight="26.0" prefWidth="177.0" />
-      <Label layoutX="445.0" layoutY="296.0" text="Path" />
+      <Button layoutX="448.0" layoutY="370.0" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="26.0" prefWidth="59.0" text="Login" />
+      <Button layoutX="563.0" layoutY="370.0" mnemonicParsing="false" onAction="#onRegisterClick" text="Register" />
+      <Label layoutX="446.0" layoutY="149.0" text="Username" />
+      <Label layoutX="448.0" layoutY="218.0" text="Password" />
+      <TextField fx:id="pathField" layoutX="447.0" layoutY="306.0" prefHeight="26.0" prefWidth="177.0" />
+      <Label layoutX="448.0" layoutY="288.0" text="Path" />
+      <Text fx:id="loginResult" fill="RED" layoutX="441.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="188.53662109375" />
+      <Text fx:id="usernameValidation" fill="RED" layoutX="447.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="177.60000000000014" />
+      <Text fx:id="passwordValidation" fill="RED" layoutX="445.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="177.60000000000014" />
    </children>
 </AnchorPane>

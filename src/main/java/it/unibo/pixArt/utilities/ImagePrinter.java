@@ -15,6 +15,7 @@ import javax.swing.text.html.ImageView;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.project.Project;
+import it.unibo.pixArt.model.user.User;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelWriter;
@@ -36,13 +37,15 @@ public class ImagePrinter {
         return LazyHolder.SINGLETON;
     }
 
-    public void printImage(Project project){
+    public void printImage(Project project, User user){
         this.imageSize = project.getAllFrames().get(0).getColumns();
 
 
         WritableImage wImg = new WritableImage(imageSize, imageSize);
         PixelWriter pWriter = wImg.getPixelWriter();
-        Iterator<Pixel> pixelIterator = project.getAllFrames().get(0).getPixels().iterator();
+
+        for(int count=0; count > project.getAllFrames().size(); count++){
+        Iterator<Pixel> pixelIterator = project.getAllFrames().get(count).getPixels().iterator();
 
         for (int x = 0; x < imageSize; x++){
             for (int y = 0; y < imageSize; y++){
@@ -55,44 +58,31 @@ public class ImagePrinter {
                 }
             }
         }
-
-        switch(project.getFileType()){
-            case ".png": imagePNG(wImg);
-            break;
-        }
-        
-       //Save JPG image:
-       /*try {
-            BufferedImage jpgImage = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
-            jpgImage.createGraphics().drawImage(jpgImage, 0, 0, null);
-            ImageIO.write(jpgImage, "jpg", new File("image.jpg"));            
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        //Save JPEG Image:
-
-        try {
-            BufferedImage jpegImage = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
-            jpegImage.createGraphics().drawImage(img, 0, 0, null);
-            ImageIO.write(jpegImage, "jpeg", new File("image.jpeg"));            
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }*/
-
-        //Save PNG Image:
-
-        
+        if(project.getFileType().equals("png")){
+            imagePNG(wImg, count);
+        }else{
+            imageJpgOrJpeg(wImg, project.getFileType(), count);
+        }      
+    }
     } 
-    private void imagePNG(WritableImage wImg){
+    
+    private void imagePNG(WritableImage wImg, int numImg){
         try {
-            ImageIO.write(SwingFXUtils.fromFXImage(wImg, null), "png", new File("image.png"));
+            ImageIO.write(SwingFXUtils.fromFXImage(wImg, null), "png", new File("image" + numImg + ".png"));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     };
+
+    private void imageJpgOrJpeg(WritableImage wImg, String fyleFormat, int numImg){
+        try {
+            BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
+            BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
+            jpgImage.createGraphics().drawImage(bImg, 0, 0, null);
+            ImageIO.write(jpgImage, fyleFormat, new File("image" + numImg + fyleFormat));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
