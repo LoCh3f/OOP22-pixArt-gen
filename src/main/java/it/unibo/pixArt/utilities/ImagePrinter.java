@@ -15,6 +15,7 @@ import javax.swing.text.html.ImageView;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.project.Project;
+import it.unibo.pixArt.model.user.User;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelWriter;
@@ -36,7 +37,7 @@ public class ImagePrinter {
         return LazyHolder.SINGLETON;
     }
 
-    public void printImage(Project project){
+    public void printImage(Project project, User user){
         this.imageSize = project.getAllFrames().get(0).getColumns();
 
 
@@ -58,6 +59,10 @@ public class ImagePrinter {
 
         switch(project.getFileType()){
             case ".png": imagePNG(wImg);
+            break;
+            case ".jpg": imageJpg(wImg);
+            break;
+            case ".jpeg": imageJpeg(wImg);
             break;
         }
         
@@ -94,5 +99,29 @@ public class ImagePrinter {
             e.printStackTrace();
         }
     };
+
+    private void imageJpg(WritableImage wImg){
+        try {
+            BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
+            BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
+            jpgImage.createGraphics().drawImage(bImg, 0, 0, null);
+            ImageIO.write(jpgImage, "jpg", new File("image.jpg"));   
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    private void imageJpeg(WritableImage wImg){
+        try {
+            BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
+            BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
+            jpgImage.createGraphics().drawImage(bImg, 0, 0, null);
+            ImageIO.write(jpgImage, "jpeg", new File("image.jpeg"));   
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
 }
