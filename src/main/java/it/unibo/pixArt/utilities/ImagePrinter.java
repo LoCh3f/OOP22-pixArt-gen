@@ -43,7 +43,9 @@ public class ImagePrinter {
 
         WritableImage wImg = new WritableImage(imageSize, imageSize);
         PixelWriter pWriter = wImg.getPixelWriter();
-        Iterator<Pixel> pixelIterator = project.getAllFrames().get(0).getPixels().iterator();
+
+        for(int count=0; count > project.getAllFrames().size(); count++){
+        Iterator<Pixel> pixelIterator = project.getAllFrames().get(count).getPixels().iterator();
 
         for (int x = 0; x < imageSize; x++){
             for (int y = 0; y < imageSize; y++){
@@ -57,26 +59,27 @@ public class ImagePrinter {
             }
         }
         if(project.getFileType().equals("png")){
-            imagePNG(wImg);
+            imagePNG(wImg, count);
         }else{
-            imageJpgOrJpeg(wImg, project.getFileType());
+            imageJpgOrJpeg(wImg, project.getFileType(), count);
         }      
+    }
     } 
     
-    private void imagePNG(WritableImage wImg){
+    private void imagePNG(WritableImage wImg, int numImg){
         try {
-            ImageIO.write(SwingFXUtils.fromFXImage(wImg, null), "png", new File("image.png"));
+            ImageIO.write(SwingFXUtils.fromFXImage(wImg, null), "png", new File("image" + numImg + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     };
 
-    private void imageJpgOrJpeg(WritableImage wImg, String fyleFormat){
+    private void imageJpgOrJpeg(WritableImage wImg, String fyleFormat, int numImg){
         try {
             BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
             BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
             jpgImage.createGraphics().drawImage(bImg, 0, 0, null);
-            ImageIO.write(jpgImage, fyleFormat, new File("image" + fyleFormat));
+            ImageIO.write(jpgImage, fyleFormat, new File("image" + numImg + fyleFormat));
         } catch (IOException e) {
             e.printStackTrace();
         }
