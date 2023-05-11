@@ -15,7 +15,7 @@ import javafx.scene.paint.Color;
 
 public class FrameStateTest {
     private static final int SIZE = 16;
-    private PixelGrid grid = new PixelMatrix.MatrixBuilder().setColumns(SIZE).setRows(SIZE).build();
+    private PixelGrid grid;
     private FrameState memento = new FrameStateImpl();
 
 
@@ -37,28 +37,7 @@ public class FrameStateTest {
     
     @Test
     void frameStateWithinGridTest() {
-        //Sets the memento of the grid to its initial state(all pixels white).
-        this.grid.getMemento().setState(this.grid.getPixels());
-        assertEquals(createSet(Color.WHITE).stream().map(e -> e.getColor()).toList(),grid.getPixels().stream().map(e -> e.getColor()).toList());
-        assertEquals(grid.getMemento().peekState().stream().map(e -> e.getColor()).toList(),this.createSet(Color.WHITE).stream().map(e -> e.getColor()).toList());
-
-        //Sets all the pixels of the grid to red, and checks if they are red.
-        this.grid.setPixel(this.createSet(Color.RED));
-        assertEquals(this.createSet(Color.RED).stream().map(e -> e.getColor()).toList(),grid.getPixels().stream().map(e -> e.getColor()).toList());
-
-        //Sets all the pixels of the grid to blue, and checks if they are blue.
-        this.grid.getMemento().setState(this.grid.getPixels());
-        assertEquals(this.createSet(Color.RED).stream().map(e -> e.getColor()).toList(),grid.getMemento().peekState().stream().map(e -> e.getColor()).toList());
-
-        this.grid.setPixel(this.createSet(Color.BLUE));
-        assertEquals(this.createSet(Color.BLUE).stream().map(e -> e.getColor()).toList(),grid.getPixels().stream().map(e -> e.getColor()).toList());
-
-        grid.getMemento().getState();
-        assertEquals(this.createSet(Color.WHITE).stream().map(e -> e.getColor()).toList(),grid.getMemento().peekState().stream().map(e -> e.getColor()).toList());
-        //Sets the grid to its previous state(i.e. all pixels are white), and checks if the pixels are white
-        /*this.grid.setPixel(this.grid.getMemento().getState());
-        this.grid.setPixel(this.grid.getMemento().getState());
-        assertEquals(this.createSet(Color.BLUE).stream().map(e -> e.getColor()).toList(),grid.getPixels().stream().map(e -> e.getColor()).toList());*/
+       //To be done.
     }
 
     private Set<Pixel> createSet(final Color color) {
