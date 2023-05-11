@@ -14,6 +14,7 @@ import it.unibo.pixArt.model.tool.AbstractTool;
 import it.unibo.pixArt.model.tool.ToolEnum;
 import it.unibo.pixArt.model.tool.ToolFactory;
 import it.unibo.pixArt.model.tool.ToolFactoryImpl;
+import it.unibo.pixArt.utilities.ImagePrinter;
 import it.unibo.pixArt.view.workspace.WorkSpace;
 import javafx.scene.paint.Color;
 
@@ -79,13 +80,17 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
         return this.isDrawing;
     }
 
+    /*TO BE DONE:
+    * Method to delete current frame.
+    * Method to get all history frames and send them in the view.---ALMOST DONE.
+    */
+    
+    @Override
+    public void saveProject() {
+        ImagePrinter.getInstance().printImage(this.getModel().getProject(), this.getModel().getUser());
+    }
+    
     private WorkSpace getWorkSpaceView() {
         return (WorkSpace) getView();
     }
-      /*TO BE DONE:
-     * Method to save the file.
-     * Method to delete current frame.
-     * Method to get all history frames and send them in the view.---ALMOST DONE.
-     */
-    
 }

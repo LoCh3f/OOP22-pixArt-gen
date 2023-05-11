@@ -5,6 +5,7 @@ import it.unibo.pixArt.utilities.AbstractGenericMirror;
 import it.unibo.pixArt.utilities.Mirror;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static it.unibo.pixArt.utilities.FXStyleVariable.*;
 
@@ -38,7 +39,7 @@ public class WorkSpaceLogic implements Logic {
 
     @Override
     public String getImagePath() {
-        return imagePaths.stream().toList().get(new Random().nextInt(0, imagePaths.size()));
+        return imagePaths.stream().collect(Collectors.toList()).get(new Random().nextInt(imagePaths.size()));
     }
 
     public String test(final Collection<Pixel> userGrid) {
