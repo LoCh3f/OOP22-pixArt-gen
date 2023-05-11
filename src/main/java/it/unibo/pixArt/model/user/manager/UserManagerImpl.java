@@ -6,6 +6,7 @@ import java.util.Optional;
 import it.unibo.pixArt.model.user.User;
 import it.unibo.pixArt.model.user.UserBuilderImpl;
 import it.unibo.pixArt.model.user.storage.UserDataStorage;
+import it.unibo.pixArt.model.user.storage.UserDataStorageImpl;
 
 public class UserManagerImpl implements UserManager{
 
@@ -29,10 +30,7 @@ public class UserManagerImpl implements UserManager{
 
     @Override
     public Optional<User> register(final String name, final String password, final String path) throws IOException {
-        
-        //controlla se l'utente esiste
-        //se già esiste ritorna un optional vuoto
-        //altrimenti se aggiunge uno nella lista userlist
+ 
         if(this.dataStorage.exists(name)) {
             return Optional.empty();
         }
@@ -40,6 +38,14 @@ public class UserManagerImpl implements UserManager{
         this.dataStorage.addNewUser(new UserBuilderImpl().username(name).password(password).path(path).build());
         return this.dataStorage.getUser(name);
 
+    }
+
+    private static class LazyHolder {
+        private static final UserManager SINGLETON = new UserManagerImpl(new UserDataStorageImpl()); 
+    }
+
+    public static UserManager getInstance(){
+        return LazyHolder.SINGLETON;
     }
     
 }

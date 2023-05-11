@@ -6,7 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="752.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -23,5 +23,6 @@
       <Label layoutX="447.0" layoutY="225.0" text="Password" />
       <TextField fx:id="pathField" layoutX="446.0" layoutY="321.0" prefHeight="26.0" prefWidth="177.0" />
       <Label layoutX="445.0" layoutY="296.0" text="Path" />
+      <Text fx:id="loginResult" fill="RED" layoutX="441.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="188.53662109375" />
    </children>
 </AnchorPane>

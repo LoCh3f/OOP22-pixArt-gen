@@ -5,11 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import it.unibo.pixArt.model.user.User;
-import it.unibo.pixArt.model.user.UserBuilder;
-import it.unibo.pixArt.model.user.UserImpl;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
@@ -19,7 +15,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 public class UserDataStorageImpl implements UserDataStorage{
