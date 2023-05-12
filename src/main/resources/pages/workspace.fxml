@@ -38,7 +38,7 @@
         </MenuBar>
     </top>
     <bottom>
-        <ListView fx:id="frames" prefHeight="76.0" prefWidth="594.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER" />
+        <ListView fx:id="frames" orientation="HORIZONTAL" prefHeight="76.0" prefWidth="594.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER" />
     </bottom>
     <right>
         <BorderPane fx:id="rightPane" prefHeight="269.0" prefWidth="114.0" BorderPane.alignment="CENTER">
@@ -63,8 +63,9 @@
          </padding>
          <children>
             <Button fx:id="start" mnemonicParsing="false" prefHeight="26.0" prefWidth="137.0" text="Start" translateX="3.0" />
-            <Button fx:id="undo" mnemonicParsing="false" prefHeight="26.0" prefWidth="143.0" text="Undo" translateX="3.0" />
+            <Button fx:id="undo" mnemonicParsing="false" onAction="#onUndoClicked" prefHeight="26.0" prefWidth="143.0" text="Undo" translateX="3.0" />
             <Button fx:id="discard" mnemonicParsing="false" onAction="#discardMatrix" prefHeight="29.0" prefWidth="172.0" text="Discard" translateX="3.0" />
+            <Button mnemonicParsing="false" onAction="#onAddFrameClicked" prefHeight="26.0" prefWidth="168.0" text="Add+" />
             <ChoiceBox fx:id="toolBox" prefHeight="26.0" prefWidth="164.0" />
             <Label fx:id="toolSizeLabel" text="Size:" />
             <Slider fx:id="toolSizeSlider" max="6.0" min="1.0" showTickLabels="true" showTickMarks="true" value="1.0" />

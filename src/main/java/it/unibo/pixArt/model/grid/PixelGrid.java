@@ -40,5 +40,6 @@ public interface PixelGrid {
      */
     FrameState getMemento();
 
+    void revert();
 
 }

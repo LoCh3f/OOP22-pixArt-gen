@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
+import it.unibo.pixArt.model.historyframe.HistoryFrameImpl;
 import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.tool.AbstractTool;
@@ -19,14 +20,12 @@ import it.unibo.pixArt.view.workspace.WorkSpace;
 import javafx.scene.paint.Color;
 
 public class WorkSpaceControllerImpl extends SimpleController implements WorkSpaceController {
-    private PixelGrid currentframe; //= this.getModel().getProject().getAllFrames().get(0);
+    private PixelGrid currentframe;
     private final ToolFactory toolFactory = new ToolFactoryImpl();
     private AbstractTool tool;
     private boolean isDrawing;
 
     public WorkSpaceControllerImpl() {
-        //this.currentframe = getModel().getProject().getAllFrames().get(0);
-        //Default tool?
     }    
 
     @Override
@@ -35,8 +34,9 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     }
 
     @Override
-    public void colorGrid(final int x, final int y) {
-        final Set<Pixel> result = tool.updateGrid(new ImplPixel(x, y), this.currentframe.getPixels());
+    public void colorGrid(final int x, final int y, final Color color) {
+        final Set<Pixel> result = tool.updateGrid(new ImplPixel(x, y, color), this.currentframe.getPixels());
+        this.currentframe.getMemento().setState(currentframe.getPixels());
         this.currentframe.setPixel(result);
         this.getWorkSpaceView().updateView(result); 
     }
@@ -44,25 +44,27 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     @Override
     public void setCurrentFrame(final int index) {
         this.currentframe = this.getModel().getProject().getAllFrames().get(index);
-        //this.view.updateView(this.currentframe.getState()); Need all the pixels in the currentframe.
+        //this.getWorkSpaceView().updateView(this.currentframe.getPixels());
     }
 
     @Override
     public Set<Pixel> getPreviousState() {
-        return this.currentframe.getMemento().getState();
+        currentframe.revert();
+        return currentframe.getPixels();
+        //return this.currentframe.getMemento().getState();
     }
 
     @Override
-    public void addNewFrame() {
+    public Set<Pixel> addNewFrame() {
         this.getModel().getProject().addNewFrame();
+        this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl("/image/toad.png"));
         setCurrentFrame(this.getModel().getProject().getAllFrames().size() - 1);
-        //this.view.updateView(result); METHOD TO UPDATE VIEW.
+        return this.currentframe.getPixels();
     }
 
     @Override
-    public List<HistoryFrame> getHistoryFrames() {//I need a method in the PixelGrid to return its HistoryFrame.
-       // return this.getModel().getProject().getAllFrames().stream().map(e -> e.getHistoryFrame()).toList();
-       return null;
+    public List<HistoryFrame> getHistoryFrames() {
+       return this.getModel().getProject().getAllHistoryFrames();
     }
 
     @Override
@@ -80,6 +82,11 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
         return this.isDrawing;
     }
 
+    @Override
+    public Set<Pixel> getCurrentFrame() {
+        return this.currentframe.getPixels();
+    }
+
     /*TO BE DONE:
     * Method to delete current frame.
     * Method to get all history frames and send them in the view.---ALMOST DONE.
@@ -94,8 +101,3 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
         return (WorkSpace) getView();
     }
 }
-/*Problemi:
- * 1)Bucket: al bucket passo un pixel nuovo, che di default è bianco.
- * 2)Lighten/Darken tool: stesso problema del bucket.
- * 3)Lagga troppo rispetto al drawTest.
- */

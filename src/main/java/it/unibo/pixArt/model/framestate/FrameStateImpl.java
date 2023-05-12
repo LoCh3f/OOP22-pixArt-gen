@@ -27,5 +27,10 @@ public class FrameStateImpl implements FrameState {
     public Set<Pixel> peekState() {
         return this.stateStack.peek();
     }
+
+    @Override
+    public int size(){
+        return stateStack.size();
+    }
     
 }

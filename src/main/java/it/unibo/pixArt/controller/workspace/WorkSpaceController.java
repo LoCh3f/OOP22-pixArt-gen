@@ -28,7 +28,7 @@ public interface WorkSpaceController extends Controller {
    /**Method to color the pixels of the grid.TO BE DONE.
     * 
     */
-    public void colorGrid(final int x, final int y);
+    public void colorGrid(final int x, final int y, final Color color);
 
     /**
      *Method to get the previous state of the frame.
@@ -40,7 +40,7 @@ public interface WorkSpaceController extends Controller {
     /**
      * Method to create and add a new frame in the list of frames.
      */
-    public void addNewFrame();
+    public Set<Pixel> addNewFrame();
 
     /**
      * @return list of all the historyframes of the project
@@ -57,5 +57,7 @@ public interface WorkSpaceController extends Controller {
     public boolean getIsDrawing();
 
     public void saveProject();
+
+    public Set<Pixel> getCurrentFrame();
 
 }

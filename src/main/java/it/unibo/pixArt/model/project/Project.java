@@ -1,6 +1,7 @@
 package it.unibo.pixArt.model.project;
 
 import it.unibo.pixArt.model.grid.PixelGrid;
+import it.unibo.pixArt.model.historyframe.HistoryFrame;
 
 import java.util.List;
 
@@ -35,5 +36,7 @@ public interface Project {
      * @return string format of the file format for each image of each frame
      */
     public String getFileType();
+
+    public List<HistoryFrame> getAllHistoryFrames();
 
 }

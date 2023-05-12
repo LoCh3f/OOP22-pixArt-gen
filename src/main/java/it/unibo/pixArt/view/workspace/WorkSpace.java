@@ -24,6 +24,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.Set;
@@ -64,6 +65,16 @@ public class WorkSpace extends AbstractFXView {
         this.getWorkSpaceController().setCurrentFrame(0);//Set the first frame
         this.getWorkSpaceController().selectTool("PENCIL", colorPicker.getValue(), (int) toolSizeSlider.getValue());//select the default tool.
 
+        this.frames.getItems().addAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
+        this.frames.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ImageView>() {
+
+            @Override
+            public void changed(ObservableValue<? extends ImageView> observable, ImageView oldValue, ImageView newValue) {
+                getWorkSpaceController().setCurrentFrame(frames.getSelectionModel().getSelectedIndex());
+                updateView(getWorkSpaceController().getCurrentFrame());
+            }
+           
+        });
         this.toolBox.getItems().addAll(this.getWorkSpaceController().getTools());//Init toolBox and add event listeneers
         this.toolBox.setValue("PENCIL");
         this.toolBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -101,8 +112,7 @@ public class WorkSpace extends AbstractFXView {
             @Override
             public void handle(final ActionEvent event) {
                 final var button = (Button) event.getSource();
-                getWorkSpaceController().setIsDrawing();
-                color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button));
+                color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), (Color)button.getBackground().getFills().get(0).getFill());
             }
         };
         rightPane.getChildren().forEach(n -> n.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
@@ -121,7 +131,7 @@ public class WorkSpace extends AbstractFXView {
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             if (getWorkSpaceController().getIsDrawing()) {
                 final var button = (Button) event.getSource();
-                color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button));
+                color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), (Color)button.getBackground().getFills().get(0).getFill());
                // button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             }
             if (secondStage.isShowing()) {
@@ -132,7 +142,7 @@ public class WorkSpace extends AbstractFXView {
         center.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if(mouseEvent.getButton() == MouseButton.SECONDARY) {
+                if(mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2) {
                     getWorkSpaceController().setIsDrawing();
                 }
             }
@@ -150,23 +160,13 @@ public class WorkSpace extends AbstractFXView {
 
 
     }
-
-    public void updateView(final Set<Pixel> toUpdate) {
-         final var center = (GridPane) this.root.getCenter();
-        toUpdate.forEach(p -> center.getChildren().forEach(b -> {
-            if (GridPane.getColumnIndex(b) == p.getPosition().getX() && GridPane.getRowIndex(b) == p.getPosition().getY()) {
-                b.setStyle(pixelsParser.parseColor(p.getColor()));
-            }
-        })); 
-    }
-
-
+    
     @FXML
     private void discardMatrix() {
         final var grid = (GridPane) this.root.getCenter();
         grid.getChildren().forEach(b -> b.setStyle(FX_BACKGROUND_COLOR_START + "transparent" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
     }
-
+    
     @FXML
     private void changeImage() {
         this.templateView.setImage(new Image(logics.getImagePath()));
@@ -176,9 +176,29 @@ public class WorkSpace extends AbstractFXView {
     private void onColorChanged(final ActionEvent event) {
         this.getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(), (int) toolSizeSlider.getValue());
     }
+    
+    @FXML
+    private void onUndoClicked() {
+        this.updateView(this.getWorkSpaceController().getPreviousState());
+    }
 
-    private void color(final int x, int y) {
-        this.getWorkSpaceController().colorGrid(x, y);
+    @FXML
+    private void onAddFrameClicked() {
+        this.updateView(this.getWorkSpaceController().addNewFrame());
+        this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
+    }
+    
+    private void color(final int x, final int y, final Color color) {
+        this.getWorkSpaceController().colorGrid(x, y, color);
+    }
+    
+    public void updateView(final Set<Pixel> toUpdate) {
+         final var center = (GridPane) this.root.getCenter();
+        toUpdate.forEach(p -> center.getChildren().forEach(b -> {
+            if (GridPane.getColumnIndex(b) == p.getPosition().getX() && GridPane.getRowIndex(b) == p.getPosition().getY()) {
+                b.setStyle(pixelsParser.parseColor(p.getColor()));
+            }
+        })); 
     }
 
     private WorkSpaceController getWorkSpaceController() {
