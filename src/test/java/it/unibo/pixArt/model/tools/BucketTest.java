@@ -45,6 +45,17 @@ class BucketTest {
         }
     }
 
+    private void createFrameTest3() {
+        Pixel tempPix;
+        for(int i = 0; i < 16; i++) {
+            for(int j = 0; j < 16; j++) {
+                tempPix = new ImplPixel(i, j);
+                tempPix.setColor(Color.BLACK);
+                TEST_FRAME.add(tempPix);
+            }
+        }
+    }
+
     @Test
     public void updateGridTest1() {
         this.createFrameTest1();
@@ -68,5 +79,19 @@ class BucketTest {
             assertTrue(p.getPosition().getY() >= 13 && p.getPosition().getY() <=15);
         }
     }
+
+    @Test
+    public void updateGrid3() {
+        this.createFrameTest3();
+        Pixel pixel = new ImplPixel(2, 2);
+        pixel.setColor(Color.BLACK);
+        Set<Pixel> newSet = TEST_BUCKET.updateGrid(pixel, TEST_FRAME);
+        for (Pixel p : newSet) {
+            assertEquals(Color.RED, p.getColor());
+            assertTrue(p.getPosition().getX() >= 0 && p.getPosition().getX() < 16);
+            assertTrue(p.getPosition().getY() >= 0 && p.getPosition().getY() < 16);
+        }
+    }
+
 
 }
