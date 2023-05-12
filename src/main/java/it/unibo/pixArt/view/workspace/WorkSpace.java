@@ -158,6 +158,7 @@ public class WorkSpace extends AbstractFXView {
 
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("AbilityTester").setEventH(event -> secondStage.show()).build());
 
+        updateView(getWorkSpaceController().getCurrentFrame());
 
     }
     
