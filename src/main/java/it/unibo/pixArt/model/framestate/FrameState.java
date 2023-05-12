@@ -20,4 +20,7 @@ public interface FrameState {
      * @return Returns a copy of the previous state of the frame, without poping it from the stack.
      */
     public Set<Pixel> peekState();
+
+  
+    public int size();
 }

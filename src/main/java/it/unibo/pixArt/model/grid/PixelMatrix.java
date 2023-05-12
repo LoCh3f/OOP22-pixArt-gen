@@ -5,9 +5,13 @@ import it.unibo.pixArt.model.framestate.FrameStateImpl;
 import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class PixelMatrix implements PixelGrid {
     private final int rows;
@@ -93,7 +97,7 @@ public class PixelMatrix implements PixelGrid {
      */
     @Override
     public Set<Pixel> getPixels() {
-        return new HashSet<>(this.pixels);
+        return this.pixels.stream().map(e -> new ImplPixel(e.getPosition().getX(), e.getPosition().getY(), e.getColor())).collect(Collectors.toSet());
     }
 
     /**
@@ -101,6 +105,8 @@ public class PixelMatrix implements PixelGrid {
      */
     @Override
     public void setPixel(Set<Pixel> pixels) {
+        //this.memento.setState(getPixels());
+       
         for (Pixel pixel : pixels) {
             this.pixels.forEach(p -> {
                 if (p.comparePixel(pixel)) {
@@ -108,6 +114,11 @@ public class PixelMatrix implements PixelGrid {
                 }
             });
         }
+    }
+
+    @Override
+    public void revert() {
+        setPixel(memento.getState());
     }
 
 

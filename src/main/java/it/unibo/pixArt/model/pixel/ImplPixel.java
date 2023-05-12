@@ -14,6 +14,11 @@ public class ImplPixel implements Pixel {
         this.setColor(Color.WHITE);
     }
 
+    public ImplPixel(final Integer x, final Integer y, final Color color) {
+        this.position = new Pair<>(x, y);
+        this.color = color;
+    }
+
     @Override
     public Pair<Integer, Integer> getPosition() {
         return this.position;
