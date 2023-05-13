@@ -6,10 +6,6 @@ import java.util.Collection;
 
 public interface Logic {
 
-    boolean isDrawing();
-
-    void changeState();
-
     String getImagePath();
 
     String test(final Collection<Pixel> userGrid);

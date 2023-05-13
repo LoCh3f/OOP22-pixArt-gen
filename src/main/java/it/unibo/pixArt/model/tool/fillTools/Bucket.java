@@ -26,6 +26,7 @@ public class Bucket extends AbstractTool{
         Map<Pair<Integer, Integer>, Pixel> frameMap = getFrameMap(frame);
         Set<Pixel> newSet = new HashSet<>();
         Color old_color = pixel.getColor();
+        System.out.println("Old color:" + old_color + " Selected:" + this.selectedColor);
 
         if (old_color.equals(this.selectedColor)) {
             return Collections.emptySet(); 

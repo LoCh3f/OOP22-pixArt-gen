@@ -97,6 +97,7 @@ public class PixelMatrix implements PixelGrid {
      */
     @Override
     public Set<Pixel> getPixels() {
+        //return new HashSet<>(this.pixels);
         return this.pixels.stream().map(e -> new ImplPixel(e.getPosition().getX(), e.getPosition().getY(), e.getColor())).collect(Collectors.toSet());
     }
 
