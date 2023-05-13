@@ -5,33 +5,57 @@ import java.util.List;
 import java.util.Optional;
 
 import it.unibo.pixArt.model.user.User;
+import it.unibo.pixArt.model.user.UserImpl;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 public class UserDataStorageImpl implements UserDataStorage{
 
-    private final String USERDATAPATH = "/"; 
+    private final char fileSeparator = File.separatorChar;
+    private String USERDATAPATH = System.getProperty("user.home") + fileSeparator + "userData"; 
 
-    private Type userListType = new TypeToken<List<User>>(){}.getType();
-    private List<User> userList= new LinkedList<>();
+    private Type userListType = new TypeToken<List<UserImpl>>(){}.getType();
+    private List<User> userList;
     private Charset charset = StandardCharsets.UTF_16;
-
-    private User user;
+    
+    private void createJsonFile() throws IOException {
+        if (Files.notExists(Path.of(USERDATAPATH))) {
+            Files.createDirectory(Path.of(USERDATAPATH));
+        }
+        JsonArray obj = new JsonArray();
+        File file = new File((USERDATAPATH) + fileSeparator + "users.json");
+        USERDATAPATH = file.getAbsolutePath();
+        try (FileWriter fw = new FileWriter(file)) {
+            fw.write(obj.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     private void load() throws IOException {
-        if(userList.isEmpty()) {
+        if(userList == null) {
+            this.createJsonFile();
             Gson gson = new Gson();
-            String json = Files.readString(Path.of(USERDATAPATH), charset);
+            String json = new String(Files.readAllBytes(Path.of(USERDATAPATH)));
             userList = gson.fromJson(json, userListType);
+            if (userList == null){
+                userList = new LinkedList<>();
+            }
         }
     }
 
