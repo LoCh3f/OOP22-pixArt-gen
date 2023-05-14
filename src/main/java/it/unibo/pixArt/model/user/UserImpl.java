@@ -28,6 +28,11 @@ public class UserImpl implements User {
     }
 
     @Override
+    public void SetPassword(final String password) {
+        this.password  = password;
+    }
+
+    @Override
     public void setPathToFile(final String path) {
         this.pathToFile = path;
     }

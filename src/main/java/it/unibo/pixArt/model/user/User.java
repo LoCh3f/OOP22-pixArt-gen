@@ -17,8 +17,19 @@ public interface User {
      */
     String getPassword();
 
+    /**
+     * @param password to set for the user
+     */
+    void SetPassword(final String password);
+
+    /**
+     * @return the path
+     */
     String getPathToFile();
 
+    /**
+     * @param path
+     */
     void setPathToFile(final String path);
 
 }
