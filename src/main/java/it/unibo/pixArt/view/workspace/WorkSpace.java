@@ -3,6 +3,7 @@ package it.unibo.pixArt.view.workspace;
 import it.unibo.pixArt.controller.workspace.WorkSpaceController;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.utilities.GridPaneParser;
+import it.unibo.pixArt.utilities.JsonFileHandler;
 import it.unibo.pixArt.utilities.PixelsParser;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.components.BorderParent;
@@ -25,7 +26,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import static it.unibo.pixArt.utilities.FXStyleVariable.*;
 
@@ -132,7 +136,14 @@ public class WorkSpace extends AbstractFXView {
         center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty().add(frames.heightProperty())));
 
 
-        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel())).build());
+        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel()))
+        .setEventH(event -> {
+            try {
+                JsonFileHandler.getInstance().fromProjectToJson(this.getController().getModel().getProject(), this.getController().getModel().getUser());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }).build());
 
 
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("AbilityTester").setEventH(event -> secondStage.show()).build());
