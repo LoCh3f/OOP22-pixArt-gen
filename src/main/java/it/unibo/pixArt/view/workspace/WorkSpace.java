@@ -2,8 +2,8 @@ package it.unibo.pixArt.view.workspace;
 
 import it.unibo.pixArt.controller.workspace.WorkSpaceController;
 import it.unibo.pixArt.model.pixel.Pixel;
-import it.unibo.pixArt.utilities.GridPaneParser;
-import it.unibo.pixArt.utilities.PixelsParser;
+import it.unibo.pixArt.utilities.parser.GridPaneParser;
+import it.unibo.pixArt.utilities.parser.PixelsParser;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.components.BorderParent;
 import it.unibo.pixArt.view.components.MenuItemBuilder;
@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 
 import java.util.Set;
 
-import static it.unibo.pixArt.utilities.FXStyleVariable.*;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
 
 
 public class WorkSpace extends AbstractFXView {
@@ -46,13 +46,10 @@ public class WorkSpace extends AbstractFXView {
     private Button swapper;
     @FXML
     private BorderPane rightPane;
-
     @FXML
     private ChoiceBox<String> toolBox;
-
     @FXML
     private Slider toolSizeSlider;
-
     private PixelsParser pixelsParser;
     private GridPaneParser paneParser;
     private Logic logics;
@@ -78,7 +75,7 @@ public class WorkSpace extends AbstractFXView {
         });
         paneParser = new GridPaneParser();
         pixelsParser = new PixelsParser();
-        this.root.setCenter(new ImageView(IMAGE_PATH + "mainIcon.png"));
+        this.root.setCenter(new ImageView(IMAGE_PATH + MAIN_ICON));
         this.logics = new WorkSpaceLogic(this.getController().getModel().getProject().getAllFrames().get(0).getRows(),
                 this.getController().getModel().getProject().getAllFrames().get(0).getColumns());
         colorPicker.prefWidthProperty().bind(rightPane.widthProperty());

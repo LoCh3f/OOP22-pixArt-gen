@@ -5,8 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
-import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BORDER_COLOR;
-import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BORDER_WIDTH;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLOR;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
 
 public class PixelsPane extends GridPane {
 

@@ -1,6 +1,5 @@
 package it.unibo.pixArt.view.impl;
 
-import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
@@ -12,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
-import static it.unibo.pixArt.utilities.FXStyleVariable.*;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
 import static it.unibo.pixArt.view.components.StageDistribution.PREF_HEIGHT;
 import static it.unibo.pixArt.view.components.StageDistribution.PREF_WIDTH;
 

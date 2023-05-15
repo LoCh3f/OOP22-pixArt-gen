@@ -1,4 +1,4 @@
-package it.unibo.pixArt.utilities;
+package it.unibo.pixArt.utilities.parser;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
@@ -10,8 +10,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.function.Function;
 
-import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BORDER_COLOR;
-import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BORDER_WIDTH;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLOR;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
 
 public class GridPaneParser implements Function<GridPane, Collection<Pixel>> {
     @Override
