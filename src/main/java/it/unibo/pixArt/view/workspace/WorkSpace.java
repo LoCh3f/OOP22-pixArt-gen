@@ -2,7 +2,7 @@ package it.unibo.pixArt.view.workspace;
 
 import it.unibo.pixArt.controller.workspace.WorkSpaceController;
 import it.unibo.pixArt.model.pixel.Pixel;
-import it.unibo.pixArt.utilities.JsonFileHandler;
+import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.utilities.parser.GridPaneParser;
 import it.unibo.pixArt.utilities.parser.PixelsParser;
 import it.unibo.pixArt.view.AbstractFXView;
@@ -120,7 +120,7 @@ public class WorkSpace extends AbstractFXView {
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel()))
                 .setEventH(event -> {
                     try {
-                        JsonFileHandler.getInstance().fromProjectToJson(this.getController().getModel().getProject(), this.getController().getModel().getUser());
+                        FileHandler.getInstance().fromProjectToJson(this.getController().getModel().getProject(), this.getController().getModel().getUser());
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }

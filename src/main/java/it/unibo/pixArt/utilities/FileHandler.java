@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
@@ -22,8 +23,11 @@ import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.project.ProjectImpl;
 import it.unibo.pixArt.model.user.User;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 
-public class JsonFileHandler {
+public class FileHandler {
     private Gson gson = new GsonBuilder().setLenient()
                         .registerTypeAdapter(Project.class, InterfaceSerializer.interfaceSerializer(ProjectImpl.class))
                         .registerTypeAdapter(PixelGrid.class, InterfaceSerializer.interfaceSerializer(PixelMatrix.class))
@@ -34,13 +38,13 @@ public class JsonFileHandler {
     private char fileSeparator = File.separatorChar;
 
     private static class LazyHolder{
-        private static final JsonFileHandler SINGLETON = new JsonFileHandler();
+        private static final FileHandler SINGLETON = new FileHandler();
     }
 
-    private JsonFileHandler(){
+    private FileHandler(){
     }
 
-    public static JsonFileHandler getInstance(){
+    public static FileHandler getInstance(){
         return LazyHolder.SINGLETON;
     }
 
@@ -73,6 +77,16 @@ public class JsonFileHandler {
         fReader.close();
 
         return gson.fromJson(sBuilder.toString(), Project.class);
+    }
+
+    public void deleteFile(File fileToDelete){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Delete File");
+        alert.setHeaderText("Are you sure to delete the selected frame?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){ 
+            fileToDelete.delete();
+        }
     }
     
 }
