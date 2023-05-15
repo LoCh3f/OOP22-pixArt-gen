@@ -112,7 +112,9 @@ public class WorkSpace extends AbstractFXView {
             @Override
             public void handle(final ActionEvent event) {
                 final var button = (Button) event.getSource();
+                getWorkSpaceController().setIsDrawing();
                 color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), (Color)button.getBackground().getFills().get(0).getFill());
+                getWorkSpaceController().setIsDrawing();
             }
         };
         rightPane.getChildren().forEach(n -> n.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
