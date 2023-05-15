@@ -25,18 +25,6 @@ public class WorkSpaceLogic implements Logic {
         this.columns = columns;
     }
 
-
-    @Override
-    public boolean isDrawing() {
-        return this.isDrawing;
-    }
-
-    @Override
-    public void changeState() {
-        this.isDrawing = !this.isDrawing;
-    }
-
-
     @Override
     public String getImagePath() {
         return imagePaths.stream().collect(Collectors.toList()).get(new Random().nextInt(imagePaths.size()));
