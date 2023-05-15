@@ -93,7 +93,9 @@ public class WorkSpace extends AbstractFXView {
             @Override
             public void handle(final ActionEvent event) {
                 final var button = (Button) event.getSource();
-                color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), (Color) button.getBackground().getFills().get(0).getFill());
+                getWorkSpaceController().setIsDrawing();
+                color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), (Color)button.getBackground().getFills().get(0).getFill());
+                getWorkSpaceController().setIsDrawing();
             }
         };
         rightPane.getChildren().forEach(n -> n.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
@@ -113,7 +115,6 @@ public class WorkSpace extends AbstractFXView {
             if (getWorkSpaceController().getIsDrawing()) {
                 final var button = (Button) event.getSource();
                 color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), (Color) button.getBackground().getFills().get(0).getFill());
-                // button.setStyle(FX_BACKGROUND_COLOR_START + colorPicker.getValue().toString().replace("0x", "#") + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             }
             if (secondStage.isShowing()) {
                 testerImageView.setImage(new Image(logics.test(paneParser.apply(center))));

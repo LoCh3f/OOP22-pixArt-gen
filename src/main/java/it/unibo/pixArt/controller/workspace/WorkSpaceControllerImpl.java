@@ -11,6 +11,7 @@ import it.unibo.pixArt.model.historyframe.HistoryFrame;
 import it.unibo.pixArt.model.historyframe.HistoryFrameImpl;
 import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
+import it.unibo.pixArt.model.pixel.PixelBuilder;
 import it.unibo.pixArt.model.tool.AbstractTool;
 import it.unibo.pixArt.model.tool.ToolEnum;
 import it.unibo.pixArt.model.tool.ToolFactory;
@@ -35,7 +36,8 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
 
     @Override
     public void colorGrid(final int x, final int y, final Color color) {
-        final Set<Pixel> result = tool.updateGrid(new ImplPixel(x, y, color), this.currentframe.getPixels());
+        final Pixel p = this.currentframe.getPixels().stream().filter(e -> e.comparePixel(new PixelBuilder.PxlBuilder().setX(x).setY(y).setColor(color).build())).findAny().get();
+        final Set<Pixel> result = tool.updateGrid(p, this.currentframe.getPixels());
         this.currentframe.getMemento().setState(currentframe.getPixels());
         this.currentframe.setPixel(result);
         this.getWorkSpaceView().updateView(result); 
