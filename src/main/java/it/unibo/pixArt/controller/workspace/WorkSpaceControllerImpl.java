@@ -45,21 +45,22 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
 
     @Override
     public void setCurrentFrame(final int index) {
+        //elimina immagine e ricreala.(ImagePrinter.)
         this.currentframe = this.getModel().getProject().getAllFrames().get(index);
-        //this.getWorkSpaceView().updateView(this.currentframe.getPixels());
     }
 
     @Override
     public Set<Pixel> getPreviousState() {
         currentframe.revert();
         return currentframe.getPixels();
-        //return this.currentframe.getMemento().getState();
     }
 
+    //DA FINIREs
     @Override
     public Set<Pixel> addNewFrame() {
         this.getModel().getProject().addNewFrame();
         this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl("/image/toad.png"));
+        //this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl(getModel().getProject().getName() + getModel().getProject().getAllHistoryFrames().size()));
         setCurrentFrame(this.getModel().getProject().getAllFrames().size() - 1);
         return this.currentframe.getPixels();
     }
@@ -88,15 +89,21 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     public Set<Pixel> getCurrentFrame() {
         return this.currentframe.getPixels();
     }
-
-    /*TO BE DONE:
-    * Method to delete current frame.
-    * Method to get all history frames and send them in the view.---ALMOST DONE.
-    */
     
     @Override
     public void saveProject() {
         ImagePrinter.getInstance().printImage(this.getModel().getProject(), this.getModel().getUser());
+    }
+
+    @Override
+    public void deleteCurrentFrame() {
+        //da migliorare
+        final int frameIndex = this.getModel().getProject().getAllFrames().indexOf(this.currentframe);
+        //Rimuovi immagine
+        this.getHistoryFrames().remove(frameIndex);
+        this.getModel().getProject().getAllFrames().remove(currentframe);
+        this.setCurrentFrame(frameIndex - 1);
+        this.getWorkSpaceView().updateView(getCurrentFrame());
     }
     
     private WorkSpace getWorkSpaceView() {

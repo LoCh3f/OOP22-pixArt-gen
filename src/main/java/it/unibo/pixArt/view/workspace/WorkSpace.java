@@ -62,7 +62,7 @@ public class WorkSpace extends AbstractFXView {
     public void init() {
         this.getWorkSpaceController().setCurrentFrame(0);//Set the first frame
         this.getWorkSpaceController().selectTool("PENCIL", colorPicker.getValue(), (int) toolSizeSlider.getValue());//select the default tool.
-
+        
         this.frames.getItems().addAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
         this.frames.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             getWorkSpaceController().setCurrentFrame(frames.getSelectionModel().getSelectedIndex());
@@ -80,15 +80,15 @@ public class WorkSpace extends AbstractFXView {
         pixelsParser = new PixelsParser();
         this.root.setCenter(new ImageView(IMAGE_PATH + "mainIcon.png"));
         this.logics = new WorkSpaceLogic(this.getController().getModel().getProject().getAllFrames().get(0).getRows(),
-                this.getController().getModel().getProject().getAllFrames().get(0).getColumns());
+        this.getController().getModel().getProject().getAllFrames().get(0).getColumns());
         colorPicker.prefWidthProperty().bind(rightPane.widthProperty());
         swapper.prefWidthProperty().bind(rightPane.widthProperty());
-
+        
         final Stage secondStage = new StageDistribution.ParallelStage(new BorderParent.Builder().setCenter(new ImageView()).build(), "AbilityTester", new Image(IMAGE_PATH + MAIN_ICON));
         final var secondRoot = (BorderPane) secondStage.getScene().getRoot();
         final var testerImageView = (ImageView) secondRoot.getCenter();
         testerImageView.setImage(new Image(IMAGE_PATH + IMAGE_VERY_BAD));
-
+        
         final var e = new EventHandler<ActionEvent>() {
             @Override
             public void handle(final ActionEvent event) {
@@ -131,16 +131,17 @@ public class WorkSpace extends AbstractFXView {
         center.prefWidthProperty().bind(center.heightProperty());
         center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty().add(frames.heightProperty())));
 
-
+        
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel())).build());
 
 
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("AbilityTester").setEventH(event -> secondStage.show()).build());
-
+        
         updateView(getWorkSpaceController().getCurrentFrame());
-
+       
+        
     }
-
+    
     @FXML
     private void discardMatrix() {
         final var grid = (GridPane) this.root.getCenter();
@@ -160,6 +161,8 @@ public class WorkSpace extends AbstractFXView {
     @FXML
     private void onUndoClicked() {
         this.updateView(this.getWorkSpaceController().getPreviousState());
+        this.getWorkSpaceController().deleteCurrentFrame(); 
+        this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
     }
 
     @FXML
