@@ -22,8 +22,8 @@ public class LightenTool extends AbstractDrawingTool{
 
         for (var x: range(pixel.getPosition().getX(), oppositePixPos.getX())) {
             for (var y: range(pixel.getPosition().getY(), oppositePixPos.getY())){
-                tempPix = new ImplPixel(x, y);
-                tempPix.setColor(pixel.getColor().brighter());
+                tempPix = frame.stream().filter(p -> p.getPosition().equals(new Pair<>(x, y))).findFirst().get();
+                tempPix.setColor(tempPix.getColor().brighter());
                 newPixSet.add(tempPix);
             }
         }
