@@ -74,5 +74,15 @@ public class JsonFileHandler {
 
         return gson.fromJson(sBuilder.toString(), Project.class);
     }
+
+    public void deleteFile(File fileToDelete){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Delete File");
+        alert.setHeaderText("Are you sure to delete the selected frame?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){ 
+            fileToDelete.delete();
+        }
+    }
     
 }
