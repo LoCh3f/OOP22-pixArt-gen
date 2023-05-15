@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
@@ -15,29 +16,35 @@ import it.unibo.pixArt.model.framestate.FrameState;
 import it.unibo.pixArt.model.framestate.FrameStateImpl;
 import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.grid.PixelMatrix;
+import it.unibo.pixArt.model.historyframe.HistoryFrame;
+import it.unibo.pixArt.model.historyframe.HistoryFrameImpl;
 import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.project.ProjectImpl;
 import it.unibo.pixArt.model.user.User;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 
-public class JsonFileHandler {
-    private Gson gson = new GsonBuilder().setLenient().setPrettyPrinting()
+public class FileHandler {
+    private Gson gson = new GsonBuilder().setLenient()
                         .registerTypeAdapter(Project.class, InterfaceSerializer.interfaceSerializer(ProjectImpl.class))
                         .registerTypeAdapter(PixelGrid.class, InterfaceSerializer.interfaceSerializer(PixelMatrix.class))
                         .registerTypeAdapter(Pixel.class, InterfaceSerializer.interfaceSerializer(ImplPixel.class))
                         .registerTypeAdapter(FrameState.class, InterfaceSerializer.interfaceSerializer(FrameStateImpl.class))
+                        .registerTypeAdapter(HistoryFrame.class, InterfaceSerializer.interfaceSerializer(HistoryFrameImpl.class))
                         .create();
     private char fileSeparator = File.separatorChar;
 
     private static class LazyHolder{
-        private static final JsonFileHandler SINGLETON = new JsonFileHandler();
+        private static final FileHandler SINGLETON = new FileHandler();
     }
 
-    private JsonFileHandler(){
+    private FileHandler(){
     }
 
-    public static JsonFileHandler getInstance(){
+    public static FileHandler getInstance(){
         return LazyHolder.SINGLETON;
     }
 
@@ -47,9 +54,8 @@ public class JsonFileHandler {
      * @throws IOException
      */
     public void fromProjectToJson(Project project, User user) throws IOException{
-        FileWriter fWriter = new FileWriter(new File(user.getPathToFile() + project.getPath() + fileSeparator + project.getName() + ".json"));
+        FileWriter fWriter = new FileWriter(user.getPathToFile() + fileSeparator + project.getName() + ".json");
         fWriter.write(gson.toJson(project));
-        System.out.println(project.getAllFrames().get(0).getPixels().stream().collect(Collectors.toList()).get(0).getColor().toString());
         fWriter.flush();
         fWriter.close();     
     }
@@ -61,7 +67,7 @@ public class JsonFileHandler {
      * @throws IOException
      */
     public Project fromJsonToProject(File jsonFile, User user) throws IOException{
-        BufferedReader fReader = new BufferedReader(new FileReader(user.getPathToFile() + jsonFile));
+        BufferedReader fReader = new BufferedReader(new FileReader(jsonFile));
         StringBuilder sBuilder = new StringBuilder();
         String line = null;
         while((line = fReader.readLine()) != null){
@@ -71,6 +77,16 @@ public class JsonFileHandler {
         fReader.close();
 
         return gson.fromJson(sBuilder.toString(), Project.class);
+    }
+
+    public void deleteFile(File fileToDelete){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Delete File");
+        alert.setHeaderText("Are you sure to delete the selected frame?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){ 
+            fileToDelete.delete();
+        }
     }
     
 }

@@ -1,13 +1,13 @@
 package it.unibo.pixArt.view.workspace;
 
 import it.unibo.pixArt.model.pixel.Pixel;
-import it.unibo.pixArt.utilities.AbstractGenericMirror;
-import it.unibo.pixArt.utilities.Mirror;
+import it.unibo.pixArt.utilities.mirror.AbstractGenericMirror;
+import it.unibo.pixArt.utilities.mirror.Mirror;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static it.unibo.pixArt.utilities.FXStyleVariable.*;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
 
 public class WorkSpaceLogic implements Logic {
 

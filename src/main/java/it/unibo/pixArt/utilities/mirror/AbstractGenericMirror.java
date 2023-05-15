@@ -1,4 +1,4 @@
-package it.unibo.pixArt.utilities;
+package it.unibo.pixArt.utilities.mirror;
 
 import java.util.Collection;
 import java.util.Set;

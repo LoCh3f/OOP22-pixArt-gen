@@ -1,10 +1,12 @@
-package it.unibo.pixArt.model.project;
+package it.unibo.pixArt.model.project.builder;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.grid.PixelMatrix;
+import it.unibo.pixArt.model.project.Project;
+import it.unibo.pixArt.model.project.ProjectImpl;
 
 public final class ProjectBuilderImpl implements ProjectBuilder {
     private String projectName;

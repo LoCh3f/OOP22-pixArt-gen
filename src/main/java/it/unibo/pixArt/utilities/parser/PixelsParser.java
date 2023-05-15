@@ -1,4 +1,4 @@
-package it.unibo.pixArt.utilities;
+package it.unibo.pixArt.utilities.parser;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 import javafx.scene.control.Button;
@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 import java.util.Collection;
 import java.util.function.Function;
 
-import static it.unibo.pixArt.utilities.FXStyleVariable.*;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
 
 public class PixelsParser implements Function<Collection<Pixel>, GridPane> {
     @Override

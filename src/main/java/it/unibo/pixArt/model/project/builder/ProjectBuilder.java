@@ -1,4 +1,6 @@
-package it.unibo.pixArt.model.project;
+package it.unibo.pixArt.model.project.builder;
+
+import it.unibo.pixArt.model.project.Project;
 
 /**
  * The interface of the class that builds a project.

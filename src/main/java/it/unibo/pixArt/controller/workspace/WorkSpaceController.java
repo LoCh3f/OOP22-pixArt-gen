@@ -75,7 +75,7 @@ public interface WorkSpaceController extends Controller {
     public Set<Pixel> getCurrentFrame();
 
     /**
-     * Method to delete current frame.
+     * Method to delete current frame. 
      */
     public void deleteCurrentFrame();
 

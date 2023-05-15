@@ -1,8 +1,8 @@
-package it.unibo.pixArt.utilities;
+package it.unibo.pixArt.utilities.variables;
 
 import java.io.File;
 
-public class FXStyleVariable {
+public class FXViewVariables {
 
     public static final String BACKGROUND_COLOR = "-fx-background-color:black";
 

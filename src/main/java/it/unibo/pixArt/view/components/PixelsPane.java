@@ -5,13 +5,13 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
-import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BORDER_COLOR;
-import static it.unibo.pixArt.utilities.FXStyleVariable.FX_BORDER_WIDTH;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLOR;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
 
 public class PixelsPane extends GridPane {
 
 
-    private static final Double MAX_SIZE = 900.0;
+    private static final Double MAX_SIZE = 1080.0;
 
 
     private PixelsPane(final int rows,
@@ -27,8 +27,8 @@ public class PixelsPane extends GridPane {
                 final var b = new Button();
                 b.setOnAction(e);
                 b.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
-                b.prefWidthProperty().bind(widthProperty().divide(columns));
-                b.prefHeightProperty().bind(heightProperty().divide(rows));
+                b.prefWidthProperty().bind(this.widthProperty().divide(columns));
+                b.prefHeightProperty().bind(this.heightProperty().divide(rows));
                 b.setMinSize(Double.MIN_VALUE, Double.MIN_VALUE);
                 this.add(b, j, i);
             }

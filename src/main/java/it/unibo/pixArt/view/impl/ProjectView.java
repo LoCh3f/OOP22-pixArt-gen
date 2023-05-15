@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.user.UserImpl;
-import it.unibo.pixArt.utilities.JsonFileHandler;
+import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.SimpleView;
 import it.unibo.pixArt.view.pages.PageLoader;
@@ -56,7 +56,7 @@ public class ProjectView extends AbstractFXView {
 
     public void onEditClick(final ActionEvent event){
         try {
-            Project project = JsonFileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selectedFolder)), this.getController().getModel().getUser());
+            Project project = FileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selectedFolder)), this.getController().getModel().getUser());
             this.getController().getModel().setProject(project);
             PageLoader.getInstance().switchPage(getStage(), Pages.WORKSPACE, this.getController().getModel());
         } catch (IOException e) {

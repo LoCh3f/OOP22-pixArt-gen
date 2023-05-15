@@ -5,10 +5,12 @@ import it.unibo.pixArt.controller.animation.AnimationController;
 import it.unibo.pixArt.controller.animation.AnimationControllerImpl;
 import it.unibo.pixArt.controller.impl.HistoryController;
 import it.unibo.pixArt.controller.impl.HomeController;
+import it.unibo.pixArt.controller.login.LoginControllerImpl;
 import it.unibo.pixArt.controller.settings.SettingsControllerImpl;
 import it.unibo.pixArt.controller.workspace.WorkSpaceController;
 import it.unibo.pixArt.controller.workspace.WorkSpaceControllerImpl;
 import it.unibo.pixArt.view.impl.HomeView;
+import it.unibo.pixArt.view.login.LoginView;
 
 public enum Pages {
     /**
@@ -34,7 +36,12 @@ public enum Pages {
     /**
      * Settings view
      */
-    SETTINGS("settings", new SettingsControllerImpl());
+    SETTINGS("settings", new SettingsControllerImpl()),
+
+    /*
+     * Login view
+     */
+    LOGIN("login", new LoginControllerImpl());
 
     private final String name;
 
