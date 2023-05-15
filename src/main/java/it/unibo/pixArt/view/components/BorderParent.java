@@ -5,7 +5,6 @@ import javafx.scene.layout.BorderPane;
 
 public class BorderParent extends BorderPane {
 
-
     private BorderParent(final Node right, final Node left, final Node bottom, final Node top, final Node center) {
         super();
         this.setCenter(center);

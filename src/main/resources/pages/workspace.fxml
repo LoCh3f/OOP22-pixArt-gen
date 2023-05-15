@@ -10,7 +10,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
@@ -37,42 +36,30 @@
             </menus>
         </MenuBar>
     </top>
-    <bottom>
-        <ListView fx:id="frames" orientation="HORIZONTAL" prefHeight="76.0" prefWidth="594.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER" />
-    </bottom>
-    <right>
-        <BorderPane fx:id="rightPane" prefHeight="269.0" prefWidth="114.0" BorderPane.alignment="CENTER">
-            <top>
-                <ColorPicker fx:id="colorPicker" onAction="#onColorChanged" prefHeight="61.0" prefWidth="200.0" style="-fx-background-color: grey;" translateX="-2.0" translateY="3.0" BorderPane.alignment="CENTER">
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <left>
+      <VBox fx:id="leftPane" prefHeight="248.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+                <ColorPicker fx:id="colorPicker" onAction="#onColorChanged" prefHeight="34.0" prefWidth="100.0">
                <value>
                   <Color />
-               </value></ColorPicker>
-            </top>
-         <center>
-            <ImageView fx:id="templateView" fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-         </center>
-         <bottom>
-            <Button fx:id="swapper" mnemonicParsing="false" onAction="#changeImage" prefHeight="26.0" prefWidth="210.0" style="-fx-background-color: grey;" text="New Template" translateX="-2.0" translateY="-3.0" BorderPane.alignment="CENTER" />
-         </bottom>
-        </BorderPane>
-    </right>
-   <left>
-      <VBox fx:id="leftPane" alignment="CENTER" prefHeight="267.0" prefWidth="139.0" spacing="10.0" BorderPane.alignment="CENTER">
-         <padding>
-            <Insets right="5.0" top="5.0" />
-         </padding>
-         <children>
-            <Button fx:id="start" mnemonicParsing="false" prefHeight="26.0" prefWidth="137.0" text="Start" translateX="3.0" />
-            <Button fx:id="undo" mnemonicParsing="false" onAction="#onUndoClicked" prefHeight="26.0" prefWidth="143.0" text="Undo" translateX="3.0" />
-            <Button fx:id="discard" mnemonicParsing="false" onAction="#discardMatrix" prefHeight="29.0" prefWidth="172.0" text="Discard" translateX="3.0" />
-            <Button mnemonicParsing="false" onAction="#onAddFrameClicked" prefHeight="26.0" prefWidth="168.0" text="Add+" />
+               </value>
+            </ColorPicker>
+            <Button fx:id="undo" mnemonicParsing="false" onAction="#onUndoClicked" prefHeight="35.0" prefWidth="114.0" text="Undo" />
+            <Button fx:id="discard" mnemonicParsing="false" onAction="#discardMatrix" prefHeight="29.0" prefWidth="172.0" text="Discard" />
+            <Button mnemonicParsing="false" onAction="#onAddFrameClicked" prefHeight="26.0" prefWidth="141.0" text="Add+" />
             <ChoiceBox fx:id="toolBox" prefHeight="26.0" prefWidth="164.0" />
             <Label fx:id="toolSizeLabel" text="Size:" />
             <Slider fx:id="toolSizeSlider" max="6.0" min="1.0" showTickLabels="true" showTickMarks="true" value="1.0" />
          </children>
+         <opaqueInsets>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </opaqueInsets>
       </VBox>
    </left>
-   <padding>
-      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-   </padding>
+   <bottom>
+        <ListView fx:id="frames" orientation="HORIZONTAL" prefHeight="100.0" prefWidth="590.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

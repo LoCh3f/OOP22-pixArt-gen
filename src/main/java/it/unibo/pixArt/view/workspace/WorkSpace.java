@@ -5,10 +5,8 @@ import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.utilities.parser.GridPaneParser;
 import it.unibo.pixArt.utilities.parser.PixelsParser;
 import it.unibo.pixArt.view.AbstractFXView;
-import it.unibo.pixArt.view.components.BorderParent;
 import it.unibo.pixArt.view.components.MenuItemBuilder;
 import it.unibo.pixArt.view.components.PixelsPane;
-import it.unibo.pixArt.view.components.StageDistribution;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.event.ActionEvent;
@@ -22,8 +20,8 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import java.util.Set;
 
@@ -40,16 +38,13 @@ public class WorkSpace extends AbstractFXView {
     private ColorPicker colorPicker;
     @FXML
     private ListView<ImageView> frames;
-    @FXML
-    private ImageView templateView;
-    @FXML
-    private Button swapper;
-    @FXML
-    private BorderPane rightPane;
+
     @FXML
     private ChoiceBox<String> toolBox;
     @FXML
     private Slider toolSizeSlider;
+    @FXML
+    private VBox leftPane;
     private PixelsParser pixelsParser;
     private GridPaneParser paneParser;
     private Logic logics;
@@ -57,9 +52,10 @@ public class WorkSpace extends AbstractFXView {
 
     @Override
     public void init() {
+
+
         this.getWorkSpaceController().setCurrentFrame(0);//Set the first frame
         this.getWorkSpaceController().selectTool("PENCIL", colorPicker.getValue(), (int) toolSizeSlider.getValue());//select the default tool.
-
         this.frames.getItems().addAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
         this.frames.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             getWorkSpaceController().setCurrentFrame(frames.getSelectionModel().getSelectedIndex());
@@ -78,43 +74,29 @@ public class WorkSpace extends AbstractFXView {
         this.root.setCenter(new ImageView(IMAGE_PATH + MAIN_ICON));
         this.logics = new WorkSpaceLogic(this.getController().getModel().getProject().getAllFrames().get(0).getRows(),
                 this.getController().getModel().getProject().getAllFrames().get(0).getColumns());
-        colorPicker.prefWidthProperty().bind(rightPane.widthProperty());
-        swapper.prefWidthProperty().bind(rightPane.widthProperty());
-
-        final Stage secondStage = new StageDistribution.ParallelStage(new BorderParent.Builder().setCenter(new ImageView()).build(), "AbilityTester", new Image(IMAGE_PATH + MAIN_ICON));
-        final var secondRoot = (BorderPane) secondStage.getScene().getRoot();
-        final var testerImageView = (ImageView) secondRoot.getCenter();
-        testerImageView.setImage(new Image(IMAGE_PATH + IMAGE_VERY_BAD));
-
         final var e = new EventHandler<ActionEvent>() {
             @Override
             public void handle(final ActionEvent event) {
                 final var button = (Button) event.getSource();
                 getWorkSpaceController().setIsDrawing();
-                color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), (Color)button.getBackground().getFills().get(0).getFill());
+                color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), (Color) button.getBackground().getFills().get(0).getFill());
                 getWorkSpaceController().setIsDrawing();
             }
         };
-        rightPane.getChildren().forEach(n -> n.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
-        menubar.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
-
+        root.getChildren().forEach(c -> c.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
+        leftPane.getChildren().forEach(c -> c.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
         final var rows = this.getController().getModel().getProject().getAllFrames().get(0).getRows();
         final var columns = this.getController().getModel().getProject().getAllFrames().get(0).getColumns();
-
         final GridPane center = new PixelsPane.GridPaneBuilder()
                 .setColumns(columns).setRows(rows)
                 .setGridLinesVisible(true)
                 .setAction(e).build();
         this.root.setCenter(center);
 
-
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             if (getWorkSpaceController().getIsDrawing()) {
                 final var button = (Button) event.getSource();
                 color(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), (Color) button.getBackground().getFills().get(0).getFill());
-            }
-            if (secondStage.isShowing()) {
-                testerImageView.setImage(new Image(logics.test(paneParser.apply(center))));
             }
         }));
 
@@ -125,14 +107,16 @@ public class WorkSpace extends AbstractFXView {
         });
 
         center.alignmentProperty().set(Pos.CENTER);
-        center.prefWidthProperty().bind(center.heightProperty());
-        center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty().add(frames.heightProperty())));
+        center.prefWidthProperty().bind(root.widthProperty().subtract(leftPane.widthProperty().add(frames.widthProperty())));
+        center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty()));
+        frames.getItems().forEach(i -> {
+            i.fitHeightProperty().bind(frames.heightProperty());
+            i.setFitWidth(200);
+        });
 
 
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel())).build());
 
-
-        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("AbilityTester").setEventH(event -> secondStage.show()).build());
 
         updateView(getWorkSpaceController().getCurrentFrame());
 
@@ -144,10 +128,6 @@ public class WorkSpace extends AbstractFXView {
         grid.getChildren().forEach(b -> b.setStyle(FX_BACKGROUND_COLOR_START + "transparent" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
     }
 
-    @FXML
-    private void changeImage() {
-        this.templateView.setImage(new Image(logics.getImagePath()));
-    }
 
     @FXML
     private void onColorChanged(final ActionEvent event) {
@@ -163,6 +143,10 @@ public class WorkSpace extends AbstractFXView {
     private void onAddFrameClicked() {
         this.updateView(this.getWorkSpaceController().addNewFrame());
         this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
+        frames.getItems().forEach(i -> {
+            i.fitHeightProperty().bind(frames.heightProperty());
+            i.setFitWidth(200);
+        });
     }
 
     private void color(final int x, final int y, final Color color) {
