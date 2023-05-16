@@ -7,12 +7,11 @@ import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.project.FileTypes;
 import it.unibo.pixArt.model.project.Project;
-import it.unibo.pixArt.model.project.ProjectBuilderImpl;
 import it.unibo.pixArt.model.project.ProjectImpl;
+import it.unibo.pixArt.model.project.builder.ProjectBuilderImpl;
 
 public class SettingsControllerImpl extends SimpleController implements SettingsController {
     static final String DEF_NAME = "Project1";
-    static final String DEF_PATH = "/Downloads";
     static final FileTypes DEF_FILETYPE = FileTypes.PNG;
     static final int DEF_SIZE = 16;
 
@@ -34,7 +33,7 @@ public class SettingsControllerImpl extends SimpleController implements Settings
 
     @Override
     public String getDefPath() {
-        return DEF_PATH;
+        return getModel().getUser().getPathToFile();
     }
 
     @Override

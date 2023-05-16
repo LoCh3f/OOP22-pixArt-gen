@@ -53,8 +53,6 @@ public class WorkSpace extends AbstractFXView {
 
     @Override
     public void init() {
-
-
         this.getWorkSpaceController().setCurrentFrame(0);//Set the first frame
         this.getWorkSpaceController().selectTool("PENCIL", colorPicker.getValue(), (int) toolSizeSlider.getValue());//select the default tool.
         this.frames.getItems().addAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
@@ -127,15 +125,15 @@ public class WorkSpace extends AbstractFXView {
 
 
         updateView(getWorkSpaceController().getCurrentFrame());
-
+       
+        
     }
-
+    
     @FXML
     private void discardMatrix() {
         final var grid = (GridPane) this.root.getCenter();
         grid.getChildren().forEach(b -> b.setStyle(FX_BACKGROUND_COLOR_START + "transparent" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
     }
-
 
     @FXML
     private void onColorChanged(final ActionEvent event) {
@@ -146,10 +144,20 @@ public class WorkSpace extends AbstractFXView {
     private void onUndoClicked() {
         this.updateView(this.getWorkSpaceController().getPreviousState());
     }
-
+    
     @FXML
     private void onAddFrameClicked() {
         this.updateView(this.getWorkSpaceController().addNewFrame());
+        this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
+        frames.getItems().forEach(i -> {
+            i.fitHeightProperty().bind(frames.heightProperty());
+            i.setFitWidth(200);
+        });
+    }
+    
+    @FXML
+    private void onDeleteClicked() {
+        this.getWorkSpaceController().deleteCurrentFrame(); 
         this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
         frames.getItems().forEach(i -> {
             i.fitHeightProperty().bind(frames.heightProperty());

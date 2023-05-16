@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import it.unibo.pixArt.model.project.builder.ProjectBuilderImpl;
+
 public class ProjectTest {
     final static  String PROJECT_NAME = "First";
     final static String PROJECT_PATH = "/Desktop";

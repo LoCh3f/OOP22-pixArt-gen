@@ -52,12 +52,31 @@ public interface WorkSpaceController extends Controller {
      */
     public List<String> getTools();
 
+    /**
+     * Method to set the isDrawing flag to true or false.
+     */
     public void setIsDrawing();
 
+    /**Method to get the value of the flag isDrawing.
+     * 
+     * @return the boolean value of isDrawing.
+     */
     public boolean getIsDrawing();
 
+    /**
+     * Method to save the project.
+     */
     public void saveProject();
 
+    /** Method to get the current frame
+     * 
+     * @return the set of pixels that make up the curent frame.
+     */
     public Set<Pixel> getCurrentFrame();
+
+    /**
+     * Method to delete current frame. 
+     */
+    public void deleteCurrentFrame();
 
 }
