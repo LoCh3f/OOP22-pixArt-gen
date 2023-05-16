@@ -1,10 +1,10 @@
-package it.unibo.pixArt.view.workspace;
+package it.unibo.pixArt.view.abilitytest;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 
 import java.util.Collection;
 
-public interface Logic {
+interface Logic {
 
     String getImagePath();
 

@@ -49,7 +49,6 @@ public class WorkSpace extends AbstractFXView {
     private VBox leftPane;
     private PixelsParser pixelsParser;
     private GridPaneParser paneParser;
-    private Logic logics;
 
 
     @Override
@@ -63,7 +62,8 @@ public class WorkSpace extends AbstractFXView {
             getWorkSpaceController().setCurrentFrame(frames.getSelectionModel().getSelectedIndex());
             updateView(getWorkSpaceController().getCurrentFrame());
         });
-        this.toolBox.getItems().addAll(this.getWorkSpaceController().getTools());//Init toolBox and add event listeneers
+        this.toolBox.getItems().addAll(this.getWorkSpaceController().getTools());//Init toolBox and add event listeners
+
         this.toolBox.setValue("PENCIL");
         this.toolBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> getWorkSpaceController().selectTool(newValue, colorPicker.getValue(), (int) toolSizeSlider.getValue()));
 
@@ -74,8 +74,7 @@ public class WorkSpace extends AbstractFXView {
         paneParser = new GridPaneParser();
         pixelsParser = new PixelsParser();
         this.root.setCenter(new ImageView(IMAGE_PATH + MAIN_ICON));
-        this.logics = new WorkSpaceLogic(this.getController().getModel().getProject().getAllFrames().get(0).getRows(),
-                this.getController().getModel().getProject().getAllFrames().get(0).getColumns());
+
         final var e = new EventHandler<ActionEvent>() {
             @Override
             public void handle(final ActionEvent event) {
