@@ -2,8 +2,6 @@ package it.unibo.pixArt.view.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -11,7 +9,6 @@ import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.user.UserImpl;
 import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.view.AbstractFXView;
-import it.unibo.pixArt.view.SimpleView;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.beans.value.ChangeListener;
