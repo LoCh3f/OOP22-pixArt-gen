@@ -19,7 +19,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 
 public class SettingsView extends AbstractFXView {
-    static final String dimensions[] = {"16", "32", "64", "128"};//move to SettingsController
+    
     @FXML
     private TextField projectName;
 
@@ -61,8 +61,9 @@ public class SettingsView extends AbstractFXView {
     public void init() {
         fileFormat.getItems().addAll(getSettingsController().getFileFormatsList());
         fileFormat.setAccessibleHelp(this.getSettingsController().getDefFileType());
-        sizeChoice.getItems().addAll(dimensions);
-        sizeChoice.setValue("16");
+        fileFormat.setValue(getSettingsController().getFileFormatsList().get(0));
+        sizeChoice.getItems().addAll(getSettingsController().getAvailableSizeList());
+        sizeChoice.setValue(getSettingsController().getAvailableSizeList().get(0));
         projectName.setText(this.getSettingsController().getDefName());
         pathName.setText(this.getSettingsController().getDefPath());
     }

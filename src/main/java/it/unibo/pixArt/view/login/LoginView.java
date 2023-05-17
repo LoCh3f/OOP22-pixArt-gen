@@ -11,10 +11,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 public class LoginView extends AbstractFXView{
+
+    @FXML
+    private ImageView logoImageView;
 
     @FXML
     private TextField usernameField;
@@ -78,6 +83,7 @@ public class LoginView extends AbstractFXView{
 
     @Override
     public void init() {
+        this.logoImageView.setImage(new Image("/image/nameLogo.png"));
     }
 
     private LoginController getLoginController() {

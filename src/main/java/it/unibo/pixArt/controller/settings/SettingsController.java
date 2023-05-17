@@ -30,4 +30,9 @@ public interface SettingsController {
      * @return default file type.
      */
     public String getDefFileType();
+
+    /**
+     * @return a list containing all the availabe sizes for a frame.
+     */
+    public List<String> getAvailableSizeList();
 }
