@@ -21,7 +21,7 @@ public class ProjectImpl implements Project {
         this.fileType = fileType;
         this.frames = frames;
         this.historyFrames = new LinkedList<>();
-        this.historyFrames.add(new HistoryFrameImpl("/image/toad.png"));
+        this.historyFrames.add(new HistoryFrameImpl());
     }
 
     @Override

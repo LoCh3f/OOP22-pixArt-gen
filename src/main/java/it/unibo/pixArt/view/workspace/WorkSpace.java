@@ -47,6 +47,8 @@ public class WorkSpace extends AbstractFXView {
     private Slider toolSizeSlider;
     @FXML
     private VBox leftPane;
+    @FXML
+    private Label toolSizeLabel;
     private PixelsParser pixelsParser;
     private GridPaneParser paneParser;
 
@@ -65,9 +67,10 @@ public class WorkSpace extends AbstractFXView {
         this.toolBox.setValue("PENCIL");
         this.toolBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> getWorkSpaceController().selectTool(newValue, colorPicker.getValue(), (int) toolSizeSlider.getValue()));
 
+        this.toolSizeLabel.setText("Size: " + Integer.toString((int)toolSizeSlider.getValue()));
         this.toolSizeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            final int newSize = (int) toolSizeSlider.getValue();
-            getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(), newSize);
+            getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(), (int) toolSizeSlider.getValue());
+            this.toolSizeLabel.setText("Size: " + Integer.toString((int)toolSizeSlider.getValue()));
         });
         paneParser = new GridPaneParser();
         pixelsParser = new PixelsParser();
