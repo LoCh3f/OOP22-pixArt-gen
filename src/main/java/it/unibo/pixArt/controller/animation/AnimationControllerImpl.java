@@ -80,12 +80,12 @@ public class AnimationControllerImpl extends SimpleController implements Animati
         }
         final int prev = this.index;
         this.index = this.index + animationDirection.getValue();
-        return imagePaths.get(prev); //this.getModel().getProject().getAllFrames().get(prev).getHistoryFrame();
+        return getHistoryFrames().get(prev); //this.getModel().getProject().getAllFrames().get(prev).getHistoryFrame();
     }
 
     @Override
     public List<HistoryFrame> getHistoryFrames() {
-        return imagePaths;
+        return this.getModel().getProject().getAllHistoryFrames();
     }
 
     private AnimationView getAnimationView() {

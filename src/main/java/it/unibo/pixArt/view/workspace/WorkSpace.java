@@ -49,6 +49,7 @@ public class WorkSpace extends AbstractFXView {
     private VBox leftPane;
     @FXML
     private Label toolSizeLabel;
+    
     private PixelsParser pixelsParser;
     private GridPaneParser paneParser;
 
@@ -166,6 +167,11 @@ public class WorkSpace extends AbstractFXView {
             i.fitHeightProperty().bind(frames.heightProperty());
             i.setFitWidth(200);
         });
+    }
+
+    @FXML
+    private void onAnimateClicked() {
+        PageLoader.getInstance().switchPage(getStage(), Pages.ANIMATION, this.getController().getModel());
     }
 
     private void color(final int x, final int y, final Color color) {

@@ -9,7 +9,6 @@ import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 import it.unibo.pixArt.model.historyframe.HistoryFrameImpl;
-import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
 import it.unibo.pixArt.model.tool.AbstractTool;
@@ -59,8 +58,9 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     @Override
     public Set<Pixel> addNewFrame() {
         this.getModel().getProject().addNewFrame();
-        this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl());
-        //this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl(getModel().getProject().getName() + getModel().getProject().getAllHistoryFrames().size()));
+        //this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl());
+        this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl(getModel().getUser().getPassword() + getModel().getProject().getName() 
+        + getModel().getProject().getAllHistoryFrames().size()));
         setCurrentFrame(this.getModel().getProject().getAllFrames().size() - 1);
         return this.currentframe.getPixels();
     }

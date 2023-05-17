@@ -51,6 +51,7 @@
             <Button fx:id="discard" mnemonicParsing="false" onAction="#discardMatrix" prefHeight="29.0" prefWidth="172.0" text="Discard" />
             <Button mnemonicParsing="false" onAction="#onAddFrameClicked" prefHeight="26.0" prefWidth="141.0" text="Add+" />
             <Button mnemonicParsing="false" onAction="#onDeleteClicked" prefHeight="26.0" prefWidth="102.0" text="Delete" />
+            <Button mnemonicParsing="false" onAction="#onAnimateClicked" prefHeight="26.0" prefWidth="111.0" text="Animate" />
             <ChoiceBox fx:id="toolBox" prefHeight="26.0" prefWidth="164.0" />
             <Label fx:id="toolSizeLabel" text="Size:" />
             <Slider fx:id="toolSizeSlider" max="6.0" min="1.0" showTickLabels="true" showTickMarks="true" value="1.0" />
