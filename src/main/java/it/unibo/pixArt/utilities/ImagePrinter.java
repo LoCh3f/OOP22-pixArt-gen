@@ -1,23 +1,18 @@
 package it.unibo.pixArt.utilities;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.stream.Collectors;
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
 import javax.imageio.ImageIO;
-import javax.swing.text.html.ImageView;
-
+import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.pixel.Pixel;
+import it.unibo.pixArt.model.project.FileTypes;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.user.User;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
@@ -59,27 +54,48 @@ public class ImagePrinter {
             }
         }
         if(project.getFileType().equals("png")){
-            imagePNG(wImg, count);
+            imagePNG(wImg, project.getPath() + count + ".png");
         }else{
-            imageJpgOrJpeg(wImg, project.getFileType(), count);
+            imageJpgOrJpeg(wImg, project.getFileType(), project.getPath() + count + project.getFileType().toString());
         }      
     }
     } 
+
+    public void printOneFrame(PixelGrid pixelGrid, String path, FileTypes fileType){
+        this.imageSize = pixelGrid.getColumns();
+        WritableImage wImg = new WritableImage(imageSize, imageSize);
+        PixelWriter pWriter = wImg.getPixelWriter();
+        ArrayList<Pixel> pixelArray = pixelGrid.getPixels().stream().collect(Collectors.toCollection(ArrayList::new));
+        for (int x = 0; x < imageSize; x++){
+            for (int y = 0; y < imageSize; y++){
+                for(var p : pixelArray){
+                    if(new Pair<Integer, Integer> (x, y).equals(p.getPosition())){
+                        pWriter.setColor(x, y, p.getColor());
+                    }
+                }
+            }
+        }
+        if(fileType.toString().equals(".png")){
+            imagePNG(wImg, path);
+        }else{
+            imageJpgOrJpeg(wImg, fileType.toString(), path);
+        }
+    }
     
-    private void imagePNG(WritableImage wImg, int numImg){
+    private void imagePNG(WritableImage wImg, String path){
         try {
-            ImageIO.write(SwingFXUtils.fromFXImage(wImg, null), "png", new File("image" + numImg + ".png"));
+            ImageIO.write(SwingFXUtils.fromFXImage(wImg, null), "png", new File(path));
         } catch (IOException e) {
             e.printStackTrace();
         }
     };
 
-    private void imageJpgOrJpeg(WritableImage wImg, String fyleFormat, int numImg){
+    private void imageJpgOrJpeg(WritableImage wImg, String fyleFormat, String path){
         try {
             BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
             BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
             jpgImage.createGraphics().drawImage(bImg, 0, 0, null);
-            ImageIO.write(jpgImage, fyleFormat, new File("image" + numImg + fyleFormat));
+            ImageIO.write(jpgImage, fyleFormat, new File(path));
         } catch (IOException e) {
             e.printStackTrace();
         }

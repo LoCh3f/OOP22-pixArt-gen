@@ -6,12 +6,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParser;
-
 import it.unibo.pixArt.model.framestate.FrameState;
 import it.unibo.pixArt.model.framestate.FrameStateImpl;
 import it.unibo.pixArt.model.grid.PixelGrid;
