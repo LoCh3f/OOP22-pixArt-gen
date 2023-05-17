@@ -49,8 +49,8 @@ public class AnimationControllerImpl extends SimpleController implements Animati
 
     @Override
     public void setFrameDuration(final int frameIndex, final int duration) {
-        //this.getModel().getProject().getAllFrames().get(frameIndex).getHistoryFrame().setAnimationDuration(duration);
-        imagePaths.get(frameIndex).setAnimationDuration(duration);
+        this.getModel().getProject().getAllHistoryFrames().get(frameIndex).setAnimationDuration(duration);
+        //imagePaths.get(frameIndex).setAnimationDuration(duration);
     }
 
     @Override
@@ -90,6 +90,11 @@ public class AnimationControllerImpl extends SimpleController implements Animati
 
     private AnimationView getAnimationView() {
         return (AnimationView) this.getView();
+    }
+
+    @Override
+    public boolean getAnimationIsRunning() {
+        return this.isRunning;
     }
 
 }

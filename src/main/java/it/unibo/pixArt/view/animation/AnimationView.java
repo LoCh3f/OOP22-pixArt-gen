@@ -7,6 +7,7 @@ import it.unibo.pixArt.view.pages.Pages;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -38,9 +39,17 @@ public class AnimationView extends AbstractFXView {
     private TextField frameDurationField;
 
     @FXML
+    private Button switchBtn;
+
+    @FXML
     public void switchAnimation() {
         this.getAnimationController().setAnimationIsRunning();
         this.getAnimationController().setAnimationDirection(this.directionChoice.getValue());
+        if(this.getAnimationController().getAnimationIsRunning()) {
+            switchBtn.setGraphic(new ImageView(new Image("/image/stopBtn.png")));
+        } else {
+            switchBtn.setGraphic(new ImageView(new Image("/image/startBtn.png")));
+        }
     }
 
     @FXML
@@ -50,12 +59,12 @@ public class AnimationView extends AbstractFXView {
 
     @FXML
     public void setDuration() {
-        //System.out.println(selectedFrame.getText() + frameDurationField.getText());
         this.getAnimationController().setFrameDuration(Integer.parseInt(selectedFrame.getText()), Integer.parseInt(frameDurationField.getText()));
     }
 
     @Override
     public void init() {
+        this.switchBtn.setGraphic(new ImageView(new Image("/image/startBtn.png")));
         this.dimensionChoice.getItems().addAll(this.getAnimationController().getListSizes());
         this.dimensionChoice.setValue(this.getAnimationController().getListSizes().get(0));
         this.directionChoice.getItems().addAll(this.getAnimationController().getListDirections().stream().map(e -> e.getName()).toList());

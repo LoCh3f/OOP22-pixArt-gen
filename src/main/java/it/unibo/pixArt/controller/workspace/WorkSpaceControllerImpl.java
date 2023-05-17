@@ -58,9 +58,9 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     @Override
     public Set<Pixel> addNewFrame() {
         this.getModel().getProject().addNewFrame();
-        //this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl());
-        this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl(getModel().getUser().getPassword() + getModel().getProject().getName() 
-        + getModel().getProject().getAllHistoryFrames().size()));
+        this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl());
+        /*this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl(getModel().getUser().getPassword() + getModel().getProject().getName() 
+        + getModel().getProject().getAllHistoryFrames().size()));*/
         setCurrentFrame(this.getModel().getProject().getAllFrames().size() - 1);
         return this.currentframe.getPixels();
     }

@@ -26,6 +26,11 @@ public interface AnimationController extends Controller {
     public void setAnimationIsRunning();
 
     /**
+     * @return if the animation is running.
+     */
+    public boolean getAnimationIsRunning();
+
+    /**
      * @return the list of all available sizes for the image preview.
      */
     public List<String> getListSizes();
