@@ -9,8 +9,10 @@ import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 
 public class LoginView extends AbstractFXView{
 
@@ -76,7 +78,6 @@ public class LoginView extends AbstractFXView{
 
     @Override
     public void init() {
-        
     }
 
     private LoginController getLoginController() {

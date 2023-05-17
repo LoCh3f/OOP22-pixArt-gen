@@ -12,8 +12,6 @@ public enum ToolEnum {
 
     LIGHTENTOOL("LIGHTEN"),
 
-    BRUSH("BRUSH"),
-
     BUCKET("BUCKET");
 
     private final String name;
