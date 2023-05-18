@@ -1,6 +1,7 @@
 package it.unibo.pixArt.model;
 
 
+import it.unibo.pixArt.model.game.Game;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.user.User;
 
@@ -26,4 +27,14 @@ public interface Model {
      * @param project set the project the use is working on.
      */
     void setProject(final Project project);
+
+    /**
+     * @return the game that is currently being played.
+     */
+    Game getGame();
+
+    /**
+     * @param newGame the new game to play.
+     */
+    void setGame(final Game newGame);
 }

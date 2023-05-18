@@ -41,14 +41,17 @@ public class AnimationView extends AbstractFXView {
     @FXML
     private Button switchBtn;
 
+    private static final String START = "/image/startBtn.png";
+    private static final String STOP = "/image/stopBtn.png";
+
     @FXML
     public void switchAnimation() {
         this.getAnimationController().setAnimationIsRunning();
         this.getAnimationController().setAnimationDirection(this.directionChoice.getValue());
         if(this.getAnimationController().getAnimationIsRunning()) {
-            switchBtn.setGraphic(new ImageView(new Image("/image/stopBtn.png")));
+            switchBtn.setGraphic(new ImageView(new Image(STOP)));
         } else {
-            switchBtn.setGraphic(new ImageView(new Image("/image/startBtn.png")));
+            switchBtn.setGraphic(new ImageView(new Image(START)));
         }
     }
 
@@ -64,12 +67,14 @@ public class AnimationView extends AbstractFXView {
 
     @Override
     public void init() {
-        this.switchBtn.setGraphic(new ImageView(new Image("/image/startBtn.png")));
+        this.switchBtn.setGraphic(new ImageView(new Image(START)));
         this.dimensionChoice.getItems().addAll(this.getAnimationController().getListSizes());
         this.dimensionChoice.setValue(this.getAnimationController().getListSizes().get(0));
         this.directionChoice.getItems().addAll(this.getAnimationController().getListDirections().stream().map(e -> e.getName()).toList());
         this.directionChoice.setValue(this.getAnimationController().getListDirections().get(0).getName());
         this.imageContainer.setImage(new Image(this.getAnimationController().getHistoryFrames().get(0).getPath()));
+        this.selectedFrame.setText(Integer.toString(0));
+        this.selectedFrameDuration.setText(getAnimationController().getHistoryFrames().get(0).getAnimationDuration() + "ms");
         this.frameList.getItems().addAll(this.getAnimationController().getHistoryFrames().stream()
                                                                                          .map(e -> new Image(e.getPath()))
                                                                                          .map(i -> new ImageView(i)).toList());
