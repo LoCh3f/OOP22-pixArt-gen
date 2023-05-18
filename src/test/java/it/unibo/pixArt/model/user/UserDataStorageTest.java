@@ -6,14 +6,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
+
+import java.nio.file.Files;
 
 import it.unibo.pixArt.model.user.storage.UserDataStorage;
 import it.unibo.pixArt.model.user.storage.UserDataStorageImpl;
 
 public class UserDataStorageTest {
+
+    private final char fileSeparator = File.separatorChar;
+    private String USERDATAPATH = System.getProperty("user.home") + fileSeparator + "userData" + fileSeparator + "users.json"; 
     
     private final User user1 = new UserImpl("luigiBianchi", "luigi001", System.getProperty("user.dir") + File.separator + "Downloads");
     private final User user2 = new UserImpl("marcoRossi", "marco002", System.getProperty("user.dir") + File.separator + "Downloads");
@@ -30,6 +36,7 @@ public class UserDataStorageTest {
         createUserList();
         assertEquals(Optional.of(user1), userDataStorage.getUser(user1.getName()));
         assertEquals(Optional.of(user2), userDataStorage.getUser(user2.getName()));
+        this.deleteFile();
     }
 
     @Test
@@ -37,6 +44,11 @@ public class UserDataStorageTest {
         createUserList();
         assertTrue(userDataStorage.exists(user1.getName()));
         assertFalse(userDataStorage.exists("franco"));
+        this.deleteFile();
+    }
+
+    private void deleteFile() throws IOException{
+        Files.deleteIfExists(Path.of(USERDATAPATH));
     }
 
 }
