@@ -2,16 +2,12 @@ package it.unibo.pixArt.view.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import it.unibo.pixArt.model.project.Project;
-import it.unibo.pixArt.model.user.UserImpl;
 import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.view.AbstractFXView;
-import it.unibo.pixArt.view.SimpleView;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.beans.value.ChangeListener;
@@ -30,15 +26,12 @@ public class ProjectView extends AbstractFXView {
 
     @FXML
     private ListView<String> listView = new ListView<>();
-    private UserImpl user = new UserImpl(null, null, System.getProperty("user.dir"));
     private String selectedFolder;
 
     @Override
     public void init() {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'init'");
         listView.getItems().clear();
-        listView.getItems().addAll(Stream.of((new File(user.getPathToFile()).listFiles()))
+        listView.getItems().addAll(Stream.of((new File(this.getController().getModel().getUser().getPathToFile()).listFiles()))
                                   .filter(file -> file.isDirectory() && !file.isHidden() && checkIfJsonInFolder(file))
                                   .map(File::getName).collect(Collectors.toList()));
 
@@ -83,14 +76,14 @@ public class ProjectView extends AbstractFXView {
     public void onChangeDirClick(ActionEvent event){
         Stage primaryStage = new Stage();
         DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setInitialDirectory(new File(user.getPathToFile()));    
+        directoryChooser.setInitialDirectory(new File(this.getController().getModel().getUser().getPathToFile()));    
         File selectedDirectory = directoryChooser.showDialog(primaryStage);
-        user.setPathToFile(selectedDirectory.getAbsolutePath());
+        this.getController().getModel().getUser().setPathToFile(selectedDirectory.getAbsolutePath());
         init();        
     }
 
     public String getDirPath(String inPath){
-        return user.getPathToFile() + fileNameToPathString(inPath);
+        return this.getController().getModel().getUser().getPathToFile() + fileNameToPathString(inPath);
     }
 
     public String getJsonPath(String file){

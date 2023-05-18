@@ -1,7 +1,9 @@
 package it.unibo.pixArt.model.user.manager;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
+import com.google.common.hash.Hashing;
 
 import it.unibo.pixArt.model.user.User;
 import it.unibo.pixArt.model.user.UserBuilderImpl;
@@ -10,7 +12,7 @@ import it.unibo.pixArt.model.user.storage.UserDataStorageImpl;
 
 public class UserManagerImpl implements UserManager{
 
-    UserDataStorage dataStorage;
+    private final UserDataStorage dataStorage;
 
     public UserManagerImpl(final UserDataStorage dataStorage) {
         this.dataStorage = dataStorage;
@@ -24,7 +26,7 @@ public class UserManagerImpl implements UserManager{
             return Optional.empty();
         }
 
-        return users.filter(u->u.getPassword().equals(u.getPassword()));
+        return users.filter(u->u.getPassword().equals(this.hashPassword(password)));
         
     }
 
@@ -35,9 +37,13 @@ public class UserManagerImpl implements UserManager{
             return Optional.empty();
         }
 
-        this.dataStorage.addNewUser(new UserBuilderImpl().username(name).password(password).path(path).build());
+        this.dataStorage.addNewUser(new UserBuilderImpl().username(name).password(this.hashPassword(password)).path(path).build());
         return this.dataStorage.getUser(name);
 
+    }
+
+    private String hashPassword(final String password) {
+        return Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
     }
 
     private static class LazyHolder {

@@ -56,7 +56,7 @@ public class ImagePrinter {
         if(project.getFileType().equals("png")){
             imagePNG(wImg, project.getPath() + count + ".png");
         }else{
-            imageJpgOrJpeg(wImg, project.getFileType(), project.getPath() + count + project.getFileType().toString());
+            imageJpgOrJpeg(wImg, project.getFileType(), project.getPath() + count + project.getFileType());
         }      
     }
     } 
