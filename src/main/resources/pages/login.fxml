@@ -21,6 +21,6 @@
       <Text fx:id="loginResult" fill="RED" layoutX="441.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="188.53662109375" />
       <Text fx:id="usernameValidation" fill="RED" layoutX="447.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="177.60000000000014" />
       <Text fx:id="passwordValidation" fill="RED" layoutX="445.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="177.60000000000014" />
-      <PasswordField layoutX="446.0" layoutY="239.0" prefHeight="26.0" prefWidth="178.0" />
+      <PasswordField fx:id="passwordField" layoutX="446.0" layoutY="239.0" prefHeight="26.0" prefWidth="178.0" />
    </children>
 </AnchorPane>
