@@ -1,6 +1,5 @@
 package it.unibo.pixArt.model.tool;
 
-import it.unibo.pixArt.model.tool.drawingTools.Brush;
 import it.unibo.pixArt.model.tool.drawingTools.DarkenTool;
 import it.unibo.pixArt.model.tool.drawingTools.Eraser;
 import it.unibo.pixArt.model.tool.drawingTools.LightenTool;
@@ -16,8 +15,6 @@ public class ToolFactoryImpl implements ToolFactory {
         switch (toolType) {
             case "PENCIL":
                 return new Pencil(selectedColor, toolSize);
-            case "BRUSH":
-                return new Brush(toolSize);
             case "ERASER":
                 return new Eraser(toolSize);
             case "LIGHTEN":
