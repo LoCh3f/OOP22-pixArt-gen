@@ -2,15 +2,12 @@ package it.unibo.pixArt.model.grid;
 
 import it.unibo.pixArt.model.framestate.FrameState;
 import it.unibo.pixArt.model.framestate.FrameStateImpl;
-import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
+import it.unibo.pixArt.model.pixel.PixelBuilder;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class PixelMatrix implements PixelGrid {
@@ -25,7 +22,7 @@ public class PixelMatrix implements PixelGrid {
         this.pixels = new HashSet<>(rows * columns);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                pixels.add(new ImplPixel(j, i));
+                pixels.add(new PixelBuilder.PxlBuilder().setY(i).build());
             }
         }
     }
@@ -98,7 +95,7 @@ public class PixelMatrix implements PixelGrid {
     @Override
     public Set<Pixel> getPixels() {
         //return new HashSet<>(this.pixels);
-        return this.pixels.stream().map(e -> new ImplPixel(e.getPosition().getX(), e.getPosition().getY(), e.getColor())).collect(Collectors.toSet());
+        return this.pixels.stream().map(e -> new PixelBuilder.PxlBuilder().setColor(e.getColor()).setX(e.getPosition().getX()).setY(e.getPosition().getY()).build()).collect(Collectors.toSet());
     }
 
     /**
@@ -107,7 +104,7 @@ public class PixelMatrix implements PixelGrid {
     @Override
     public void setPixel(Set<Pixel> pixels) {
         //this.memento.setState(getPixels());
-       
+
         for (Pixel pixel : pixels) {
             this.pixels.forEach(p -> {
                 if (p.comparePixel(pixel)) {
