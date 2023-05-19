@@ -2,8 +2,8 @@ package it.unibo.pixArt.model.framestate;
 
 import it.unibo.pixArt.model.grid.Matrix;
 import it.unibo.pixArt.model.grid.PixelMatrix;
-import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
+import it.unibo.pixArt.model.pixel.PixelBuilder;
 import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
@@ -61,7 +61,7 @@ public class FrameStateTest {
         Set<Pixel> newSet = new HashSet<>();
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                final Pixel p = new ImplPixel(j, i);
+                final Pixel p = new PixelBuilder.PxlBuilder().setY(i).setX(j).build();
                 p.setColor(color);
                 newSet.add(p);
             }

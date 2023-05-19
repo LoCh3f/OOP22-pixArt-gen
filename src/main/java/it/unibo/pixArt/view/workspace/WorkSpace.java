@@ -25,6 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Set;
 
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
@@ -49,7 +50,7 @@ public class WorkSpace extends AbstractFXView {
     private VBox leftPane;
     @FXML
     private Label toolSizeLabel;
-    
+
     private PixelsParser pixelsParser;
     private GridPaneParser paneParser;
 
@@ -68,10 +69,10 @@ public class WorkSpace extends AbstractFXView {
         this.toolBox.setValue("PENCIL");
         this.toolBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> getWorkSpaceController().selectTool(newValue, colorPicker.getValue(), (int) toolSizeSlider.getValue()));
 
-        this.toolSizeLabel.setText("Size: " + Integer.toString((int)toolSizeSlider.getValue()));
+        this.toolSizeLabel.setText("Size: " + Integer.toString((int) toolSizeSlider.getValue()));
         this.toolSizeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(), (int) toolSizeSlider.getValue());
-            this.toolSizeLabel.setText("Size: " + Integer.toString((int)toolSizeSlider.getValue()));
+            this.toolSizeLabel.setText("Size: " + Integer.toString((int) toolSizeSlider.getValue()));
         });
         paneParser = new GridPaneParser();
         pixelsParser = new PixelsParser();
@@ -129,10 +130,10 @@ public class WorkSpace extends AbstractFXView {
 
 
         updateView(getWorkSpaceController().getCurrentFrame());
-       
-        
+
+
     }
-    
+
     @FXML
     private void discardMatrix() {
         final var grid = (GridPane) this.root.getCenter();
@@ -148,7 +149,7 @@ public class WorkSpace extends AbstractFXView {
     private void onUndoClicked() {
         this.updateView(this.getWorkSpaceController().getPreviousState());
     }
-    
+
     @FXML
     private void onAddFrameClicked() {
         this.updateView(this.getWorkSpaceController().addNewFrame());
@@ -158,10 +159,10 @@ public class WorkSpace extends AbstractFXView {
             i.setFitWidth(200);
         });
     }
-    
+
     @FXML
     private void onDeleteClicked() {
-        this.getWorkSpaceController().deleteCurrentFrame(); 
+        this.getWorkSpaceController().deleteCurrentFrame();
         this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
         frames.getItems().forEach(i -> {
             i.fitHeightProperty().bind(frames.heightProperty());
@@ -181,7 +182,7 @@ public class WorkSpace extends AbstractFXView {
     public void updateView(final Set<Pixel> toUpdate) {
         final var center = (GridPane) this.root.getCenter();
         toUpdate.forEach(p -> center.getChildren().forEach(b -> {
-            if (GridPane.getColumnIndex(b) == p.getPosition().getX() && GridPane.getRowIndex(b) == p.getPosition().getY()) {
+            if (Objects.equals(GridPane.getColumnIndex(b), p.getPosition().getX()) && Objects.equals(GridPane.getRowIndex(b), p.getPosition().getY())) {
                 b.setStyle(pixelsParser.parseColor(p.getColor()));
             }
         }));

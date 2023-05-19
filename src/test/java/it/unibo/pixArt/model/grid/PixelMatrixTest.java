@@ -2,6 +2,7 @@ package it.unibo.pixArt.model.grid;
 
 import it.unibo.pixArt.model.grid.PixelMatrix.MatrixBuilder;
 import it.unibo.pixArt.model.pixel.ImplPixel;
+import it.unibo.pixArt.model.pixel.PixelBuilder;
 import it.unibo.pixArt.model.utilities.TestVariable;
 import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PixelMatrixTest {
 
-    private static final ImplPixel TEST_PIXEL = new ImplPixel(0, 0);
+    private static final ImplPixel TEST_PIXEL = new PixelBuilder.PxlBuilder().setX(0).setY(0).build();
 
     @Test
     void testBuilder() {
@@ -27,13 +28,13 @@ public class PixelMatrixTest {
         System.out.println(TEST_PIXEL.getColor());
         final PixelMatrix matrix = new MatrixBuilder().setRows(16).setColumns(16).build();
         matrix.update(p -> {
-            if(p.comparePixel(TEST_PIXEL)) {
+            if (p.comparePixel(TEST_PIXEL)) {
                 p.setColor(TEST_PIXEL.getColor());
             }
         }, TEST_PIXEL);
 
         matrix.getPixels().forEach(p -> {
-            if(p.comparePixel(TEST_PIXEL)) {
+            if (p.comparePixel(TEST_PIXEL)) {
                 assertEquals(p.getColor(), TEST_PIXEL.getColor());
                 System.out.println(p.getColor());
             } else {
