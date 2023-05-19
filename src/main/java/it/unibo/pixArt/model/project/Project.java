@@ -1,6 +1,6 @@
 package it.unibo.pixArt.model.project;
 
-import it.unibo.pixArt.model.grid.PixelGrid;
+import it.unibo.pixArt.model.grid.Matrix;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public interface Project {
     /**
      * @return the list of frames
      */
-    public List<PixelGrid> getAllFrames();
+    public List<Matrix> getAllFrames();
 
     /**
      * Method to add a new frame in the list of frames.

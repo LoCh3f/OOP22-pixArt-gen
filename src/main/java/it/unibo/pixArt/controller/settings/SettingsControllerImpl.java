@@ -1,14 +1,10 @@
 package it.unibo.pixArt.controller.settings;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import it.unibo.pixArt.controller.SimpleController;
-import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.project.FileTypes;
-import it.unibo.pixArt.model.project.Project;
-import it.unibo.pixArt.model.project.ProjectImpl;
 import it.unibo.pixArt.model.project.builder.ProjectBuilderImpl;
+
+import java.util.List;
 
 public class SettingsControllerImpl extends SimpleController implements SettingsController {
     static final String DEF_NAME = "Project1";

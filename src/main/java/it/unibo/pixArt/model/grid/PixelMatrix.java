@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-public class PixelMatrix implements PixelGrid {
+public class PixelMatrix implements Matrix {
     private final int rows;
     private final int columns;
     private final Set<Pixel> pixels;

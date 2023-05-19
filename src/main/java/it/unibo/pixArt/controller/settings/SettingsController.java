@@ -2,10 +2,8 @@ package it.unibo.pixArt.controller.settings;
 
 import java.util.List;
 
-import it.unibo.pixArt.model.grid.PixelGrid;
-
 public interface SettingsController {
-    
+
     /**
      * @return a list containing all the file formats.
      */
