@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import it.unibo.pixArt.model.grid.PixelGrid;
 import it.unibo.pixArt.model.grid.PixelMatrix;
+import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.tool.AbstractTool;
 import it.unibo.pixArt.model.tool.ToolFactory;
@@ -45,9 +46,9 @@ public class ColorStackTest {
     /*Now we'll remove a pixel from a set, and check that the total number of pixels has decreased. */
     @Test
     void checkThree() {
-        Pixel p = grid.getPixels().stream().filter(e -> e.getPosition().getX() == 0 && e.getPosition().getY() == 0).findAny().get();
+        Pixel p = grid.getPixels().stream().toList().get(0);
+        System.out.println(p.getColor());
         this.stack = new ColorStackImpl(grid.getPixels());
-        this.stack.removePixel(Color.WHITE, p);
         this.stack.removePixel(Color.WHITE, p);
         assertEquals(1,stack.getColorMap().entrySet().stream().filter(e -> e.getKey() == Color.WHITE).count());
         assertEquals(255,stack.getColorMap().entrySet().stream().mapToInt(e -> e.getValue().size()).sum());

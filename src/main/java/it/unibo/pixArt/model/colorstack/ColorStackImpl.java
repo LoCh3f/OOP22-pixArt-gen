@@ -18,17 +18,17 @@ public class ColorStackImpl implements ColorStack {
             final Set<Pixel> colorSet = pixels.stream().filter(e -> e.getColor() == elem).collect(Collectors.toSet());
             this.colorMap.put(elem, colorSet);
         }
-
     }
 
     @Override
     public Map<Color, Set<Pixel>> getColorMap() {
-        return Map.copyOf(this.colorMap);
+        return this.colorMap;
     }
     
     @Override
     public void removePixel(final Color color, final Pixel pixel) {
-        this.colorMap.get(color).remove(pixel);
+        final Pixel p = this.colorMap.get(color).stream().filter(e -> e.equals(pixel)).findAny().get();
+        this.colorMap.get(color).remove(p);
         if(this.colorMap.get(color).isEmpty()) {
             this.colorMap.remove(color);
         }
