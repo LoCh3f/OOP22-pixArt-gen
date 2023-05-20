@@ -1,6 +1,6 @@
 package it.unibo.pixArt.model.project;
 
-import it.unibo.pixArt.model.grid.PixelGrid;
+import it.unibo.pixArt.model.grid.Matrix;
 import it.unibo.pixArt.model.grid.PixelMatrix;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 import it.unibo.pixArt.model.historyframe.HistoryFrameImpl;
@@ -12,10 +12,10 @@ public class ProjectImpl implements Project {
     private String projectName;
     private String path;
     private String fileType;
-    private List<PixelGrid> frames;
+    private List<Matrix> frames;
     private List<HistoryFrame> historyFrames;
 
-    public ProjectImpl(final String projectName, final String path, final String fileType, final List<PixelGrid> frames) {
+    public ProjectImpl(final String projectName, final String path, final String fileType, final List<Matrix> frames) {
         this.projectName = projectName;
         this.path = path;
         this.fileType = fileType;
@@ -35,7 +35,7 @@ public class ProjectImpl implements Project {
     }
 
     @Override
-    public List<PixelGrid> getAllFrames() {
+    public List<Matrix> getAllFrames() {
         return this.frames;
     }
 
@@ -47,8 +47,8 @@ public class ProjectImpl implements Project {
     @Override
     public String toString() {
         return "Project name:\t" + this.projectName
-        + "\n" + "Path name:\t" + this.path
-        + "\n" + "File type:\t" + this.fileType;
+                + "\n" + "Path name:\t" + this.path
+                + "\n" + "File type:\t" + this.fileType;
     }
 
     @Override
@@ -59,8 +59,8 @@ public class ProjectImpl implements Project {
     @Override
     public void addNewFrame() {
         this.frames.add(new PixelMatrix.MatrixBuilder()
-                        .setColumns(getAllFrames().get(0).getColumns())
-                        .setRows(getAllFrames().get(0).getRows()).build());
+                .setColumns(getAllFrames().get(0).getColumns())
+                .setRows(getAllFrames().get(0).getRows()).build());
     }
 
 }

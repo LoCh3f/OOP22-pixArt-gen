@@ -1,12 +1,7 @@
 package it.unibo.pixArt.controller.workspace;
 
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import it.unibo.pixArt.controller.SimpleController;
-import it.unibo.pixArt.model.grid.PixelGrid;
+import it.unibo.pixArt.model.grid.Matrix;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 import it.unibo.pixArt.model.historyframe.HistoryFrameImpl;
 import it.unibo.pixArt.model.pixel.Pixel;
@@ -19,14 +14,19 @@ import it.unibo.pixArt.utilities.ImagePrinter;
 import it.unibo.pixArt.view.workspace.WorkSpace;
 import javafx.scene.paint.Color;
 
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class WorkSpaceControllerImpl extends SimpleController implements WorkSpaceController {
-    private PixelGrid currentframe;
+    private Matrix currentframe;
     private final ToolFactory toolFactory = new ToolFactoryImpl();
     private AbstractTool tool;
     private boolean isDrawing;
 
     public WorkSpaceControllerImpl() {
-    }    
+    }
 
     @Override
     public void selectTool(final String toolName, final Color color, final int toolSize) {
@@ -39,7 +39,7 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
         final Set<Pixel> result = tool.updateGrid(p, this.currentframe.getPixels());
         this.currentframe.getMemento().setState(currentframe.getPixels());
         this.currentframe.setPixel(result);
-        this.getWorkSpaceView().updateView(result); 
+        this.getWorkSpaceView().updateView(result);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
 
     @Override
     public List<HistoryFrame> getHistoryFrames() {
-       return this.getModel().getProject().getAllHistoryFrames();
+        return this.getModel().getProject().getAllHistoryFrames();
     }
 
     @Override
@@ -89,7 +89,7 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     public Set<Pixel> getCurrentFrame() {
         return this.currentframe.getPixels();
     }
-    
+
     @Override
     public void saveProject() {
         ImagePrinter.getInstance().printImage(this.getModel().getProject(), this.getModel().getUser());
@@ -105,7 +105,7 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
         this.setCurrentFrame(frameIndex - 1);
         this.getWorkSpaceView().updateView(getCurrentFrame());
     }
-    
+
     private WorkSpace getWorkSpaceView() {
         return (WorkSpace) getView();
     }

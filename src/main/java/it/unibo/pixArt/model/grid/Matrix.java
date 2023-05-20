@@ -6,7 +6,7 @@ import it.unibo.pixArt.model.pixel.Pixel;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public interface PixelGrid {
+public interface Matrix {
 
     /**
      * @return the collection of pixel.

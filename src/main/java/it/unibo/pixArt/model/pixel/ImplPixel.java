@@ -9,15 +9,11 @@ public class ImplPixel implements Pixel {
 
     private final Pair<Integer, Integer> position;
 
-    public ImplPixel(final Integer x, final Integer y) {
+    protected ImplPixel(final Integer x, final Integer y) {
         this.position = new Pair<>(x, y);
-        this.setColor(Color.WHITE);
+        color = Color.WHITE;
     }
 
-    public ImplPixel(final Integer x, final Integer y, final Color color) {
-        this.position = new Pair<>(x, y);
-        this.color = color;
-    }
 
     @Override
     public Pair<Integer, Integer> getPosition() {
