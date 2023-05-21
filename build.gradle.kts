@@ -40,7 +40,7 @@ dependencies {
     // implementation("com.google.guava:guava:28.1-jre")
 
     // JavaFX: comment out if you do not need them
-    val javaFxVersion = 17
+    val javaFxVersion = 19
     for (platform in supportedPlatforms) {
         for (module in javaFXModules) {
             implementation("org.openjfx:javafx-$module:$javaFxVersion:$platform")
@@ -56,7 +56,7 @@ dependencies {
     //Gson library
     implementation("com.google.code.gson:gson:2.10.1")
 
-    implementation ("com.google.guava:guava:30.1.1-jre")
+    implementation("com.google.guava:guava:30.1.1-jre")
 }
 
 tasks.withType<Test> {
