@@ -130,6 +130,7 @@ public class WorkSpace extends AbstractFXView {
             }
         }).build());
         this.menubar.getMenus().get(0).getItems().get(1).addEventHandler(ActionEvent.ACTION, event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel()));
+        this.menubar.getMenus().get(0).getItems().get(0).addEventHandler(ActionEvent.ACTION, event -> getWorkSpaceController().saveProject());
 
 
         updateView(getWorkSpaceController().getCurrentFrame());
