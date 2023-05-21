@@ -7,8 +7,8 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
+import it.unibo.pixArt.model.pixel.PixelBuilder;
 import it.unibo.pixArt.model.tool.drawingTools.Pencil;
 import javafx.scene.paint.Color;
 
@@ -20,7 +20,7 @@ class PencilTest {
     private void createFrame() {
         for(int i = 0; i < 16; i++) {
             for(int j = 0; j < 16; j++) {
-                TEST_FRAME.add(new ImplPixel(i, j));
+                TEST_FRAME.add(new PixelBuilder.PxlBuilder().setX(i).setY(j).build());
             }
         }
     }
@@ -30,7 +30,7 @@ class PencilTest {
     void updateGrid() {
         this.createFrame();
         assertEquals(256, TEST_FRAME.size());
-        Pixel pixel = new ImplPixel(2, 2);
+        Pixel pixel = new PixelBuilder.PxlBuilder().setX(2).setY(2).build();
         Set<Pixel> newSet = TEST_PENCIL.updateGrid(pixel, TEST_FRAME);
         assertEquals(16, newSet.size());
         for (Pixel p : newSet) {
