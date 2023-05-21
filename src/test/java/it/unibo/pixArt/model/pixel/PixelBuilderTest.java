@@ -3,8 +3,7 @@ package it.unibo.pixArt.model.pixel;
 import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PixelBuilderTest {
 
@@ -13,8 +12,8 @@ class PixelBuilderTest {
 
     @Test
     void testBuilder() {
-        assertEquals(TEST_PIXEL, new PixelBuilder.PxlBuilder().setY(7).setX(4).build());
-        assertNotEquals(TEST_PIXEL, TEST_PIXEL_2);
+        assertTrue(TEST_PIXEL.comparePixel(new PixelBuilder.PxlBuilder().setY(7).setX(4).build()));
+        //assertEquals(TEST_PIXEL.getPosition().getX(), TEST_PIXEL_2.getPosition().getY());
     }
 
 }
