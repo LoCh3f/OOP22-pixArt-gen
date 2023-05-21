@@ -1,5 +1,6 @@
 package it.unibo.pixArt.view.login;
 
+import java.io.File;
 import java.io.IOException;
 
 import it.unibo.pixArt.controller.login.LoginController;
@@ -9,13 +10,12 @@ import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
+import javafx.stage.DirectoryChooser;
 
 public class LoginView extends AbstractFXView{
 
@@ -79,6 +79,15 @@ public class LoginView extends AbstractFXView{
             } else {
                 this.loginResult.setText("Try again");
             }
+        }
+    }
+
+    @FXML
+    public void onSelectDirClick(final ActionEvent event){
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        File selectedDirectory = directoryChooser.showDialog(getStage());
+        if (selectedDirectory != null) {
+            this.pathField.setText(selectedDirectory.getAbsolutePath());
         }
     }
 

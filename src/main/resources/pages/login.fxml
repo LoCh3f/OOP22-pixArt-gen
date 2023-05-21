@@ -10,17 +10,18 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="752.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixArt.view.login.LoginView">
    <children>
-      <TextField fx:id="usernameField" layoutX="447.0" layoutY="173.0" prefHeight="26.0" prefWidth="177.0" />
+      <TextField fx:id="usernameField" layoutX="407.0" layoutY="167.0" prefHeight="26.0" prefWidth="212.0" />
       <ImageView fx:id="logoImageView" fitHeight="241.0" fitWidth="241.0" layoutX="83.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="448.0" layoutY="370.0" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="26.0" prefWidth="59.0" text="Login" />
-      <Button layoutX="563.0" layoutY="370.0" mnemonicParsing="false" onAction="#onRegisterClick" text="Register" />
-      <Label layoutX="446.0" layoutY="149.0" text="Username" />
-      <Label layoutX="448.0" layoutY="218.0" text="Password" />
-      <TextField fx:id="pathField" layoutX="447.0" layoutY="306.0" prefHeight="26.0" prefWidth="177.0" />
-      <Label layoutX="448.0" layoutY="288.0" text="Path" />
-      <Text fx:id="loginResult" fill="RED" layoutX="441.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="188.53662109375" />
-      <Text fx:id="usernameValidation" fill="RED" layoutX="447.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="177.60000000000014" />
-      <Text fx:id="passwordValidation" fill="RED" layoutX="445.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="177.60000000000014" />
-      <PasswordField fx:id="passwordField" layoutX="446.0" layoutY="239.0" prefHeight="26.0" prefWidth="178.0" />
+      <Button layoutX="403.0" layoutY="346.0" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="26.0" prefWidth="59.0" text="Login" />
+      <Button layoutX="475.0" layoutY="346.0" mnemonicParsing="false" onAction="#onRegisterClick" text="Register" />
+      <Label layoutX="406.0" layoutY="149.0" text="Username" />
+      <Label layoutX="407.0" layoutY="209.0" text="Password" />
+      <TextField fx:id="pathField" layoutX="405.0" layoutY="288.0" prefHeight="26.0" prefWidth="143.0" />
+      <Label layoutX="407.0" layoutY="269.0" text="Path" />
+      <Text fx:id="loginResult" fill="RED" layoutX="409.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.73663330078125" />
+      <Text fx:id="usernameValidation" fill="RED" layoutX="410.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="188.00002441406264" />
+      <Text fx:id="passwordValidation" fill="RED" layoutX="406.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="177.60000000000014" />
+      <PasswordField fx:id="passwordField" layoutX="405.0" layoutY="227.0" prefHeight="26.0" prefWidth="212.0" />
+      <Button layoutX="558.0" layoutY="289.0" mnemonicParsing="false" onAction="#onSelectDirClick" prefHeight="26.0" prefWidth="59.0" text="Browse" />
    </children>
 </AnchorPane>
