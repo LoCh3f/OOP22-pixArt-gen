@@ -58,8 +58,11 @@ public class WorkSpace extends AbstractFXView {
     @Override
     public void init() {
         this.getWorkSpaceController().setCurrentFrame(0);//Set the first frame
-        this.getWorkSpaceController().selectTool("PENCIL", colorPicker.getValue(), (int) toolSizeSlider.getValue());//select the default tool.
-        this.frames.getItems().addAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
+        this.getWorkSpaceController()
+                .selectTool("PENCIL", colorPicker.getValue(), (int) toolSizeSlider.getValue());//select the default tool.
+        this.frames.getItems()
+                .addAll(this.getWorkSpaceController().getHistoryFrames()
+                        .stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
         this.frames.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             getWorkSpaceController().setCurrentFrame(frames.getSelectionModel().getSelectedIndex());
             updateView(getWorkSpaceController().getCurrentFrame());
@@ -119,14 +122,14 @@ public class WorkSpace extends AbstractFXView {
         });
 
 
-        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel()))
-                .setEventH(event -> {
-                    try {
-                        FileHandler.getInstance().fromProjectToJson(this.getController().getModel().getProject(), this.getController().getModel().getUser());
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    }
-                }).build());
+        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> {
+            try {
+                FileHandler.getInstance().fromProjectToJson(this.getController().getModel().getProject(), this.getController().getModel().getUser());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }).build());
+        this.menubar.getMenus().get(0).getItems().get(1).addEventHandler(ActionEvent.ACTION, event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel()));
 
 
         updateView(getWorkSpaceController().getCurrentFrame());
