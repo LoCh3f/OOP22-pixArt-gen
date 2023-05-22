@@ -93,7 +93,7 @@ public class FileHandler {
         return false;
     }
 
-    public boolean checkFolderExist(File folder){
+    private boolean checkFolderExist(File folder){
         if(folder.exists()){
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("The name is already taken");

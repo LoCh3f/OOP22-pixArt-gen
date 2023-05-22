@@ -33,16 +33,15 @@ public class ImagePrinter {
         return LazyHolder.SINGLETON;
     }
 
-    public void printImage(Project project, User user) {
+    public void printAllFrames(Project project) {
+
         this.imageSize = project.getAllFrames().get(0).getColumns();
-
-
         WritableImage wImg = new WritableImage(imageSize, imageSize);
         PixelWriter pWriter = wImg.getPixelWriter();
 
         for (int count = 0; count > project.getAllFrames().size(); count++) {
-            Iterator<Pixel> pixelIterator = project.getAllFrames().get(count).getPixels().iterator();
 
+            Iterator<Pixel> pixelIterator = project.getAllFrames().get(count).getPixels().iterator();
             for (int x = 0; x < imageSize; x++) {
                 for (int y = 0; y < imageSize; y++) {
                     while (pixelIterator.hasNext()) {
@@ -55,9 +54,9 @@ public class ImagePrinter {
                 }
             }
             if (project.getFileType().equals("png")) {
-                imagePNG(wImg, project.getPath() + count + ".png");
+                imagePNG(wImg, project.getPath() + File.separatorChar + project.getName() + count + ".png");
             } else {
-                imageJpgOrJpeg(wImg, project.getFileType(), project.getPath() + count + project.getFileType());
+                imageJpgOrJpeg(wImg, project.getFileType(), project.getPath() + File.separatorChar + project.getName() + count + project.getFileType());
             }
         }
     }
