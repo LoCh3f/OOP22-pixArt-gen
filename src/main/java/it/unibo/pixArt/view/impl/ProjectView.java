@@ -82,15 +82,15 @@ public class ProjectView extends AbstractFXView {
         init();        
     }
 
-    public String getDirPath(String inPath){
+    private String getDirPath(String inPath){
         return this.getController().getModel().getUser().getPathToFile() + fileNameToPathString(inPath);
     }
 
-    public String getJsonPath(String file){
+    private String getJsonPath(String file){
         return getDirPath(file) + fileNameToPathString(file) + ".json";
     }
 
-    public String fileNameToPathString(String fileName){
+    private String fileNameToPathString(String fileName){
         return fileName.replace('[', File.separatorChar).substring(0, fileName.length()-1);
     }
 

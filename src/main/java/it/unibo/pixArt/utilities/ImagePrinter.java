@@ -59,7 +59,6 @@ public class ImagePrinter {
                     }
                 }
             }
-
             if (project.getFileType().equals(".png")) {
                 imagePNG(wImg, project.getPath() + File.separatorChar + project.getName() + count + ".png");
             } else {
@@ -104,7 +103,7 @@ public class ImagePrinter {
             BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
             BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
             jpgImage.createGraphics().drawImage(bImg, 0, 0, null);
-            ImageIO.write(jpgImage, fyleFormat, new File(path));
+            ImageIO.write(jpgImage, fyleFormat.toString().replace(".", ""), new File(path));
         } catch (IOException e) {
             e.printStackTrace();
         }
