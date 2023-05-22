@@ -48,7 +48,7 @@ public class FileHandler {
      * @throws IOException
      */
     public void fromProjectToJson(Project project, User user) throws IOException {
-        FileWriter fWriter = new FileWriter(user.getPathToFile() + fileSeparator + project.getName() + ".json");
+        FileWriter fWriter = new FileWriter(project.getPath()+ fileSeparator + project.getName() + ".json");
         fWriter.write(gson.toJson(project));
         fWriter.flush();
         fWriter.close();
@@ -82,6 +82,31 @@ public class FileHandler {
         if (result.get() == ButtonType.OK) {
             fileToDelete.delete();
         }
+    }
+
+    public boolean initProjectFolder(String path){
+        File folder = new File(path);
+        if(checkFolderExist(folder)){
+            folder.mkdir();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkFolderExist(File folder){
+        if(folder.exists()){
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("The name is already taken");
+            alert.setHeaderText("Press OK to overwrite the existing project or press CANCEL to go back and change name");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){ 
+                folder.delete();
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return true;
     }
 
 }

@@ -1,5 +1,6 @@
 package it.unibo.pixArt.view.impl;
 
+import java.io.File;
 import java.util.LinkedList;
 
 import javax.swing.Action;
@@ -9,6 +10,7 @@ import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.model.project.FileTypes;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.project.ProjectImpl;
+import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
@@ -19,7 +21,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 
 public class SettingsView extends AbstractFXView {
-    
+
     @FXML
     private TextField projectName;
 
@@ -33,7 +35,7 @@ public class SettingsView extends AbstractFXView {
     private ChoiceBox<String> sizeChoice;
 
     @FXML
-    public void setName(){
+    public void setName() {
 
     }
 
@@ -47,9 +49,12 @@ public class SettingsView extends AbstractFXView {
         /*
          * Create the project based on the values taken from the javafx components.
          */
-        this.getSettingsController().createProject(projectName.getText(),pathName.getText(),fileFormat.getValue(),Integer.parseInt(sizeChoice.getValue()));
+        this.getSettingsController().createProject(projectName.getText(),pathName.getText() + File.separatorChar + projectName.getText(),
+        fileFormat.getValue(),Integer.parseInt(sizeChoice.getValue()));
         System.out.println(getController().getModel().getProject().toString());
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, this.getController().getModel());
+        if(FileHandler.getInstance().initProjectFolder(this.getController().getModel().getProject().getPath())){
+            PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, this.getController().getModel());
+        }
     }
 
     @FXML
@@ -71,5 +76,5 @@ public class SettingsView extends AbstractFXView {
     private SettingsController getSettingsController() {
         return (SettingsController) this.getController();
     }
-    
+
 }
