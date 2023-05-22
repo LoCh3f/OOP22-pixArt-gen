@@ -18,6 +18,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.FileAttribute;
 import java.util.Optional;
 
 public class FileHandler {
@@ -25,7 +29,6 @@ public class FileHandler {
             .registerTypeAdapter(Project.class, InterfaceSerializer.interfaceSerializer(ProjectImpl.class))
             .registerTypeAdapter(Matrix.class, InterfaceSerializer.interfaceSerializer(PixelMatrix.class))
             .registerTypeAdapter(Pixel.class, InterfaceSerializer.interfaceSerializer(ImplPixel.class))
-            .registerTypeAdapter(FrameState.class, InterfaceSerializer.interfaceSerializer(FrameStateImpl.class))
             .registerTypeAdapter(HistoryFrame.class, InterfaceSerializer.interfaceSerializer(HistoryFrameImpl.class))
             .create();
     private char fileSeparator = File.separatorChar;
@@ -48,7 +51,7 @@ public class FileHandler {
      * @throws IOException
      */
     public void fromProjectToJson(Project project, User user) throws IOException {
-        FileWriter fWriter = new FileWriter(user.getPathToFile() + fileSeparator + project.getName() + ".json");
+        FileWriter fWriter = new FileWriter(new File(user.getPathToFile() + fileSeparator + project.getName() + ".json"));
         fWriter.write(gson.toJson(project));
         fWriter.flush();
         fWriter.close();

@@ -10,10 +10,13 @@ import it.unibo.pixArt.model.tool.AbstractTool;
 import it.unibo.pixArt.model.tool.ToolEnum;
 import it.unibo.pixArt.model.tool.ToolFactory;
 import it.unibo.pixArt.model.tool.ToolFactoryImpl;
+import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.utilities.ImagePrinter;
 import it.unibo.pixArt.view.workspace.WorkSpace;
 import javafx.scene.paint.Color;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;

@@ -40,7 +40,7 @@ public class ImagePrinter {
         WritableImage wImg = new WritableImage(imageSize, imageSize);
         PixelWriter pWriter = wImg.getPixelWriter();
 
-        for (int count = 0; count > project.getAllFrames().size(); count++) {
+        for (int count = 0; count < project.getAllFrames().size(); count++) {
             Iterator<Pixel> pixelIterator = project.getAllFrames().get(count).getPixels().iterator();
 
             for (int x = 0; x < imageSize; x++) {
