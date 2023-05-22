@@ -41,5 +41,10 @@ public class FrameStateImpl implements FrameState {
     public int size(){
         return stateStack.size();
     }
+
+    @Override
+    public void emptyStack() {
+        this.stateStack = new Stack<>();
+    }
     
 }

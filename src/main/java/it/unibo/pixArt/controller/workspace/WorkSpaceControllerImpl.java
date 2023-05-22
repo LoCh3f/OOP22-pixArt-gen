@@ -95,6 +95,7 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
 
     @Override
     public void saveProject() {
+        this.currentframe.getMemento().emptyStack();
         ImagePrinter.getInstance().printAllFrames(this.getModel().getProject());
     }
 

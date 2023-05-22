@@ -23,4 +23,9 @@ public interface FrameState {
 
   
     public int size();
+
+    /**
+     * Method to empty the stack.
+     */
+    public void emptyStack();
 }
