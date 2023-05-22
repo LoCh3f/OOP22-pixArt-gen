@@ -51,8 +51,8 @@ public class FileHandler {
      * @param project The project to convert in a Json File
      * @throws IOException
      */
-    public void fromProjectToJson(Project project, User user) throws IOException {
-        FileWriter fWriter = new FileWriter(new File(user.getPathToFile() + fileSeparator + project.getName() + ".json"));
+    public void fromProjectToJson(Project project) throws IOException {
+        FileWriter fWriter = new FileWriter(new File(project.getPath() + fileSeparator + project.getName() + ".json"));
         fWriter.write(gson.toJson(project));
         fWriter.flush();
         fWriter.close();
@@ -110,7 +110,9 @@ public class FileHandler {
                 return false;
             }
         }
-        return true;
+        else{
+            return true;
+        }
     }
 
 }

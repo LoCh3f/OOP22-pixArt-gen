@@ -126,7 +126,7 @@ public class WorkSpace extends AbstractFXView {
 
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> {
             try {
-                FileHandler.getInstance().fromProjectToJson(this.getController().getModel().getProject(), this.getController().getModel().getUser());
+                FileHandler.getInstance().fromProjectToJson(this.getController().getModel().getProject());
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
