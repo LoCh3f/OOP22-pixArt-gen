@@ -15,7 +15,7 @@ public class PixelMatrix implements Matrix {
     private final int rows;
     private final int columns;
     private final Set<Pixel> pixels;
-    private final transient FrameState memento = new FrameStateImpl();
+    private final FrameState memento = new FrameStateImpl();
 
     private PixelMatrix(final int rows, final int columns) {
         this.rows = rows;
