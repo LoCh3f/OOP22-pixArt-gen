@@ -38,22 +38,29 @@ public class ImagePrinter {
         this.imageSize = project.getAllFrames().get(0).getColumns();
         WritableImage wImg = new WritableImage(imageSize, imageSize);
         PixelWriter pWriter = wImg.getPixelWriter();
+        System.out.println(project.getAllFrames().size());
 
-        for (int count = 0; count > project.getAllFrames().size(); count++) {
 
-            Iterator<Pixel> pixelIterator = project.getAllFrames().get(count).getPixels().iterator();
-            for (int x = 0; x < imageSize; x++) {
-                for (int y = 0; y < imageSize; y++) {
-                    while (pixelIterator.hasNext()) {
-                        Pixel actPixel = pixelIterator.next();
-                        if (new Pair<Integer, Integer>(x, y).equals(actPixel.getPosition())) {
-                            Color color = actPixel.getColor();
-                            pWriter.setColor(x, y, color);
+        for (int count = 0; count < project.getAllFrames().size(); count++) {
+            
+            ArrayList<Pixel> pixelList = project.getAllFrames().get(count).getPixels().stream().collect(Collectors.toCollection(ArrayList::new));
+
+            for (int x = 0; x < imageSize; x++){
+                for (int y = 0; y < imageSize; y++){
+                    for(var p : pixelList){
+                        if(new Pair<Integer, Integer>(x, y).equals(p.getPosition())){
+                            Color color = p.getColor();
+                                if(color == Color.TRANSPARENT){
+                                    pWriter.setColor(x, y, Color.WHITE);
+                                } else {
+                                    pWriter.setColor(x, y, color);                
+                                }                    
                         }
                     }
                 }
             }
-            if (project.getFileType().equals("png")) {
+
+            if (project.getFileType().equals(".png")) {
                 imagePNG(wImg, project.getPath() + File.separatorChar + project.getName() + count + ".png");
             } else {
                 imageJpgOrJpeg(wImg, project.getFileType(), project.getPath() + File.separatorChar + project.getName() + count + project.getFileType());
