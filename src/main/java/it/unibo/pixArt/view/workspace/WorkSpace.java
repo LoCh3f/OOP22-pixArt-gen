@@ -27,7 +27,6 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
@@ -67,6 +66,11 @@ public class WorkSpace extends AbstractFXView {
                         .stream().map(e -> new ImageView(new Image(e.getPath()))).collect(Collectors.toList()));
         this.frames.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             getWorkSpaceController().setCurrentFrame(frames.getSelectionModel().getSelectedIndex());
+            this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).collect(Collectors.toList()));
+            frames.getItems().forEach(i -> {
+                i.fitHeightProperty().bind(frames.heightProperty());
+                i.setFitWidth(200);
+            });
             updateView(getWorkSpaceController().getCurrentFrame());
         });
         this.toolBox.getItems().addAll(this.getWorkSpaceController().getTools());//Init toolBox and add event listeners
@@ -124,15 +128,15 @@ public class WorkSpace extends AbstractFXView {
         });
 
 
-        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> {
+        /*this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> {
             try {
                 FileHandler.getInstance().fromProjectToJson(this.getController().getModel().getProject());
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-        }).build());
+        }).build());*/
         this.menubar.getMenus().get(0).getItems().get(1).addEventHandler(ActionEvent.ACTION, event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel()));
-        this.menubar.getMenus().get(0).getItems().get(0).addEventHandler(ActionEvent.ACTION, event -> getWorkSpaceController().saveProject());
+        this.menubar.getMenus().get(0).getItems().get(0).addEventHandler(ActionEvent.ACTION, event -> saveAndExit());
 
 
         updateView(getWorkSpaceController().getCurrentFrame());
@@ -192,6 +196,11 @@ public class WorkSpace extends AbstractFXView {
                 b.setStyle(pixelsParser.parseColor(p.getColor()));
             }
         }));
+    }
+
+    private void saveAndExit() {
+        this.getWorkSpaceController().saveProject();
+        PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
     }
 
     private WorkSpaceController getWorkSpaceController() {

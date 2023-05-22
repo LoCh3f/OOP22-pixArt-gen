@@ -38,8 +38,6 @@ public class ImagePrinter {
         this.imageSize = project.getAllFrames().get(0).getColumns();
         WritableImage wImg = new WritableImage(imageSize, imageSize);
         PixelWriter pWriter = wImg.getPixelWriter();
-        System.out.println(project.getAllFrames().size());
-
 
         for (int count = 0; count < project.getAllFrames().size(); count++) {
             
@@ -95,8 +93,6 @@ public class ImagePrinter {
             e.printStackTrace();
         }
     }
-
-    ;
 
     private void imageJpgOrJpeg(WritableImage wImg, String fyleFormat, String path) {
         try {

@@ -62,7 +62,7 @@ public class AnimationControllerImpl extends SimpleController implements Animati
 
     @Override
     public HistoryFrame getCurrentImage() { 
-        if(this.index == 3 || this.index == 0) {
+        if(this.index == getHistoryFrames().size()  || this.index == 0) {
             this.index = 0;
         }
         final int prev = this.index;
@@ -74,14 +74,13 @@ public class AnimationControllerImpl extends SimpleController implements Animati
     public List<HistoryFrame> getHistoryFrames() {
         return this.getModel().getProject().getAllHistoryFrames();
     }
-
-    private AnimationView getAnimationView() {
-        return (AnimationView) this.getView();
-    }
-
+    
     @Override
     public boolean getAnimationIsRunning() {
         return this.isRunning;
     }
 
+    private AnimationView getAnimationView() {
+        return (AnimationView) this.getView();
+    }
 }

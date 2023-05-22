@@ -6,6 +6,7 @@ import it.unibo.pixArt.model.historyframe.HistoryFrame;
 import it.unibo.pixArt.model.historyframe.HistoryFrameImpl;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
+import it.unibo.pixArt.model.project.FileTypes;
 import it.unibo.pixArt.model.tool.AbstractTool;
 import it.unibo.pixArt.model.tool.ToolEnum;
 import it.unibo.pixArt.model.tool.ToolFactory;
@@ -47,8 +48,9 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
 
     @Override
     public void setCurrentFrame(final int index) {
-        //elimina immagine e ricreala.(ImagePrinter.)
         this.currentframe = this.getModel().getProject().getAllFrames().get(index);
+        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + getModel().getProject().getAllFrames().indexOf(currentframe) + getModel().getProject().getFileType(), FileTypes.PNG);
+        this.getHistoryFrames().get(getModel().getProject().getAllFrames().indexOf(currentframe)).setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + getModel().getProject().getAllFrames().indexOf(currentframe) + getModel().getProject().getFileType());
     }
 
     @Override
@@ -60,6 +62,8 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     //DA FINIREs
     @Override
     public Set<Pixel> addNewFrame() {
+        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + getModel().getProject().getAllFrames().indexOf(currentframe) + getModel().getProject().getFileType(), FileTypes.PNG);
+        this.getHistoryFrames().get(getModel().getProject().getAllFrames().indexOf(currentframe)).setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + getModel().getProject().getAllFrames().indexOf(currentframe) + getModel().getProject().getFileType());
         this.getModel().getProject().addNewFrame();
         this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl());
         /*this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl(getModel().getUser().getPassword() + getModel().getProject().getName() 
@@ -96,7 +100,13 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     @Override
     public void saveProject() {
         this.currentframe.getMemento().emptyStack();
-        ImagePrinter.getInstance().printAllFrames(this.getModel().getProject());
+       // ImagePrinter.getInstance().printAllFrames(this.getModel().getProject());
+       try {
+        FileHandler.getInstance().fromProjectToJson(this.getModel().getProject());
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
     }
 
     @Override

@@ -1,15 +1,7 @@
 package it.unibo.pixArt.view.impl;
 
 import java.io.File;
-import java.util.LinkedList;
-
-import javax.swing.Action;
-
 import it.unibo.pixArt.controller.settings.SettingsController;
-import it.unibo.pixArt.model.ModelImpl;
-import it.unibo.pixArt.model.project.FileTypes;
-import it.unibo.pixArt.model.project.Project;
-import it.unibo.pixArt.model.project.ProjectImpl;
 import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.PageLoader;
@@ -17,7 +9,6 @@ import it.unibo.pixArt.view.pages.Pages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 
 public class SettingsView extends AbstractFXView {
@@ -59,7 +50,7 @@ public class SettingsView extends AbstractFXView {
 
     @FXML
     public void discardProject(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, new ModelImpl(null, null, null, null, null));
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 
     @Override
