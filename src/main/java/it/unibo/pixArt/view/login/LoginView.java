@@ -23,10 +23,10 @@ public class LoginView extends AbstractFXView{
     private ImageView logoImageView;
 
     @FXML
-    private TextField usernameField;
+    private TextField usernameLoginField;
 
     @FXML
-    private PasswordField passwordField;
+    private PasswordField passwordLoginField;
 
     @FXML
     private TextField pathField;
@@ -40,11 +40,37 @@ public class LoginView extends AbstractFXView{
     @FXML
     private Text passwordValidation;
 
-    private boolean validate(final String username, final String password) {
+    @FXML
+    private TextField usernameRegisterField;
+
+    @FXML 
+    private PasswordField passwordRegisterField;
+
+    @FXML
+    private Text pathValidation;
+
+    @FXML
+    private Text registerResult;
+
+    private boolean loginValidate(final String username, final String password) {
         ValidationResult usernameValidationResult = this.getLoginController().usernameValidation(username);
         ValidationResult passwordValidationResult = this.getLoginController().passwordValidation(password);
         
         if (usernameValidationResult.equals(ValidationResult.CORRECT) && passwordValidationResult.equals(ValidationResult.CORRECT)){
+            return true;
+        }
+
+        this.loginResult.setText("Username or password incorrect");
+        return false;
+    }
+
+    private boolean registerValidate(final String username, final String password, final String path){
+        ValidationResult usernameValidationResult = this.getLoginController().usernameValidation(username);
+        ValidationResult passwordValidationResult = this.getLoginController().passwordValidation(password);
+        ValidationResult pathValidationResult = this.getLoginController().pathValidation(path);
+        
+        if (usernameValidationResult.equals(ValidationResult.CORRECT) && passwordValidationResult.equals(ValidationResult.CORRECT)
+            && pathValidationResult.equals(ValidationResult.CORRECT)){
             return true;
         }
 
@@ -56,13 +82,17 @@ public class LoginView extends AbstractFXView{
             passwordValidation.setText(passwordValidationResult.getDescription());
         }
 
+        if (!pathValidationResult.equals(ValidationResult.CORRECT)) {
+            pathValidation.setText(pathValidationResult.getDescription());
+        }
+
         return false;
     }
 
     @FXML
     public void onLoginClick(final ActionEvent event) throws IOException{
-        if (this.validate(this.usernameField.getText(), this.passwordField.getText())){
-            if (this.getLoginController().login(this.usernameField.getText(), this.passwordField.getText())) {
+        if (this.loginValidate(this.usernameLoginField.getText(), this.passwordLoginField.getText())){
+            if (this.getLoginController().login(this.usernameLoginField.getText(), this.passwordLoginField.getText())) {
                 PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
             } else {
                 this.loginResult.setText("Username or password incorrect");
@@ -73,11 +103,14 @@ public class LoginView extends AbstractFXView{
 
     @FXML
     public void onRegisterClick(final ActionEvent event) throws IOException{
-        if (this.validate(this.usernameField.getText(), this.passwordField.getText())) {
-            if (this.getLoginController().register(this.usernameField.getText(), this.passwordField.getText(), this.pathField.getText())){
+        if (this.registerValidate(this.usernameRegisterField.getText(), this.passwordRegisterField.getText(), this.pathField.getText())) {
+            if (this.getLoginController().register(this.usernameRegisterField.getText(), this.passwordRegisterField.getText(), this.pathField.getText())){
                 PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
             } else {
-                this.loginResult.setText("Try again");
+                this.passwordValidation.setText(null);
+                this.usernameValidation.setText(null);
+                this.pathValidation.setText(null);
+                this.registerResult.setText("Try again");
             }
         }
     }

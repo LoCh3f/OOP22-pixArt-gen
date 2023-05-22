@@ -36,4 +36,10 @@ public interface LoginController extends Controller{
      */
     public ValidationResult passwordValidation(final String password);
 
+    /**
+     * @param path
+     * @return the result of the path validation
+     */
+    public ValidationResult pathValidation(final String path);
+
 }

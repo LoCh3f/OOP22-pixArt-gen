@@ -1,6 +1,9 @@
 package it.unibo.pixArt.controller.login;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.user.manager.UserManagerImpl;
@@ -50,6 +53,17 @@ public class LoginControllerImpl extends SimpleController implements LoginContro
             return ValidationResult.TOO_LONG;
         }
         return ValidationResult.CORRECT;
+    }
+
+    @Override
+    public ValidationResult pathValidation(String path) {
+        if (path.length() == 0){
+            return ValidationResult.PATH_NOT_FOUND;
+        }
+        if (Files.isDirectory(Path.of(path))){
+            return ValidationResult.CORRECT;
+        }
+        return ValidationResult.PATH_NOT_FOUND;
     }
 
     
