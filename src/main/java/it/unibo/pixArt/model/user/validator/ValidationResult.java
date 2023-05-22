@@ -6,7 +6,9 @@ public enum ValidationResult {
 
     TOO_SHORT("Too short"),
 
-    TOO_LONG("Too long");
+    TOO_LONG("Too long"),
+
+    PATH_NOT_FOUND("Path not found");
 
     private final String description;
 
@@ -18,5 +20,4 @@ public enum ValidationResult {
         return this.description;
     }
     
-
 }

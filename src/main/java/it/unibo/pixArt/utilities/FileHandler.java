@@ -87,4 +87,29 @@ public class FileHandler {
         }
     }
 
+    public boolean initProjectFolder(String path){
+        File folder = new File(path);
+        if(checkFolderExist(folder)){
+            folder.mkdir();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkFolderExist(File folder){
+        if(folder.exists()){
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("The name is already taken");
+            alert.setHeaderText("Press OK to overwrite the existing project or press CANCEL to go back and change name");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){ 
+                folder.delete();
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

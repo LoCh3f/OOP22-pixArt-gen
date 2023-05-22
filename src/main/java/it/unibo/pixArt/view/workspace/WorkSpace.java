@@ -27,6 +27,8 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
 
@@ -62,7 +64,7 @@ public class WorkSpace extends AbstractFXView {
                 .selectTool("PENCIL", colorPicker.getValue(), (int) toolSizeSlider.getValue());//select the default tool.
         this.frames.getItems()
                 .addAll(this.getWorkSpaceController().getHistoryFrames()
-                        .stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
+                        .stream().map(e -> new ImageView(new Image(e.getPath()))).collect(Collectors.toList()));
         this.frames.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             getWorkSpaceController().setCurrentFrame(frames.getSelectionModel().getSelectedIndex());
             updateView(getWorkSpaceController().getCurrentFrame());
@@ -157,7 +159,7 @@ public class WorkSpace extends AbstractFXView {
     @FXML
     private void onAddFrameClicked() {
         this.updateView(this.getWorkSpaceController().addNewFrame());
-        this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
+        this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).collect(Collectors.toList()));
         frames.getItems().forEach(i -> {
             i.fitHeightProperty().bind(frames.heightProperty());
             i.setFitWidth(200);
@@ -167,7 +169,7 @@ public class WorkSpace extends AbstractFXView {
     @FXML
     private void onDeleteClicked() {
         this.getWorkSpaceController().deleteCurrentFrame();
-        this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).toList());
+        this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).collect(Collectors.toList()));
         frames.getItems().forEach(i -> {
             i.fitHeightProperty().bind(frames.heightProperty());
             i.setFitWidth(200);
