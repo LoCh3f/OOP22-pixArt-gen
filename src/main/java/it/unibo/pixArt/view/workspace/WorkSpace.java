@@ -10,6 +10,7 @@ import it.unibo.pixArt.view.components.MenuItemBuilder;
 import it.unibo.pixArt.view.components.PixelsPane;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -58,31 +59,32 @@ public class WorkSpace extends AbstractFXView {
 
     @Override
     public void init() {
-        this.getWorkSpaceController().setCurrentFrame(0);//Set the first frame
-        this.getWorkSpaceController()
-                .selectTool("PENCIL", colorPicker.getValue(), (int) toolSizeSlider.getValue());//select the default tool.
-        this.frames.getItems()
-                .addAll(this.getWorkSpaceController().getHistoryFrames()
-                        .stream().map(e -> new ImageView(new Image(e.getPath()))).collect(Collectors.toList()));
-        this.frames.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            getWorkSpaceController().setCurrentFrame(frames.getSelectionModel().getSelectedIndex());
-            this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).collect(Collectors.toList()));
-            frames.getItems().forEach(i -> {
-                i.fitHeightProperty().bind(frames.heightProperty());
-                i.setFitWidth(200);
-            });
-            updateView(getWorkSpaceController().getCurrentFrame());
-        });
-        this.toolBox.getItems().addAll(this.getWorkSpaceController().getTools());//Init toolBox and add event listeners
+        /*Set the first frame and the default tool. Add all the historyframes to the list view and add an event listener. */
+        this.getWorkSpaceController().setFirstFrame();
+        this.getWorkSpaceController().selectTool("PENCIL", colorPicker.getValue(), (int) toolSizeSlider.getValue());//select the default tool.
 
+        this.frames.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                getWorkSpaceController().setCurrentFrame(frames.getSelectionModel().getSelectedIndex());
+                updateView(getWorkSpaceController().getCurrentFrame());
+                updateHistoryFrames();
+            }
+            
+        });
+
+        /*Init toolBox and toolSizeSlider, add event listeners.*/
+        this.toolBox.getItems().addAll(this.getWorkSpaceController().getTools());
         this.toolBox.setValue("PENCIL");
         this.toolBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> getWorkSpaceController().selectTool(newValue, colorPicker.getValue(), (int) toolSizeSlider.getValue()));
-
         this.toolSizeLabel.setText("Size: " + Integer.toString((int) toolSizeSlider.getValue()));
         this.toolSizeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(), (int) toolSizeSlider.getValue());
             this.toolSizeLabel.setText("Size: " + Integer.toString((int) toolSizeSlider.getValue()));
         });
+
+        /*Init GridPane and add an event listeners to all the buttons. */
         paneParser = new GridPaneParser();
         pixelsParser = new PixelsParser();
         this.root.setCenter(new ImageView(IMAGE_PATH + MAIN_ICON));
@@ -122,26 +124,15 @@ public class WorkSpace extends AbstractFXView {
         center.alignmentProperty().set(Pos.CENTER);
         center.prefWidthProperty().bind(root.widthProperty().subtract(leftPane.widthProperty().add(frames.widthProperty())));
         center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty()));
-        frames.getItems().forEach(i -> {
-            i.fitHeightProperty().bind(frames.heightProperty());
-            i.setFitWidth(200);
-        });
-
-
-        /*this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> {
-            try {
-                FileHandler.getInstance().fromProjectToJson(this.getController().getModel().getProject());
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        }).build());*/
+        
+        /*Add event listeners to the menu items */
+        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> {
+            saveAndExit();
+        }).build());
         this.menubar.getMenus().get(0).getItems().get(1).addEventHandler(ActionEvent.ACTION, event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel()));
-        this.menubar.getMenus().get(0).getItems().get(0).addEventHandler(ActionEvent.ACTION, event -> saveAndExit());
-
-
+        
         updateView(getWorkSpaceController().getCurrentFrame());
-
-
+        updateHistoryFrames();
     }
 
     @FXML
@@ -163,21 +154,13 @@ public class WorkSpace extends AbstractFXView {
     @FXML
     private void onAddFrameClicked() {
         this.updateView(this.getWorkSpaceController().addNewFrame());
-        this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).collect(Collectors.toList()));
-        frames.getItems().forEach(i -> {
-            i.fitHeightProperty().bind(frames.heightProperty());
-            i.setFitWidth(200);
-        });
+        Platform.runLater(() -> updateHistoryFrames());
     }
 
     @FXML
     private void onDeleteClicked() {
         this.getWorkSpaceController().deleteCurrentFrame();
-        this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).collect(Collectors.toList()));
-        frames.getItems().forEach(i -> {
-            i.fitHeightProperty().bind(frames.heightProperty());
-            i.setFitWidth(200);
-        });
+        Platform.runLater(() -> updateHistoryFrames());
     }
 
     @FXML
@@ -201,6 +184,14 @@ public class WorkSpace extends AbstractFXView {
     private void saveAndExit() {
         this.getWorkSpaceController().saveProject();
         PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
+    }
+
+    public void updateHistoryFrames() {
+        this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).collect(Collectors.toList()));
+        frames.getItems().forEach(i -> {
+            i.fitHeightProperty().bind(frames.heightProperty());
+            i.setFitWidth(200);
+        });
     }
 
     private WorkSpaceController getWorkSpaceController() {

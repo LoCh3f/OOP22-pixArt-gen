@@ -28,6 +28,7 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     private final ToolFactory toolFactory = new ToolFactoryImpl();
     private AbstractTool tool;
     private boolean isDrawing;
+    private int frameIndex;
 
     public WorkSpaceControllerImpl() {
     }
@@ -48,9 +49,16 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
 
     @Override
     public void setCurrentFrame(final int index) {
-        this.currentframe = this.getModel().getProject().getAllFrames().get(index);
-        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + getModel().getProject().getAllFrames().indexOf(currentframe) + getModel().getProject().getFileType(), FileTypes.PNG);
-        this.getHistoryFrames().get(getModel().getProject().getAllFrames().indexOf(currentframe)).setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + getModel().getProject().getAllFrames().indexOf(currentframe) + getModel().getProject().getFileType());
+        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + frameIndex + getModel().getProject().getFileType(), FileTypes.PNG);
+        this.getHistoryFrames().get(frameIndex).setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + frameIndex + getModel().getProject().getFileType());
+        this.frameIndex = index;
+        this.currentframe = getModel().getProject().getAllFrames().get(frameIndex);
+    }
+
+    @Override
+    public void setFirstFrame() {
+        this.currentframe = this.getModel().getProject().getAllFrames().get(0);
+        this.frameIndex = 0;
     }
 
     @Override
@@ -59,15 +67,12 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
         return currentframe.getPixels();
     }
 
-    //DA FINIREs
     @Override
     public Set<Pixel> addNewFrame() {
-        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + getModel().getProject().getAllFrames().indexOf(currentframe) + getModel().getProject().getFileType(), FileTypes.PNG);
-        this.getHistoryFrames().get(getModel().getProject().getAllFrames().indexOf(currentframe)).setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + getModel().getProject().getAllFrames().indexOf(currentframe) + getModel().getProject().getFileType());
+        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + frameIndex + getModel().getProject().getFileType(), FileTypes.PNG);
+        this.getHistoryFrames().get(getModel().getProject().getAllFrames().indexOf(currentframe)).setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + frameIndex + getModel().getProject().getFileType());
         this.getModel().getProject().addNewFrame();
         this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl());
-        /*this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl(getModel().getUser().getPassword() + getModel().getProject().getName() 
-        + getModel().getProject().getAllHistoryFrames().size()));*/
         setCurrentFrame(this.getModel().getProject().getAllFrames().size() - 1);
         return this.currentframe.getPixels();
     }
@@ -100,7 +105,7 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     @Override
     public void saveProject() {
         this.currentframe.getMemento().emptyStack();
-       // ImagePrinter.getInstance().printAllFrames(this.getModel().getProject());
+        ImagePrinter.getInstance().printAllFrames(this.getModel().getProject());
        try {
         FileHandler.getInstance().fromProjectToJson(this.getModel().getProject());
     } catch (IOException e) {
@@ -111,13 +116,16 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
 
     @Override
     public void deleteCurrentFrame() {
-        //da migliorare
-        final int frameIndex = this.getModel().getProject().getAllFrames().indexOf(this.currentframe);
-        //Rimuovi immagine
         this.getHistoryFrames().remove(frameIndex);
         this.getModel().getProject().getAllFrames().remove(currentframe);
-        this.setCurrentFrame(frameIndex - 1);
-        this.getWorkSpaceView().updateView(getCurrentFrame());
+        if(this.getModel().getProject().getAllFrames().size() > 1) {
+            //Rimuovi immagine
+            
+            this.currentframe = getModel().getProject().getAllFrames().get(frameIndex - 1);
+            this.getWorkSpaceView().updateView(getCurrentFrame());
+        }else {
+            this.currentframe = null;
+        }
     }
 
     private WorkSpace getWorkSpaceView() {

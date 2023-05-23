@@ -79,4 +79,9 @@ public interface WorkSpaceController extends Controller {
      */
     public void deleteCurrentFrame();
 
+    /*
+     * Method to set the first frame.
+     */
+    public void setFirstFrame();
+
 }
