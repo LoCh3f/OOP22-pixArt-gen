@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
  * This is a simple implementation pf interface mirror,
  * the generic type choose  must override method equals from s.c. Object to work in this class;
  */
-public class AbstractGenericMirror<X> implements Mirror<X> {
+public class GenericMirror<X> implements Mirror<X> {
 
     /**
      * {@inheritDoc}

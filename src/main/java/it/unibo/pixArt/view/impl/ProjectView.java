@@ -49,7 +49,7 @@ public class ProjectView extends AbstractFXView {
 
     public void onEditClick(final ActionEvent event){
         try {
-            Project project = FileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selectedFolder)), this.getController().getModel().getUser());
+            Project project = FileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selectedFolder)));
             this.getController().getModel().setProject(project);
             PageLoader.getInstance().switchPage(getStage(), Pages.WORKSPACE, this.getController().getModel());
         } catch (IOException e) {

@@ -116,11 +116,10 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
 
     @Override
     public void deleteCurrentFrame() {
+        FileHandler.getInstance().deleteFile(getModel().getProject().getAllHistoryFrames().get(frameIndex).getPath());
         this.getHistoryFrames().remove(frameIndex);
         this.getModel().getProject().getAllFrames().remove(currentframe);
         if(this.getModel().getProject().getAllFrames().size() > 1) {
-            //Rimuovi immagine
-            
             this.currentframe = getModel().getProject().getAllFrames().get(frameIndex - 1);
             this.getWorkSpaceView().updateView(getCurrentFrame());
         }else {
