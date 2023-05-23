@@ -7,9 +7,10 @@ public class HistoryFrameImpl implements HistoryFrame {
     private int animationDuration;
     private int index;
 
-    public HistoryFrameImpl() {
+    public HistoryFrameImpl(final int index) {
         this.imagePath = DEF_IMAGE;
         this.animationDuration = DEF_DELAY;
+        this.index = index;
     }
 
     public HistoryFrameImpl(final String path, final int index) {

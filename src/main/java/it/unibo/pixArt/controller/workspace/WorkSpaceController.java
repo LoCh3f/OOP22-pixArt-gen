@@ -40,7 +40,7 @@ public interface WorkSpaceController extends Controller {
     /**
      * Method to create and add a new frame in the list of frames.
      */
-    public Set<Pixel> addNewFrame();
+    public void addNewFrame();
 
     /**
      * @return list of all the historyframes of the project
