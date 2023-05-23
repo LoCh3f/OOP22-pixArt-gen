@@ -105,6 +105,10 @@ public class FileHandler {
             alert.setHeaderText("Press OK to overwrite the existing project or press CANCEL to go back and change name");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){ 
+                File[] files = folder.listFiles();
+                for(File file : files){
+                    file.delete();
+                }
                 folder.delete();
                 return true;
             }else{
