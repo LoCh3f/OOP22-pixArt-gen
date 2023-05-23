@@ -78,7 +78,8 @@ public class FileHandler {
         return gson.fromJson(sBuilder.toString(), Project.class);
     }
 
-    public void deleteFile(File fileToDelete) {
+    public void deleteFile(String path) {
+        File fileToDelete = new File(path);
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Delete File");
         alert.setHeaderText("Are you sure to delete the selected frame?");
