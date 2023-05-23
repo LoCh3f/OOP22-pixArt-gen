@@ -3,6 +3,9 @@ package it.unibo.pixArt.model.pixel;
 import javafx.scene.paint.Color;
 
 
+/**
+ *
+ */
 public class PixelBuilder extends ImplPixel {
 
     private PixelBuilder(final Integer x, final Integer y, final Color color) {

@@ -10,6 +10,10 @@ import java.util.function.Function;
 
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
 
+/**
+ * This class is used to convert a Collection<Pixel>
+ * in a gridPane that represent the Collection in input
+ */
 public class PixelsParser implements Function<Collection<Pixel>, GridPane> {
     @Override
     public GridPane apply(Collection<Pixel> pixels) {

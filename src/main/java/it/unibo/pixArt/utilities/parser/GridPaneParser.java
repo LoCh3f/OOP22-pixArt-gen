@@ -13,6 +13,10 @@ import java.util.function.Function;
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLOR;
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
 
+/**
+ * This Class help to convert a GridPane in a
+ * Collection of Pixel
+ */
 public class GridPaneParser implements Function<GridPane, Collection<Pixel>> {
     @Override
     public Collection<Pixel> apply(GridPane gridPane) {
