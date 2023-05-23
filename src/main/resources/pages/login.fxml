@@ -13,16 +13,16 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="752.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixArt.view.login.LoginView">
    <children>
       <TextField fx:id="usernameLoginField" layoutX="102.0" layoutY="222.0" prefHeight="26.0" prefWidth="212.0" />
-      <ImageView fx:id="logoImageView" fitHeight="130.0" fitWidth="136.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="178.0" layoutY="346.0" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="26.0" prefWidth="59.0" text="Login" />
-      <Button layoutX="507.0" layoutY="412.0" mnemonicParsing="false" onAction="#onRegisterClick" text="Register" />
+      <ImageView fx:id="logoImageView" fitHeight="97.0" fitWidth="95.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="178.0" layoutY="338.0" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="26.0" prefWidth="59.0" text="Login" />
+      <Button layoutX="507.0" layoutY="339.0" mnemonicParsing="false" onAction="#onRegisterClick" text="Register" />
       <Label layoutX="102.0" layoutY="198.0" text="Username" />
       <Label layoutX="103.0" layoutY="262.0" text="Password" />
-      <TextField fx:id="pathField" layoutX="429.0" layoutY="340.0" prefHeight="26.0" prefWidth="143.0" />
-      <Label layoutX="432.0" layoutY="323.0" text="Path" />
-      <Text fx:id="loginResult" fill="RED" layoutX="106.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.73663330078125" />
+      <TextField fx:id="pathField" layoutX="434.0" layoutY="397.0" prefHeight="26.0" prefWidth="143.0" />
+      <Label layoutX="434.0" layoutY="377.0" text="Path" />
+      <Text fx:id="loginResult" fill="RED" layoutX="106.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.73663330078125" />
       <PasswordField fx:id="passwordLoginField" layoutX="102.0" layoutY="282.0" prefHeight="26.0" prefWidth="212.0" />
-      <Button layoutX="584.0" layoutY="340.0" mnemonicParsing="false" onAction="#onSelectDirClick" prefHeight="26.0" prefWidth="59.0" text="Browse" />
+      <Button layoutX="582.0" layoutY="397.0" mnemonicParsing="false" onAction="#onSelectDirClick" prefHeight="26.0" prefWidth="59.0" text="Browse" />
       <Label layoutX="171.0" layoutY="128.0" prefHeight="50.0" prefWidth="86.0" text="Login">
          <font>
             <Font name="System Italic" size="33.0" />
@@ -39,8 +39,10 @@
       <Label layoutX="431.0" layoutY="262.0" text="Password" />
       <PasswordField fx:id="passwordRegisterField" layoutX="431.0" layoutY="282.0" prefHeight="26.0" prefWidth="212.0" />
       <Text fx:id="passwordValidation" fill="RED" layoutX="436.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="177.60000000000014" />
-      <Text fx:id="registerResult" fill="RED" layoutX="435.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.73663330078125" />
-      <Separator layoutX="376.0" layoutY="74.0" orientation="VERTICAL" prefHeight="431.0" prefWidth="9.0" />
-      <Text fx:id="pathValidation" fill="RED" layoutX="435.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.20000000000005" />
+      <Text fx:id="registerResult" fill="RED" layoutX="435.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.73663330078125" />
+      <Separator layoutX="376.0" layoutY="101.0" orientation="VERTICAL" prefHeight="385.0" prefWidth="10.0" />
+      <Text fx:id="pathValidation" fill="RED" layoutX="435.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="143.20000000000005" />
+      <Button layoutX="161.0" layoutY="384.0" mnemonicParsing="false" onAction="#onLoginAsGuestClick" text="Login as guest" />
+      <Text fx:id="guestLoginResult" fill="RED" layoutX="164.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="86.39999999999998" />
    </children>
 </AnchorPane>

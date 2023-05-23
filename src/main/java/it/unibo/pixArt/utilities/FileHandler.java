@@ -12,16 +12,11 @@ import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.project.ProjectImpl;
-import it.unibo.pixArt.model.user.User;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.attribute.FileAttribute;
 import java.util.Optional;
 
 public class FileHandler {
@@ -78,17 +73,29 @@ public class FileHandler {
         return gson.fromJson(sBuilder.toString(), Project.class);
     }
 
+    /**
+     * 
+     * @param path The path of the folder or file to be deleted
+     */
     public void deleteFile(String path) {
         File fileToDelete = new File(path);
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Delete File");
-        alert.setHeaderText("Are you sure to delete the selected frame?");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
+        if(fileToDelete.isDirectory()){
+            File[] files = fileToDelete.listFiles();
+            for(var f : files){
+                f.delete();
+            }
+            fileToDelete.delete();
+        }
+        else{
             fileToDelete.delete();
         }
     }
 
+    /**
+     * Initialize the project in the selected path
+     * @param path The path where the project will be created
+     * @return
+     */
     public boolean initProjectFolder(String path){
         File folder = new File(path);
         if(checkFolderExist(folder)){
@@ -98,6 +105,11 @@ public class FileHandler {
         return false;
     }
 
+    /**
+     * Check if the folder exist
+     * @param folder the file to be check
+     * @return If the folder don't exist or if the folder exist and the User decide to delete it return True, otherwisw return False
+     */
     private boolean checkFolderExist(File folder){
         if(folder.exists()){
             Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -105,7 +117,7 @@ public class FileHandler {
             alert.setHeaderText("Press OK to overwrite the existing project or press CANCEL to go back and change name");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){ 
-                folder.delete();
+                deleteFile(folder.getAbsolutePath());
                 return true;
             }else{
                 return false;

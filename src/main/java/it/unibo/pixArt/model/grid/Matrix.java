@@ -6,6 +6,9 @@ import it.unibo.pixArt.model.pixel.Pixel;
 import java.util.Set;
 import java.util.function.Consumer;
 
+/**
+ *
+ */
 public interface Matrix {
 
     /**
@@ -40,6 +43,9 @@ public interface Matrix {
      */
     FrameState getMemento();
 
+    /**
+     * Back to the last change of the matrix
+     */
     void revert();
 
 }

@@ -25,6 +25,11 @@ public interface LoginController extends Controller{
     public boolean register(final String username, final String password, final String path) throws IOException;
 
     /**
+     * @param path
+     */
+    public void guestLogin(final String path);
+
+    /**
      * @param username
      * @return the result of the username validation
      */

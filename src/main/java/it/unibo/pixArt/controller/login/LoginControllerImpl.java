@@ -16,8 +16,11 @@ public class LoginControllerImpl extends SimpleController implements LoginContro
     private static final int NAME_MIN_LENGTH = 6;
     private static final int NAME_MAX_LENGTH = 30;
 
+    private static final String GUEST_NAME = "GUEST";
+    private static final String GUEST_PASSWORD = "00000000";
+
     @Override
-    public boolean login(String username, String password) throws IOException {
+    public boolean login(final String username, final String password) throws IOException {
         if (!UserManagerImpl.getInstance().login(username, password).isEmpty()){
             final String path = UserManagerImpl.getInstance().login(username, password).get().getPathToFile();
             this.getModel().setUser(username, password, path);
@@ -27,12 +30,16 @@ public class LoginControllerImpl extends SimpleController implements LoginContro
     }
 
     @Override
-    public boolean register(String username, String password, String path) throws IOException {
+    public boolean register(final String username, final String password, final String path) throws IOException {
         if (!UserManagerImpl.getInstance().register(username, password, path).isEmpty()){
             this.getModel().setUser(username, password, path);
             return true;
         } 
         return false;
+    }
+
+    public void guestLogin(String path){
+        this.getModel().setUser(GUEST_NAME, GUEST_PASSWORD, path);
     }
 
     @Override
