@@ -65,7 +65,7 @@ public class FileHandler {
      * @return The Project with the Json file spec
      * @throws IOException
      */
-    public Project fromJsonToProject(File jsonFile, User user) throws IOException {
+    public Project fromJsonToProject(File jsonFile) throws IOException {
         BufferedReader fReader = new BufferedReader(new FileReader(jsonFile));
         StringBuilder sBuilder = new StringBuilder();
         String line = null;
