@@ -99,8 +99,7 @@ public class FileHandler {
     public boolean initProjectFolder(String path){
         File folder = new File(path);
         if(checkFolderExist(folder)){
-            folder.mkdir();
-            return true;
+            return folder.mkdir();
         }
         return false;
     }
@@ -113,19 +112,17 @@ public class FileHandler {
     private boolean checkFolderExist(File folder){
         if(folder.exists()){
             Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setTitle("The name is already taken");
-            alert.setHeaderText("Press OK to overwrite the existing project or press CANCEL to go back and change name");
+            alert.setTitle("Error");
+            alert.setHeaderText("Error: The name is already taken");
+            alert.setContentText("Press OK to overwrite the existing project or press CANCEL to go back and change name");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){ 
                 deleteFile(folder.getAbsolutePath());
-                return true;
             }else{
                 return false;
             }
         }
-        else{
-            return true;
-        }
+        return true;
     }
 
 }
