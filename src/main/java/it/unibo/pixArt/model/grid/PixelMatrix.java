@@ -11,6 +11,9 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+/**
+ * Simple implementation of Matrix;
+ */
 public class PixelMatrix implements Matrix {
     private final int rows;
     private final int columns;
@@ -95,7 +98,6 @@ public class PixelMatrix implements Matrix {
      */
     @Override
     public Set<Pixel> getPixels() {
-        //return new HashSet<>(this.pixels);
         return this.pixels.stream().map(e -> new PixelBuilder.PxlBuilder().setColor(e.getColor()).setX(e.getPosition().getX()).setY(e.getPosition().getY()).build()).collect(Collectors.toSet());
     }
 
@@ -104,7 +106,6 @@ public class PixelMatrix implements Matrix {
      */
     @Override
     public void setPixel(Set<Pixel> pixels) {
-        //this.memento.setState(getPixels());
 
         for (Pixel pixel : pixels) {
             this.pixels.forEach(p -> {
@@ -115,6 +116,9 @@ public class PixelMatrix implements Matrix {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void revert() {
         setPixel(memento.getState());
