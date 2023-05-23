@@ -153,13 +153,15 @@ public class WorkSpace extends AbstractFXView {
 
     @FXML
     private void onAddFrameClicked() {
-        this.updateView(this.getWorkSpaceController().addNewFrame());
+        this.getWorkSpaceController().addNewFrame();
+        updateView(this.getWorkSpaceController().getCurrentFrame());
         Platform.runLater(() -> updateHistoryFrames());
     }
 
     @FXML
     private void onDeleteClicked() {
         this.getWorkSpaceController().deleteCurrentFrame();
+        updateView(this.getWorkSpaceController().getCurrentFrame());
         Platform.runLater(() -> updateHistoryFrames());
     }
 

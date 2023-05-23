@@ -37,6 +37,19 @@ public interface Project {
      */
     public String getFileType();
 
+    /**
+     * @return the list of all the history frames.
+     */
     public List<HistoryFrame> getAllHistoryFrames();
+
+    /**
+     * Method to create a new HistoryFrame.
+     */
+    public void addNewHistoryFrame(final int index);
+
+    /**
+     * @return the last HistoryFrame.
+     */
+    public HistoryFrame getLastHistoryFrame();
 
 }

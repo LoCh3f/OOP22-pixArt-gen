@@ -21,7 +21,7 @@ public class ProjectImpl implements Project {
         this.fileType = fileType;
         this.frames = frames;
         this.historyFrames = new LinkedList<>();
-        this.historyFrames.add(new HistoryFrameImpl());
+        this.historyFrames.add(new HistoryFrameImpl(0));
     }
 
     @Override
@@ -61,6 +61,16 @@ public class ProjectImpl implements Project {
         this.frames.add(new PixelMatrix.MatrixBuilder()
                 .setColumns(getAllFrames().get(0).getColumns())
                 .setRows(getAllFrames().get(0).getRows()).build());
+    }
+
+    @Override
+    public void addNewHistoryFrame(final int index) {
+        this.historyFrames.add(new HistoryFrameImpl(index));
+    }
+
+    @Override
+    public HistoryFrame getLastHistoryFrame() {
+        return this.getAllHistoryFrames().get(getAllHistoryFrames().size() - 1);
     }
 
 }

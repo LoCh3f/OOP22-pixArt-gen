@@ -2,6 +2,7 @@ package it.unibo.pixArt.controller.workspace;
 
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.grid.Matrix;
+import it.unibo.pixArt.model.grid.PixelMatrix;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 import it.unibo.pixArt.model.historyframe.HistoryFrameImpl;
 import it.unibo.pixArt.model.pixel.Pixel;
@@ -28,7 +29,7 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     private final ToolFactory toolFactory = new ToolFactoryImpl();
     private AbstractTool tool;
     private boolean isDrawing;
-    private int frameIndex;
+    private int currentIndex;
 
     public WorkSpaceControllerImpl() {
     }
@@ -49,16 +50,17 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
 
     @Override
     public void setCurrentFrame(final int index) {
-        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + frameIndex + getModel().getProject().getFileType(), FileTypes.PNG);
-        this.getHistoryFrames().get(frameIndex).setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + frameIndex + getModel().getProject().getFileType());
-        this.frameIndex = index;
-        this.currentframe = getModel().getProject().getAllFrames().get(frameIndex);
+        final HistoryFrame currentHistoryFrame = getModel().getProject().getAllHistoryFrames().get(currentIndex);
+        currentHistoryFrame.setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + currentHistoryFrame.getIndex()  + getModel().getProject().getFileType());
+        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + currentIndex + getModel().getProject().getFileType(), FileTypes.PNG);
+        this.currentIndex = index;
+        this.currentframe = getModel().getProject().getAllFrames().get(index);
     }
 
     @Override
     public void setFirstFrame() {
         this.currentframe = this.getModel().getProject().getAllFrames().get(0);
-        this.frameIndex = 0;
+        this.currentIndex = 0;
     }
 
     @Override
@@ -68,13 +70,14 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     }
 
     @Override
-    public Set<Pixel> addNewFrame() {
-        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + frameIndex + getModel().getProject().getFileType(), FileTypes.PNG);
-        this.getHistoryFrames().get(getModel().getProject().getAllFrames().indexOf(currentframe)).setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + frameIndex + getModel().getProject().getFileType());
+    public void addNewFrame() {
+        final int lastIndex = getModel().getProject().getLastHistoryFrame().getIndex();
+        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + currentIndex + getModel().getProject().getFileType(), FileTypes.PNG);
+        this.getHistoryFrames().get(currentIndex).setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + currentIndex + getModel().getProject().getFileType());
         this.getModel().getProject().addNewFrame();
-        this.getModel().getProject().getAllHistoryFrames().add(new HistoryFrameImpl());
+        this.getModel().getProject().addNewHistoryFrame(lastIndex + 1);
         setCurrentFrame(this.getModel().getProject().getAllFrames().size() - 1);
-        return this.currentframe.getPixels();
+        this.currentIndex = this.getModel().getProject().getAllFrames().size() - 1;
     }
 
     @Override
@@ -106,25 +109,30 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     public void saveProject() {
         this.currentframe.getMemento().emptyStack();
         ImagePrinter.getInstance().printAllFrames(this.getModel().getProject());
-       try {
-        FileHandler.getInstance().fromProjectToJson(this.getModel().getProject());
-    } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
+        try {
+            FileHandler.getInstance().fromProjectToJson(this.getModel().getProject());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void deleteCurrentFrame() {
-        FileHandler.getInstance().deleteFile(getModel().getProject().getAllHistoryFrames().get(frameIndex).getPath());
-        this.getHistoryFrames().remove(frameIndex);
-        this.getModel().getProject().getAllFrames().remove(currentframe);
-        if(this.getModel().getProject().getAllFrames().size() > 1) {
-            this.currentframe = getModel().getProject().getAllFrames().get(frameIndex - 1);
-            this.getWorkSpaceView().updateView(getCurrentFrame());
-        }else {
-            this.currentframe = null;
+        final int prevIndex = this.currentIndex;
+        FileHandler.getInstance().deleteFile(getModel().getProject().getAllHistoryFrames().get(currentIndex).getPath());
+        if(this.currentIndex == 0 && getModel().getProject().getAllFrames().size() == 1) {
+            this.getModel().getProject().addNewFrame();
+            this.getModel().getProject().addNewHistoryFrame(currentIndex);
+            this.currentframe = getModel().getProject().getAllFrames().get(1);
+        } else if(this.currentIndex == 0 && getModel().getProject().getAllFrames().size() > 1) {
+            this.currentframe = getModel().getProject().getAllFrames().get(currentIndex + 1);
+        } else {
+            this.currentframe = getModel().getProject().getAllFrames().get(currentIndex - 1);
+            this.currentIndex = currentIndex - 1;
         }
+        this.getHistoryFrames().remove(prevIndex);
+        this.getModel().getProject().getAllFrames().remove(prevIndex);
     }
 
     private WorkSpace getWorkSpaceView() {
