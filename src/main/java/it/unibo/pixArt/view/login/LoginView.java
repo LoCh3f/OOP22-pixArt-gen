@@ -52,6 +52,9 @@ public class LoginView extends AbstractFXView{
     @FXML
     private Text registerResult;
 
+    @FXML
+    private Text guestLoginResult;
+
     private boolean loginValidate(final String username, final String password) {
         ValidationResult usernameValidationResult = this.getLoginController().usernameValidation(username);
         ValidationResult passwordValidationResult = this.getLoginController().passwordValidation(password);
@@ -89,6 +92,16 @@ public class LoginView extends AbstractFXView{
         return false;
     }
 
+    private boolean guestLoginValidate(final String path){
+        ValidationResult pathValidationResult = this.getLoginController().pathValidation(path);
+
+        if (pathValidationResult.equals(ValidationResult.CORRECT)) {
+            return true;
+        }
+        pathValidation.setText(pathValidationResult.getDescription());
+        return false;
+    }
+
     @FXML
     public void onLoginClick(final ActionEvent event) throws IOException{
         if (this.loginValidate(this.usernameLoginField.getText(), this.passwordLoginField.getText())){
@@ -113,6 +126,15 @@ public class LoginView extends AbstractFXView{
                 this.registerResult.setText("Try again");
             }
         }
+    }
+
+    @FXML
+    public void onLoginAsGuestClick(final ActionEvent event){
+        if (this.guestLoginValidate(this.pathField.getText())){
+            this.getLoginController().guestLogin(this.pathField.getText());
+            PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
+        }
+        this.guestLoginResult.setText("Choose a path");
     }
 
     @FXML
