@@ -5,15 +5,17 @@ public class HistoryFrameImpl implements HistoryFrame {
     private static final String DEF_IMAGE = "/image/def-historyFrame.png";
     private String imagePath;
     private int animationDuration;
+    private int index;
 
     public HistoryFrameImpl() {
         this.imagePath = DEF_IMAGE;
         this.animationDuration = DEF_DELAY;
     }
 
-    public HistoryFrameImpl(final String path) {
+    public HistoryFrameImpl(final String path, final int index) {
         this.imagePath = path;
         this.animationDuration = DEF_DELAY;
+        this.index = index;
     }
 
     @Override
@@ -34,6 +36,11 @@ public class HistoryFrameImpl implements HistoryFrame {
     @Override
     public int getAnimationDuration() {
         return this.animationDuration;
+    }
+
+    @Override
+    public int getIndex() {
+        return this.index;
     }
     
 }

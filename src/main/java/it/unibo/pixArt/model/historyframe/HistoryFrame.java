@@ -21,5 +21,10 @@ public interface HistoryFrame {
      * @return the animation's duration
      */
     public int getAnimationDuration();
+
+    /**
+     * @return the historyframe's index
+     */
+    public int getIndex();
 }
 
