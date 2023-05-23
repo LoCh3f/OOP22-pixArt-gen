@@ -2,13 +2,12 @@ package it.unibo.pixArt.utilities.parser;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
-import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLOR;
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
@@ -19,13 +18,11 @@ import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDT
 public class GridPaneParser implements Function<GridPane, Collection<Pixel>> {
     @Override
     public Collection<Pixel> apply(final GridPane gridPane) {
-        final var pixels = new HashSet<Pixel>();
-        for (Node n : gridPane.getChildren()) {
-            pixels.add(new PixelBuilder.PxlBuilder().
-                    setX(GridPane.getColumnIndex(n)).setY(GridPane.getRowIndex(n)).
-                    setColor(parseButtonBackGround(n.getStyle())).build());
-        }
-        return pixels;
+        return gridPane.getChildren().stream()
+                .map(b -> new PixelBuilder.PxlBuilder()
+                        .setX(GridPane.getColumnIndex(b))
+                        .setY(GridPane.getRowIndex(b))
+                        .setColor(parseButtonBackGround(b.getStyle())).build()).collect(Collectors.toSet());
     }
 
     private Color parseButtonBackGround(final String style) {
