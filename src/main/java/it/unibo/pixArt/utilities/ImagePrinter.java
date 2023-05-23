@@ -4,7 +4,6 @@ import it.unibo.pixArt.model.grid.Matrix;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.project.FileTypes;
 import it.unibo.pixArt.model.project.Project;
-import it.unibo.pixArt.model.user.User;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
@@ -15,7 +14,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.stream.Collectors;
 
 public class ImagePrinter {
@@ -33,6 +31,10 @@ public class ImagePrinter {
         return LazyHolder.SINGLETON;
     }
 
+    /**
+     * Print all the frames of the project
+     * @param project The project that need to be printed
+     */
     public void printAllFrames(Project project) {
 
         this.imageSize = project.getAllFrames().get(0).getColumns();
@@ -65,6 +67,12 @@ public class ImagePrinter {
         }
     }
 
+    /**
+     * Print one frame of the project
+     * @param pixelGrid The grid of the frame that need to be printed
+     * @param path The path where the image will be saved
+     * @param fileType The type of the file(.png, .jpg. jpeg)
+     */
     public void printOneFrame(Matrix pixelGrid, String path, FileTypes fileType) {
         this.imageSize = pixelGrid.getColumns();
         WritableImage wImg = new WritableImage(imageSize, imageSize);

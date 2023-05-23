@@ -61,14 +61,9 @@ public class ProjectView extends AbstractFXView {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Delete File");
         alert.setHeaderText("Are you sure to delete"+ selectedFolder.replace('[', ' ').substring(0, selectedFolder.length()-1) + "?");
-        File deleteFile = new File(getDirPath(selectedFolder));
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){ 
-            File[] files = deleteFile.listFiles();
-            for(File file : files){
-                file.delete();
-            }
-            deleteFile.delete();
+            FileHandler.getInstance().deleteFile(getDirPath(selectedFolder));
             init();  
         }
     }
