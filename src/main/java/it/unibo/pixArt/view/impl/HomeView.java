@@ -1,5 +1,6 @@
 package it.unibo.pixArt.view.impl;
 
+import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
@@ -22,16 +23,16 @@ public class HomeView extends AbstractFXView {
     @FXML
     private Parent root;
     @FXML
-    private javafx.scene.control.Button newFile;
+    private javafx.scene.control.Button newGame;
     @FXML
     private javafx.scene.control.Button newProject;
     @FXML
-    private javafx.scene.control.Button newAnimation;
+    private javafx.scene.control.Button BackToLogin;
     @FXML
     private Button projectHistory;
 
     @FXML
-    public void onSetUpClick(final ActionEvent event) {
+    public void onNewGame(final ActionEvent event) {
         PageLoader.getInstance().switchPage(this.getStage(), Pages.SETTINGS, this.getController().getModel());
     }
 
@@ -46,8 +47,8 @@ public class HomeView extends AbstractFXView {
     }
 
     @FXML
-    public void onAnimationClick(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.ANIMATION, this.getController().getModel());
+    public void onBackClick(final ActionEvent event) {
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.LOGIN, new ModelImpl(null, null, null, null, null));
     }
 
     @Override
@@ -57,18 +58,18 @@ public class HomeView extends AbstractFXView {
         bPane.setPadding(new Insets(5));
         bPane.setStyle(FX_BACKGROUND_COLOR_START + "white");
         bPane.setCenter(imageView);
-        bPane.setLeft(this.newAnimation);
+        bPane.setLeft(this.BackToLogin);
         bPane.setRight(this.newProject);
-        bPane.setTop(this.newFile);
+        bPane.setTop(this.newGame);
         bPane.setBottom(this.projectHistory);
 
 
-        this.newProject.prefHeightProperty().bind(bPane.heightProperty().subtract(projectHistory.heightProperty().add(newFile.heightProperty())));
+        this.newProject.prefHeightProperty().bind(bPane.heightProperty().subtract(projectHistory.heightProperty().add(newGame.heightProperty())));
         this.newProject.prefWidthProperty().bind(bPane.widthProperty().divide(7));
-        this.newAnimation.prefHeightProperty().bind(bPane.heightProperty().subtract(this.newFile.heightProperty().add(this.projectHistory.heightProperty())));
-        this.newAnimation.prefWidthProperty().bind(bPane.widthProperty().divide(7));
-        this.newFile.prefWidthProperty().bind(bPane.widthProperty());
-        this.newFile.prefHeightProperty().bind(bPane.heightProperty().divide(7));
+        this.BackToLogin.prefHeightProperty().bind(bPane.heightProperty().subtract(this.newGame.heightProperty().add(this.projectHistory.heightProperty())));
+        this.BackToLogin.prefWidthProperty().bind(bPane.widthProperty().divide(7));
+        this.newGame.prefWidthProperty().bind(bPane.widthProperty());
+        this.newGame.prefHeightProperty().bind(bPane.heightProperty().divide(7));
         this.projectHistory.prefWidthProperty().bind(bPane.widthProperty());
         this.projectHistory.prefHeightProperty().bind(bPane.heightProperty().divide(7));
 
