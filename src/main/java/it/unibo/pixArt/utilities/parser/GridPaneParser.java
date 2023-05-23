@@ -14,12 +14,11 @@ import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLO
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
 
 /**
- * This Class help to convert a GridPane in a
- * Collection of Pixel
+ * This Class help to convert a GridPane in a Collection of Pixel.
  */
 public class GridPaneParser implements Function<GridPane, Collection<Pixel>> {
     @Override
-    public Collection<Pixel> apply(GridPane gridPane) {
+    public Collection<Pixel> apply(final GridPane gridPane) {
         final var pixels = new HashSet<Pixel>();
         for (Node n : gridPane.getChildren()) {
             pixels.add(new PixelBuilder.PxlBuilder().
