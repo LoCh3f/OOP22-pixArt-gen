@@ -19,8 +19,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.Stage;
 
 public class ProjectView extends AbstractFXView {
 
@@ -66,15 +64,6 @@ public class ProjectView extends AbstractFXView {
             FileHandler.getInstance().deleteFile(getDirPath(selectedFolder));
             init();  
         }
-    }
-  
-    public void onChangeDirClick(ActionEvent event){
-        Stage primaryStage = new Stage();
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setInitialDirectory(new File(this.getController().getModel().getUser().getPathToFile()));    
-        File selectedDirectory = directoryChooser.showDialog(primaryStage);
-        this.getController().getModel().getUser().setPathToFile(selectedDirectory.getAbsolutePath());
-        init();        
     }
 
     private String getDirPath(String inPath){
