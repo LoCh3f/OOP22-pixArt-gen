@@ -3,7 +3,7 @@ package  it.unibo.pixArt.controller;
 import it.unibo.pixArt.model.Model;
 import it.unibo.pixArt.view.View;
 
-public abstract class SimpleController implements Controller {
+public class SimpleController implements Controller {
 
     private Model model;
 

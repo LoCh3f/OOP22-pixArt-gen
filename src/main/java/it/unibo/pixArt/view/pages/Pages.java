@@ -1,23 +1,18 @@
 package it.unibo.pixArt.view.pages;
 
 import it.unibo.pixArt.controller.Controller;
-import it.unibo.pixArt.controller.animation.AnimationController;
+import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.controller.animation.AnimationControllerImpl;
 import it.unibo.pixArt.controller.game.GameSetupControllerImpl;
-import it.unibo.pixArt.controller.impl.HistoryController;
-import it.unibo.pixArt.controller.impl.HomeController;
 import it.unibo.pixArt.controller.login.LoginControllerImpl;
 import it.unibo.pixArt.controller.settings.SettingsControllerImpl;
-import it.unibo.pixArt.controller.workspace.WorkSpaceController;
 import it.unibo.pixArt.controller.workspace.WorkSpaceControllerImpl;
-import it.unibo.pixArt.view.impl.HomeView;
-import it.unibo.pixArt.view.login.LoginView;
 
 public enum Pages {
     /**
      * menu view
      */
-    MENU("menu", new HomeController()),
+    MENU("menu", new SimpleController()),
 
     /**
      * workspace view
@@ -32,7 +27,7 @@ public enum Pages {
     /**
      * history view
      */
-    HISTORY("projects", new HistoryController()),
+    HISTORY("projects", new SimpleController()),
 
     /**
      * Settings view
