@@ -19,8 +19,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.Stage;
 
 public class ProjectView extends AbstractFXView {
 
@@ -67,26 +65,13 @@ public class ProjectView extends AbstractFXView {
             init();  
         }
     }
-  
-    public void onChangeDirClick(ActionEvent event){
-        Stage primaryStage = new Stage();
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setInitialDirectory(new File(this.getController().getModel().getUser().getPathToFile()));    
-        File selectedDirectory = directoryChooser.showDialog(primaryStage);
-        this.getController().getModel().getUser().setPathToFile(selectedDirectory.getAbsolutePath());
-        init();        
-    }
 
-    private String getDirPath(String inPath){
-        return this.getController().getModel().getUser().getPathToFile() + fileNameToPathString(inPath);
+    private String getDirPath(String file){
+        return this.getController().getModel().getUser().getPathToFile() + file.replace('[', File.separatorChar).substring(0, file.length()-1);
     }
 
     private String getJsonPath(String file){
-        return getDirPath(file) + fileNameToPathString(file) + ".json";
-    }
-
-    private String fileNameToPathString(String fileName){
-        return fileName.replace('[', File.separatorChar).substring(0, fileName.length()-1);
+        return getDirPath(file) + file.replace('[', File.separatorChar).substring(0, file.length()-1) + ".json";
     }
 
     private boolean checkIfJsonInFolder(File folder){
