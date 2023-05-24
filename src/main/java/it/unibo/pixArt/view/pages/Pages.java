@@ -3,6 +3,7 @@ package it.unibo.pixArt.view.pages;
 import it.unibo.pixArt.controller.Controller;
 import it.unibo.pixArt.controller.animation.AnimationController;
 import it.unibo.pixArt.controller.animation.AnimationControllerImpl;
+import it.unibo.pixArt.controller.game.GameSetupControllerImpl;
 import it.unibo.pixArt.controller.impl.HistoryController;
 import it.unibo.pixArt.controller.impl.HomeController;
 import it.unibo.pixArt.controller.login.LoginControllerImpl;
@@ -41,7 +42,12 @@ public enum Pages {
     /*
      * Login view
      */
-    LOGIN("login", new LoginControllerImpl());
+    LOGIN("login", new LoginControllerImpl()),
+
+    /*
+     * GameSetup view
+     */
+    GAMESETUP("gamesetup", new GameSetupControllerImpl());
 
     private final String name;
 

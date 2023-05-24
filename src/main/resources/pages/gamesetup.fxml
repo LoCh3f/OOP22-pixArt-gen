@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixArt.view.impl.GameSetupView">
+   <children>
+      <Label layoutX="35.0" layoutY="28.0" text="Game Setup">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="timerChoiceBox" layoutX="312.0" layoutY="108.0" prefWidth="150.0" />
+      <Button layoutX="312.0" layoutY="353.0" mnemonicParsing="false" onAction="#onStartClicked" prefHeight="26.0" prefWidth="108.0" text="Start" />
+      <ListView fx:id="projectsList" layoutX="29.0" layoutY="82.0" prefHeight="298.0" prefWidth="237.0" />
+      <Label layoutX="312.0" layoutY="82.0" text="Timer" />
+      <Button layoutX="455.0" layoutY="353.0" mnemonicParsing="false" onAction="#onDiscardClicked" prefHeight="26.0" prefWidth="108.0" text="Discard" />
+   </children>
+</AnchorPane>

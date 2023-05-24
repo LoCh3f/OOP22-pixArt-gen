@@ -33,7 +33,7 @@ public class HomeView extends AbstractFXView {
 
     @FXML
     public void onNewGame(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.SETTINGS, this.getController().getModel());
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.GAMESETUP, this.getController().getModel());
     }
 
     @FXML
