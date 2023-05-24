@@ -18,12 +18,6 @@ import javafx.scene.image.ImageView;
 public class AnimationView extends AbstractFXView {
 
     @FXML
-    private ChoiceBox<String> dimensionChoice;
-
-    @FXML
-    private ChoiceBox<String> directionChoice;
-
-    @FXML
     private ListView<ImageView> frameList;
 
     @FXML
@@ -47,7 +41,6 @@ public class AnimationView extends AbstractFXView {
     @FXML
     public void switchAnimation() {
         this.getAnimationController().setAnimationIsRunning();
-        this.getAnimationController().setAnimationDirection(this.directionChoice.getValue());
         if(this.getAnimationController().getAnimationIsRunning()) {
             switchBtn.setGraphic(new ImageView(new Image(STOP)));
         } else {
@@ -61,6 +54,17 @@ public class AnimationView extends AbstractFXView {
     }
 
     @FXML
+    public void onExitClick() {
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
+    }
+
+    @FXML
+    public void onSaveClick() {
+        getAnimationController().saveProject();
+        PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
+    }
+
+    @FXML
     public void setDuration() {
         this.getAnimationController().setFrameDuration(Integer.parseInt(selectedFrame.getText()), Integer.parseInt(frameDurationField.getText()));
     }
@@ -68,16 +72,16 @@ public class AnimationView extends AbstractFXView {
     @Override
     public void init() {
         this.switchBtn.setGraphic(new ImageView(new Image(START)));
-        this.dimensionChoice.getItems().addAll(this.getAnimationController().getListSizes());
-        this.dimensionChoice.setValue(this.getAnimationController().getListSizes().get(0));
-        this.directionChoice.getItems().addAll(this.getAnimationController().getListDirections().stream().map(e -> e.getName()).toList());
-        this.directionChoice.setValue(this.getAnimationController().getListDirections().get(0).getName());
         this.imageContainer.setImage(new Image(this.getAnimationController().getHistoryFrames().get(0).getPath()));
         this.selectedFrame.setText(Integer.toString(0));
         this.selectedFrameDuration.setText(getAnimationController().getHistoryFrames().get(0).getAnimationDuration() + "ms");
         this.frameList.getItems().addAll(this.getAnimationController().getHistoryFrames().stream()
                                                                                          .map(e -> new Image(e.getPath()))
                                                                                          .map(i -> new ImageView(i)).toList());
+        this.frameList.getItems().forEach(i -> {
+            i.fitHeightProperty().bind(frameList.heightProperty());
+            i.setFitWidth(200);
+        });
         this.frameList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ImageView>() {
 
             @Override

@@ -41,13 +41,17 @@ public interface AnimationController extends Controller {
     public List<Directions> getListDirections();
 
     /**
-     * @return 
+     * @return get current Image
      */
     public HistoryFrame getCurrentImage();
 
     /**
-     * @return
+     * @return get a list of all History frames.
      */
     public List<HistoryFrame> getHistoryFrames();
 
+    /**
+     * Method to save a project.
+     */
+    public void saveProject();
 }
