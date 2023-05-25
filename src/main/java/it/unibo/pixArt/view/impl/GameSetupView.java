@@ -17,7 +17,7 @@ public class GameSetupView extends AbstractFXView {
 
     @FXML
     private void onStartClicked() {
-        //
+        PageLoader.getInstance().switchPage(getStage(), Pages.GAMEVIEW, this.getController().getModel());
     }
 
     @FXML
