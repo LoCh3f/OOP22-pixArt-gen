@@ -14,7 +14,7 @@ public class GameView extends AbstractFXView{
 
     @Override
     public void init() {
-        throw new UnsupportedOperationException();
+        System.out.println(getController().getModel().getTimer().getRemainingTime());
     }
     
 }

@@ -28,7 +28,7 @@ public enum TimerType {
         return this.description;
     }
 
-    public List<TimerType> getAllTypes(){
+    public static List<TimerType> getAllTypes(){
         return Stream.of(values()).collect(Collectors.toList());
     }
     
