@@ -2,7 +2,7 @@ package it.unibo.pixArt.model.game;
 
 
 public enum GameType {
-    MIRROR("MIRROR"),STACK("STACK");
+    MIRROR("Mirror"),STACK("Stack");
     
     private String name;
     GameType(final String name){

@@ -23,6 +23,7 @@ public class GameSetupView extends AbstractFXView {
     @FXML
     private void onStartClicked() {
         this.getGameSetupController().setTimer(timerChoiceBox.getValue());
+        this.getGameSetupController().setProject(projectsList.getSelectionModel().getSelectedIndex());
         PageLoader.getInstance().switchPage(getStage(), Pages.GAMEVIEW, this.getController().getModel());
     }
 
@@ -43,6 +44,7 @@ public class GameSetupView extends AbstractFXView {
                                         .map(e -> e.getDescription())
                                         .collect(Collectors.toList()));
         this.timerChoiceBox.setValue(getGameSetupController().getTimers().get(0).getDescription());
+        this.projectsList.getSelectionModel().select(0);
     }
 
     private GameSetupController getGameSetupController() {
