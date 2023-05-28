@@ -10,4 +10,6 @@ public interface GameTimer {
 
     public boolean isRunning();
 
+    public boolean isTimeOver();
+
 }

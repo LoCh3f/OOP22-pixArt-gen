@@ -6,11 +6,11 @@ import java.util.stream.Stream;
 
 public enum TimerType {
 
-    ONE_MINUTE(60000L, "1 min"),
+    ONE_MINUTE(60L, "1 min"),
 
-    THREE_MINUTES(180000L, "3 min"),
+    THREE_MINUTES(180L, "3 min"),
 
-    FIVE_MINUTES(300000L, "5 min");
+    FIVE_MINUTES(300L, "5 min");
 
     private final long time;
     private final String description;

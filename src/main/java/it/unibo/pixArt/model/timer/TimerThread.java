@@ -5,7 +5,7 @@ public class TimerThread extends Thread{
     private final GameTimer timer;
     private final Runnable callback;
     private final Runnable remainingTime;
-    private final long TIME_SLEEP = 0;
+    private final long TIME_SLEEP = 200;
 
     public TimerThread(final GameTimer timer, final Runnable callback, final Runnable remainingTime){
         this.timer = timer;
@@ -15,6 +15,12 @@ public class TimerThread extends Thread{
 
     public void run(){
         while (this.timer.isRunning()){
+
+            if (this.timer.isTimeOver()) {
+                this.callback.run();
+                break;
+            }
+
             remainingTime.run();
 
             try {
@@ -23,7 +29,6 @@ public class TimerThread extends Thread{
                 e.printStackTrace();
             }
         }
-        callback.run();
     }
     
 }

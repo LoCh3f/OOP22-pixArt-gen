@@ -2,7 +2,7 @@ package it.unibo.pixArt.model.timer;
 
 public class GameTimerImpl implements GameTimer{
 
-    private boolean isRunning;
+    private boolean isRunning = true;
     private final long timerType;
     private long initialTime;
 
@@ -23,13 +23,21 @@ public class GameTimerImpl implements GameTimer{
 
     @Override
     public double getRemainingTime() {
-        final double elapsedTime = System.currentTimeMillis()/1000L - initialTime;
+        final long elapsedTime = System.currentTimeMillis()/1000L - initialTime;
         return this.timerType - elapsedTime;
     }
 
     @Override
     public boolean isRunning() {
         return this.isRunning;
+    }
+
+    @Override
+    public boolean isTimeOver(){
+        if (this.getRemainingTime() < 0){
+            return true;
+        }
+        return false;
     }
     
 }

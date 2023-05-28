@@ -1,11 +1,18 @@
 package it.unibo.pixArt.view.game;
 
+import it.unibo.pixArt.controller.game.GameController;
+import it.unibo.pixArt.model.timer.TimerThread;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 public class GameView extends AbstractFXView{
+
+    @FXML
+    private Label timer;
 
     @FXML
     public void onMenuClick(){
@@ -14,7 +21,32 @@ public class GameView extends AbstractFXView{
 
     @Override
     public void init() {
-        System.out.println(getController().getModel().getTimer().getRemainingTime());
+        this.getGameController().getTimer().start();
+        new TimerThread(this.getGameController().getTimer(), this::onTimeFinish, this::OnTimeUpdate).start();
     }
+
+    private GameController getGameController(){
+        return (GameController) this.getController();
+    }
+
+    private void OnTimeUpdate(){
+        Platform.runLater(()->{
+           this.timer.setText(timeToString(this.getGameController().getTimer().getRemainingTime()));
+        });
+    }
+
+    private void onTimeFinish(){
+        Platform.runLater(()->{
+            this.getGameController().getTimer().stop();
+        });
+    }
+
+    private String timeToString(final double remainingTime){
+        double minutes = remainingTime/60;
+        double seconds = remainingTime % 60;
+        return Integer.toString((int) minutes) + ":" + Integer.toString((int) seconds);
+    }
+
+
     
 }
