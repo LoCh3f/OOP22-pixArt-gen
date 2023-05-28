@@ -2,7 +2,6 @@ package it.unibo.pixArt.model.colorstack;
 
 import it.unibo.pixArt.model.grid.Matrix;
 import it.unibo.pixArt.model.grid.PixelMatrix;
-import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.tool.AbstractTool;
 import it.unibo.pixArt.model.tool.ToolFactory;
