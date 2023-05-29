@@ -2,7 +2,9 @@ package it.unibo.pixArt.view.game;
 
 import it.unibo.pixArt.controller.game.GameController;
 import it.unibo.pixArt.model.timer.TimerThread;
-import java.io.IOException;
+import it.unibo.pixArt.utilities.parser.GridPaneParser;
+import it.unibo.pixArt.utilities.parser.PixelsParser;
+
 
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.components.PixelsPane;
@@ -10,17 +12,27 @@ import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
+import javafx.scene.paint.Color;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class GameView extends AbstractFXView{
 
     @FXML
     private Label timer;
+
+    @FXML
+    private BorderPane root;
+
+    private PixelsParser pixelsParser;
+
+    private GridPaneParser paneParser;
+
+    private Color selectedColor;
 
     @FXML
     public void onMenuClick(){
@@ -29,17 +41,28 @@ public class GameView extends AbstractFXView{
 
     @Override
     public void init() {
+
+        paneParser = new GridPaneParser();
+        pixelsParser = new PixelsParser();
+        final var e = new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(final ActionEvent event){
+                final var button = (Button)event.getSource();
+                getGameController().selectPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), selectedColor);
+            }
+        };
+
+        final GridPane center = new PixelsPane.GridPaneBuilder()
+                .setColumns(this.getGameController().getFrameSize())
+                .setRows(this.getGameController().getFrameSize())
+                .setGridLinesVisible(true)
+                .setAction(e)
+                .build();
+        this.root.setCenter(center);
+
         this.getGameController().getTimer().start();
         new TimerThread(this.getGameController().getTimer(), this::onTimeFinish, this::OnTimeUpdate).start();
         System.out.println(getController().getModel().getProject().getPath());
-       /*  Parent root = null;
-        try {
-            root = FXMLLoader.load(ClassLoader.getSystemResource("pages/game.fxml"));
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        getStage().setScene(new Scene(root));*/
     }
 
     private GameController getGameController(){
@@ -63,7 +86,5 @@ public class GameView extends AbstractFXView{
         double seconds = remainingTime % 60;
         return Integer.toString((int) minutes) + ":" + Integer.toString((int) seconds);
     }
-
-
     
 }
