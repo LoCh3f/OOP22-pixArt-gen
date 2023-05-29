@@ -1,8 +1,10 @@
 package it.unibo.pixArt.model.historyframe;
 
+import java.io.File;
+
 public class HistoryFrameImpl implements HistoryFrame {
     private static final int DEF_DELAY = 100;
-    private static final String DEF_IMAGE = "/image/def-historyFrame.png";
+    private static final String DEF_IMAGE = File.separatorChar + "image"+ File.separatorChar +"def-historyFrame.png";
     private String imagePath;
     private int animationDuration;
     private int index;
