@@ -33,10 +33,13 @@ public class GameView extends AbstractFXView{
 
     private GridPaneParser paneParser;
 
-    private Color selectedColor;
+    private Color selectedColor = Color.WHITE;
 
     @FXML
     public void onMenuClick(){
+        if (this.getGameController().getTimer().isRunning()) {
+            this.getGameController().getTimer().stop();
+        }
         PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
     }
 
@@ -64,10 +67,6 @@ public class GameView extends AbstractFXView{
         this.getGameController().getTimer().start();
         new TimerThread(this.getGameController().getTimer(), this::onTimeFinish, this::OnTimeUpdate).start();
         System.out.println(getController().getModel().getProject().getPath());
-    }
-
-    private GameController getGameController(){
-        return (GameController) this.getController();
     }
 
     private void OnTimeUpdate(){
@@ -98,6 +97,10 @@ public class GameView extends AbstractFXView{
                 c.setStyle("-fx-background-color: " + this.selectedColor.toString() + ";");
             }
         });
+    }
+
+    private GameController getGameController(){
+        return (GameController) this.getController();
     }
     
 }
