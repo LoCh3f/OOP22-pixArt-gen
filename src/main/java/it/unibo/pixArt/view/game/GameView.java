@@ -12,6 +12,7 @@ import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -48,7 +49,7 @@ public class GameView extends AbstractFXView{
             @Override
             public void handle(final ActionEvent event){
                 final var button = (Button)event.getSource();
-                getGameController().selectPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), selectedColor);
+                selectPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button));
             }
         };
 
@@ -85,6 +86,18 @@ public class GameView extends AbstractFXView{
         double minutes = remainingTime/60;
         double seconds = remainingTime % 60;
         return Integer.toString((int) minutes) + ":" + Integer.toString((int) seconds);
+    }
+
+    private void selectPixel(final int x, final int y){
+        this.getGameController().checkPixel(x, y, this.selectedColor);
+    }
+
+    public void colorButton(final int x, final int y){
+        root.getChildren().forEach( c-> {
+            if (GridPane.getRowIndex(c) == x && GridPane.getColumnIndex(c) == y){
+                c.setStyle("-fx-background-color: " + this.selectedColor.toString() + ";");
+            }
+        });
     }
     
 }
