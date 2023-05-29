@@ -1,8 +1,10 @@
 package it.unibo.pixArt.controller.animation;
 
+import java.io.IOException;
 import java.util.List;
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
+import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.utilities.ImagePrinter;
 import it.unibo.pixArt.view.animation.AnimationView;
 
@@ -68,6 +70,12 @@ public class AnimationControllerImpl extends SimpleController implements Animati
     @Override
     public void saveProject() {
         ImagePrinter.getInstance().printAllFrames(getModel().getProject());
+        try {
+            FileHandler.getInstance().fromProjectToJson(this.getModel().getProject());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     private AnimationView getAnimationView() {

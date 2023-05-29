@@ -8,13 +8,19 @@ import javafx.scene.paint.Color;
 
 public interface ColorStack {
     /**
-     * @return 
+     * @return a map that has K->Color, V -> set of pixels of color K.
      */
-    public Map<Color,Set<Pixel>> getColorMap();
+    Map<Color,Set<Pixel>> getColorMap();
+
+    /**Method to remove a specific pixel from the map
+     * 
+     * @param color Key
+     * @param pixel Value
+     */
+    void removePixel(final Color color, final Pixel pixel);
 
     /**
-     * @param color
-     * @param pixel
+     * @return float that rappresents the number of pixels left withing the map as a percentage final_size/init_size
      */
-    public void removePixel(final Color color, final Pixel pixel);
+    float getPercentage();
 }
