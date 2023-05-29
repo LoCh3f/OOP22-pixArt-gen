@@ -57,9 +57,7 @@ public class ColorStackTest {
     void checkPercentage() {
         this.stack = new ColorStackImpl(grid.getPixels());
         assertTrue(this.stack.getPercentage() < 1);
-        for(var pixel : grid.getPixels()) {
-            this.stack.removePixel(pixel.getColor(), pixel);
-        }
+        this.grid.getPixels().stream().forEach(e -> this.stack.removePixel(e.getColor(), e));
         assertEquals(100,this.stack.getPercentage());
     }
 }
