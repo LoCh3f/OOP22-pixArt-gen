@@ -1,10 +1,14 @@
 package it.unibo.pixArt.controller.game;
 
 import it.unibo.pixArt.controller.SimpleController;
+import it.unibo.pixArt.model.colorstack.ColorStack;
+import it.unibo.pixArt.model.colorstack.ColorStackImpl;
 import it.unibo.pixArt.model.timer.GameTimer;
 import javafx.scene.paint.Color;
 
 public class GameControllerImpl extends SimpleController implements GameController{
+
+    private ColorStack colorStack;
 
     @Override
     public GameTimer getTimer() {
@@ -13,14 +17,20 @@ public class GameControllerImpl extends SimpleController implements GameControll
 
     @Override
     public int getFrameSize() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getFrameSize'");
+        return this.getModel().getProject().getAllFrames().get(0).getColumns();
     }
 
     @Override
-    public void selectPixel(int x, int y, Color color) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'selectPixel'");
+    public ColorStack getColorStack() {
+        return this.colorStack;
     }
-    
+
+    @Override
+    public void setColorStack() {
+        this.colorStack = new ColorStackImpl(this.getModel().getProject().getAllFrames().get(0).getPixels());
+    }
+
+    @Override
+    public void checkPixel(int x, int y, Color color) {
+    }
 }
