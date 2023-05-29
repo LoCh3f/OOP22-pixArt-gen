@@ -48,6 +48,7 @@ public class GameView extends AbstractFXView{
 
         paneParser = new GridPaneParser();
         pixelsParser = new PixelsParser();
+        this.getGameController().setColorStack();
         final var e = new EventHandler<ActionEvent>(){
             @Override
             public void handle(final ActionEvent event){
