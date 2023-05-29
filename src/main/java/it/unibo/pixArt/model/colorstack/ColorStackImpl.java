@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 
 public class ColorStackImpl implements ColorStack {
     private final Map<Color,Set<Pixel>> colorMap = new HashMap<>();
+    private int initialSize;
 
     public ColorStackImpl(final Set<Pixel> pixels) {
         final List<Color> colors = pixels.stream().map(e ->e.getColor()).distinct().toList();
@@ -18,6 +19,7 @@ public class ColorStackImpl implements ColorStack {
             final Set<Pixel> colorSet = pixels.stream().filter(e -> e.getColor() == elem).collect(Collectors.toSet());
             this.colorMap.put(elem, colorSet);
         }
+        this.initialSize = pixels.size();
     }
 
     @Override
@@ -33,4 +35,11 @@ public class ColorStackImpl implements ColorStack {
             this.colorMap.remove(color);
         }
     }
+
+    @Override
+    public float getPercentage() {
+        final int totalPixels = this.colorMap.entrySet().stream().mapToInt(e -> e.getValue().size()).sum();
+        return 100 - ((totalPixels * 100) / initialSize);
+    }
+
 }

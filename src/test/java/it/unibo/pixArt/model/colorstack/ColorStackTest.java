@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ColorStackTest {
     private final Matrix grid = new PixelMatrix.MatrixBuilder().setColumns(16).setRows(16).build();
@@ -43,13 +44,22 @@ public class ColorStackTest {
 
     /*Now we'll remove a pixel from a set, and check that the total number of pixels has decreased. */
     @Test
-    void checkThree() {
+    void checkRemovePixel() {
         Pixel p = grid.getPixels().stream().toList().get(0);
-        System.out.println(p.getColor());
         this.stack = new ColorStackImpl(grid.getPixels());
-        this.stack.removePixel(Color.WHITE, p);
         this.stack.removePixel(Color.WHITE, p);
         assertEquals(1, stack.getColorMap().entrySet().stream().filter(e -> e.getKey() == Color.WHITE).count());
         assertEquals(255, stack.getColorMap().entrySet().stream().mapToInt(e -> e.getValue().size()).sum());
+    }
+
+    /*Test to check if checkPercentage works */
+    @Test
+    void checkPercentage() {
+        this.stack = new ColorStackImpl(grid.getPixels());
+        assertTrue(this.stack.getPercentage() < 1);
+        for(var pixel : grid.getPixels()) {
+            this.stack.removePixel(pixel.getColor(), pixel);
+        }
+        assertEquals(100,this.stack.getPercentage());
     }
 }
