@@ -189,7 +189,7 @@ public class WorkSpace extends AbstractFXView {
     }
 
     public void updateHistoryFrames() {
-        this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image(e.getPath()))).collect(Collectors.toList()));
+        this.frames.getItems().setAll(this.getWorkSpaceController().getHistoryFrames().stream().map(e -> new ImageView(new Image("file:" + e.getPath()))).collect(Collectors.toList()));
         frames.getItems().forEach(i -> {
             i.fitHeightProperty().bind(frames.heightProperty());
             i.setFitWidth(200);
