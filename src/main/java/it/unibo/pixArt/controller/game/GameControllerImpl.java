@@ -46,4 +46,9 @@ public class GameControllerImpl extends SimpleController implements GameControll
     public boolean colorStackIsEmpty() {
         return this.colorStack.isEmpty();
     }
+
+    @Override
+    public float getPercentage() {
+        return this.colorStack.getPercentage();
+    }
 }
