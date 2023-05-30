@@ -6,7 +6,6 @@ import it.unibo.pixArt.model.colorstack.ColorStackImpl;
 import it.unibo.pixArt.model.grid.PixelMatrix;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
 import it.unibo.pixArt.model.timer.GameTimer;
-import it.unibo.pixArt.view.game.GameView;
 import javafx.scene.paint.Color;
 
 public class GameControllerImpl extends SimpleController implements GameController{
@@ -41,5 +40,10 @@ public class GameControllerImpl extends SimpleController implements GameControll
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean colorStackIsEmpty() {
+        return this.colorStack.isEmpty();
     }
 }
