@@ -29,7 +29,7 @@ public class GameControllerImpl extends SimpleController implements GameControll
 
     @Override
     public void setColorStack() {
-        this.colorStack = new ColorStackImpl( new PixelMatrix.MatrixBuilder().setColumns(16).setRows(16).build().getPixels());//new ColorStackImpl(this.getModel().getProject().getAllFrames().get(0).getPixels());
+        this.colorStack = new ColorStackImpl(this.getModel().getProject().getAllFrames().get(0).getPixels());
     }
 
     @Override
