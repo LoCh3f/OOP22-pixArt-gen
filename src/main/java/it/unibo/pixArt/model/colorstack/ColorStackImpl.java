@@ -30,11 +30,14 @@ public class ColorStackImpl implements ColorStack {
     
     @Override
     public void removePixel(final Color color, final Pixel pixel) {
+        //this.colorMap.entrySet().stream().filter(e -> e.getKey() == color).findAny().get().
+
+        /*this.colorMap.values().stream().flatMap(Set::stream).
         final Pixel p = this.colorMap.get(color).stream().filter(e -> e.equals(pixel)).findAny().get();
         this.colorMap.get(color).remove(p);
         if(this.colorMap.get(color).isEmpty()) {
             this.colorMap.remove(color);
-        }
+        }*/
     }
 
     @Override
@@ -47,7 +50,6 @@ public class ColorStackImpl implements ColorStack {
     public boolean isPresent(final Pixel pixel) {
         return this.colorMap.values().stream()
             .flatMap(Set::stream)
-            .anyMatch(p -> p.comparePixel(pixel));
+            .anyMatch(p -> p.equals(pixel));
     }
-
 }
