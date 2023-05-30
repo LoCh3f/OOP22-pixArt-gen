@@ -52,4 +52,9 @@ public class ColorStackImpl implements ColorStack {
             .flatMap(Set::stream)
             .anyMatch(p -> p.equals(pixel));
     }
+
+    @Override
+    public boolean isEmpty() {
+        return this.colorMap.isEmpty();
+    }
 }

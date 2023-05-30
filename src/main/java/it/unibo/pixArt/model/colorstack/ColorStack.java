@@ -30,4 +30,9 @@ public interface ColorStack {
      * @return
      */
     boolean isPresent(final Pixel pixel);
+
+    /**
+     * @return true or false weather the map is empty.
+     */
+    boolean isEmpty();
 }
