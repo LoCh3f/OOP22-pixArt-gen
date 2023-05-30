@@ -81,9 +81,11 @@ public class GameView extends AbstractFXView{
     }
 
     private void onTimeFinish(){
-        Platform.runLater(()->{
-            this.getGameController().getTimer().stop();
-        });
+        Platform.runLater(this::onGameFinish);
+    }
+
+    private void onGameFinish(){
+        this.getGameController().getTimer().stop();
     }
 
     private String timeToString(final double remainingTime){
