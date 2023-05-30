@@ -10,46 +10,46 @@ public interface Project {
     /**
      * @return the project's name
      */
-    public String getName();
+    String getName();
 
     /**
      * @return the project's path
      */
-    public String getPath();
+    String getPath();
 
     /**
      * @return the list of frames
      */
-    public List<Matrix> getAllFrames();
+    List<Matrix> getAllFrames();
 
     /**
      * Method to add a new frame in the list of frames.
      */
-    public void addNewFrame();
+    void addNewFrame();
 
     /**
      * @return String format of a project.
      */
-    public String toString();
+    String toString();
 
     /**
      * @return string format of the file format for each image of each frame
      */
-    public String getFileType();
+    String getFileType();
 
     /**
      * @return the list of all the history frames.
      */
-    public List<HistoryFrame> getAllHistoryFrames();
+    List<HistoryFrame> getAllHistoryFrames();
 
     /**
      * Method to create a new HistoryFrame.
      */
-    public void addNewHistoryFrame(final int index);
+    void addNewHistoryFrame(final int index);
 
     /**
      * @return the last HistoryFrame.
      */
-    public HistoryFrame getLastHistoryFrame();
+    HistoryFrame getLastHistoryFrame();
 
 }

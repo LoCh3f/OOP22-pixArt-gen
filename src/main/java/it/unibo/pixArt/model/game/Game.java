@@ -6,10 +6,10 @@ public interface Game {
     /**
      * @return the current project of the game.
      */
-    public Project getTestProject();
+    Project getTestProject();
 
     /**
      * @return get the game's type.
      */
-    public GameType getGameType();
+    GameType getGameType();
 }
