@@ -23,4 +23,11 @@ public interface ColorStack {
      * @return float that rappresents the number of pixels left withing the map as a percentage final_size/init_size
      */
     float getPercentage();
+
+    /**Method to check if a pixel exists.
+     * 
+     * @param pixel
+     * @return
+     */
+    boolean isPresent(final Pixel pixel);
 }

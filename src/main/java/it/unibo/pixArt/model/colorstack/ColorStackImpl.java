@@ -43,4 +43,11 @@ public class ColorStackImpl implements ColorStack {
         return 100 - ((totalPixels * 100) / initialSize);
     }
 
+    @Override
+    public boolean isPresent(final Pixel pixel) {
+        return this.colorMap.values().stream()
+            .flatMap(Set::stream)
+            .anyMatch(p -> p.comparePixel(pixel));
+    }
+
 }
