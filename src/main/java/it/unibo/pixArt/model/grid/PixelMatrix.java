@@ -20,7 +20,7 @@ public class PixelMatrix implements Matrix {
     private final Set<Pixel> pixels;
     private final FrameState memento = new FrameStateImpl();
 
-    private PixelMatrix(final int rows, final int columns) {
+    private PixelMatrix(final int rows, final int columns, final Set<Pixel> toCopy) {
         this.rows = rows;
         this.columns = columns;
         this.pixels = new HashSet<>(rows * columns);
@@ -29,15 +29,21 @@ public class PixelMatrix implements Matrix {
                 pixels.add(new PixelBuilder.PxlBuilder().setX(j).setY(i).setColor(Color.WHITE).build());
             }
         }
+        if (!toCopy.isEmpty()) {
+            this.setPixel(toCopy);
+        }
     }
 
     public static class MatrixBuilder {
         private int rows;
         private int columns;
 
+        private final Set<Pixel> toCopy;
+
         public MatrixBuilder() {
             this.rows = 0;
             this.columns = 0;
+            this.toCopy = new HashSet<>();
         }
 
         public MatrixBuilder setRows(final int rows) {
@@ -51,12 +57,17 @@ public class PixelMatrix implements Matrix {
             return this;
         }
 
+        public MatrixBuilder setToCopy(final Pixel p) {
+            this.toCopy.add(p);
+            return this;
+        }
+
         public PixelMatrix build() throws IllegalStateException {
             if (this.rows < 16 || this.columns < 16) {
                 throw new IllegalStateException("Rows and columns must be greater than 16");
             }
 
-            return new PixelMatrix(this.rows, this.columns);
+            return new PixelMatrix(this.rows, this.columns, this.toCopy);
         }
 
     }
