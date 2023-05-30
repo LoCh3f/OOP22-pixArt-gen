@@ -1,6 +1,8 @@
 package it.unibo.pixArt.model.game;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public enum GameLevels {
@@ -24,6 +26,6 @@ public enum GameLevels {
     }
 
     public static List<GameLevels> getAllLevels() {
-        return Stream.of(values()).toList();
+        return Stream.of(values()).collect(Collectors.toList());
     }
 }
