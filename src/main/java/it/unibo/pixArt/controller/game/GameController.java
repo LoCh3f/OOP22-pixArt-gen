@@ -18,4 +18,6 @@ public interface GameController extends Controller{
     boolean checkPixel(final int x, final int y, final Color color);
 
     boolean colorStackIsEmpty();
+
+    float getPercentage();
 }
