@@ -33,7 +33,7 @@ public class GameView extends AbstractFXView{
 
     private GridPaneParser paneParser;
 
-    private Color selectedColor = Color.BEIGE;
+    private Color selectedColor = Color.WHITE;
 
     @FXML
     public void onMenuClick(){
@@ -57,6 +57,10 @@ public class GameView extends AbstractFXView{
                 if (checkPixel){
                     button.setStyle("-fx-background-color: #" + selectedColor.toString().substring(2));
                 }
+                if(getGameController().colorStackIsEmpty()) {
+                    //
+                }
+
             }
         };
 

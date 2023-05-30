@@ -52,6 +52,17 @@ public class ColorStackTest {
         assertEquals(255, stack.getColorMap().entrySet().stream().mapToInt(e -> e.getValue().size()).sum());
     }
 
+    /*Test to check weather the method isEmpty works if all the pixels get removed. */
+    @Test
+    void checkEntrySetRemoved() {
+        this.stack = new ColorStackImpl(grid.getPixels());
+        assertTrue(!this.stack.isEmpty());
+        for(var elem : this.grid.getPixels()) {
+            this.stack.removePixel(elem.getColor(), elem);
+        }
+        assertTrue(this.stack.isEmpty());
+    }
+
     /*Test to check if checkPercentage works */
     @Test
     void checkPercentage() {
