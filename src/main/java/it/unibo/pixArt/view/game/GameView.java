@@ -33,7 +33,7 @@ public class GameView extends AbstractFXView{
 
     private GridPaneParser paneParser;
 
-    private Color selectedColor;
+    private Color selectedColor = Color.WHITE;
 
     @FXML
     public void onMenuClick(){
@@ -42,7 +42,7 @@ public class GameView extends AbstractFXView{
 
     @Override
     public void init() {
-
+        this.getGameController().setColorStack();
         paneParser = new GridPaneParser();
         pixelsParser = new PixelsParser();
         final var e = new EventHandler<ActionEvent>(){
