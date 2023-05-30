@@ -15,5 +15,5 @@ public interface GameController extends Controller{
 
     void setColorStack();
     
-    void checkPixel(final int x, final int y, final Color color);
+    boolean checkPixel(final int x, final int y, final Color color);
 }
