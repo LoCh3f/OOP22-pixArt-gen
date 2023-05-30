@@ -57,6 +57,9 @@ public class GameView extends AbstractFXView{
                 if (checkPixel){
                     button.setStyle("-fx-background-color: #" + selectedColor.toString().substring(2));
                 }
+                if(getGameController().colorStackIsEmpty()) {
+                    //
+                }
 
             }
         };

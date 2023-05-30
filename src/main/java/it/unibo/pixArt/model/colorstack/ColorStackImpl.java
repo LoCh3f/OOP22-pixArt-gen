@@ -3,6 +3,7 @@ package it.unibo.pixArt.model.colorstack;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -30,14 +31,16 @@ public class ColorStackImpl implements ColorStack {
     
     @Override
     public void removePixel(final Color color, final Pixel pixel) {
-        //this.colorMap.entrySet().stream().filter(e -> e.getKey() == color).findAny().get().
-
-        /*this.colorMap.values().stream().flatMap(Set::stream).
-        final Pixel p = this.colorMap.get(color).stream().filter(e -> e.equals(pixel)).findAny().get();
-        this.colorMap.get(color).remove(p);
-        if(this.colorMap.get(color).isEmpty()) {
-            this.colorMap.remove(color);
-        }*/
+        final Optional<Pixel> elem = this.colorMap.values().stream()
+        .flatMap(Set::stream)
+        .filter(p -> p.equals(pixel)).findAny();
+        if(elem.isPresent()) {
+            this.colorMap.get(color).remove(elem.get());
+            if( this.colorMap.get(color).isEmpty()) {
+                this.colorMap.remove(color);
+            }
+        }
+        /*Write better code */
     }
 
     @Override
