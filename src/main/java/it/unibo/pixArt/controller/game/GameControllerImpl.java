@@ -36,7 +36,7 @@ public class GameControllerImpl extends SimpleController implements GameControll
     @Override
     public boolean checkPixel(int x, int y, Color color) {
         var pixel = new PixelBuilder.PxlBuilder().setColor(color).setX(x).setY(y).build();
-        if(this.colorStack.getColorMap().get(color).stream().anyMatch(p -> p.comparePixel(pixel))) {
+        if(this.colorStack.isPresent(pixel)) {
             this.colorStack.removePixel(color, pixel);
             return true;
         }
