@@ -28,7 +28,10 @@ public class MenuItemBuilder extends MenuItem {
             return this;
         }
 
-        public MenuItemBuilder build() {
+        public MenuItemBuilder build() throws IllegalStateException {
+            if (this.e == null) {
+                throw new IllegalStateException("EventHandler not set");
+            }
             return new MenuItemBuilder(this.e, this.name);
         }
 
