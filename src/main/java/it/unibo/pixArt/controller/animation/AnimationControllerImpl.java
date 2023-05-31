@@ -1,12 +1,16 @@
 package it.unibo.pixArt.controller.animation;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.utilities.ImagePrinter;
 import it.unibo.pixArt.view.animation.AnimationView;
+import javafx.scene.control.ChoiceDialog;
 
 
 public class AnimationControllerImpl extends SimpleController implements AnimationController {
@@ -69,12 +73,25 @@ public class AnimationControllerImpl extends SimpleController implements Animati
     
     @Override
     public void saveProject() {
-        ImagePrinter.getInstance().printAllFrames(getModel().getProject());
+        List<String> choices = new ArrayList<>();
+        choices.add("1");
+        choices.add("4");
+        choices.add("16");
+
+        ChoiceDialog<String> dialog = new ChoiceDialog<>("1", choices);
+        dialog.setTitle("Scelta scala");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Seleziona la scala:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            ImagePrinter.getInstance().printAllFrames(getModel().getProject(), Integer.parseInt(result.get()));
         try {
             FileHandler.getInstance().fromProjectToJson(this.getModel().getProject());
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        }
         }
     }
 
