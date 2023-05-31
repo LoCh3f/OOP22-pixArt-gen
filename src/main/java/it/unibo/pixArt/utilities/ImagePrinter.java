@@ -90,12 +90,12 @@ public class ImagePrinter {
         imagePrint(wImg, fileType.toString(), path);
     }
 
-    private void imagePrint(WritableImage wImg, String fyleFormat, String path) {
+    private void imagePrint(WritableImage wImg, String fileFormat, String path) {
         try {
             BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
             BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
             jpgImage.createGraphics().drawImage(bImg, 0, 0, null);
-            ImageIO.write(jpgImage, "png", new File(path));
+            ImageIO.write(jpgImage, fileFormat.toString().replace(".", ""), new File(path));
             //scaleJPGorJPEGImage(jpgImage, path, 16, fyleFormat.toString().replace(".", ""));
         } catch (IOException e) {
             e.printStackTrace();
