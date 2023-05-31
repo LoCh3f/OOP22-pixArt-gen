@@ -10,6 +10,8 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
 import javax.imageio.ImageIO;
+
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -50,20 +52,18 @@ public class ImagePrinter {
                     for(var p : pixelList){
                         if(new Pair<Integer, Integer>(x, y).equals(p.getPosition())){
                             Color color = p.getColor();
-                                if(color == Color.TRANSPARENT){
-                                    pWriter.setColor(x, y, Color.WHITE);
-                                } else {
-                                    pWriter.setColor(x, y, color);                
-                                }                    
+                            pWriter.setColor(x, y, color);              
                         }
                     }
                 }
             }
-            if (project.getFileType().equals(".png")) {
+            /*if (project.getFileType().equals(".png")) {
                 imagePNG(wImg, project.getPath() + File.separatorChar + project.getName() + count + ".png");
             } else {
-                imageJpgOrJpeg(wImg, project.getFileType(), project.getPath() + File.separatorChar + project.getName() + count + project.getFileType());
-            }
+                imageJpgOrJpeg(wImg, project.getFileType(), project.getPath() + File.separatorChar + project.getName() + count + ".png");
+            }*/
+            imagePrint(wImg, project.getFileType(), project.getPath() + File.separatorChar + project.getName() + count + project.getFileType());
+
         }
     }
 
@@ -87,35 +87,23 @@ public class ImagePrinter {
                 }
             }
         }
-        if (fileType.toString().equals(".png")) {
-            imagePNG(wImg, path);
-        } else {
-            imageJpgOrJpeg(wImg, fileType.toString(), path);
-        }
+        imagePrint(wImg, fileType.toString(), path);
     }
 
-    private void imagePNG(WritableImage wImg, String path) {
-        try {
-            ImageIO.write(SwingFXUtils.fromFXImage(wImg, null), "png", new File(path));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void imageJpgOrJpeg(WritableImage wImg, String fyleFormat, String path) {
+    private void imagePrint(WritableImage wImg, String fileFormat, String path) {
         try {
             BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
             BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
             jpgImage.createGraphics().drawImage(bImg, 0, 0, null);
-            ImageIO.write(jpgImage, fyleFormat.toString().replace(".", ""), new File(path));
+            ImageIO.write(jpgImage, fileFormat.toString().replace(".", ""), new File(path));
+            //scaleJPGorJPEGImage(jpgImage, path, 16, fyleFormat.toString().replace(".", ""));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    /*private void scaleImage(WritableImage wImg, String path, int scale) throws IOException{        
+    /*private void scalePNGImage(WritableImage wImg, String path, int scale) throws IOException{        
         int newSize = scale * imageSize;
-        System.out.println("esgs");
         BufferedImage inputImage = SwingFXUtils.fromFXImage(wImg, null);
         BufferedImage newImage = new BufferedImage(newSize, newSize, inputImage.getType());
         Graphics2D graphics2d = newImage.createGraphics();
@@ -123,5 +111,14 @@ public class ImagePrinter {
         graphics2d.dispose();
         ImageIO.write(newImage, "png", new File(path));
         System.out.println(path);
+    }
+
+    private void scaleJPGorJPEGImage(BufferedImage bImage, String path, int scale, String fileType) throws IOException{
+        int newSize = scale * imageSize;
+        BufferedImage newImage = new BufferedImage(newSize, newSize, bImage.getType());
+        Graphics2D graphics2d = newImage.createGraphics();
+        graphics2d.drawImage(bImage, 0, 0, newSize, newSize, null);
+        graphics2d.dispose();
+        ImageIO.write(newImage, fileType, new File(path));
     }*/
 }
