@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Popup;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -54,6 +55,7 @@ public class GameView extends AbstractFXView{
                 }
                 if(getGameController().colorStackIsEmpty()) {
                     System.out.println("CIAOACOAOO");
+                    onGameFinish();
                 }
 
             }
@@ -104,6 +106,20 @@ public class GameView extends AbstractFXView{
 
     private void onGameFinish(){
         this.getGameController().getTimer().stop();
+        this.gameOverPopUp();
+    }
+
+    private void gameOverPopUp(){
+        final GameOverPopUp gameOverPopUp = new GameOverPopUp(null);
+        gameOverPopUp.onHomeClick(()->{
+            gameOverPopUp.close();
+            Platform.runLater(() -> PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel()));
+        });
+        gameOverPopUp.onNewGameClick(()-> {
+            gameOverPopUp.close();
+            Platform.runLater(()-> PageLoader.getInstance().switchPage(this.getStage(), Pages.GAMESETUP, this.getController().getModel()));
+        });
+        gameOverPopUp.show();
     }
 
     private String timeToString(final double remainingTime){
