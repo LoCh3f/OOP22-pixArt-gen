@@ -12,9 +12,10 @@ import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -29,10 +30,6 @@ public class GameView extends AbstractFXView{
     @FXML
     private BorderPane root;
 
-    private PixelsParser pixelsParser;
-
-    private GridPaneParser paneParser;
-
     private Color selectedColor = Color.WHITE;
 
     @FXML
@@ -46,8 +43,6 @@ public class GameView extends AbstractFXView{
     @Override
     public void init() {
         this.getGameController().setColorStack();
-        paneParser = new GridPaneParser();
-        pixelsParser = new PixelsParser();
         this.getGameController().setColorStack();
         final var e = new EventHandler<ActionEvent>(){
             @Override
@@ -64,13 +59,33 @@ public class GameView extends AbstractFXView{
             }
         };
 
+        
         final GridPane center = new PixelsPane.GridPaneBuilder()
-                .setColumns(this.getGameController().getFrameSize())
-                .setRows(this.getGameController().getFrameSize())
-                .setGridLinesVisible(true)
-                .setAction(e)
-                .build();
+        .setColumns(this.getGameController().getFrameSize())
+        .setRows(this.getGameController().getFrameSize())
+        .setGridLinesVisible(true)
+        .setAction(e)
+        .build();
         this.root.setCenter(center);
+        
+        center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
+            if (getGameController().getIsDrawing()) {
+                final var button = (Button) event.getSource();
+                boolean checkPixel = getGameController().checkPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), selectedColor);
+                if (checkPixel){
+                    button.setStyle("-fx-background-color: #" + selectedColor.toString().substring(2));
+                }
+                if(getGameController().colorStackIsEmpty()) {
+                   //
+                }
+            }
+        }));
+
+        center.addEventFilter(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2) {
+                getGameController().setIsrawing();;
+            }
+        });
 
         this.getGameController().getTimer().start();
         new TimerThread(this.getGameController().getTimer(), this::onTimeFinish, this::OnTimeUpdate).start();

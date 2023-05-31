@@ -2,6 +2,7 @@ package it.unibo.pixArt.controller.game;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.colorstack.ColorStack;
@@ -14,6 +15,7 @@ import javafx.scene.paint.Color;
 public class GameControllerImpl extends SimpleController implements GameController{
 
     private ColorStack colorStack;
+    private boolean isDrawing;
 
     @Override
     public GameTimer getTimer() {
@@ -53,5 +55,15 @@ public class GameControllerImpl extends SimpleController implements GameControll
     @Override
     public float getPercentage() {
         return this.colorStack.getPercentage();
+    }
+
+    @Override
+    public boolean getIsDrawing() {
+        return this.isDrawing;
+    }
+
+    @Override
+    public void setIsrawing() {
+        this.isDrawing = !this.isDrawing;
     }
 }

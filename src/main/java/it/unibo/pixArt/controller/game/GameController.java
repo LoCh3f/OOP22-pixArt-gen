@@ -23,4 +23,14 @@ public interface GameController extends Controller{
     boolean colorStackIsEmpty();
 
     float getPercentage();
+
+    /**
+     * @return tha value of the isDrawing flag.
+     */
+    boolean getIsDrawing();
+
+    /**
+     * Sets the value of the isDrawing flag.
+     */
+    void setIsrawing();
 }
