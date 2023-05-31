@@ -11,31 +11,31 @@ public interface AnimationController extends Controller {
      * @param frameIndex the frame's index in the list
      * @param duration animation's duration in miliseconds
      */
-    public void setFrameDuration(final int frameIndex, final int duration);
+    void setFrameDuration(final int frameIndex, final int duration);
 
 
     /**Method to set wether the animation is on or off.
      * 
      */
-    public void setAnimationIsRunning();
+    void setAnimationIsRunning();
 
     /**
      * @return if the animation is running.
      */
-    public boolean getAnimationIsRunning();
+    boolean getAnimationIsRunning();
 
     /**
      * @return get current Image
      */
-    public HistoryFrame getCurrentImage();
+    HistoryFrame getCurrentImage();
 
     /**
      * @return get a list of all History frames.
      */
-    public List<HistoryFrame> getHistoryFrames();
+    List<HistoryFrame> getHistoryFrames();
 
     /**
      * Method to save a project.
      */
-    public void saveProject();
+    void saveProject();
 }

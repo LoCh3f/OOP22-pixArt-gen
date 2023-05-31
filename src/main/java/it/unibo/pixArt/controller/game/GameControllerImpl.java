@@ -1,9 +1,12 @@
 package it.unibo.pixArt.controller.game;
 
+import java.util.Map;
+import java.util.Set;
+
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.colorstack.ColorStack;
 import it.unibo.pixArt.model.colorstack.ColorStackImpl;
-import it.unibo.pixArt.model.grid.PixelMatrix;
+import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
 import it.unibo.pixArt.model.timer.GameTimer;
 import javafx.scene.paint.Color;
@@ -23,8 +26,8 @@ public class GameControllerImpl extends SimpleController implements GameControll
     }
 
     @Override
-    public ColorStack getColorStack() {
-        return this.colorStack;
+    public Map<Color,Set<Pixel>> getColorStack() {
+        return this.colorStack.getColorMap();
     }
 
     @Override

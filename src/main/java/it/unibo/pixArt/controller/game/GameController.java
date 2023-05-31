@@ -1,7 +1,10 @@
 package it.unibo.pixArt.controller.game;
 
+import java.util.Map;
+import java.util.Set;
+
 import it.unibo.pixArt.controller.Controller;
-import it.unibo.pixArt.model.colorstack.ColorStack;
+import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.timer.GameTimer;
 import javafx.scene.paint.Color;
 
@@ -11,7 +14,7 @@ public interface GameController extends Controller{
 
     int getFrameSize();
 
-    ColorStack getColorStack();
+    Map<Color,Set<Pixel>> getColorStack();
 
     void setColorStack();
     

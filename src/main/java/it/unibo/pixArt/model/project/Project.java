@@ -5,6 +5,9 @@ import it.unibo.pixArt.model.historyframe.HistoryFrame;
 
 import java.util.List;
 
+/*
+ * Interface for the Project.
+ */
 public interface Project {
 
     /**
@@ -45,7 +48,7 @@ public interface Project {
     /**
      * Method to create a new HistoryFrame.
      */
-    void addNewHistoryFrame(final int index);
+    void addNewHistoryFrame(int index);
 
     /**
      * @return the last HistoryFrame.
