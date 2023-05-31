@@ -2,9 +2,7 @@ package it.unibo.pixArt.controller.workspace;
 
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.grid.Matrix;
-import it.unibo.pixArt.model.grid.PixelMatrix;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
-import it.unibo.pixArt.model.historyframe.HistoryFrameImpl;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
 import it.unibo.pixArt.model.project.FileTypes;
@@ -106,9 +104,9 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     }
 
     @Override
-    public void saveProject() {
+    public void saveProject(int scale) {
         this.currentframe.getMemento().emptyStack();
-        ImagePrinter.getInstance().printAllFrames(this.getModel().getProject());
+        ImagePrinter.getInstance().printAllFrames(this.getModel().getProject(), scale);
         try {
             FileHandler.getInstance().fromProjectToJson(this.getModel().getProject());
         } catch (IOException e) {
