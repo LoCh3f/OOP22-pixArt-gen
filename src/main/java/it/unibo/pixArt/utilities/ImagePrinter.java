@@ -57,11 +57,13 @@ public class ImagePrinter {
                     }
                 }
             }
-            if (project.getFileType().equals(".png")) {
+            /*if (project.getFileType().equals(".png")) {
                 imagePNG(wImg, project.getPath() + File.separatorChar + project.getName() + count + ".png");
             } else {
-                imageJpgOrJpeg(wImg, project.getFileType(), project.getPath() + File.separatorChar + project.getName() + count + project.getFileType());
-            }
+                imageJpgOrJpeg(wImg, project.getFileType(), project.getPath() + File.separatorChar + project.getName() + count + ".png");
+            }*/
+            imagePrint(wImg, project.getFileType(), project.getPath() + File.separatorChar + project.getName() + count + project.getFileType());
+
         }
     }
 
@@ -85,28 +87,15 @@ public class ImagePrinter {
                 }
             }
         }
-        if (fileType.toString().equals(".png")) {
-            imagePNG(wImg, path);
-        } else {
-            imageJpgOrJpeg(wImg, fileType.toString(), path);
-        }
+        imagePrint(wImg, fileType.toString(), path);
     }
 
-    private void imagePNG(WritableImage wImg, String path) {
-        try {
-            ImageIO.write(SwingFXUtils.fromFXImage(wImg, null), "png", new File(path));
-            //scalePNGImage(wImg, path, 16);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void imageJpgOrJpeg(WritableImage wImg, String fyleFormat, String path) {
+    private void imagePrint(WritableImage wImg, String fyleFormat, String path) {
         try {
             BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
             BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
             jpgImage.createGraphics().drawImage(bImg, 0, 0, null);
-            ImageIO.write(jpgImage, fyleFormat.toString().replace(".", ""), new File(path));
+            ImageIO.write(jpgImage, "png", new File(path));
             //scaleJPGorJPEGImage(jpgImage, path, 16, fyleFormat.toString().replace(".", ""));
         } catch (IOException e) {
             e.printStackTrace();
