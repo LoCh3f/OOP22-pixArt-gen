@@ -110,7 +110,8 @@ public class GameView extends AbstractFXView{
     }
 
     private void gameOverPopUp(){
-        final GameOverPopUp gameOverPopUp = new GameOverPopUp(null);
+        String percentage = String.format("%.2f", this.getGameController().getPercentage());
+        final GameOverPopUp gameOverPopUp = new GameOverPopUp(percentage);
         gameOverPopUp.onHomeClick(()->{
             gameOverPopUp.close();
             Platform.runLater(() -> PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel()));
