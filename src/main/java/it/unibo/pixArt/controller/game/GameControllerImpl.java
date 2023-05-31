@@ -2,7 +2,6 @@ package it.unibo.pixArt.controller.game;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.colorstack.ColorStack;
