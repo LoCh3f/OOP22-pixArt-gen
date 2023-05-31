@@ -113,4 +113,15 @@ public class ImagePrinter {
         }
     }
 
+    /*private void scaleImage(WritableImage wImg, String path, int scale) throws IOException{        
+        int newSize = scale * imageSize;
+        System.out.println("esgs");
+        BufferedImage inputImage = SwingFXUtils.fromFXImage(wImg, null);
+        BufferedImage newImage = new BufferedImage(newSize, newSize, inputImage.getType());
+        Graphics2D graphics2d = newImage.createGraphics();
+        graphics2d.drawImage(inputImage, 0, 0, newSize, newSize, null);
+        graphics2d.dispose();
+        ImageIO.write(newImage, "png", new File(path));
+        System.out.println(path);
+    }*/
 }
