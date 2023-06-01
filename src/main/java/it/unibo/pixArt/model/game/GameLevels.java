@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 public enum GameLevels {
 
-    FIRST("/games/Project1/Project1.json", "/games/Project1/Project10.png");
+    SKULL("/games/Skull/Skull.json", "/games/Skull/Skull0.png");
 
     private String pathToFile;
     private String pathToImg;

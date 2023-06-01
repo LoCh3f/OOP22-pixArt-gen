@@ -200,8 +200,6 @@ public class WorkSpace extends AbstractFXView {
             this.getWorkSpaceController().saveProject(Integer.parseInt(result.get()));
             PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
         }
-
-        
     }
 
     public void updateHistoryFrames() {

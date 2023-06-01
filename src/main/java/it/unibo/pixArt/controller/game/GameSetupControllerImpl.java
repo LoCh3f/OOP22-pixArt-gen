@@ -23,7 +23,7 @@ public class GameSetupControllerImpl extends SimpleController implements GameSet
         this.projects = GameLevels.getAllLevels().stream().
         map(e -> {
             try {
-                return FileHandler.getInstance().fromJsonToProject(new File("src/main/resources/games/Project1/Project1.json"));
+                return FileHandler.getInstance().fromJsonToProject(new File(e.getPathToFile()));
             } catch (IOException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
