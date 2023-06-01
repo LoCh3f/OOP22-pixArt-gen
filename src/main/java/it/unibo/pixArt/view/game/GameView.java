@@ -22,7 +22,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Popup;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -127,7 +126,7 @@ public class GameView extends AbstractFXView{
     private String timeToString(final double remainingTime){
         double minutes = remainingTime/60;
         double seconds = remainingTime % 60;
-        return Integer.toString((int) minutes) + ":" + Integer.toString((int) seconds);
+        return String.format("%02d:%02d", (int) minutes, (int) seconds);
     }
 
     /*Try to use streams */
