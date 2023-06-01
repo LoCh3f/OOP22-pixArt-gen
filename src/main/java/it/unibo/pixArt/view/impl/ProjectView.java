@@ -46,23 +46,27 @@ public class ProjectView extends AbstractFXView {
     }
 
     public void onEditClick(final ActionEvent event){
-        try {
-            Project project = FileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selectedFolder)));
-            this.getController().getModel().setProject(project);
-            PageLoader.getInstance().switchPage(getStage(), Pages.WORKSPACE, this.getController().getModel());
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(selectedFolder != null){
+            try {
+                Project project = FileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selectedFolder)));
+                this.getController().getModel().setProject(project);
+                PageLoader.getInstance().switchPage(getStage(), Pages.WORKSPACE, this.getController().getModel());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public void onDeleteClick(ActionEvent event){
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Delete File");
-        alert.setHeaderText("Are you sure to delete"+ selectedFolder.replace('[', ' ').substring(0, selectedFolder.length()-1) + "?");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){ 
-            FileHandler.getInstance().deleteFile(getDirPath(selectedFolder));
-            init();  
+        if(selectedFolder != null){
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Delete File");
+            alert.setHeaderText("Are you sure to delete"+ selectedFolder.replace('[', ' ').substring(0, selectedFolder.length()-1) + "?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){ 
+                FileHandler.getInstance().deleteFile(getDirPath(selectedFolder));
+                init();  
+            }
         }
     }
 
