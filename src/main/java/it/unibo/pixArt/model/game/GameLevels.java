@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 public enum GameLevels {
 
-    SKULL("/games/Skull/Skull.json", "/games/Skull/Skull0.png");
+    SKULL("src/main/resources/games/Skull/Skull.json", "/games/Skull/Skull0.png");
 
     private String pathToFile;
     private String pathToImg;

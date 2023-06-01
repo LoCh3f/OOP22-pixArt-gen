@@ -56,5 +56,5 @@ public interface GameController extends Controller{
     /**
      * Sets the value of the isDrawing flag.
      */
-    void setIsrawing();
+    void setIsDrawing();
 }
