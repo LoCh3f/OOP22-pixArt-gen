@@ -1,6 +1,5 @@
 package it.unibo.pixArt.controller.login;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -9,7 +8,7 @@ import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.user.manager.UserManagerImpl;
 import it.unibo.pixArt.model.user.validator.ValidationResult;
 
-public class LoginControllerImpl extends SimpleController implements LoginController{
+public final class LoginControllerImpl extends SimpleController implements LoginController {
 
     private static final int PASS_MIN_LENGTH = 8;
     private static final int PASS_MAX_LENGTH = 16;
@@ -21,7 +20,7 @@ public class LoginControllerImpl extends SimpleController implements LoginContro
 
     @Override
     public boolean login(final String username, final String password) throws IOException {
-        if (!UserManagerImpl.getInstance().login(username, password).isEmpty()){
+        if (!UserManagerImpl.getInstance().login(username, password).isEmpty()) {
             final String path = UserManagerImpl.getInstance().login(username, password).get().getPathToFile();
             this.getModel().setUser(username, password, path);
             return true;
@@ -31,14 +30,15 @@ public class LoginControllerImpl extends SimpleController implements LoginContro
 
     @Override
     public boolean register(final String username, final String password, final String path) throws IOException {
-        if (!UserManagerImpl.getInstance().register(username, password, path).isEmpty()){
+        if (!UserManagerImpl.getInstance().register(username, password, path).isEmpty()) {
             this.getModel().setUser(username, password, path);
             return true;
         } 
         return false;
     }
 
-    public void guestLogin(String path){
+    @Override
+    public void guestLogin(final String path) {
         this.getModel().setUser(GUEST_NAME, GUEST_PASSWORD, path);
     }
 
@@ -64,14 +64,13 @@ public class LoginControllerImpl extends SimpleController implements LoginContro
 
     @Override
     public ValidationResult pathValidation(String path) {
-        if (path.length() == 0){
+        if (path.length() == 0) {
             return ValidationResult.PATH_NOT_FOUND;
         }
-        if (Files.isDirectory(Path.of(path))){
+        if (Files.isDirectory(Path.of(path))) {
             return ValidationResult.CORRECT;
         }
         return ValidationResult.PATH_NOT_FOUND;
     }
-
-    
+ 
 }

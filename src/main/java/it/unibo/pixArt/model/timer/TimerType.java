@@ -6,29 +6,51 @@ import java.util.stream.Stream;
 
 public enum TimerType {
 
+    /**
+     * one minute
+     */
     ONE_MINUTE(60L, "1 min"),
 
+    /**
+     * three minutes
+     */
     THREE_MINUTES(180L, "3 min"),
 
+    /**
+     * five minutes
+     */
     FIVE_MINUTES(300L, "5 min");
 
     private final long time;
     private final String description;
 
-    TimerType(final long time, final String description){
+    /**
+     * @param time
+     * @param description
+     */
+    TimerType(final long time, final String description) {
         this.time = time;
         this.description = description;
     }
 
-    public long getTime(){
+    /**
+     * @return the time of the timer type
+     */
+    public long getTime() {
         return this.time;
     }
 
-    public String getDescription(){
+    /**
+     * @return the description of the timer type
+     */
+    public String getDescription() {
         return this.description;
     }
 
-    public static List<TimerType> getAllTypes(){
+    /**
+     * @return a list with all the timer types
+     */
+    public static List<TimerType> getAllTypes() {
         return Stream.of(values()).collect(Collectors.toList());
     }
     
