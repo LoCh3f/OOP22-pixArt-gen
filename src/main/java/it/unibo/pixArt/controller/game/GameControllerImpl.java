@@ -62,7 +62,7 @@ public class GameControllerImpl extends SimpleController implements GameControll
     }
 
     @Override
-    public void setIsrawing() {
+    public void setIsDrawing() {
         this.isDrawing = !this.isDrawing;
     }
 }
