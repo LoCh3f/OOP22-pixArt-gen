@@ -11,11 +11,13 @@ public class ModelImpl implements Model {
     private Project project;
     private User user;
     private GameTimer timer;
+    private Game game;
 
-    public ModelImpl(final String name, final String password, final String path, final Project project, final GameTimer timer) {
+    public ModelImpl(final String name, final String password, final String path, final Project project, final GameTimer timer, final Game game) {
         this.user = new UserImpl(name, password, path);
         this.project = project;
         this.timer = timer;
+        this.game = game;
     }
 
     @Override
@@ -46,5 +48,15 @@ public class ModelImpl implements Model {
     @Override
     public void setTimer(GameTimer newTimer) {
         this.timer = newTimer;
+    }
+
+    @Override
+    public Game getGame() {
+        return this.game;
+    }
+
+    @Override
+    public void setGame(Game game) {
+        this.game = game;
     }
 }

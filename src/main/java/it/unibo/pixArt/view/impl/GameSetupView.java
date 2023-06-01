@@ -46,11 +46,21 @@ public class GameSetupView extends AbstractFXView {
                                     .stream()
                                     .map(e -> new ImageView(new Image(e)))
                                     .collect(Collectors.toList()));
+
         this.timerChoiceBox.getItems().addAll(getGameSetupController().getTimers()
                                         .stream()
                                         .map(e -> e.getDescription())
                                         .collect(Collectors.toList()));
+
+        this.typeChoiceBox.getItems().addAll(getGameSetupController().getGameTypes()
+                                            .stream()
+                                            .map(e -> e.getName())
+                                            .collect(Collectors.toList()));   
+                                                
         this.timerChoiceBox.setValue(getGameSetupController().getTimers().get(0).getDescription());
+        this.typeChoiceBox.setValue(getGameSetupController().getGameTypes().get(0).getName());
+        this.gameDescription.setText(getGameSetupController().getGameTypes().get(0).getDescription());
+        this.gameDescription.setWrapText(true);
         this.projectsList.getSelectionModel().select(0);
     }
 
