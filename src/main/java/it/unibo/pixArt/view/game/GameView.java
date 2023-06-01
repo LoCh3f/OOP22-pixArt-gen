@@ -25,6 +25,8 @@ import javafx.scene.paint.Color;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLOR;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
 
 public class GameView extends AbstractFXView{
 
@@ -161,6 +163,7 @@ public class GameView extends AbstractFXView{
         boolean checkPixel = getGameController().checkPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), selectedColor);
         if (checkPixel){
             button.setStyle("-fx-background-color: #" + selectedColor.toString().substring(2));
+            button.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             setPixelsLeft();
         }
         if(getGameController().colorStackIsEmpty()) {
