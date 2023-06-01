@@ -3,20 +3,17 @@ package it.unibo.pixArt.model;
 
 import it.unibo.pixArt.model.game.Game;
 import it.unibo.pixArt.model.project.Project;
-import it.unibo.pixArt.model.timer.GameTimer;
 import it.unibo.pixArt.model.user.User;
 import it.unibo.pixArt.model.user.UserImpl;
 
 public class ModelImpl implements Model {
     private Project project;
     private User user;
-    private GameTimer timer;
     private Game game;
 
-    public ModelImpl(final String name, final String password, final String path, final Project project, final GameTimer timer, final Game game) {
+    public ModelImpl(final String name, final String password, final String path, final Project project, final Game game) {
         this.user = new UserImpl(name, password, path);
         this.project = project;
-        this.timer = timer;
         this.game = game;
     }
 
@@ -38,16 +35,6 @@ public class ModelImpl implements Model {
     @Override
     public void setProject(Project project) {
         this.project = project;
-    }
-
-    @Override
-    public GameTimer getTimer() {
-        return this.timer;
-    }
-
-    @Override
-    public void setTimer(GameTimer newTimer) {
-        this.timer = newTimer;
     }
 
     @Override

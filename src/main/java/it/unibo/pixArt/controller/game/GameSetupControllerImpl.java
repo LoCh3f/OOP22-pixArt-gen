@@ -8,8 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.SimpleController;
+import it.unibo.pixArt.model.game.Game;
+import it.unibo.pixArt.model.game.GameImpl;
 import it.unibo.pixArt.model.game.GameLevels;
 import it.unibo.pixArt.model.game.GameType;
+import it.unibo.pixArt.model.game.builder.GameBuilderImpl;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.timer.GameTimerImpl;
 import it.unibo.pixArt.model.timer.TimerType;

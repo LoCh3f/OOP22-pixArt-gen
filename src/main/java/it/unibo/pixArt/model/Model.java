@@ -2,7 +2,6 @@ package it.unibo.pixArt.model;
 
 import it.unibo.pixArt.model.game.Game;
 import it.unibo.pixArt.model.project.Project;
-import it.unibo.pixArt.model.timer.GameTimer;
 import it.unibo.pixArt.model.user.User;
 
 public interface Model {
@@ -27,16 +26,6 @@ public interface Model {
      * @param project set the project the use is working on.
      */
     void setProject(final Project project);
-
-    /**
-     * @return the game that is currently being played.
-     */
-    GameTimer getTimer();
-
-    /**
-     * @param newGame the new game to play.
-     */
-    void setTimer(final GameTimer newTimer);
 
     /**
      * @return the game

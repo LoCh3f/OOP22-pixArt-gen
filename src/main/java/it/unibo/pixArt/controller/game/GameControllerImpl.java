@@ -18,7 +18,7 @@ public class GameControllerImpl extends SimpleController implements GameControll
 
     @Override
     public GameTimer getTimer() {
-        return this.getModel().getTimer();
+        return this.getModel().getGame().getGameTimer();
     }
 
     @Override
