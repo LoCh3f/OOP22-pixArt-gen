@@ -34,7 +34,7 @@ public final class GameTimerImpl implements GameTimer {
 
     @Override
     public boolean isTimeOver() {
-        if (this.getRemainingTime() < 0){
+        if (this.getRemainingTime() < 0) {
             return true;
         }
         return false;

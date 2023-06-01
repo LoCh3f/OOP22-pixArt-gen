@@ -3,12 +3,12 @@ package it.unibo.pixArt.model.timer;
 public interface GameTimer {
 
     /**
-     * starts the timer
+     * starts the timer.
      */
     void start();
 
     /**
-     * stop the timer
+     * stop the timer.
      */
     void stop();
 

@@ -7,17 +7,17 @@ import java.util.stream.Stream;
 public enum TimerType {
 
     /**
-     * one minute
+     * one minute.
      */
     ONE_MINUTE(60L, "1 min"),
 
     /**
-     * three minutes
+     * three minutes.
      */
     THREE_MINUTES(180L, "3 min"),
 
     /**
-     * five minutes
+     * five minutes.
      */
     FIVE_MINUTES(300L, "5 min");
 
@@ -53,5 +53,5 @@ public enum TimerType {
     public static List<TimerType> getAllTypes() {
         return Stream.of(values()).collect(Collectors.toList());
     }
-    
+
 }

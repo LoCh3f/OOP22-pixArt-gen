@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class SprayTool extends AbstractDrawingTool {
+public final class SprayTool extends AbstractDrawingTool {
 
     private final Color selectedColor;
 
@@ -20,9 +20,9 @@ public class SprayTool extends AbstractDrawingTool {
     }
 
     @Override
-    public Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame) {
+    public Set<Pixel> updateGrid(final Pixel pixel, final Set<Pixel> frame) {
         Set<Pixel> newPixSet = new HashSet<>();
-        Pair<Integer, Integer> oppositePixPos = calculatePosition(pixel, super.toolSize * 2, super.getFrameSize(frame));
+        Pair<Integer, Integer> oppositePixPos = calculatePosition(pixel, super.getToolSize() * 2, super.getFrameSize(frame));
         Pixel tempPix;
         Random rand = new Random();
 

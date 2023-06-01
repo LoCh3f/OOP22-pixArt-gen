@@ -2,10 +2,11 @@ package it.unibo.pixArt.model.timer;
 
 public class TimerThread extends Thread {
 
+    private static final long TIMESLEEP = 200;
+
     private final GameTimer timer;
     private final Runnable callback;
     private final Runnable remainingTime;
-    private final long TIMESLEEP = 200;
 
     /**
      * @param timer
@@ -19,7 +20,7 @@ public class TimerThread extends Thread {
     }
 
     /**
-     * Run timer
+     * Run timer.
      */
     public void run() {
         while (this.timer.isRunning()) {
@@ -38,5 +39,5 @@ public class TimerThread extends Thread {
             }
         }
     }
-    
+
 }
