@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixArt.view.impl.GameSetupView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixArt.view.impl.GameSetupView">
    <children>
       <Label layoutX="35.0" layoutY="28.0" text="Game Setup">
          <font>
@@ -16,12 +16,13 @@
          </font>
       </Label>
       <ChoiceBox fx:id="timerChoiceBox" layoutX="312.0" layoutY="108.0" prefWidth="150.0" />
-      <Button layoutX="312.0" layoutY="353.0" mnemonicParsing="false" onAction="#onStartClicked" prefHeight="26.0" prefWidth="108.0" text="Start" />
-      <ListView fx:id="projectsList" layoutX="29.0" layoutY="82.0" prefHeight="298.0" prefWidth="237.0" />
+      <Button layoutX="312.0" layoutY="418.0" mnemonicParsing="false" onAction="#onStartClicked" prefHeight="26.0" prefWidth="108.0" text="Start" />
+      <ListView fx:id="projectsList" layoutX="29.0" layoutY="82.0" prefHeight="363.0" prefWidth="238.0" />
       <Label layoutX="312.0" layoutY="82.0" text="Timer:" />
-      <Button layoutX="455.0" layoutY="353.0" mnemonicParsing="false" onAction="#onDiscardClicked" prefHeight="26.0" prefWidth="108.0" text="Discard" />
-      <Label layoutX="313.0" layoutY="143.0" text="Game Type:" />
-      <ChoiceBox fx:id="typeChoiceBox" layoutX="312.0" layoutY="167.0" prefWidth="150.0" />
-      <TextArea fx:id="gameDescription" disable="true" layoutX="313.0" layoutY="218.0" prefHeight="107.0" prefWidth="250.0" />
+      <Button layoutX="455.0" layoutY="417.0" mnemonicParsing="false" onAction="#onDiscardClicked" prefHeight="26.0" prefWidth="108.0" text="Discard" />
+      <Label layoutX="313.0" layoutY="159.0" text="Game Type:" />
+      <ChoiceBox fx:id="typeChoiceBox" layoutX="312.0" layoutY="183.0" prefWidth="150.0" />
+      <TextArea fx:id="gameDescription" editable="false" layoutX="312.0" layoutY="270.0" prefHeight="107.0" prefWidth="250.0" />
+      <Label layoutX="314.0" layoutY="240.0" text="Description:" />
    </children>
 </AnchorPane>

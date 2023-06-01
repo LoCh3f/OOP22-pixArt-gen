@@ -23,7 +23,7 @@ public enum GameType {
         return this.description;
     }
 
-    public List<GameType> getGameTypes(){
+    public static List<GameType> getGameTypes(){
         return Stream.of(values()).collect(Collectors.toList());
     }
 }

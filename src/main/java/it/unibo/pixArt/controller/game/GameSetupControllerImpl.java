@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.game.GameLevels;
+import it.unibo.pixArt.model.game.GameType;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.timer.GameTimerImpl;
 import it.unibo.pixArt.model.timer.TimerType;
@@ -53,6 +54,16 @@ public class GameSetupControllerImpl extends SimpleController implements GameSet
     @Override
     public void setProject(final int project) {
         getModel().setProject(this.projects.get(project));
+    }
+
+    @Override
+    public List<GameType> getGameTypes() {
+        return GameType.getGameTypes();
+    }
+
+    @Override
+    public void setGameType(String type) {
+        
     }
     
 }
