@@ -6,7 +6,8 @@ import java.util.stream.Stream;
 
 public enum GameLevels {
 
-    SKULL("src/main/resources/games/Skull/Skull.json", "/games/Skull/Skull0.png");
+    SKULL("src/main/resources/games/Skull/Skull.json", "/games/Skull/Skull0.png"),
+    SHREK("src/main/resources/games/Shrek/Shrek.json", "/games/Shrek/Shrek0.png");
 
     private String pathToFile;
     private String pathToImg;
