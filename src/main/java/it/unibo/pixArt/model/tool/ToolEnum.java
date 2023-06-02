@@ -1,17 +1,35 @@
 package it.unibo.pixArt.model.tool;
 
 public enum ToolEnum {
-    
+
+    /**
+     * pencil.
+     */
     PENCIL("PENCIL"),
 
+    /**
+     * eraser.
+     */
     ERASER("ERASER"),
 
+    /**
+     * spray tool.
+     */
     SPRAYTOOL("SPRAY"),
 
+    /**
+     * darken tool.
+     */
     DARKENTOOL("DARKEN"),
 
+    /**
+     * lighten tool.
+     */
     LIGHTENTOOL("LIGHTEN"),
 
+    /**
+     * bucket.
+     */
     BUCKET("BUCKET");
 
     private final String name;

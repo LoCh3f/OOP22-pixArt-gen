@@ -1,7 +1,7 @@
 package it.unibo.pixArt.model.user;
 
-public class UserImpl implements User {
-    
+public final class UserImpl implements User {
+
     private String name;
     private String password;
     private String pathToFile;
@@ -28,7 +28,7 @@ public class UserImpl implements User {
     }
 
     @Override
-    public void SetPassword(final String password) {
+    public void setPassword(final String password) {
         this.password  = password;
     }
 
@@ -38,7 +38,7 @@ public class UserImpl implements User {
     }
 
     @Override
-    public String getPathToFile(){
+    public String getPathToFile() {
         return this.pathToFile;
     }
 
@@ -51,7 +51,7 @@ public class UserImpl implements User {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }

@@ -1,28 +1,28 @@
 package it.unibo.pixArt.model.user;
 
 public interface UserBuilder {
-    
-    /**
-     * @param name
-     * @return
-     */
-    public UserBuilder username(final String name);
 
     /**
-     * @param password
-     * @return
+     * @param name name of the user
+     * @return the userbuilder
      */
-    public UserBuilder password(final String password);
+    UserBuilder username(String name);
 
     /**
-     * @param path
-     * @return
+     * @param password password of the user
+     * @return the userbuilder
      */
-    public UserBuilder path(final String path);
+    UserBuilder password(String password);
 
     /**
-     * @return
+     * @param path path of the user
+     * @return the userbuilder
      */
-    public User build();
+    UserBuilder path(String path);
+
+    /**
+     * @return the user
+     */
+    User build();
 
 }

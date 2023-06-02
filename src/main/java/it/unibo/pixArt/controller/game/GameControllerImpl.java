@@ -14,10 +14,11 @@ import javafx.scene.paint.Color;
 public class GameControllerImpl extends SimpleController implements GameController{
 
     private ColorStack colorStack;
+    private boolean isDrawing;
 
     @Override
     public GameTimer getTimer() {
-        return this.getModel().getTimer();
+        return this.getModel().getGame().getGameTimer();
     }
 
     @Override
@@ -53,5 +54,15 @@ public class GameControllerImpl extends SimpleController implements GameControll
     @Override
     public float getPercentage() {
         return this.colorStack.getPercentage();
+    }
+
+    @Override
+    public boolean getIsDrawing() {
+        return this.isDrawing;
+    }
+
+    @Override
+    public void setIsDrawing() {
+        this.isDrawing = !this.isDrawing;
     }
 }

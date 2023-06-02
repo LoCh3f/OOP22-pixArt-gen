@@ -8,10 +8,10 @@ import it.unibo.pixArt.model.tool.drawingTools.SprayTool;
 import it.unibo.pixArt.model.tool.fillTools.Bucket;
 import javafx.scene.paint.Color;
 
-public class ToolFactoryImpl implements ToolFactory {
+public final class ToolFactoryImpl implements ToolFactory {
 
     @Override
-    public AbstractTool createTool(String toolType, Color selectedColor, int toolSize) {
+    public AbstractTool createTool(final String toolType, final Color selectedColor, final int toolSize) {
         switch (toolType) {
             case "PENCIL":
                 return new Pencil(selectedColor, toolSize);
@@ -30,5 +30,5 @@ public class ToolFactoryImpl implements ToolFactory {
         }
         return null;
     }
-    
+ 
 }

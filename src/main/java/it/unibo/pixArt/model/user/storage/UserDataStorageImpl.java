@@ -13,27 +13,24 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
-public class UserDataStorageImpl implements UserDataStorage{
+public final class UserDataStorageImpl implements UserDataStorage {
 
-    private final char fileSeparator = File.separatorChar;
-    private String USERDATAPATH = System.getProperty("user.home") + fileSeparator + "userData"; 
-    private final String USERDATAFILE = "users.json";
+    private final static char fileSeparator = File.separatorChar;
+    private static final String USERDATAPATH = System.getProperty("user.home") + fileSeparator + "userData"; 
+    private static final String USERDATAFILE = "users.json";
 
     private Type userListType = new TypeToken<List<UserImpl>>(){}.getType();
     private List<User> userList;
     private Charset charset = StandardCharsets.UTF_8;
-    
+
     private void createJsonFile() throws IOException {
         if (Files.notExists(Path.of(USERDATAPATH))) {
             Files.createDirectory(Path.of(USERDATAPATH));
@@ -48,14 +45,14 @@ public class UserDataStorageImpl implements UserDataStorage{
             }
         }
     }
-    
+
     private void load() throws IOException {
-        if(userList == null) {
+        if (userList == null) {
             this.createJsonFile();
             Gson gson = new Gson();
             String json = new String(Files.readString(Path.of(USERDATAPATH + fileSeparator + USERDATAFILE), charset));
             userList = gson.fromJson(json, userListType);
-            if (userList == null){
+            if (userList == null) {
                 userList = new LinkedList<>();
             }
         }
@@ -74,7 +71,7 @@ public class UserDataStorageImpl implements UserDataStorage{
     @Override
     public Optional<User> getUser(final String name) throws IOException {
         this.load();
-        return this.userList.stream().filter(u-> u.getName().equals(name)).findFirst();
+        return this.userList.stream().filter(u -> u.getName().equals(name)).findFirst();
     }
 
     @Override
@@ -85,9 +82,9 @@ public class UserDataStorageImpl implements UserDataStorage{
     }
 
     @Override
-    public boolean exists(String name) throws IOException {
+    public boolean exists(final String name) throws IOException {
         this.load();
         return this.userList.stream().anyMatch(u->u.getName().equals(name));
     }
-    
+
 }

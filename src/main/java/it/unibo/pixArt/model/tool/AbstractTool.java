@@ -6,9 +6,18 @@ import it.unibo.pixArt.model.pixel.Pixel;
 
 public abstract class AbstractTool {
 
-    public abstract Set<Pixel> updateGrid(final Pixel pixel, Set<Pixel> frame);
+    /**
+     * @param pixel
+     * @param frame
+     * @return a set of modified pixels
+     */
+    public abstract Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame);
 
-    public int getFrameSize(Set<Pixel> frame) {
+    /**
+     * @param frame
+     * @return the size of the frame
+     */
+    public int getFrameSize(final Set<Pixel> frame) {
         return (int) Math.sqrt(frame.size());
     }
 

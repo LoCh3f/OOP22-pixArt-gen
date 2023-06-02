@@ -3,7 +3,6 @@ package it.unibo.pixArt.controller.workspace;
 import it.unibo.pixArt.controller.Controller;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 import it.unibo.pixArt.model.pixel.Pixel;
-import it.unibo.pixArt.model.tool.ToolEnum;
 import javafx.scene.paint.Color;
 
 import java.util.List;
@@ -63,10 +62,11 @@ public interface WorkSpaceController extends Controller {
      */
     public boolean getIsDrawing();
 
+    
     /**
-     * Method to save the project.
+     * @param scale The scale size
      */
-    public void saveProject();
+    public void saveProject(int scale);
 
     /** Method to get the current frame
      * 

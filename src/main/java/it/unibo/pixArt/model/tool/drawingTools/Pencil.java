@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Pencil extends AbstractDrawingTool {
+public final class Pencil extends AbstractDrawingTool {
 
     private Color selectedColor;
 
@@ -19,9 +19,9 @@ public class Pencil extends AbstractDrawingTool {
     }
 
     @Override
-    public Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame) {
+    public Set<Pixel> updateGrid(final Pixel pixel, final Set<Pixel> frame) {
         Set<Pixel> newPixSet = new HashSet<>();
-        Pair<Integer, Integer> oppositePixPos = super.calculatePosition(pixel, super.toolSize, super.getFrameSize(frame));
+        Pair<Integer, Integer> oppositePixPos = super.calculatePosition(pixel, super.getToolSize(), super.getFrameSize(frame));
         Pixel tempPix;
 
         for (var x : range(pixel.getPosition().getX(), oppositePixPos.getX())) {

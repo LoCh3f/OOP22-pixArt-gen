@@ -2,7 +2,6 @@ package it.unibo.pixArt.view.workspace;
 
 import it.unibo.pixArt.controller.workspace.WorkSpaceController;
 import it.unibo.pixArt.model.pixel.Pixel;
-import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.utilities.parser.GridPaneParser;
 import it.unibo.pixArt.utilities.parser.PixelsParser;
 import it.unibo.pixArt.view.AbstractFXView;
@@ -25,8 +24,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -184,8 +185,21 @@ public class WorkSpace extends AbstractFXView {
     }
 
     private void saveAndExit() {
-        this.getWorkSpaceController().saveProject();
-        PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
+        List<String> choices = new ArrayList<>();
+        choices.add("1");
+        choices.add("4");
+        choices.add("16");
+
+        ChoiceDialog<String> dialog = new ChoiceDialog<>("1", choices);
+        dialog.setTitle("Scelta scala");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Seleziona la scala:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            this.getWorkSpaceController().saveProject(Integer.parseInt(result.get()));
+            PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
+        }
     }
 
     public void updateHistoryFrames() {

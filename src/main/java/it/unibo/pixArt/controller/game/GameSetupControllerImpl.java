@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.SimpleController;
+import it.unibo.pixArt.model.game.Game;
+import it.unibo.pixArt.model.game.GameImpl;
 import it.unibo.pixArt.model.game.GameLevels;
+import it.unibo.pixArt.model.game.GameType;
+import it.unibo.pixArt.model.game.builder.GameBuilderImpl;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.timer.GameTimerImpl;
 import it.unibo.pixArt.model.timer.TimerType;
@@ -23,7 +27,7 @@ public class GameSetupControllerImpl extends SimpleController implements GameSet
         this.projects = GameLevels.getAllLevels().stream().
         map(e -> {
             try {
-                return FileHandler.getInstance().fromJsonToProject(new File("src/main/resources/games/Project1/Project1.json"));
+                return FileHandler.getInstance().fromJsonToProject(new File(e.getPathToFile()));
             } catch (IOException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
@@ -53,6 +57,16 @@ public class GameSetupControllerImpl extends SimpleController implements GameSet
     @Override
     public void setProject(final int project) {
         getModel().setProject(this.projects.get(project));
+    }
+
+    @Override
+    public List<GameType> getGameTypes() {
+        return GameType.getGameTypes();
+    }
+
+    @Override
+    public void setGameType(String type) {
+        
     }
     
 }

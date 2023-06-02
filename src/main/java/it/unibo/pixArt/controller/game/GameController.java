@@ -47,4 +47,14 @@ public interface GameController extends Controller{
      * @return The percentage of the pixel left withing the map
      */
     float getPercentage();
+
+    /**
+     * @return tha value of the isDrawing flag.
+     */
+    boolean getIsDrawing();
+
+    /**
+     * Sets the value of the isDrawing flag.
+     */
+    void setIsDrawing();
 }

@@ -2,14 +2,29 @@ package it.unibo.pixArt.model.timer;
 
 public interface GameTimer {
 
-    public void start();
+    /**
+     * starts the timer.
+     */
+    void start();
 
-    public void stop();
+    /**
+     * stop the timer.
+     */
+    void stop();
 
-    public double getRemainingTime();
+    /**
+     * @return the remaining time
+     */
+    double getRemainingTime();
 
-    public boolean isRunning();
+    /**
+     * @return true if the timer is running
+     */
+    boolean isRunning();
 
-    public boolean isTimeOver();
+    /**
+     * @return true if the time is over
+     */
+    boolean isTimeOver();
 
 }

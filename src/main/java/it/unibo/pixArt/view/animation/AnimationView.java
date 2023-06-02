@@ -1,5 +1,7 @@
 package it.unibo.pixArt.view.animation;
 
+import java.util.stream.Collectors;
+
 import it.unibo.pixArt.controller.animation.AnimationController;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.PageLoader;
@@ -72,16 +74,17 @@ public class AnimationView extends AbstractFXView {
     @Override
     public void init() {
         this.switchBtn.setGraphic(new ImageView(new Image(START)));
-        this.imageContainer.setImage(new Image(this.getAnimationController().getHistoryFrames().get(0).getPath()));
+        this.imageContainer.setImage(new Image("file:" + this.getAnimationController().getHistoryFrames().get(0).getPath()));
         this.selectedFrame.setText(Integer.toString(0));
         this.selectedFrameDuration.setText(getAnimationController().getHistoryFrames().get(0).getAnimationDuration() + "ms");
         this.frameList.getItems().addAll(this.getAnimationController().getHistoryFrames().stream()
-                                                                                         .map(e -> new Image(e.getPath()))
-                                                                                         .map(i -> new ImageView(i)).toList());
-        this.frameList.getItems().forEach(i -> {
+                                                                                         .map(e -> new Image("file:" + e.getPath()))
+                                                                                         .map(i -> new ImageView(i)).collect(Collectors.toList()));
+        /*this.frameList.getItems().forEach(i -> {
             i.fitHeightProperty().bind(frameList.heightProperty());
             i.setFitWidth(200);
-        });
+            i.setFitHeight(200);
+        });*/
         this.frameList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ImageView>() {
 
             @Override
@@ -95,7 +98,7 @@ public class AnimationView extends AbstractFXView {
     }
 
     public void displayImage(final String path) {
-        imageContainer.setImage(new Image(path));    
+        imageContainer.setImage(new Image("file:" + path)); 
     }
 
     private AnimationController getAnimationController() {

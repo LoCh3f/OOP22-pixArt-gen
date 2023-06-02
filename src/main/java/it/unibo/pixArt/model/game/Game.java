@@ -1,12 +1,13 @@
 package it.unibo.pixArt.model.game;
 
-import it.unibo.pixArt.model.project.Project;
+import it.unibo.pixArt.model.timer.GameTimer;
 
 public interface Game {
+    
     /**
-     * @return the current project of the game.
+     * @return the game timer
      */
-    Project getTestProject();
+    GameTimer getGameTimer();
 
     /**
      * @return get the game's type.

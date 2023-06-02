@@ -1,19 +1,23 @@
 package it.unibo.pixArt.model.game;
 
-import it.unibo.pixArt.model.project.Project;
+import it.unibo.pixArt.model.timer.GameTimer;
 
 public class GameImpl implements Game {
     private GameType gameType;
-    private Project testProject;
-    
-    @Override
-    public Project getTestProject() {
-        return this.testProject;
+    private GameTimer gameTimer;
+
+    public GameImpl(GameType gameType, GameTimer gameTimer){
+        this.gameTimer = gameTimer;
+        this.gameType = gameType;
     }
 
     @Override
     public GameType getGameType() {
         return this.gameType;
     }
-    
+
+    @Override
+    public GameTimer getGameTimer() {
+        return this.gameTimer;
+    }    
 }

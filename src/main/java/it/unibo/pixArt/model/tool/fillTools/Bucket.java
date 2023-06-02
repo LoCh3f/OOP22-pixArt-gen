@@ -13,7 +13,7 @@ import it.unibo.pixArt.model.tool.AbstractTool;
 import it.unibo.pixArt.utilities.Pair;
 import javafx.scene.paint.Color;
 
-public class Bucket extends AbstractTool{
+public final class Bucket extends AbstractTool {
 
     private final Color selectedColor;
 
@@ -22,44 +22,45 @@ public class Bucket extends AbstractTool{
     }
 
     @Override
-    public Set<Pixel> updateGrid(final Pixel pixel, Set<Pixel> frame) {
+    public Set<Pixel> updateGrid(final Pixel pixel, final Set<Pixel> frame) {
         Map<Pair<Integer, Integer>, Pixel> frameMap = getFrameMap(frame);
         Set<Pixel> newSet = new HashSet<>();
-        Color old_color = pixel.getColor();
+        Color oldColor = pixel.getColor();
 
-        if (old_color.equals(this.selectedColor)) {
+        if (oldColor.equals(this.selectedColor)) {
             return Collections.emptySet(); 
         }
-        
+
         Queue<Pixel> queue = new LinkedList<>();
         queue.add(pixel);
 
         while (!queue.isEmpty()) {
             Pixel temp = queue.poll();
-            if (temp == null || !isValid(frameMap, temp.getPosition().getX(), temp.getPosition().getY(), old_color, selectedColor)) {
+            if (temp == null 
+                || !isValid(frameMap, temp.getPosition().getX(), temp.getPosition().getY(), oldColor, selectedColor)) {
                 continue;
-            }
-            else {
+            } else {
                 temp.setColor(selectedColor);
                 newSet.add(temp);
-                queue.add(frameMap.get(new Pair<>(temp.getPosition().getX()+1, temp.getPosition().getY())));
-                queue.add(frameMap.get(new Pair<>(temp.getPosition().getX()-1, temp.getPosition().getY())));
-                queue.add(frameMap.get(new Pair<>(temp.getPosition().getX(), temp.getPosition().getY()+1)));
-                queue.add(frameMap.get(new Pair<>(temp.getPosition().getX(), temp.getPosition().getY()-1)));
+                queue.add(frameMap.get(new Pair<>(temp.getPosition().getX() + 1, temp.getPosition().getY())));
+                queue.add(frameMap.get(new Pair<>(temp.getPosition().getX() - 1, temp.getPosition().getY())));
+                queue.add(frameMap.get(new Pair<>(temp.getPosition().getX(), temp.getPosition().getY() + 1)));
+                queue.add(frameMap.get(new Pair<>(temp.getPosition().getX(), temp.getPosition().getY() - 1)));
             }
         }
         return newSet;
     }
-    
-    private boolean isValid(final Map<Pair<Integer, Integer>, Pixel> frame, final int x, final int y, final Color oldColor, final Color newColor) {
+
+    private boolean isValid(final Map<Pair<Integer, Integer>, Pixel> frame, 
+                            final int x, final int y, final Color oldColor, final Color newColor) {
         if (frame.get(new Pair<>(x, y)).getColor() != oldColor || frame.get(new Pair<>(x, y)).getColor() == newColor) {
             return false;
-        }  
+        }
         return true;
     }
 
-    private Map<Pair<Integer, Integer>, Pixel> getFrameMap(Set<Pixel> frame) {
-        return frame.stream().collect(Collectors.toMap(x->x.getPosition(), Function.identity()));
+    private Map<Pair<Integer, Integer>, Pixel> getFrameMap(final Set<Pixel> frame) {
+        return frame.stream().collect(Collectors.toMap(x -> x.getPosition(), Function.identity()));
     }
 }
 

@@ -13,19 +13,19 @@ public interface UserDataStorage {
      *          the user registered with the username 'name'
      * @throws IOException
      */
-    public Optional<User> getUser(final String name) throws IOException;
+    Optional<User> getUser(String name) throws IOException;
 
     /**
      * @param user to add to the list of registered users
      * @throws IOException
      */
-    public void addNewUser(final User user) throws IOException;
+    void addNewUser(User user) throws IOException;
 
     /**
      * @param name of the user
      * @return true if the user is present in the list, false otherwise 
      * @throws IOException
      */
-    public boolean exists(final String name) throws IOException;
+    boolean exists(String name) throws IOException;
 
 }
