@@ -10,7 +10,7 @@ public interface User {
     /**
      * @param name to set for the user
      */
-    void setName(final String name);
+    void setName(String name);
 
     /**
      * @return the password of the user
@@ -20,7 +20,7 @@ public interface User {
     /**
      * @param password to set for the user
      */
-    void SetPassword(final String password);
+    void setPassword(String password);
 
     /**
      * @return the path
@@ -30,6 +30,6 @@ public interface User {
     /**
      * @param path
      */
-    void setPathToFile(final String path);
+    void setPathToFile(String path);
 
 }
