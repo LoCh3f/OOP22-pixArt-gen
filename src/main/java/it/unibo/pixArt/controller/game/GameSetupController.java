@@ -40,4 +40,9 @@ public interface GameSetupController {
      * @param type the game type.
      */
     void setGameType(final String type);
+
+    /**
+     * Method to set a game instance.
+     */
+    void setGame();
 }

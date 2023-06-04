@@ -14,6 +14,7 @@ import it.unibo.pixArt.model.game.GameLevels;
 import it.unibo.pixArt.model.game.GameType;
 import it.unibo.pixArt.model.game.builder.GameBuilderImpl;
 import it.unibo.pixArt.model.project.Project;
+import it.unibo.pixArt.model.timer.GameTimer;
 import it.unibo.pixArt.model.timer.GameTimerImpl;
 import it.unibo.pixArt.model.timer.TimerType;
 import it.unibo.pixArt.utilities.FileHandler;
@@ -21,6 +22,9 @@ import it.unibo.pixArt.utilities.FileHandler;
 public class GameSetupControllerImpl extends SimpleController implements GameSetupController {
     
     private List<Project> projects;
+    private GameTimer gameTimer;
+    private GameType gameType;
+    private int selectedProject;
 
     @Override
     public void setProjects() {
@@ -49,14 +53,14 @@ public class GameSetupControllerImpl extends SimpleController implements GameSet
 
     @Override
     public void setTimer(final String timer) {
-        getModel().setTimer(new GameTimerImpl(TimerType.getAllTypes().stream()
+        this.gameTimer = (new GameTimerImpl(TimerType.getAllTypes().stream()
                                                                     .filter(e -> e.getDescription() == timer)
                                                                     .findAny().get().getTime()));
     }
 
     @Override
     public void setProject(final int project) {
-        getModel().setProject(this.projects.get(project));
+        this.selectedProject = project;
     }
 
     @Override
@@ -66,7 +70,13 @@ public class GameSetupControllerImpl extends SimpleController implements GameSet
 
     @Override
     public void setGameType(String type) {
-        
+        this.gameType = GameType.getGameTypes().stream().filter(e -> e.getName() == type).findAny().get();
+    }
+
+    @Override
+    public void setGame() {
+        getModel().setGame(new GameBuilderImpl().gameTimer(this.gameTimer).gameType(this.gameType).build());
+        getModel().setProject(this.projects.get(this.selectedProject));
     }
     
 }

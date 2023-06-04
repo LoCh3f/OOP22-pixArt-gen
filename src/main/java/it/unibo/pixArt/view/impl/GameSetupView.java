@@ -3,6 +3,7 @@ package it.unibo.pixArt.view.impl;
 import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.game.GameSetupController;
+import it.unibo.pixArt.model.game.GameImpl;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
@@ -31,6 +32,7 @@ public class GameSetupView extends AbstractFXView {
     private void onStartClicked() {
         this.getGameSetupController().setTimer(timerChoiceBox.getValue());
         this.getGameSetupController().setProject(projectsList.getSelectionModel().getSelectedIndex());
+        this.getGameSetupController().setGame();
         PageLoader.getInstance().switchPage(getStage(), Pages.GAMEVIEW, this.getController().getModel());
     }
 

@@ -37,6 +37,9 @@ public class AnimationView extends AbstractFXView {
     @FXML
     private Button switchBtn;
 
+    @FXML
+    private Button setDurationBtn;
+
     private static final String START = "/image/startBtn.png";
     private static final String STOP = "/image/stopBtn.png";
 
@@ -73,6 +76,8 @@ public class AnimationView extends AbstractFXView {
 
     @Override
     public void init() {
+        this.frameDurationField.setDisable(true);
+        this.setDurationBtn.setDisable(true);
         this.switchBtn.setGraphic(new ImageView(new Image(START)));
         this.imageContainer.setImage(new Image("file:" + this.getAnimationController().getHistoryFrames().get(0).getPath()));
         this.selectedFrame.setText(Integer.toString(0));
@@ -92,6 +97,8 @@ public class AnimationView extends AbstractFXView {
                 imageContainer.setImage(frameList.getSelectionModel().getSelectedItem().getImage());
                 selectedFrame.setText(Integer.toString(frameList.getSelectionModel().getSelectedIndex()));
                 selectedFrameDuration.setText(getAnimationController().getHistoryFrames().get(frameList.getSelectionModel().getSelectedIndex()).getAnimationDuration() + "ms");
+                frameDurationField.setDisable(false);
+                setDurationBtn.setDisable(false);
             }
            
         });
