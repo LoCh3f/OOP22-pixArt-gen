@@ -43,9 +43,11 @@ public class ColorStackImpl implements ColorStack {
     }
 
     @Override
-    public float getPercentage() {
-        final int totalPixels = this.colorMap.entrySet().stream().mapToInt(e -> e.getValue().size()).sum();
-        return 100 - ((totalPixels * 100) / initialSize);
+    public double getPercentage() {
+        return this.colorMap.entrySet().stream()
+                                        .mapToInt(e -> e.getValue().size())
+                                        .mapToDouble(e -> 100 - ((e * 100) / this.initialSize))
+                                        .sum();
     }
 
     @Override

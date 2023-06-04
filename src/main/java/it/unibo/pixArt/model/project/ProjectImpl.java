@@ -13,14 +13,13 @@ public class ProjectImpl implements Project {
     private String path;
     private String fileType;
     private List<Matrix> frames;
-    private List<HistoryFrame> historyFrames;
+    private List<HistoryFrame> historyFrames = new LinkedList<>();
 
     public ProjectImpl(final String projectName, final String path, final String fileType, final List<Matrix> frames) {
         this.projectName = projectName;
         this.path = path;
         this.fileType = fileType;
         this.frames = frames;
-        this.historyFrames = new LinkedList<>();
         this.historyFrames.add(new HistoryFrameImpl(0));
     }
 

@@ -69,7 +69,7 @@ public class GameSetupControllerImpl extends SimpleController implements GameSet
     }
 
     @Override
-    public void setGameType(String type) {
+    public void setGameType(final String type) {
         this.gameType = GameType.getGameTypes().stream().filter(e -> e.getName() == type).findAny().get();
     }
 
