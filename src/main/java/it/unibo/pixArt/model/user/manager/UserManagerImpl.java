@@ -53,12 +53,4 @@ public final class UserManagerImpl implements UserManager {
         return Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
     }
 
-    private static class LazyHolder {
-        private static final UserManager SINGLETON = new UserManagerImpl(new UserDataStorageImpl()); 
-    }
-
-    public static UserManager getInstance() {
-        return LazyHolder.SINGLETON;
-    }
-
 }
