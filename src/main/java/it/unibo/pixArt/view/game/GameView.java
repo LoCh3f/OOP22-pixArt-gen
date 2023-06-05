@@ -21,6 +21,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -41,6 +42,9 @@ public class GameView extends AbstractFXView{
 
     @FXML
     private Label colorField;
+
+    @FXML
+    private VBox colorBtnBox;
 
     private Color selectedColor;
 
@@ -63,7 +67,7 @@ public class GameView extends AbstractFXView{
         .setAction(getEvent())
         .build();
         this.root.setCenter(center);
-        this.root.setRight(createColorPane());
+        this.colorBtnBox.getChildren().addAll(createColorPane());
 
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             if (getGameController().getIsDrawing()) {
@@ -117,8 +121,7 @@ public class GameView extends AbstractFXView{
     }
 
     /*Try to use streams */
-    private ListView<Button> createColorPane() {
-        final ListView<Button> colorList = new ListView<>();
+    private List<Button> createColorPane() {
         final List<Color> colors = getGameController().getColorStack().entrySet()
         .stream()
         .map(e -> e.getKey())
@@ -133,8 +136,7 @@ public class GameView extends AbstractFXView{
             btn.setMinWidth(200);
             btnList.add(btn);
         }
-        colorList.getItems().addAll(btnList);
-        return colorList;
+        return btnList;
     }
 
     private void setSelectedColor(final Color color) {

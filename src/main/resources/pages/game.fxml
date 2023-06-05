@@ -35,4 +35,7 @@
          </children>
       </VBox>
    </top>
+   <right>
+      <VBox fx:id="colorBtnBox" prefHeight="200.0" prefWidth="100.0" spacing="30.0" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>
