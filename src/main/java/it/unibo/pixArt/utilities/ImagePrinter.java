@@ -45,11 +45,9 @@ public class ImagePrinter {
 
         for (int count = 0; count < project.getAllFrames().size(); count++) {
             
-            ArrayList<Pixel> pixelList = project.getAllFrames().get(count).getPixels().stream().collect(Collectors.toCollection(ArrayList::new));
-
             for (int x = 0; x < imageSize; x++){
                 for (int y = 0; y < imageSize; y++){
-                    for(var p : pixelList){
+                    for(var p : project.getAllFrames().get(count).getPixels()){
                         if(new Pair<Integer, Integer>(x, y).equals(p.getPosition())){
                             Color color = p.getColor();
                             pWriter.setColor(x, y, color);              
