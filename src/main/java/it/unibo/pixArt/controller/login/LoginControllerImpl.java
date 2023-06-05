@@ -63,7 +63,7 @@ public final class LoginControllerImpl extends SimpleController implements Login
     }
 
     @Override
-    public ValidationResult pathValidation(String path) {
+    public ValidationResult pathValidation(final String path) {
         if (path.length() == 0) {
             return ValidationResult.PATH_NOT_FOUND;
         }
