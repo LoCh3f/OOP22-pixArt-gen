@@ -9,6 +9,8 @@ import it.unibo.pixArt.model.timer.TimerThread;
 
 
 import it.unibo.pixArt.view.AbstractFXView;
+import it.unibo.pixArt.view.abilitytest.Logic;
+import it.unibo.pixArt.view.abilitytest.TesterLogic;
 import it.unibo.pixArt.view.components.PixelsPane;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
@@ -51,6 +53,8 @@ public class GameView extends AbstractFXView{
 
     private List<Color> availableColors;
 
+    private Logic tester;
+
     @FXML
     public void onMenuClick(){
         if (this.getGameController().getTimer().isRunning()) {
@@ -61,6 +65,7 @@ public class GameView extends AbstractFXView{
 
     @Override
     public void init() {
+        tester = new TesterLogic();
         this.getGameController().setColorStack();
 
 
