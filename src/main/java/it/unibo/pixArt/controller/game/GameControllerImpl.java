@@ -52,7 +52,7 @@ public class GameControllerImpl extends SimpleController implements GameControll
     }
 
     @Override
-    public float getPercentage() {
+    public double getPercentage() {
         return this.colorStack.getPercentage();
     }
 
