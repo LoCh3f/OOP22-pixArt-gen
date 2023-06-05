@@ -55,7 +55,6 @@ public class WorkSpace extends AbstractFXView {
     private Label toolSizeLabel;
 
     private PixelsParser pixelsParser;
-    private GridPaneParser paneParser;
 
 
     @Override
@@ -86,7 +85,7 @@ public class WorkSpace extends AbstractFXView {
         });
 
         /*Init GridPane and add an event listeners to all the buttons. */
-        paneParser = new GridPaneParser();
+
         pixelsParser = new PixelsParser();
         this.root.setCenter(new ImageView(IMAGE_PATH + MAIN_ICON));
 
@@ -138,8 +137,7 @@ public class WorkSpace extends AbstractFXView {
 
     @FXML
     private void discardMatrix() {
-        final var grid = (GridPane) this.root.getCenter();
-        grid.getChildren().forEach(b -> color(GridPane.getColumnIndex(b),GridPane.getRowIndex(b), Color.WHITE));
+        getWorkSpaceController().resetCurrentFrame();
     }
 
     @FXML

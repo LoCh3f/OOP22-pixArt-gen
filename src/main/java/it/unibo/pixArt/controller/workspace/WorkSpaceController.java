@@ -84,4 +84,9 @@ public interface WorkSpaceController extends Controller {
      */
     public void setFirstFrame();
 
+ /**
+  * Reset the current frame
+  */
+    void resetCurrentFrame();
+
 }

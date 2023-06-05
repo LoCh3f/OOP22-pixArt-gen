@@ -2,6 +2,7 @@ package it.unibo.pixArt.controller.workspace;
 
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.grid.Matrix;
+import it.unibo.pixArt.model.grid.PixelMatrix;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
@@ -59,6 +60,14 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     public void setFirstFrame() {
         this.currentframe = this.getModel().getProject().getAllFrames().get(0);
         this.currentIndex = 0;
+    }
+
+    @Override
+    public void resetCurrentFrame() {
+        this.currentframe = new PixelMatrix.MatrixBuilder()
+                .setColumns(this.getModel().getProject().getAllFrames().get(0).getColumns())
+                .setRows(this.getModel().getProject().getAllFrames().get(0).getRows()).build();
+        this.getWorkSpaceView().updateView(this.currentframe.getPixels());
     }
 
     @Override
@@ -132,6 +141,8 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
         this.getHistoryFrames().remove(prevIndex);
         this.getModel().getProject().getAllFrames().remove(prevIndex);
     }
+
+
 
     private WorkSpace getWorkSpaceView() {
         return (WorkSpace) getView();
