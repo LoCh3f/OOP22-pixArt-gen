@@ -68,7 +68,6 @@ public class GameView extends AbstractFXView{
         tester = new TesterLogic();
         this.getGameController().setColorStack();
 
-
         final GridPane center = new PixelsPane.GridPaneBuilder()
         .setColumns(this.getGameController().getFrameSize())
         .setRows(this.getGameController().getFrameSize())
@@ -108,6 +107,7 @@ public class GameView extends AbstractFXView{
     private void onGameFinish(){
         this.getGameController().getTimer().stop();
         this.gameOverPopUp();
+        this.root.getCenter().setDisable(true);
     }
 
     private void gameOverPopUp(){
@@ -188,7 +188,6 @@ public class GameView extends AbstractFXView{
         boolean checkPixel = getGameController().checkPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), selectedColor);
         if (checkPixel){
             button.setStyle("-fx-background-color: #" + selectedColor.toString().substring(2) + ";" + FX_BORDER_WIDTH + ";" + FX_BORDER_COLOR);
-          //  button.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
             button.setText("");
             setPixelsLeft();
         }

@@ -34,55 +34,55 @@ public interface WorkSpaceController extends Controller {
 
      * @return A set of pixels representing the previous state of the frame.
      */
-    public Set<Pixel> getPreviousState();
+    Set<Pixel> getPreviousState();
 
     /**
      * Method to create and add a new frame in the list of frames.
      */
-    public void addNewFrame();
+    void addNewFrame();
 
     /**
      * @return list of all the historyframes of the project
      */
-    public List<HistoryFrame> getHistoryFrames();
+    List<HistoryFrame> getHistoryFrames();
 
     /**
      * @return List containing all the available tools.
      */
-    public List<String> getTools();
+    List<String> getTools();
 
     /**
      * Method to set the isDrawing flag to true or false.
      */
-    public void setIsDrawing();
+    void setIsDrawing();
 
     /**Method to get the value of the flag isDrawing.
      * 
      * @return the boolean value of isDrawing.
      */
-    public boolean getIsDrawing();
+    boolean getIsDrawing();
 
     
     /**
      * @param scale The scale size
      */
-    public void saveProject(int scale);
+    void saveProject(int scale);
 
     /** Method to get the current frame
      * 
      * @return the set of pixels that make up the curent frame.
      */
-    public Set<Pixel> getCurrentFrame();
+    Set<Pixel> getCurrentFrame();
 
     /**
      * Method to delete current frame. 
      */
-    public void deleteCurrentFrame();
+    void deleteCurrentFrame();
 
     /*
      * Method to set the first frame.
      */
-    public void setFirstFrame();
+    void setFirstFrame();
 
  /**
   * Reset the current frame
