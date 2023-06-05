@@ -23,11 +23,11 @@ import com.google.gson.reflect.TypeToken;
 
 public final class UserDataStorageImpl implements UserDataStorage {
 
-    private final static char fileSeparator = File.separatorChar;
-    private static final String USERDATAPATH = System.getProperty("user.home") + fileSeparator + "userData"; 
+    private static final char FILESEPARATOR = File.separatorChar;
+    private static final String USERDATAPATH = System.getProperty("user.home") + FILESEPARATOR + "userData"; 
     private static final String USERDATAFILE = "users.json";
 
-    private Type userListType = new TypeToken<List<UserImpl>>(){}.getType();
+    private Type userListType = new TypeToken<List<UserImpl>>() { }.getType();
     private List<User> userList;
     private Charset charset = StandardCharsets.UTF_8;
 
@@ -36,7 +36,7 @@ public final class UserDataStorageImpl implements UserDataStorage {
             Files.createDirectory(Path.of(USERDATAPATH));
         }
         JsonArray obj = new JsonArray();
-        File file = new File((USERDATAPATH) + fileSeparator + USERDATAFILE);
+        File file = new File((USERDATAPATH) + FILESEPARATOR + USERDATAFILE);
         if (!file.exists()) {
             try (FileWriter fw = new FileWriter(file)) {
                 fw.write(obj.toString());
@@ -50,7 +50,7 @@ public final class UserDataStorageImpl implements UserDataStorage {
         if (userList == null) {
             this.createJsonFile();
             Gson gson = new Gson();
-            String json = new String(Files.readString(Path.of(USERDATAPATH + fileSeparator + USERDATAFILE), charset));
+            String json = new String(Files.readString(Path.of(USERDATAPATH + FILESEPARATOR + USERDATAFILE), charset));
             userList = gson.fromJson(json, userListType);
             if (userList == null) {
                 userList = new LinkedList<>();
@@ -60,11 +60,11 @@ public final class UserDataStorageImpl implements UserDataStorage {
 
     private void update() throws IOException {
         this.load();
-        Gson gson= new Gson();
+        Gson gson = new Gson();
         String json = gson.toJson(userList, userListType);
-        Files.deleteIfExists(Path.of(USERDATAPATH + fileSeparator + USERDATAFILE));
+        Files.deleteIfExists(Path.of(USERDATAPATH + FILESEPARATOR + USERDATAFILE));
         this.createJsonFile();
-        Files.writeString(Path.of(USERDATAPATH + fileSeparator + USERDATAFILE), json, charset, StandardOpenOption.CREATE);
+        Files.writeString(Path.of(USERDATAPATH + FILESEPARATOR + USERDATAFILE), json, charset, StandardOpenOption.CREATE);
     }
 
 
@@ -84,7 +84,7 @@ public final class UserDataStorageImpl implements UserDataStorage {
     @Override
     public boolean exists(final String name) throws IOException {
         this.load();
-        return this.userList.stream().anyMatch(u->u.getName().equals(name));
+        return this.userList.stream().anyMatch(u -> u.getName().equals(name));
     }
 
 }
