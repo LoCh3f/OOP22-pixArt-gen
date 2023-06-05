@@ -136,4 +136,5 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     private WorkSpace getWorkSpaceView() {
         return (WorkSpace) getView();
     }
+
 }

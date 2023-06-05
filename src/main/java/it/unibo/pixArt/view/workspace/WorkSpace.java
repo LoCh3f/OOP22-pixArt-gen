@@ -139,7 +139,7 @@ public class WorkSpace extends AbstractFXView {
     @FXML
     private void discardMatrix() {
         final var grid = (GridPane) this.root.getCenter();
-        grid.getChildren().forEach(b -> b.setStyle(FX_BACKGROUND_COLOR_START + "white" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
+        grid.getChildren().forEach(btn ->color(GridPane.getColumnIndex(btn), GridPane.getRowIndex(btn), Color.WHITE));
     }
 
     @FXML
