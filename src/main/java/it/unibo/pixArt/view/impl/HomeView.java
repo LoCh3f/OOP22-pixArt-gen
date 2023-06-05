@@ -66,13 +66,14 @@ public class HomeView extends AbstractFXView {
 
       AnchorPane.setRightAnchor(this.buttonList,0d);
       this.buttonList.setPadding(new Insets(10));
-      this.buttonList.prefWidthProperty().bind(this.getStage().widthProperty().divide(2));
+      this.buttonList.setAlignment(Pos.TOP_RIGHT);
+      this.buttonList.prefWidthProperty().bind(this.getStage().widthProperty().divide(2).subtract(10));
       this.buttonList.prefHeightProperty().bind(this.getStage().heightProperty());
       this.buttonList.getChildren().forEach( c -> {
           final var b = (Button) c;
-          b.prefWidthProperty().bind(this.buttonList.widthProperty());
+          b.prefWidthProperty().bind(this.buttonList.widthProperty().subtract(20d));
           b.maxHeight(Double.MAX_VALUE);
-          b.setPadding(new Insets(20));
+          b.setPadding(new Insets(10));
       });
 
 
