@@ -11,30 +11,30 @@ import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
 public class TesterLogic implements Logic {
 
 
-    public static final Set<String> imagePaths = new HashSet<>(List.of(IMAGE_PATH + TOAD_IMAGE, IMAGE_PATH + SONIC_IMAGE, IMAGE_PATH + HOMER_IMAGE, IMAGE_PATH + FLOPPY_BIRD));
 
-    private final Mirror<Pixel> gridMirror = new GenericMirror<>();
+    private final Mirror<Pixel> gridMirror;
 
     public TesterLogic() {
-
+        this.gridMirror = new GenericMirror<>();
     }
 
-    @Override
-    public String getImagePath() {
-        return imagePaths.stream().toList().get(new Random().nextInt(imagePaths.size()));
-    }
-
-    public String test(final Collection<Pixel> userGrid) {
-        return null; //templatePath(this.gridMirror.getDifference(   ,userGrid).size());
+    public String test(final Collection<Pixel> userGrid,final Collection<Pixel> solutionGrid) {
+        return templatePath(this.gridMirror.getDifference(userGrid, solutionGrid).size());
     }
 
 
     private String templatePath(final int difference) {
-        return switch (difference) {
-            case 0 -> IMAGE_PATH + IMAGE_VERY_GOOD;
-            case 10 -> IMAGE_PATH + IMAGE_GOOD;
-            case 30 -> IMAGE_PATH + IMAGE_BAD;
-            default -> IMAGE_PATH + IMAGE_VERY_BAD;
-        };
+        if(difference == TesterEnum.VERY_GOOD.getLimit()) {
+            return TesterEnum.VERY_GOOD.getPath();
+        } else if (difference < TesterEnum.GOOD.getLimit()) {
+            return  TesterEnum.GOOD.getPath();
+        } else if (difference < TesterEnum.BAD.getLimit()) {
+            return TesterEnum.BAD.getPath();
+        } else  {
+            return TesterEnum.VERY_BAD.getPath();
+        }
+
     }
+
+
 }

@@ -4,10 +4,8 @@ import it.unibo.pixArt.model.pixel.Pixel;
 
 import java.util.Collection;
 
-interface Logic {
+public interface Logic {
 
-    String getImagePath();
-
-    String test(final Collection<Pixel> userGrid);
+    String test(final Collection<Pixel> userGrid, final Collection<Pixel> solutionGrid);
 
 }
