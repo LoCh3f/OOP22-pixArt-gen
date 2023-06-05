@@ -16,6 +16,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -48,6 +49,8 @@ public class GameView extends AbstractFXView{
 
     private Color selectedColor;
 
+    private List<Color> availableColors;
+
     @FXML
     public void onMenuClick(){
         if (this.getGameController().getTimer().isRunning()) {
@@ -60,6 +63,7 @@ public class GameView extends AbstractFXView{
     public void init() {
         this.getGameController().setColorStack();
 
+
         final GridPane center = new PixelsPane.GridPaneBuilder()
         .setColumns(this.getGameController().getFrameSize())
         .setRows(this.getGameController().getFrameSize())
@@ -68,6 +72,7 @@ public class GameView extends AbstractFXView{
         .build();
         this.root.setCenter(center);
         this.colorBtnBox.getChildren().addAll(createColorPane());
+        associateButton(center);
 
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
             if (getGameController().getIsDrawing()) {
@@ -75,11 +80,11 @@ public class GameView extends AbstractFXView{
             }
         }));
 
-        center.addEventFilter(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+       center.addEventFilter(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2) {
                 getGameController().setIsDrawing();
             }
-        });
+        }); 
 
         this.getGameController().getTimer().start();
         new TimerThread(this.getGameController().getTimer(), this::onTimeFinish, this::OnTimeUpdate).start();
@@ -122,21 +127,34 @@ public class GameView extends AbstractFXView{
 
     /*Try to use streams */
     private List<Button> createColorPane() {
-        final List<Color> colors = getGameController().getColorStack().entrySet()
+        this.availableColors = getGameController().getColorStack().entrySet()
         .stream()
         .map(e -> e.getKey())
         .collect(Collectors.toList());
         
         final List<Button> btnList = new LinkedList<>();
-        for(var elem : colors) {
+        for(var elem : availableColors) {
             final Button btn = new Button();
-            btn.setText(Integer.toString(colors.indexOf(elem)));
-            btn.setStyle("-fx-background-color: #" + elem.toString().substring(2));
+            btn.setText(Integer.toString(availableColors.indexOf(elem)));
+            btn.setStyle("-fx-background-color: #" + elem.toString().substring(2) + ";" + FX_BORDER_WIDTH + ";" + FX_BORDER_COLOR);
             btn.addEventHandler(MouseEvent.MOUSE_CLICKED, h -> setSelectedColor(elem));
             btn.setMinWidth(200);
             btnList.add(btn);
         }
         return btnList;
+    }
+
+    private void associateButton(final GridPane grid) {
+        for(var btn : grid.getChildren()) {
+            for(var entry : getGameController().getColorStack().entrySet()) {
+                for(var pixel : entry.getValue()) {
+                    if(pixel.getPosition().getX() == GridPane.getColumnIndex(btn) && pixel.getPosition().getY() == GridPane.getRowIndex(btn)) {
+                        final int number = this.availableColors.indexOf(entry.getKey());
+                        ((Button) btn).setText(Integer.valueOf(number).toString());
+                    }
+                }
+            }
+        }
     }
 
     private void setSelectedColor(final Color color) {
@@ -164,8 +182,9 @@ public class GameView extends AbstractFXView{
         final var button = (Button)event.getSource();
         boolean checkPixel = getGameController().checkPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), selectedColor);
         if (checkPixel){
-            button.setStyle("-fx-background-color: #" + selectedColor.toString().substring(2));
-            button.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+            button.setStyle("-fx-background-color: #" + selectedColor.toString().substring(2) + ";" + FX_BORDER_WIDTH + ";" + FX_BORDER_COLOR);
+          //  button.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+            button.setText("");
             setPixelsLeft();
         }
         if(getGameController().colorStackIsEmpty()) {

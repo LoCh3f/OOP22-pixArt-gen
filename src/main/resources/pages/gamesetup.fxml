@@ -15,13 +15,13 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="timerChoiceBox" layoutX="312.0" layoutY="108.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="timerChoiceBox" layoutX="312.0" layoutY="109.0" prefWidth="150.0" />
       <Button layoutX="312.0" layoutY="418.0" mnemonicParsing="false" onAction="#onStartClicked" prefHeight="26.0" prefWidth="108.0" text="Start" />
       <ListView fx:id="projectsList" layoutX="29.0" layoutY="82.0" prefHeight="363.0" prefWidth="238.0" />
       <Label layoutX="312.0" layoutY="82.0" text="Timer:" />
-      <Button layoutX="455.0" layoutY="417.0" mnemonicParsing="false" onAction="#onDiscardClicked" prefHeight="26.0" prefWidth="108.0" text="Discard" />
+      <Button layoutX="489.0" layoutY="418.0" mnemonicParsing="false" onAction="#onDiscardClicked" prefHeight="26.0" prefWidth="108.0" text="Discard" />
       <Label layoutX="313.0" layoutY="159.0" text="Game Type:" />
-      <ChoiceBox fx:id="typeChoiceBox" layoutX="312.0" layoutY="183.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="typeChoiceBox" layoutX="314.0" layoutY="189.0" prefWidth="150.0" />
       <TextArea fx:id="gameDescription" editable="false" layoutX="312.0" layoutY="270.0" prefHeight="107.0" prefWidth="250.0" />
       <Label layoutX="314.0" layoutY="240.0" text="Description:" />
    </children>

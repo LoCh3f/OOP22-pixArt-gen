@@ -40,7 +40,7 @@ public final class GameOverPopUp extends StackPane {
     /**
      * @param backHome
      */
-    public void onHomeClick(final Runnable backHome){
+    public void onHomeClick(final Runnable backHome) {
         this.homeButton.setOnMouseClicked(e -> {
             backHome.run();
         });
@@ -49,7 +49,7 @@ public final class GameOverPopUp extends StackPane {
     /**
      * @param newGame
      */
-    public void onNewGameClick(final Runnable newGame){
+    public void onNewGameClick(final Runnable newGame) {
         this.newGameButton.setOnMouseClicked(e -> {
             newGame.run();
         });
@@ -58,14 +58,14 @@ public final class GameOverPopUp extends StackPane {
     /**
      * close popup.
      */
-    public void close(){
+    public void close() {
         this.stage.close();
     }
 
     /**
      * show popup.
      */
-    public void show(){
+    public void show() {
         this.stage.show();
     }
 
