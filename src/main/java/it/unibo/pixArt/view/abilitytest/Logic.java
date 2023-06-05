@@ -6,8 +6,6 @@ import java.util.Collection;
 
 interface Logic {
 
-    String getImagePath();
-
-    String test(final Collection<Pixel> userGrid);
+    String test(final Collection<Pixel> userGrid, final Collection<Pixel> solutionGrid);
 
 }
