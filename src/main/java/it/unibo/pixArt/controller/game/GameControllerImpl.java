@@ -6,9 +6,11 @@ import java.util.Set;
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.colorstack.ColorStack;
 import it.unibo.pixArt.model.colorstack.ColorStackImpl;
+import it.unibo.pixArt.model.grid.PixelMatrix;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
 import it.unibo.pixArt.model.timer.GameTimer;
+import it.unibo.pixArt.utilities.MatrixConverter;
 import javafx.scene.paint.Color;
 
 public class GameControllerImpl extends SimpleController implements GameController{
@@ -33,7 +35,8 @@ public class GameControllerImpl extends SimpleController implements GameControll
 
     @Override
     public void setColorStack() {
-        this.colorStack = new ColorStackImpl(this.getModel().getProject().getAllFrames().get(0).getPixels());
+        final PixelMatrix frame = (PixelMatrix) this.getModel().getProject().getAllFrames().get(0);
+        this.colorStack = new ColorStackImpl(new MatrixConverter().apply(frame.getPixels()), frame.getPixels().size());
     }
 
     @Override
