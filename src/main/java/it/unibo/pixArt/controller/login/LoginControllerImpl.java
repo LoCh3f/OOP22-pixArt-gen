@@ -6,6 +6,7 @@ import java.nio.file.Path;
 
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.user.manager.UserManagerImpl;
+import it.unibo.pixArt.model.user.storage.UserDataStorageImpl;
 import it.unibo.pixArt.model.user.validator.ValidationResult;
 
 public final class LoginControllerImpl extends SimpleController implements LoginController {
@@ -18,10 +19,12 @@ public final class LoginControllerImpl extends SimpleController implements Login
     private static final String GUEST_NAME = "GUEST";
     private static final String GUEST_PASSWORD = "00000000";
 
+    private final UserManagerImpl userManager = new UserManagerImpl(new UserDataStorageImpl());
+
     @Override
     public boolean login(final String username, final String password) throws IOException {
-        if (!UserManagerImpl.getInstance().login(username, password).isEmpty()) {
-            final String path = UserManagerImpl.getInstance().login(username, password).get().getPathToFile();
+        if (!userManager.login(username, password).isEmpty()) {
+            final String path = userManager.login(username, password).get().getPathToFile();
             this.getModel().setUser(username, password, path);
             return true;
         }
@@ -30,7 +33,7 @@ public final class LoginControllerImpl extends SimpleController implements Login
 
     @Override
     public boolean register(final String username, final String password, final String path) throws IOException {
-        if (!UserManagerImpl.getInstance().register(username, password, path).isEmpty()) {
+        if (!userManager.register(username, password, path).isEmpty()) {
             this.getModel().setUser(username, password, path);
             return true;
         } 
