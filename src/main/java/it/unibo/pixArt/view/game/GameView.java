@@ -53,8 +53,6 @@ public class GameView extends AbstractFXView{
 
     private List<Color> availableColors;
 
-    private Logic tester;
-
     @FXML
     public void onMenuClick(){
         if (this.getGameController().getTimer().isRunning()) {
@@ -65,7 +63,7 @@ public class GameView extends AbstractFXView{
 
     @Override
     public void init() {
-        tester = new TesterLogic();
+        final Logic tester = new TesterLogic();
         this.getGameController().setColorStack();
 
         final GridPane center = new PixelsPane.GridPaneBuilder()
