@@ -53,7 +53,7 @@ public class HomeView extends AbstractFXView {
 
     @Override
     public void init() {
-        final var bPane = new BorderPane();
+        /*final var bPane = new BorderPane();
         bPane.setPrefSize(PREF_WIDTH, PREF_HEIGHT);
         bPane.setPadding(new Insets(5));
         bPane.setStyle(FX_BACKGROUND_COLOR_START + "white");
@@ -75,7 +75,7 @@ public class HomeView extends AbstractFXView {
 
 
         bPane.getChildren().forEach(c -> c.setStyle(FX_BACKGROUND_COLOR_START + "magenta" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH));
-        getStage().getScene().setRoot(bPane);
+        getStage().getScene().setRoot(bPane);*/
 
 
     }

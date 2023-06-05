@@ -5,44 +5,42 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;"
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="it.unibo.pixArt.view.impl.HomeView">
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="606.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixArt.view.impl.HomeView">
     <children>
-        <ImageView fx:id="imageView" fitHeight="250.0" fitWidth="200.0" layoutX="184.0" layoutY="14.0"
-                   pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="imageView" fitHeight="250.0" fitWidth="200.0" layoutX="64.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../image/nameLogo.png"/>
+                <Image url="@../image/nameLogo.png" />
             </image>
             <effect>
-                <Bloom threshold="1.0"/>
+                <Bloom threshold="1.0" />
             </effect>
         </ImageView>
-        <Button fx:id="newGame" alignment="CENTER" layoutX="14.0" layoutY="178.0" mnemonicParsing="false"
-                onAction="#onNewGame" text="New Game" textOverrun="WORD_ELLIPSIS">
-            <font>
-                <Font name="System Italic" size="10.0"/>
-            </font>
-        </Button>
-        <Button fx:id="newProject" alignment="CENTER" layoutX="14.0" layoutY="210.0" mnemonicParsing="false"
-                onAction="#onWorkSpaceClick" text="New Project" textOverrun="WORD_ELLIPSIS">
-            <font>
-                <Font name="System Italic" size="10.0"/>
-            </font>
-        </Button>
-        <Button fx:id="projectHistory" alignment="CENTER" layoutX="14.0" layoutY="276.0" mnemonicParsing="false"
-                onAction="#onProjectHistoryClick" text="Project History" textOverrun="WORD_ELLIPSIS">
-            <font>
-                <Font name="System Italic" size="10.0"/>
-            </font>
-        </Button>
-        <Button fx:id="BackToLogin" alignment="CENTER" layoutX="14.0" layoutY="242.0" mnemonicParsing="false"
-                onAction="#onBackClick" text="Back To Login" textOverrun="WORD_ELLIPSIS">
-            <font>
-                <Font name="System Italic" size="10.0"/>
-            </font>
-        </Button>
+      <VBox layoutX="404.0" layoutY="130.0" prefHeight="158.0" prefWidth="103.0" spacing="20.0">
+         <children>
+              <Button fx:id="newGame" alignment="CENTER" mnemonicParsing="false" onAction="#onNewGame" prefHeight="22.0" prefWidth="103.0" text="Game" textOverrun="WORD_ELLIPSIS">
+                  <font>
+                      <Font name="System Italic" size="10.0" />
+                  </font>
+              </Button>
+              <Button fx:id="newProject" alignment="CENTER" mnemonicParsing="false" onAction="#onWorkSpaceClick" prefHeight="22.0" prefWidth="118.0" text="New Project" textOverrun="WORD_ELLIPSIS">
+                  <font>
+                      <Font name="System Italic" size="10.0" />
+                  </font>
+              </Button>
+              <Button fx:id="projectHistory" alignment="CENTER" mnemonicParsing="false" onAction="#onProjectHistoryClick" prefHeight="22.0" prefWidth="117.0" text="Edit Project" textOverrun="WORD_ELLIPSIS">
+                  <font>
+                      <Font name="System Italic" size="10.0" />
+                  </font>
+              </Button>
+              <Button fx:id="BackToLogin" alignment="CENTER" mnemonicParsing="false" onAction="#onBackClick" prefHeight="22.0" prefWidth="184.0" text="Logout" textOverrun="WORD_ELLIPSIS">
+                  <font>
+                      <Font name="System Italic" size="10.0" />
+                  </font>
+              </Button>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>
