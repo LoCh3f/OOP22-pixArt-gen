@@ -9,6 +9,9 @@ import it.unibo.pixArt.model.timer.TimerType;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
@@ -60,6 +63,14 @@ public class GameSetupView extends AbstractFXView {
                                             .stream()
                                             .map(GameType::getName)
                                             .toList());
+        this.typeChoiceBox.getSelectionModel().selectedIndexProperty().addListener( new ChangeListener<Number>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                gameDescription.setText(getGameSetupController().getGameTypes().get((Integer)newValue).getDescription());
+            }
+            
+        });
                                                 
         this.timerChoiceBox.setValue(getGameSetupController().getTimers().get(0).getDescription());
         this.typeChoiceBox.setValue(getGameSetupController().getGameTypes().get(0).getName());
