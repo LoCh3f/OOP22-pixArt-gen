@@ -2,6 +2,7 @@ package it.unibo.pixArt.view.game;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.game.GameController;
@@ -74,6 +75,7 @@ public class GameView extends AbstractFXView {
 
     @Override
     public void init() {
+
         this.getGameController().setColorStack();
         final GridPane center = new PixelsPane.GridPaneBuilder()
                 .setColumns(this.getGameController().getFrameSize())
@@ -114,20 +116,23 @@ public class GameView extends AbstractFXView {
                     .setAction(event -> {
                                 final var b = (Button) event.getSource();
                                 b.setStyle(new PixelsParser().parseColor(selectedColor));
-                        System.out.println(b.getStyle());
-                                incredibleView.setImage(new Image(tester
-                                        .test(getController().getModel().getProject().getAllFrames().get(0).getPixels(),
-                                                new GridPaneParser().apply((GridPane) root.getChildren().get(1)))));
-                            }).setGridLinesVisible(true).build();
+                    }).setGridLinesVisible(true).build();
+            root.getChildren().add(0,incredibleView);
+            root.getChildren().add(1,parallelGrid);
             incredibleView.fitHeightProperty().bind(root.heightProperty());
             incredibleView.fitWidthProperty().bind(root.widthProperty().divide(2));
             parallelGrid.prefHeightProperty().bind(root.heightProperty());
             parallelGrid.prefWidthProperty().bind(root.widthProperty().divide(2));
-            root.getChildren().add(0,incredibleView);
-            root.getChildren().add(1,parallelGrid);
+            parallelGrid.getChildren().forEach(b -> b.addEventHandler(ActionEvent.ACTION,event -> {
+                incredibleView.setImage(new Image(tester.test(new GridPaneParser().apply(parallelGrid),
+                        getGameController().getModel().getProject().getAllFrames().get(0).getPixels())));
+            }));
+
             secondStage.show();
 
+
         }
+        setSelectedColor(availableColors.get(0));
     }
 
     private void OnTimeUpdate() {

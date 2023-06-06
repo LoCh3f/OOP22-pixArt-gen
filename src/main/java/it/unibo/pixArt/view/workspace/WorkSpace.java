@@ -63,15 +63,10 @@ public class WorkSpace extends AbstractFXView {
         this.getWorkSpaceController().setFirstFrame();
         this.getWorkSpaceController().selectTool("PENCIL", colorPicker.getValue(), (int) toolSizeSlider.getValue());//select the default tool.
 
-        this.frames.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                getWorkSpaceController().setCurrentFrame(frames.getSelectionModel().getSelectedIndex());
-                updateView(getWorkSpaceController().getCurrentFrame());
-                updateHistoryFrames();
-            }
-            
+        this.frames.setOnMouseClicked(event -> {
+            getWorkSpaceController().setCurrentFrame(frames.getSelectionModel().getSelectedIndex());
+            updateView(getWorkSpaceController().getCurrentFrame());
+            updateHistoryFrames();
         });
 
         /*Init toolBox and toolSizeSlider, add event listeners.*/

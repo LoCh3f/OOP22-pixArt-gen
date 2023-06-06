@@ -19,7 +19,6 @@ public class TesterLogic implements Logic {
     }
 
     public String test(final Collection<Pixel> userGrid,final Collection<Pixel> solutionGrid) {
-        System.out.println(this.gridMirror.getDifference(solutionGrid,userGrid));
         return templatePath(this.gridMirror.getDifference(solutionGrid, userGrid).size());
     }
 
