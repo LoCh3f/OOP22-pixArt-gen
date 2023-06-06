@@ -21,6 +21,7 @@ import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
@@ -127,6 +128,7 @@ public class GameView extends AbstractFXView {
                 incredibleView.setImage(new Image(tester.test(new GridPaneParser().apply(parallelGrid),
                         getGameController().getModel().getProject().getAllFrames().get(0).getPixels())));
             }));
+
 
             secondStage.show();
 

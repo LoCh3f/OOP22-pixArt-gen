@@ -5,8 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
-import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLOR;
-import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
 
 public class PixelsPane extends GridPane {
 
@@ -26,7 +25,7 @@ public class PixelsPane extends GridPane {
             for (int j = 0; j < columns; j++) {
                 final var b = new Button();
                 b.setOnAction(e);
-                b.setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+                b.setStyle(FX_BACKGROUND_COLOR_START + "grey" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
                 b.prefWidthProperty().bind(this.widthProperty().divide(columns));
                 b.prefHeightProperty().bind(this.heightProperty().divide(rows));
                 b.setMinSize(Double.MIN_VALUE, Double.MIN_VALUE);
