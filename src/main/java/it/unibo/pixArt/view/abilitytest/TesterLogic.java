@@ -24,7 +24,7 @@ public class TesterLogic implements Logic {
 
 
     private String templatePath(final int difference) {
-        if(difference == TesterEnum.VERY_GOOD.getLimit()) {
+        if(difference < TesterEnum.VERY_GOOD.getLimit()) {
             return TesterEnum.VERY_GOOD.getPath();
         } else if (difference < TesterEnum.GOOD.getLimit()) {
             return  TesterEnum.GOOD.getPath();

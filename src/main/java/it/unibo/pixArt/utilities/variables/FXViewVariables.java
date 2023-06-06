@@ -4,7 +4,7 @@ import java.io.File;
 
 public class FXViewVariables {
 
-    public static final String BACKGROUND_COLOR = "-fx-background-color:black";
+    public static final String FX_BORDER_COLOR = "-fx-border-color:black";
 
     public static final String FX_BACKGROUND_COLOR_START = "-fx-background-color:";
 
@@ -24,15 +24,6 @@ public class FXViewVariables {
 
     public static final String MAIN_LOGO = "mainLogo.png";
 
-    public static final String SONIC_IMAGE = "sonic.jpg";
-
-    public static final String FLOPPY_BIRD = "floppyBird.jpg";
-
-    public static final String HOMER_IMAGE = "homer.jpg";
-
-    public static final String TOAD_IMAGE = "toad.png";
-
-    public static final String FX_BORDER_COLOR = "-fx-border-color:black";
 
 
 }

@@ -14,6 +14,7 @@ import it.unibo.pixArt.utilities.parser.GridPaneParser;
 import it.unibo.pixArt.utilities.parser.PixelsParser;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.abilitytest.Logic;
+import it.unibo.pixArt.view.abilitytest.TesterEnum;
 import it.unibo.pixArt.view.abilitytest.TesterLogic;
 import it.unibo.pixArt.view.components.PixelsPane;
 import it.unibo.pixArt.view.components.StageDistribution;
@@ -111,7 +112,7 @@ public class GameView extends AbstractFXView {
             final var root = new HBox();
             secondStage = new StageDistribution
                     .ParallelStage(root,"AbilityTester",new Image(IMAGE_PATH + MAIN_ICON));
-            final var incredibleView = new ImageView(IMAGE_PATH + IMAGE_VERY_BAD);
+            final var incredibleView = new ImageView(TesterEnum.VERY_GOOD.getPath());
             final var parallelGrid = new PixelsPane.GridPaneBuilder()
                     .setColumns(center.getColumnCount()).setRows(center.getRowCount())
                     .setAction(event -> {

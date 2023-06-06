@@ -4,13 +4,13 @@ import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
 
 public enum TesterEnum {
 
-    VERY_GOOD(0, IMAGE_PATH + IMAGE_VERY_GOOD),
+    VERY_GOOD(10, IMAGE_PATH + IMAGE_VERY_GOOD),
 
-    GOOD(10,IMAGE_PATH + IMAGE_GOOD),
+    GOOD(64,IMAGE_PATH + IMAGE_GOOD),
 
-    BAD(30,IMAGE_PATH + IMAGE_BAD),
+    BAD(128,IMAGE_PATH + IMAGE_BAD),
 
-    VERY_BAD(30,IMAGE_PATH + IMAGE_VERY_BAD);
+    VERY_BAD(128,IMAGE_PATH + IMAGE_VERY_BAD);
 
     private final String path;
 
