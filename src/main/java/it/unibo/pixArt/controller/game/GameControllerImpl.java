@@ -6,6 +6,7 @@ import java.util.Set;
 import it.unibo.pixArt.controller.SimpleController;
 import it.unibo.pixArt.model.colorstack.ColorStack;
 import it.unibo.pixArt.model.colorstack.ColorStackImpl;
+import it.unibo.pixArt.model.game.GameType;
 import it.unibo.pixArt.model.grid.PixelMatrix;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
@@ -67,5 +68,10 @@ public class GameControllerImpl extends SimpleController implements GameControll
     @Override
     public void setIsDrawing() {
         this.isDrawing = !this.isDrawing;
+    }
+
+    @Override
+    public GameType getType() {
+        return getModel().getGame().getGameType();
     }
 }

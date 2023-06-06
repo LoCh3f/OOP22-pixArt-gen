@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Set;
 
 import it.unibo.pixArt.controller.Controller;
+import it.unibo.pixArt.model.game.GameType;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.timer.GameTimer;
 import javafx.scene.paint.Color;
@@ -57,4 +58,9 @@ public interface GameController extends Controller{
      * Sets the value of the isDrawing flag.
      */
     void setIsDrawing();
+
+    /**
+     * @return the type of the game
+     */
+    GameType getType();
 }
