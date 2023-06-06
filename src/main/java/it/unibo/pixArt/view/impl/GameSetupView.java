@@ -52,17 +52,17 @@ public class GameSetupView extends AbstractFXView {
         this.projectsList.getItems().addAll(getGameSetupController().getProjects()
                                     .stream()
                                     .map(e -> new ImageView(new Image(e)))
-                                    .toList());
+                                    .collect(Collectors.toList()));
 
         this.timerChoiceBox.getItems().addAll(getGameSetupController().getTimers()
                                         .stream()
                                         .map(TimerType::getDescription)
-                                        .toList());
+                                        .collect(Collectors.toList()));
 
         this.typeChoiceBox.getItems().addAll(getGameSetupController().getGameTypes()
                                             .stream()
                                             .map(GameType::getName)
-                                            .toList());
+                                            .collect(Collectors.toList()));
         this.typeChoiceBox.getSelectionModel().selectedIndexProperty().addListener( new ChangeListener<Number>() {
 
             @Override
