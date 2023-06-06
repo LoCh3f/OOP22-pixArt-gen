@@ -9,8 +9,7 @@ import java.util.Collection;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLOR;
-import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
 
 /**
  * This Class help to convert a GridPane in a Collection of Pixel.
@@ -26,6 +25,6 @@ public class GridPaneParser implements Function<GridPane, Collection<Pixel>> {
     }
 
     private Color parseButtonBackGround(final String style) {
-        return Color.web(style.replace(FX_BORDER_COLOR, "").replace(";", "").replace(FX_BORDER_WIDTH, ""));
+        return Color.web(style.replace(FX_BACKGROUND_COLOR_START,"").replace(":","").replace(FX_BORDER_COLOR, "").replace(";", "").replace(FX_BORDER_WIDTH, ""));
     }
 }
