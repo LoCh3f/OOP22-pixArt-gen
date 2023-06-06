@@ -13,19 +13,25 @@ class GenericMirrorTest {
 
     private final static Mirror<Pixel> PIXEL_MIRROR = new GenericMirror<>();
 
+    private static final int SIZE_EXPECTED = 3;
     @Test
     void getDifference() {
         final var mirror = PIXEL_MIRROR.getDifference(
                 List.of(new PixelBuilder.PxlBuilder().setX(1).setY(1).build(),
-                        new PixelBuilder.PxlBuilder().setX(2).setY(2).build()),
+                        new PixelBuilder.PxlBuilder().setX(2).setY(2).build(),
+                        new PixelBuilder.PxlBuilder().setX(3).setY(3).build(),
+                        new PixelBuilder.PxlBuilder().setX(4).setY(4).build(),
+                        new PixelBuilder.PxlBuilder().setX(5).setY(5).build()),
                 List.of(new PixelBuilder.PxlBuilder().setX(3).setY(3).build(),
-                        new PixelBuilder.PxlBuilder().setX(4).setY(4).build()));
+                        new PixelBuilder.PxlBuilder().setX(4).setY(4).build(),
+                        new PixelBuilder.PxlBuilder().setX(6).setY(6).build(),
+                        new PixelBuilder.PxlBuilder().setX(7).setY(7).build(),
+                        new PixelBuilder.PxlBuilder().setX(8).setY(8).build()));
 
-        assertEquals(2, mirror.size());
-        assertTrue(mirror.stream().toList().get(0).comparePixel(
-                new PixelBuilder.PxlBuilder().setX(1).setY(1).build()));
 
-        assertNotEquals(mirror.stream().toList().get(0),
-                new PixelBuilder.PxlBuilder().setX(1).setY(1).setColor(Color.ALICEBLUE).build());
+        assertEquals(SIZE_EXPECTED, mirror.size());
+        assertTrue(mirror.stream().anyMatch(p -> p.equals(new PixelBuilder.PxlBuilder().setX(1).setY(1).build())));
+        assertTrue(mirror.stream().anyMatch(p -> p.equals(new PixelBuilder.PxlBuilder().setX(5).setY(5).build())));
+        assertTrue(mirror.stream().anyMatch(p -> p.equals(new PixelBuilder.PxlBuilder().setX(2).setY(2).build())));
     }
 }

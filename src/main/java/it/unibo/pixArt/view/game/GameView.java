@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.game.GameController;
 import it.unibo.pixArt.model.game.GameType;
+import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.timer.TimerThread;
 
 
