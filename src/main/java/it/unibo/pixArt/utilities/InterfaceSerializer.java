@@ -2,7 +2,12 @@ package it.unibo.pixArt.utilities;
 
 import java.lang.reflect.Type;
 
-import com.google.gson.*;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+
 
 final class InterfaceSerializer<T> implements JsonSerializer<T>, JsonDeserializer<T> {
 
