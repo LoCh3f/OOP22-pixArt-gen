@@ -4,6 +4,8 @@ import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.game.GameSetupController;
 import it.unibo.pixArt.model.game.GameImpl;
+import it.unibo.pixArt.model.game.GameType;
+import it.unibo.pixArt.model.timer.TimerType;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.PageLoader;
 import it.unibo.pixArt.view.pages.Pages;
@@ -47,17 +49,17 @@ public class GameSetupView extends AbstractFXView {
         this.projectsList.getItems().addAll(getGameSetupController().getProjects()
                                     .stream()
                                     .map(e -> new ImageView(new Image(e)))
-                                    .collect(Collectors.toList()));
+                                    .toList());
 
         this.timerChoiceBox.getItems().addAll(getGameSetupController().getTimers()
                                         .stream()
-                                        .map(e -> e.getDescription())
-                                        .collect(Collectors.toList()));
+                                        .map(TimerType::getDescription)
+                                        .toList());
 
         this.typeChoiceBox.getItems().addAll(getGameSetupController().getGameTypes()
                                             .stream()
-                                            .map(e -> e.getName())
-                                            .collect(Collectors.toList()));   
+                                            .map(GameType::getName)
+                                            .toList());
                                                 
         this.timerChoiceBox.setValue(getGameSetupController().getTimers().get(0).getDescription());
         this.typeChoiceBox.setValue(getGameSetupController().getGameTypes().get(0).getName());
