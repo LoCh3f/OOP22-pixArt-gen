@@ -24,15 +24,29 @@ public class TesterLogic implements Logic {
 
 
     private String templatePath(final int difference) {
-        if(difference < TesterEnum.VERY_GOOD.getLimit()) {
+        if(difference == TesterEnum.VERY_GOOD.getLimit()) {
             return TesterEnum.VERY_GOOD.getPath();
-        } else if (difference < TesterEnum.GOOD.getLimit()) {
+        }
+        else if (difference < TesterEnum.GOOD.getLimit()) {
             return  TesterEnum.GOOD.getPath();
-        } else if (difference < TesterEnum.BAD.getLimit()) {
+        }
+        else if (difference < TesterEnum.TRY_BETTER.getLimit()) {
+            return TesterEnum.TRY_BETTER.getPath();
+        }
+        else if (difference < TesterEnum.BAD.getLimit()) {
             return TesterEnum.BAD.getPath();
-        } else  {
+        }
+        else if (difference < TesterEnum.VERY_BAD.getLimit())  {
             return TesterEnum.VERY_BAD.getPath();
         }
+        else if (difference < TesterEnum.TOO_MUCH.getLimit()) {
+            return TesterEnum.TOO_MUCH.getPath();
+        }
+        else {
+            return TesterEnum.WASTED.getPath();
+        }
+
+
 
     }
 

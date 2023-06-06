@@ -24,6 +24,11 @@ public class FXViewVariables {
 
     public static final String MAIN_LOGO = "mainLogo.png";
 
+    public static final String IMAGE_TOO_MUCH = "tooMuchBad.jpg";
+
+    public static final String IMAGE_TRY_BETTER = "tryBetter.jpg";
+
+    public static final String IMAGE_WASTED = "wasted.jpg";
 
 
 }
