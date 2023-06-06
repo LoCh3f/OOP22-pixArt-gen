@@ -113,14 +113,15 @@ public class GameView extends AbstractFXView {
             final var root = new HBox();
             secondStage = new StageDistribution
                     .ParallelStage(root,"AbilityTester",new Image(IMAGE_PATH + MAIN_ICON));
-            final var incredibleView = new ImageView(TesterEnum.VERY_GOOD.getPath());
             final var parallelGrid = new PixelsPane.GridPaneBuilder()
                     .setColumns(center.getColumnCount()).setRows(center.getRowCount())
                     .setAction(event -> {
                                 final var b = (Button) event.getSource();
                                 b.setStyle(new PixelsParser().parseColor(selectedColor));
                     }).setGridLinesVisible(true).build();
-            root.getChildren().add(0,incredibleView);
+            final var incredibleView = new ImageView(new Image(tester.test(new GridPaneParser().apply(parallelGrid),
+                    getGameController().getModel().getProject().getAllFrames().get(0).getPixels())));
+                    root.getChildren().add(0,incredibleView);
             root.getChildren().add(1,parallelGrid);
             incredibleView.fitHeightProperty().bind(root.heightProperty());
             incredibleView.fitWidthProperty().bind(root.widthProperty().divide(2));
