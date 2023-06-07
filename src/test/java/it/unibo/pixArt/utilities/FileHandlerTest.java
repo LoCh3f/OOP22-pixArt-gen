@@ -26,7 +26,7 @@ import it.unibo.pixArt.model.project.ProjectImpl;
 import it.unibo.pixArt.model.project.builder.ProjectBuilderImpl;
 
 public class FileHandlerTest {
-    private static final Project TEST_PROJECT = new ProjectBuilderImpl().fileType(FileTypes.JPEG.toString()).frames(16)
+    private static final Project PROJECT = new ProjectBuilderImpl().fileType(FileTypes.JPEG.toString()).frames(16)
                             .path(System.getProperty("user.home")).projectName("Test").build();
     private Gson gson = new GsonBuilder()
                         .registerTypeAdapter(Project.class, InterfaceSerializer.interfaceSerializer(ProjectImpl.class))
@@ -36,22 +36,23 @@ public class FileHandlerTest {
                         .registerTypeAdapter(HistoryFrame.class, InterfaceSerializer.interfaceSerializer(HistoryFrameImpl.class))
                         .create();
     @Test
-    void initProjectFolderTest(){
+    void initProjectFolderTest() {
         File testFolder = new File(System.getProperty("user.home") + File.separatorChar + "testFolder");
         assertTrue(FileHandler.getInstance().initProjectFolder(testFolder.getAbsolutePath()));
         testFolder.delete();
     }
 
     @Test
-    void fromJsonToProjectTest() throws IOException{
-        FileWriter testFileWriter = new FileWriter(new File(TEST_PROJECT.getPath() + File.separatorChar + TEST_PROJECT.getName() + ".json"));
-        testFileWriter.write(gson.toJson(TEST_PROJECT));
+    void fromJsonToProjectTest() throws IOException {
+        FileWriter testFileWriter = new FileWriter(new File(PROJECT.getPath() + File.separatorChar + PROJECT.getName() + ".json"));
+        testFileWriter.write(gson.toJson(PROJECT));
         testFileWriter.flush();
         testFileWriter.close();
-        Project p = FileHandler.getInstance().fromJsonToProject(new File(TEST_PROJECT.getPath() + File.separatorChar + TEST_PROJECT.getName() + ".json"));
-        assertEquals(TEST_PROJECT.getName(), p.getName());
-        assertEquals(TEST_PROJECT.getPath(), p.getPath());
-        assertEquals(TEST_PROJECT.getFileType(), p.getFileType());
+        Project p = FileHandler.getInstance()
+                    .fromJsonToProject(new File(PROJECT.getPath() + File.separatorChar + PROJECT.getName() + ".json"));
+        assertEquals(PROJECT.getName(), p.getName());
+        assertEquals(PROJECT.getPath(), p.getPath());
+        assertEquals(PROJECT.getFileType(), p.getFileType());
     }
 
 }
