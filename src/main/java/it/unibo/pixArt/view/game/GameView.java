@@ -190,7 +190,6 @@ public class GameView extends AbstractFXView {
         return String.format("%02d:%02d", (int) minutes, (int) seconds);
     }
 
-    /*Try to use streams */
     private List<Button> createColorPane() {
         this.availableColors = getGameController().getColorStack().entrySet()
                 .stream()
@@ -229,7 +228,7 @@ public class GameView extends AbstractFXView {
     }
 
     private void setPixelsLeft() {
-        final String numPixelsLeft = Integer.valueOf(this.getGameController().getColorStack().get(this.selectedColor).size()).toString();
+        final String numPixelsLeft = Integer.valueOf(this.getGameController().getColorStack().get(this.selectedColor).size()  - 1).toString();
         this.pixelsField.setText("Pixels left: " + numPixelsLeft);
     }
 

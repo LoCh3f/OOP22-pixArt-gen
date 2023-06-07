@@ -9,18 +9,18 @@ import it.unibo.pixArt.model.timer.GameTimer;
 import it.unibo.pixArt.model.timer.GameTimerImpl;
 
 public class GameTest {
-    private static GameType GAME_TYPE = GameType.MIRROR;
-    private static GameTimer GAME_TIMER = new GameTimerImpl(100);
-    private final static Game TEST_GAME = new GameBuilderImpl().gameType(GAME_TYPE).gameTimer(GAME_TIMER).build();
+    private static GameType gameType = GameType.MIRROR;
+    private static GameTimer gameTimer = new GameTimerImpl(100);
+    private final Game testGame = new GameBuilderImpl().gameType(gameType).gameTimer(gameTimer).build();
 
     @Test
-    void getGameTimer(){
-        assertEquals(GAME_TIMER, TEST_GAME.getGameTimer());
+    void getGameTimer() {
+        assertEquals(gameTimer, testGame.getGameTimer());
     }
 
     @Test
-    void getGameType(){
-        assertEquals(GAME_TYPE, TEST_GAME.getGameType());
+    void getGameType() {
+        assertEquals(gameType, testGame.getGameType());
     }
 }
 
