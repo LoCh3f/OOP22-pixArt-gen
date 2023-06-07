@@ -27,16 +27,16 @@ public final class UserDataStorageImpl implements UserDataStorage {
     private static final String USERDATAPATH = System.getProperty("user.home") + FILESEPARATOR + "userData"; 
     private static final String USERDATAFILE = "users.json";
 
-    private Type userListType = new TypeToken<List<UserImpl>>() { }.getType();
+    private final Type userListType = new TypeToken<List<UserImpl>>() { }.getType();
     private List<User> userList;
-    private Charset charset = StandardCharsets.UTF_8;
+    private final Charset charset = StandardCharsets.UTF_8;
 
     private void createJsonFile() throws IOException {
         if (Files.notExists(Path.of(USERDATAPATH))) {
             Files.createDirectory(Path.of(USERDATAPATH));
         }
         JsonArray obj = new JsonArray();
-        File file = new File((USERDATAPATH) + FILESEPARATOR + USERDATAFILE);
+        final File file = new File(USERDATAPATH + FILESEPARATOR + USERDATAFILE);
         if (!file.exists()) {
             try (FileWriter fw = new FileWriter(file)) {
                 fw.write(obj.toString());
@@ -49,8 +49,8 @@ public final class UserDataStorageImpl implements UserDataStorage {
     private void load() throws IOException {
         if (userList == null) {
             this.createJsonFile();
-            Gson gson = new Gson();
-            String json = new String(Files.readString(Path.of(USERDATAPATH + FILESEPARATOR + USERDATAFILE), charset));
+            final Gson gson = new Gson();
+            final String json = new String(Files.readString(Path.of(USERDATAPATH + FILESEPARATOR + USERDATAFILE), charset));
             userList = gson.fromJson(json, userListType);
             if (userList == null) {
                 userList = new LinkedList<>();
@@ -60,8 +60,8 @@ public final class UserDataStorageImpl implements UserDataStorage {
 
     private void update() throws IOException {
         this.load();
-        Gson gson = new Gson();
-        String json = gson.toJson(userList, userListType);
+        final Gson gson = new Gson();
+        final String json = gson.toJson(userList, userListType);
         Files.deleteIfExists(Path.of(USERDATAPATH + FILESEPARATOR + USERDATAFILE));
         this.createJsonFile();
         Files.writeString(Path.of(USERDATAPATH + FILESEPARATOR + USERDATAFILE), json, charset, StandardOpenOption.CREATE);
