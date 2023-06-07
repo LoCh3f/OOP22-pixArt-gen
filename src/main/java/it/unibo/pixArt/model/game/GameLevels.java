@@ -37,7 +37,8 @@ public enum GameLevels {
 
     private String fileInput() throws IOException{
         InputStream inputStream = this.getClass().getResourceAsStream(this.pathToFile);
-        File tempFile = new File(System.getProperty("user.home") + "/tempGame.json");
+        new File(System.getProperty("user.home") + File.separatorChar + "PixArtDatas").mkdir();
+        File tempFile = new File(System.getProperty("user.home") + "/PixArtDatas/tempGame.json");
         
         OutputStream outputStream = new FileOutputStream(tempFile);
         byte[] buffer = new byte[2048];

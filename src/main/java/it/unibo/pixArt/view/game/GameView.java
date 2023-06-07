@@ -229,7 +229,7 @@ public class GameView extends AbstractFXView {
     }
 
     private void setPixelsLeft() {
-        final String numPixelsLeft = Integer.valueOf(this.getGameController().getColorStack().get(this.selectedColor).size()).toString();
+        final String numPixelsLeft = Integer.valueOf(this.getGameController().getColorStack().get(this.selectedColor).size()  - 1).toString();
         this.pixelsField.setText("Pixels left: " + numPixelsLeft);
     }
 
