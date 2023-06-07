@@ -37,6 +37,7 @@ public class GameSetupView extends AbstractFXView {
     private void onStartClicked() {
         this.getGameSetupController().setTimer(timerChoiceBox.getValue());
         this.getGameSetupController().setProject(projectsList.getSelectionModel().getSelectedIndex());
+        this.getGameSetupController().setGameType(this.typeChoiceBox.getSelectionModel().getSelectedItem());
         this.getGameSetupController().setGame();
         PageLoader.getInstance().switchPage(getStage(), Pages.GAMEVIEW, this.getController().getModel());
     }
@@ -67,7 +68,7 @@ public class GameSetupView extends AbstractFXView {
 
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                gameDescription.setText(getGameSetupController().getGameTypes().get((Integer)newValue).getDescription());
+                gameDescription.setText(getGameSetupController().getGameTypes().get(typeChoiceBox.getSelectionModel().getSelectedIndex()).getDescription());
             }
             
         });
@@ -77,6 +78,7 @@ public class GameSetupView extends AbstractFXView {
         this.gameDescription.setText(getGameSetupController().getGameTypes().get(0).getDescription());
         this.gameDescription.setWrapText(true);
         this.projectsList.getSelectionModel().select(0);
+        System.out.println(typeChoiceBox.getSelectionModel().getSelectedItem());
     }
 
     private GameSetupController getGameSetupController() {
