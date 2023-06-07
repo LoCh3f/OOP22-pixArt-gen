@@ -25,7 +25,7 @@ public class PixelsPane extends GridPane {
             for (int j = 0; j < columns; j++) {
                 final var b = new Button();
                 b.setOnAction(e);
-                b.setStyle(FX_BACKGROUND_COLOR_START + "grey" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
+                b.setStyle(FX_BACKGROUND_COLOR_START + "white" + ";" + FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
                 b.prefWidthProperty().bind(this.widthProperty().divide(columns));
                 b.prefHeightProperty().bind(this.heightProperty().divide(rows));
                 b.setMinSize(Double.MIN_VALUE, Double.MIN_VALUE);
