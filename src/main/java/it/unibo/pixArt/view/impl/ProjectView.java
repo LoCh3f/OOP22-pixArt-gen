@@ -24,7 +24,7 @@ public class ProjectView extends AbstractFXView {
 
     @FXML
     private ListView<String> listView = new ListView<>();
-    private String selectedFolder;
+    private String selFolder;
 
     @Override
     public void init() {
@@ -35,20 +35,20 @@ public class ProjectView extends AbstractFXView {
 
         MultipleSelectionModel<String> selModel = listView.getSelectionModel();
         selModel.selectedItemProperty().addListener(new ChangeListener<String>() {
-            public void changed(ObservableValue<? extends String> changed, String oldVal, String newVal) {
-                selectedFolder = listView.getSelectionModel().getSelectedItems().toString();
+            public void changed(ObservableValue<? extends String> changed, final String oldVal, final String newVal) {
+                selFolder = listView.getSelectionModel().getSelectedItems().toString();
             }
         });
     }
 
-    public void onHomeClick(final ActionEvent event){
+    public void onHomeClick(final ActionEvent event) {
         PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
     }
 
-    public void onEditClick(final ActionEvent event){
-        if(selectedFolder != null){
+    public void onEditClick(final ActionEvent event) {
+        if (selFolder != null) {
             try {
-                Project project = FileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selectedFolder)));
+                Project project = FileHandler.getInstance().fromJsonToProject(new File(getJsonPath(selFolder)));
                 this.getController().getModel().setProject(project);
                 PageLoader.getInstance().switchPage(getStage(), Pages.WORKSPACE, this.getController().getModel());
             } catch (IOException e) {
@@ -57,29 +57,31 @@ public class ProjectView extends AbstractFXView {
         }
     }
 
-    public void onDeleteClick(ActionEvent event){
-        if(selectedFolder != null){
+    public void onDeleteClick(final ActionEvent event) {
+        if (selFolder != null) {
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Delete File");
-            alert.setHeaderText("Are you sure to delete"+ selectedFolder.replace('[', ' ').substring(0, selectedFolder.length()-1) + "?");
+            alert.setHeaderText("Are you sure to delete" + selFolder.replace('[', ' ')
+                                .substring(0, selFolder.length() - 1) + "?");
             Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){ 
-                FileHandler.getInstance().deleteFile(getDirPath(selectedFolder));
-                init();  
+            if (result.get() == ButtonType.OK) { 
+                FileHandler.getInstance().deleteFile(getDirPath(selFolder));
+                init();
             }
         }
     }
 
-    private String getDirPath(String file){
-        return this.getController().getModel().getUser().getPathToFile() + file.replace('[', File.separatorChar).substring(0, file.length()-1);
+    private String getDirPath(String file) {
+        return this.getController().getModel().getUser().getPathToFile() + file.replace('[', File.separatorChar)
+                .substring(0, file.length()-1);
     }
 
-    private String getJsonPath(String file){
-        return getDirPath(file) + file.replace('[', File.separatorChar).substring(0, file.length()-1) + ".json";
+    private String getJsonPath(final String file) {
+        return getDirPath(file) + file.replace('[', File.separatorChar).substring(0, file.length() - 1) + ".json";
     }
 
-    private boolean checkIfJsonInFolder(File folder){
+    private boolean checkIfJsonInFolder(final File folder) {
         return Stream.of(folder.listFiles()).anyMatch(f -> f.getAbsolutePath()
-                .equals(folder.getAbsolutePath() + File.separatorChar + folder.getName()+ ".json"));
+                .equals(folder.getAbsolutePath() + File.separatorChar + folder.getName() + ".json"));
     }
 }

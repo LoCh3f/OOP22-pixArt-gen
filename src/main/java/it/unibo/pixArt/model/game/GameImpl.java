@@ -6,7 +6,7 @@ public class GameImpl implements Game {
     private GameType gameType;
     private GameTimer gameTimer;
 
-    public GameImpl(GameType gameType, GameTimer gameTimer){
+    public GameImpl(final GameType gameType, final GameTimer gameTimer) {
         this.gameTimer = gameTimer;
         this.gameType = gameType;
     }
@@ -19,5 +19,5 @@ public class GameImpl implements Game {
     @Override
     public GameTimer getGameTimer() {
         return this.gameTimer;
-    }    
+    }
 }
