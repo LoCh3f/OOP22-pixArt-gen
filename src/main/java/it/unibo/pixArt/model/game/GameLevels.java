@@ -1,13 +1,18 @@
 package it.unibo.pixArt.model.game;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public enum GameLevels {
 
-    SKULL("src/main/resources/games/Skull/Skull.json", "/games/Skull/Skull0.png"),
-    SHREK("src/main/resources/games/Shrek/Shrek.json", "/games/Shrek/Shrek0.png");
+    SKULL("/games/Skull/Skull.json", "/games/Skull/Skull0.png"),
+    SHREK("/games/Shrek/Shrek.json", "/games/Shrek/Shrek0.png");
 
     private String pathToFile;
     private String pathToImg;
@@ -17,8 +22,8 @@ public enum GameLevels {
         this.pathToImg = pathToImg;
     }
 
-    public String getPathToFile() {
-        return this.pathToFile;
+    public String getPathToFile() throws IOException {
+        return fileInput();
     }
 
     public String getPathToImg() {
@@ -27,5 +32,29 @@ public enum GameLevels {
 
     public static List<GameLevels> getAllLevels() {
         return Stream.of(values()).collect(Collectors.toList());
+    }
+
+    private String fileInput() throws IOException{
+        InputStream inputStream = this.getClass().getResourceAsStream(this.pathToFile);
+        File tempFile = File.createTempFile("temp", ".json");
+        
+        if(inputStream == null){
+            System.out.println("inputstream null");
+        }
+        OutputStream outputStream = new FileOutputStream(tempFile);
+        byte[] buffer = new byte[2048];
+        int bytesRead;
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+
+        outputStream.close();
+        inputStream.close();
+        return tempFile.getAbsolutePath();
+    }
+
+    private void delete(String path) {
+        new File(path).delete();
+
     }
 }

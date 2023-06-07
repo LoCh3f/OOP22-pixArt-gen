@@ -83,8 +83,8 @@ public class GameView extends AbstractFXView {
 
     @Override
     public void init() {
-
         this.getGameController().setColorStack();
+
         final GridPane center = new PixelsPane.GridPaneBuilder()
                 .setColumns(this.getGameController().getFrameSize())
                 .setRows(this.getGameController().getFrameSize())
@@ -112,7 +112,6 @@ public class GameView extends AbstractFXView {
             this.getGameController().getTimer().start();
             new TimerThread(this.getGameController().getTimer(), this::onTimeFinish, this::OnTimeUpdate).start();
             associateButton(center);
-
         } else {
             tester = new TesterLogic();
             final var root = new HBox();
