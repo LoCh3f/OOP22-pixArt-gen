@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+
 public enum GameLevels {
 
     SKULL("/games/Skull/Skull.json", "/games/Skull/Skull0.png"),
@@ -36,11 +37,9 @@ public enum GameLevels {
 
     private String fileInput() throws IOException{
         InputStream inputStream = this.getClass().getResourceAsStream(this.pathToFile);
-        File tempFile = File.createTempFile("temp", ".json");
+        new File(System.getProperty("user.home") + File.separatorChar + "PixArtDatas").mkdir();
+        File tempFile = new File(System.getProperty("user.home") + "/PixArtDatas/tempGame.json");
         
-        if(inputStream == null){
-            System.out.println("inputstream null");
-        }
         OutputStream outputStream = new FileOutputStream(tempFile);
         byte[] buffer = new byte[2048];
         int bytesRead;
@@ -51,10 +50,5 @@ public enum GameLevels {
         outputStream.close();
         inputStream.close();
         return tempFile.getAbsolutePath();
-    }
-
-    private void delete(String path) {
-        new File(path).delete();
-
     }
 }

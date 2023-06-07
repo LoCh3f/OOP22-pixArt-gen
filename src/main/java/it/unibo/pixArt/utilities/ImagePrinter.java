@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class ImagePrinter {
+public final class ImagePrinter {
 
     private int imageSize;
 
@@ -36,21 +36,22 @@ public class ImagePrinter {
     /**
      * Print all the frames of the project
      * @param project The project that need to be printed
+     * @param scale The scale of the image
      */
-    public void printAllFrames(Project project, int scale) {
+    public void printAllFrames(final Project project, final int scale) {
 
         this.imageSize = project.getAllFrames().get(0).getColumns();
         WritableImage wImg = new WritableImage(imageSize, imageSize);
         PixelWriter pWriter = wImg.getPixelWriter();
 
         for (int count = 0; count < project.getAllFrames().size(); count++) {
-            
-            for (int x = 0; x < imageSize; x++){
-                for (int y = 0; y < imageSize; y++){
-                    for(var p : project.getAllFrames().get(count).getPixels()){
-                        if(new Pair<Integer, Integer>(x, y).equals(p.getPosition())){
+
+            for (int x = 0; x < imageSize; x++) {
+                for (int y = 0; y < imageSize; y++) {
+                    for (var p : project.getAllFrames().get(count).getPixels()) {
+                        if (new Pair<Integer, Integer>(x, y).equals(p.getPosition())) {
                             Color color = p.getColor();
-                            pWriter.setColor(x, y, color);              
+                            pWriter.setColor(x, y, color);
                         }
                     }
                 }
