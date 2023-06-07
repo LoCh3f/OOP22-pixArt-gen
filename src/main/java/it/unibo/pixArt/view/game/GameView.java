@@ -175,7 +175,6 @@ public class GameView extends AbstractFXView {
         return String.format("%02d:%02d", (int) minutes, (int) seconds);
     }
 
-    /*Try to use streams */
     private List<Button> createColorPane() {
         this.availableColors = getGameController().getColorStack().entrySet()
                 .stream()
