@@ -24,7 +24,7 @@ import com.google.gson.reflect.TypeToken;
 public final class UserDataStorageImpl implements UserDataStorage {
 
     private static final char FILESEPARATOR = File.separatorChar;
-    private static final String USERDATAPATH = System.getProperty("user.home") + FILESEPARATOR + "PixArtDatas" + FILESEPARATOR + "userData"; 
+    private static final String USERDATAPATH = System.getProperty("user.home") + FILESEPARATOR + "userData"; 
     private static final String USERDATAFILE = "users.json";
 
     private Type userListType = new TypeToken<List<UserImpl>>() { }.getType();
