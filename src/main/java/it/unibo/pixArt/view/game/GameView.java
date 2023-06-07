@@ -108,7 +108,7 @@ public class GameView extends AbstractFXView {
             }
         });
 
-        if (getGameController().getType() != GameType.COLORBOOK) {
+        if (getGameController().getType() == GameType.COLORBOOK) {
             this.getGameController().getTimer().start();
             new TimerThread(this.getGameController().getTimer(), this::onTimeFinish, this::OnTimeUpdate).start();
             associateButton(center);
