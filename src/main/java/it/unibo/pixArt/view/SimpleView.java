@@ -1,7 +1,9 @@
 package it.unibo.pixArt.view;
 
 import it.unibo.pixArt.controller.Controller;
-
+/**
+ * doc.
+ */
 public class SimpleView implements View {
 
     private Controller controller;
@@ -19,7 +21,7 @@ public class SimpleView implements View {
      * {@inheritDoc}
      */
     @Override
-    public void setController(Controller controller) {
+    public void setController(final Controller controller) {
         this.controller = controller;
     }
 }

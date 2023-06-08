@@ -10,8 +10,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
-public class SceneManager {
+/**
+ * Class whose job is to switch between scenes,views and controllers. Inspired from PageLoader class from Jhaturanga.
+ */
+public final class SceneManager {
     private final static String PATH_START = "pages/";
 
     private final static String PATH_END = ".fxml";
