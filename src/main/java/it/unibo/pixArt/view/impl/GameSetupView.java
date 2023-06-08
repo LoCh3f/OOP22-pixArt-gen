@@ -3,13 +3,11 @@ package it.unibo.pixArt.view.impl;
 import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.game.GameSetupController;
-import it.unibo.pixArt.model.game.GameImpl;
 import it.unibo.pixArt.model.game.GameType;
 import it.unibo.pixArt.model.timer.TimerType;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
-import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;

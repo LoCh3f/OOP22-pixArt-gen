@@ -2,7 +2,6 @@ package it.unibo.pixArt.utilities.mirror;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

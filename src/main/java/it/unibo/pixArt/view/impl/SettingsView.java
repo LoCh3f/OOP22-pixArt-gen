@@ -1,6 +1,5 @@
 package it.unibo.pixArt.view.impl;
 
-import java.io.File;
 import it.unibo.pixArt.controller.settings.SettingsController;
 import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.view.AbstractFXView;

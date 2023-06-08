@@ -7,7 +7,6 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import it.unibo.pixArt.model.pixel.ImplPixel;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
 import it.unibo.pixArt.model.tool.AbstractTool;
