@@ -8,29 +8,30 @@ import it.unibo.pixArt.model.project.Project;
 public interface ProjectBuilder {
     /**
      * @param projectName
-     * @return
+     * @return the project's name.
      */
-    ProjectBuilder projectName(final String projectName);
+    ProjectBuilder projectName(String projectName);
 
     /**
      * @param path
-     * @return
+     * @return the project's path.
      */
-    ProjectBuilder path(final String path);
+    ProjectBuilder path(String path);
 
     /**
      * @param fileType
-     * @return
+     * @return the project's file type.
      */
-    ProjectBuilder fileType(final String fileType);
+    ProjectBuilder fileType(String fileType);
 
     /**
-     * @return
+     * @param size
+     * @return the project's matrix size.
      */
-    ProjectBuilder frames(final int size);
+    ProjectBuilder frames(int size);
 
     /**
-     * @return
+     * @return a new Project instance.
      */
     Project build();
 }
