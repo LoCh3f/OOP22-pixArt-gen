@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
-public class SettingsView extends AbstractFXView {
+public final class SettingsView extends AbstractFXView {
 
     @FXML
     private TextField projectName;
@@ -39,9 +39,9 @@ public class SettingsView extends AbstractFXView {
         /*
          * Create the project based on the values taken from the javafx components.
          */
-        this.getSettingsController().createProject(projectName.getText(),pathName.getText() + "/" + projectName.getText(),
-        fileFormat.getValue(),Integer.parseInt(sizeChoice.getValue()));
-        if(FileHandler.getInstance().initProjectFolder(this.getController().getModel().getProject().getPath())){
+        this.getSettingsController().createProject(projectName.getText(), pathName.getText() + "/" + projectName.getText(),
+        fileFormat.getValue(), Integer.parseInt(sizeChoice.getValue()));
+        if (FileHandler.getInstance().initProjectFolder(this.getController().getModel().getProject().getPath())) {
             SceneManager.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, this.getController().getModel());
         }
     }
