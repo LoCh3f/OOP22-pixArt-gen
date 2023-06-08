@@ -5,6 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -40,14 +43,8 @@ public enum GameLevels {
         new File(System.getProperty("user.home") + File.separatorChar + "PixArtDatas").mkdir();
         File tempFile = new File(System.getProperty("user.home") + "/PixArtDatas/tempGame.json");
         
-        OutputStream outputStream = new FileOutputStream(tempFile);
-        byte[] buffer = new byte[2048];
-        int bytesRead;
-        while ((bytesRead = inputStream.read(buffer)) != -1) {
-            outputStream.write(buffer, 0, bytesRead);
-        }
+        Files.copy(inputStream, tempFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-        outputStream.close();
         inputStream.close();
         return tempFile.getAbsolutePath();
     }
