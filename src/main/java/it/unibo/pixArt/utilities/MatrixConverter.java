@@ -9,11 +9,12 @@ import java.util.stream.Collectors;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 import javafx.scene.paint.Color;
+
 /*
  * A class that implements the Function interface, that takes a Set of Pixel(Set<Pixel>) and creates a Map where:
  *  Key->Color, Value -> Set<Pixel> (all the pixels with color = Key).
  */
-public class MatrixConverter implements Function<Set<Pixel>,Map<Color,Set<Pixel>>>  {
+public class MatrixConverter implements Function<Set<Pixel>, Map<Color, Set<Pixel>>>  {
     private final Map<Color, Set<Pixel>> colorMap = new HashMap<>();
 
     @Override
