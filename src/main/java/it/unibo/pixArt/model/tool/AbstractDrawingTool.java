@@ -23,7 +23,7 @@ public abstract class AbstractDrawingTool extends AbstractTool {
     }
 
     @Override
-    public Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame){
+    public Set<Pixel> updateGrid(final Pixel pixel, final Set<Pixel> frame) {
         final Set<Pixel> newPixSet = new HashSet<>();
         Pair<Integer, Integer> oppositePixPos = calculatePosition(pixel, getToolSize(), super.getFrameSize(frame));
 
@@ -36,7 +36,14 @@ public abstract class AbstractDrawingTool extends AbstractTool {
         return newPixSet;
     }
 
-    public abstract void updatePixel(final Set<Pixel> frame, final int x, final int y, final Set<Pixel> newPixSet);
+    /**
+     * @param frame pixel grid
+     * @param x 
+     * @param y
+     * @param newPixSet new set of pixel
+     * update the color of the pixel.
+     */
+    public abstract void updatePixel(Set<Pixel> frame, int x, int y, Set<Pixel> newPixSet);
 
     /**
      * @param p pixel 
