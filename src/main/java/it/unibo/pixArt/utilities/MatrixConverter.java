@@ -14,11 +14,11 @@ import javafx.scene.paint.Color;
  * A class that implements the Function interface, that takes a Set of Pixel(Set<Pixel>) and creates a Map where:
  *  Key->Color, Value -> Set<Pixel> (all the pixels with color = Key).
  */
-public class MatrixConverter implements Function<Set<Pixel>, Map<Color, Set<Pixel>>>  {
+public final class MatrixConverter implements Function<Set<Pixel>, Map<Color, Set<Pixel>>>  {
     private final Map<Color, Set<Pixel>> colorMap = new HashMap<>();
 
     @Override
-    public Map<Color,Set<Pixel>> apply(final Set<Pixel> pixels) {
+    public Map<Color, Set<Pixel>> apply(final Set<Pixel> pixels) {
         final List<Color> colors = pixels.stream().map(e -> e.getColor()).distinct().collect(Collectors.toList());
         for (var elem : colors) {
             final Set<Pixel> colorSet = pixels.stream().filter(e -> e.getColor().equals(elem)).collect(Collectors.toSet());

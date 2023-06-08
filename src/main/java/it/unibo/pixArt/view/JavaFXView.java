@@ -12,7 +12,7 @@ public interface JavaFXView extends View {
     /**
      * @param stage to set for this view
      */
-    void setStage(final Stage stage);
+    void setStage(Stage stage);
 
     void init();
 }
