@@ -1,16 +1,23 @@
 package it.unibo.pixArt.model;
 
-
 import it.unibo.pixArt.model.game.Game;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.user.User;
 import it.unibo.pixArt.model.user.UserImpl;
 
-public class ModelImpl implements Model {
+public final class ModelImpl implements Model {
     private Project project;
     private User user;
     private Game game;
 
+    /**
+     * Constructor for ModelImpl.
+     * @param name
+     * @param password
+     * @param path
+     * @param project
+     * @param game
+     */
     public ModelImpl(final String name, final String password, final String path, final Project project, final Game game) {
         this.user = new UserImpl(name, password, path);
         this.project = project;
@@ -33,7 +40,7 @@ public class ModelImpl implements Model {
     }
 
     @Override
-    public void setProject(Project project) {
+    public void setProject(final Project project) {
         this.project = project;
     }
 
@@ -43,7 +50,7 @@ public class ModelImpl implements Model {
     }
 
     @Override
-    public void setGame(Game game) {
+    public void setGame(final Game game) {
         this.game = game;
     }
 }
