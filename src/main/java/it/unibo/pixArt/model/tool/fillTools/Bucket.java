@@ -29,13 +29,13 @@ public final class Bucket extends AbstractTool {
             return Collections.emptySet(); 
         }
 
-        Map<Pair<Integer, Integer>, Pixel> frameMap = getFrameMap(frame);
-        Set<Pixel> newSet = new HashSet<>();
-        Queue<Pixel> queue = new LinkedList<>();
+        final Map<Pair<Integer, Integer>, Pixel> frameMap = getFrameMap(frame);
+        final Set<Pixel> newSet = new HashSet<>();
+        final Queue<Pixel> queue = new LinkedList<>();
         queue.add(pixel);
 
         while (!queue.isEmpty()) {
-            Pixel temp = queue.poll();
+            final Pixel temp = queue.poll();
             if (temp == null 
                 || !isValid(frameMap, temp.getPosition().getX(), temp.getPosition().getY(), oldColor, selectedColor)) {
                 continue;
