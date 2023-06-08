@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
- * Simple implementation of Matrix;
+ * Simple implementation of Matrix.
  */
 public class PixelMatrix implements Matrix {
     private final int rows;
@@ -38,7 +38,7 @@ public class PixelMatrix implements Matrix {
         private int rows;
         private int columns;
 
-        private final Set<Pixel> toCopy;
+        private Set<Pixel> toCopy;
 
         public MatrixBuilder() {
             this.rows = 0;
@@ -46,22 +46,38 @@ public class PixelMatrix implements Matrix {
             this.toCopy = new HashSet<>();
         }
 
+        /**
+         * @param rows the number of rows of the matrix
+         * @return the builder
+         */
         public MatrixBuilder setRows(final int rows) {
             this.rows = rows;
             return this;
         }
 
 
+        /**
+         * @param columns the number of columns of the matrix
+         * @return the builder
+         */
         public MatrixBuilder setColumns(final int columns) {
             this.columns = columns;
             return this;
         }
 
+        /**
+         * @param p the pixel to copy
+         * @return the builder
+         */
         public MatrixBuilder setToCopy(final Pixel p) {
             this.toCopy.add(p);
             return this;
         }
 
+        /**
+         * @return the matrix
+         * @throws IllegalStateException if the rows or the columns are less than 16
+         */
         public PixelMatrix build() throws IllegalStateException {
             if (this.rows < 16 || this.columns < 16) {
                 throw new IllegalStateException("Rows and columns must be greater than 16");

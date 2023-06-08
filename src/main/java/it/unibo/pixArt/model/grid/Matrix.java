@@ -19,14 +19,14 @@ public interface Matrix {
     /**
      * @param pixels the set of pixels that must be copied;
      */
-    void setPixel(final Set<Pixel> pixels);
+    void setPixel(Set<Pixel> pixels);
 
 
     /**
      * @param consumer change to apply to a pixel,
      * @param pixel    is the new state of the pixel that need to be consumed;
      */
-    public void update(final Consumer<Pixel> consumer, Pixel pixel);
+    public void update(Consumer<Pixel> consumer, Pixel pixel);
 
     /**
      * @return the rows of the grid;
