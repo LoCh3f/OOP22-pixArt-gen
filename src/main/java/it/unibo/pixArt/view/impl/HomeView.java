@@ -2,13 +2,12 @@ package it.unibo.pixArt.view.impl;
 
 import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.view.AbstractFXView;
-import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
+import it.unibo.pixArt.view.pages.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -16,17 +15,18 @@ import javafx.scene.layout.VBox;
 
 public final class HomeView extends AbstractFXView {
 
+    @FXML
     private VBox buttonList;
     @FXML
     private ImageView imageView;
     @FXML
-    private Parent root;
+    private AnchorPane root;
     @FXML
-    private javafx.scene.control.Button newGame;
+    private Button newGame;
     @FXML
-    private javafx.scene.control.Button newProject;
+    private Button newProject;
     @FXML
-    private javafx.scene.control.Button BackToLogin;
+    private Button BackToLogin;
     @FXML
     private Button projectHistory;
 
@@ -53,21 +53,21 @@ public final class HomeView extends AbstractFXView {
     @Override
     public void init() {
 
-      AnchorPane.setLeftAnchor(this.imageView, 0d);
-      this.imageView.fitWidthProperty().bind(this.getStage().widthProperty().divide(2));
-      this.imageView.fitHeightProperty().bind(this.getStage().heightProperty());
+        AnchorPane.setLeftAnchor(this.imageView, 0d);
+        this.imageView.fitWidthProperty().bind(this.getStage().widthProperty().divide(2));
+        this.imageView.fitHeightProperty().bind(this.getStage().heightProperty());
 
-      AnchorPane.setRightAnchor(this.buttonList, 0d);
-      this.buttonList.setPadding(new Insets(10));
-      this.buttonList.setAlignment(Pos.TOP_RIGHT);
-      this.buttonList.prefWidthProperty().bind(this.getStage().widthProperty().divide(2).subtract(10));
-      this.buttonList.prefHeightProperty().bind(this.getStage().heightProperty());
-      this.buttonList.getChildren().forEach(c -> {
-          final var b = (Button) c;
-          b.prefWidthProperty().bind(this.buttonList.widthProperty().subtract(20d));
-          b.maxHeight(Double.MAX_VALUE);
-          b.setPadding(new Insets(10));
-      });
+        AnchorPane.setRightAnchor(this.buttonList, 0d);
+        this.buttonList.setPadding(new Insets(10));
+        this.buttonList.setAlignment(Pos.TOP_RIGHT);
+        this.buttonList.prefWidthProperty().bind(this.getStage().widthProperty().divide(2).subtract(10));
+        this.buttonList.prefHeightProperty().bind(this.getStage().heightProperty());
+        this.buttonList.getChildren().forEach(c -> {
+            final var b = (Button) c;
+            b.prefWidthProperty().bind(this.buttonList.widthProperty().subtract(20d));
+            b.maxHeight(Double.MAX_VALUE);
+            b.setPadding(new Insets(10));
+        });
     }
 
 }
