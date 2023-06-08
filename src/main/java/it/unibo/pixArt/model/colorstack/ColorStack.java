@@ -10,14 +10,14 @@ public interface ColorStack {
     /**
      * @return a map that has K->Color, V -> set of pixels of color K.
      */
-    Map<Color,Set<Pixel>> getColorMap();
+    Map<Color, Set<Pixel>> getColorMap();
 
-    /**Method to remove a specific pixel from the map
+    /**Method to remove a specific pixel from the map.
      * 
      * @param color Key
      * @param pixel Value
      */
-    void removePixel(final Color color, final Pixel pixel);
+    void removePixel(Color color, Pixel pixel);
 
     /**
      * @return float that rappresents the number of pixels left withing the map as a percentage final_size/init_size
@@ -27,9 +27,9 @@ public interface ColorStack {
     /**Method to check if a pixel exists.
      * 
      * @param pixel
-     * @return
+     * @return weather the pixel exists within the map.
      */
-    boolean isPresent(final Pixel pixel);
+    boolean isPresent(Pixel pixel);
 
     /**
      * @return true or false weather the map is empty.
