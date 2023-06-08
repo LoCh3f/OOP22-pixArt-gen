@@ -17,7 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class GameSetupView extends AbstractFXView {
+public final class GameSetupView extends AbstractFXView {
 
     @FXML
     private ListView<ImageView> projectsList;
@@ -62,15 +62,14 @@ public class GameSetupView extends AbstractFXView {
                                             .stream()
                                             .map(GameType::getName)
                                             .collect(Collectors.toList()));
-        this.typeChoiceBox.getSelectionModel().selectedIndexProperty().addListener( new ChangeListener<Number>() {
+        this.typeChoiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            public void changed(final ObservableValue<? extends Number> observable, final Number oldValue, final Number newValue) {
                 gameDescription.setText(getGameSetupController().getGameTypes().get(typeChoiceBox.getSelectionModel().getSelectedIndex()).getDescription());
             }
-            
         });
-                                                
+
         this.timerChoiceBox.setValue(getGameSetupController().getTimers().get(0).getDescription());
         this.typeChoiceBox.setValue(getGameSetupController().getGameTypes().get(0).getName());
         this.gameDescription.setText(getGameSetupController().getGameTypes().get(0).getDescription());
