@@ -16,6 +16,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * doc.
+ */
 public final class AnimationView extends AbstractFXView {
 
     @FXML
@@ -70,7 +73,8 @@ public final class AnimationView extends AbstractFXView {
 
     @FXML
     public void setDuration() {
-        this.getAnimationController().setFrameDuration(Integer.parseInt(selectedFrame.getText()), Integer.parseInt(frameDurationField.getText()));
+        this.getAnimationController().setFrameDuration(Integer.parseInt(selectedFrame.getText()),
+        Integer.parseInt(frameDurationField.getText()));
     }
 
     @Override
@@ -81,9 +85,10 @@ public final class AnimationView extends AbstractFXView {
         this.imageContainer.setImage(new Image("file:" + this.getAnimationController().getHistoryFrames().get(0).getPath()));
         this.selectedFrame.setText(Integer.toString(0));
         this.selectedFrameDuration.setText(getAnimationController().getHistoryFrames().get(0).getAnimationDuration() + "ms");
-        this.frameList.getItems().addAll(this.getAnimationController().getHistoryFrames().stream()
-                                                                                         .map(e -> new Image("file:" + e.getPath()))
-                                                                                         .map(i -> new ImageView(i)).collect(Collectors.toList()));
+        this.frameList.getItems().addAll(this.getAnimationController().getHistoryFrames()
+                                                                      .stream()
+                                                                      .map(e -> new Image("file:" + e.getPath()))
+                                                                      .map(i -> new ImageView(i)).collect(Collectors.toList()));
 
         this.frameList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ImageView>() {
 
@@ -91,7 +96,10 @@ public final class AnimationView extends AbstractFXView {
             public void changed(final ObservableValue<? extends ImageView> observable, final ImageView oldValue, final ImageView newValue) {
                 imageContainer.setImage(frameList.getSelectionModel().getSelectedItem().getImage());
                 selectedFrame.setText(Integer.toString(frameList.getSelectionModel().getSelectedIndex()));
-                selectedFrameDuration.setText(getAnimationController().getHistoryFrames().get(frameList.getSelectionModel().getSelectedIndex()).getAnimationDuration() + "ms");
+                selectedFrameDuration.setText(getAnimationController().getHistoryFrames()
+                .get(frameList.getSelectionModel().getSelectedIndex())
+                .getAnimationDuration() + "ms");
+
                 frameDurationField.setDisable(false);
                 setDurationBtn.setDisable(false);
             }

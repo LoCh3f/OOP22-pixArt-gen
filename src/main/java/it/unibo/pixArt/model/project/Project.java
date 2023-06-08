@@ -5,7 +5,7 @@ import it.unibo.pixArt.model.historyframe.HistoryFrame;
 
 import java.util.List;
 
-/*
+/**
  * Interface for the Project.
  */
 public interface Project {

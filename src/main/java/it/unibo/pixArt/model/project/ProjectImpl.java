@@ -8,6 +8,9 @@ import it.unibo.pixArt.model.historyframe.HistoryFrameImpl;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * doc.
+ */
 public final class ProjectImpl implements Project {
     private String projectName;
     private String path;
@@ -15,6 +18,13 @@ public final class ProjectImpl implements Project {
     private List<Matrix> frames;
     private List<HistoryFrame> historyFrames = new LinkedList<>();
 
+    /**
+     * Constructor for ProjectImpl.
+     * @param projectName
+     * @param path
+     * @param fileType
+     * @param frames
+     */
     public ProjectImpl(final String projectName, final String path, final String fileType, final List<Matrix> frames) {
         this.projectName = projectName;
         this.path = path;

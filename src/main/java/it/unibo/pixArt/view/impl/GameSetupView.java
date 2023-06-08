@@ -17,6 +17,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * doc.
+ */
 public final class GameSetupView extends AbstractFXView {
 
     @FXML
@@ -66,7 +69,10 @@ public final class GameSetupView extends AbstractFXView {
 
             @Override
             public void changed(final ObservableValue<? extends Number> observable, final Number oldValue, final Number newValue) {
-                gameDescription.setText(getGameSetupController().getGameTypes().get(typeChoiceBox.getSelectionModel().getSelectedIndex()).getDescription());
+                gameDescription.setText(getGameSetupController()
+                                        .getGameTypes()
+                                        .get(typeChoiceBox.getSelectionModel().getSelectedIndex())
+                                        .getDescription());
             }
         });
 

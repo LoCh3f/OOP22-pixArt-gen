@@ -10,44 +10,47 @@ import it.unibo.pixArt.controller.project.ProjectControllerImpl;
 import it.unibo.pixArt.controller.settings.SettingsControllerImpl;
 import it.unibo.pixArt.controller.workspace.WorkSpaceControllerImpl;
 
+/** 
+ * Enum containing all availbale pages.
+ */
 public enum Pages {
     /**
-     * menu view
+     * menu view.
      */
     MENU("menu", new SimpleController()),
 
     /**
-     * workspace view
+     * workspace view.
      */
     WORKSPACE("workspace", new WorkSpaceControllerImpl()),
 
     /**
-     * animation view
+     * animation view.
      */
     ANIMATION("animation", new AnimationControllerImpl()),
 
     /**
-     * history view
+     * history view.
      */
     HISTORY("projects", new ProjectControllerImpl()),
 
     /**
-     * Settings view
+     * Settings view.
      */
     SETTINGS("settings", new SettingsControllerImpl()),
 
-    /*
-     * Login view
+    /**
+     * Login view.
      */
     LOGIN("login", new LoginControllerImpl()),
 
-    /*
-     * GameSetup view
+    /**
+     * GameSetup view.
      */
     GAMESETUP("gamesetup", new GameSetupControllerImpl()),
 
-    /*
-     * Game view
+    /**
+     * Game view.
      */
     GAMEVIEW("game", new GameControllerImpl());
     private final String name;
@@ -55,8 +58,8 @@ public enum Pages {
     private final Controller controller;
 
     /**
-     * @param name       of the view
-     * @param controller the associated to the view
+     * @param name       of the view.
+     * @param controller the associated to the view.
      */
     Pages(final String name, final Controller controller) {
         this.name = name;
@@ -64,14 +67,14 @@ public enum Pages {
     }
 
     /**
-     * @return the name of the view
+     * @return the name of the view.
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * @return the controller of the view
+     * @return the controller of the view.
      */
     public Controller getController() {
         return this.controller;

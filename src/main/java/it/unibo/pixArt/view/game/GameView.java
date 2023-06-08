@@ -38,12 +38,16 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
-import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.IMAGE_PATH;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.MAIN_ICON;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLOR;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
 
-public class GameView extends AbstractFXView {
+public final class GameView extends AbstractFXView {
 
     public static final int WIDTHGAMEOVER = 200;
     public static final int HEIGHTGAMEOVER = 150;
+    private static final int TIME_DIVISION = 60;
 
     @FXML
     private Label timer;
@@ -110,7 +114,7 @@ public class GameView extends AbstractFXView {
             tester = new TesterLogic();
             final var root = new HBox();
             secondStage = new StageDistribution
-                    .ParallelStage(root,"AbilityTester",new Image(IMAGE_PATH + MAIN_ICON));
+                    .ParallelStage(root, "AbilityTester", new Image(IMAGE_PATH + MAIN_ICON));
             final var parallelGrid = new PixelsPane.GridPaneBuilder()
                     .setColumns(center.getColumnCount()).setRows(center.getRowCount())
                     .setAction(event -> {
@@ -119,13 +123,13 @@ public class GameView extends AbstractFXView {
                     }).setGridLinesVisible(true).build();
             final var incredibleView = new ImageView(new Image(tester.test(new GridPaneParser().apply(parallelGrid),
                     getGameController().getModel().getProject().getAllFrames().get(0).getPixels())));
-                    root.getChildren().add(0,incredibleView);
+                    root.getChildren().add(0, incredibleView);
             root.getChildren().add(1,parallelGrid);
             incredibleView.fitHeightProperty().bind(root.heightProperty());
             incredibleView.fitWidthProperty().bind(root.widthProperty().divide(2));
             parallelGrid.prefHeightProperty().bind(root.heightProperty());
             parallelGrid.prefWidthProperty().bind(root.widthProperty().divide(2));
-            parallelGrid.getChildren().forEach(b -> b.addEventHandler(ActionEvent.ACTION,event -> {
+            parallelGrid.getChildren().forEach(b -> b.addEventHandler(ActionEvent.ACTION, event -> {
                 incredibleView.setImage(new Image(tester.test(new GridPaneParser().apply(parallelGrid),
                         getGameController().getModel().getProject().getAllFrames().get(0).getPixels())));
             }));
@@ -179,8 +183,8 @@ public class GameView extends AbstractFXView {
     }
 
     private String timeToString(final double remainingTime) {
-        double minutes = remainingTime / 60;
-        double seconds = remainingTime % 60;
+        double minutes = remainingTime / TIME_DIVISION;
+        double seconds = remainingTime % TIME_DIVISION;
         return String.format("%02d:%02d", (int) minutes, (int) seconds);
     }
 
@@ -196,7 +200,7 @@ public class GameView extends AbstractFXView {
             btn.setText(Integer.toString(availableColors.indexOf(elem)));
             btn.setStyle("-fx-background-color: #" + elem.toString().substring(2) + ";" + FX_BORDER_WIDTH + ";" + FX_BORDER_COLOR);
             btn.addEventHandler(MouseEvent.MOUSE_CLICKED, h -> setSelectedColor(elem));
-            btn.setMinWidth(200);
+            btn.setMinWidth(WIDTHGAMEOVER);
             btnList.add(btn);
         }
         return btnList;

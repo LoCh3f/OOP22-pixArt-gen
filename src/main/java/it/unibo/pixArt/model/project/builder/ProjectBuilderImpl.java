@@ -8,6 +8,9 @@ import it.unibo.pixArt.model.project.ProjectImpl;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Builder class for Project.
+ */
 public final class ProjectBuilderImpl implements ProjectBuilder {
     private String projectName;
     private String path;
