@@ -56,8 +56,8 @@ public final class LoginView extends AbstractFXView {
     private Text guestLoginResult;
 
     private boolean loginValidate(final String username, final String password) {
-        ValidationResult usernameValidationResult = this.getLoginController().usernameValidation(username);
-        ValidationResult passwordValidationResult = this.getLoginController().passwordValidation(password);
+        final ValidationResult usernameValidationResult = this.getLoginController().usernameValidation(username);
+        final ValidationResult passwordValidationResult = this.getLoginController().passwordValidation(password);
 
         if (usernameValidationResult.equals(ValidationResult.CORRECT) 
             && passwordValidationResult.equals(ValidationResult.CORRECT)) {
@@ -69,9 +69,9 @@ public final class LoginView extends AbstractFXView {
     }
 
     private boolean registerValidate(final String username, final String password, final String path) {
-        ValidationResult usernameValidationResult = this.getLoginController().usernameValidation(username);
-        ValidationResult passwordValidationResult = this.getLoginController().passwordValidation(password);
-        ValidationResult pathValidationResult = this.getLoginController().pathValidation(path);
+        final ValidationResult usernameValidationResult = this.getLoginController().usernameValidation(username);
+        final ValidationResult passwordValidationResult = this.getLoginController().passwordValidation(password);
+        final ValidationResult pathValidationResult = this.getLoginController().pathValidation(path);
 
         if (usernameValidationResult.equals(ValidationResult.CORRECT) && passwordValidationResult.equals(ValidationResult.CORRECT)
             && pathValidationResult.equals(ValidationResult.CORRECT)) {
@@ -94,7 +94,7 @@ public final class LoginView extends AbstractFXView {
     }
 
     private boolean guestLoginValidate(final String path) {
-        ValidationResult pathValidationResult = this.getLoginController().pathValidation(path);
+        final ValidationResult pathValidationResult = this.getLoginController().pathValidation(path);
 
         if (pathValidationResult.equals(ValidationResult.CORRECT)) {
             return true;
@@ -142,8 +142,8 @@ public final class LoginView extends AbstractFXView {
 
     @FXML
     public void onSelectDirClick(final ActionEvent event) {
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        File selectedDirectory = directoryChooser.showDialog(getStage());
+        final DirectoryChooser directoryChooser = new DirectoryChooser();
+        final File selectedDirectory = directoryChooser.showDialog(getStage());
         if (selectedDirectory != null) {
             this.pathField.setText(selectedDirectory.getAbsolutePath());
         }
