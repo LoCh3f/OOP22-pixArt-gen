@@ -82,7 +82,7 @@ public class WorkSpace extends AbstractFXView {
         /*Init GridPane and add an event listeners to all the buttons. */
 
         pixelsParser = new PixelsParser();
-        this.root.setCenter(new ImageView(IMAGE_PATH + MAIN_ICON));
+        //this.root.setCenter(new ImageView(IMAGE_PATH + MAIN_ICON));
 
         final var e = new EventHandler<ActionEvent>() {
             @Override
