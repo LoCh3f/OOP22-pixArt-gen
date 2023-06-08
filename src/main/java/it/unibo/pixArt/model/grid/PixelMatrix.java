@@ -34,7 +34,7 @@ public class PixelMatrix implements Matrix {
         }
     }
 
-    public static class MatrixBuilder {
+    public static final class MatrixBuilder {
         private int rows;
         private int columns;
 
@@ -125,14 +125,17 @@ public class PixelMatrix implements Matrix {
      */
     @Override
     public Set<Pixel> getPixels() {
-        return this.pixels.stream().map(e -> new PixelBuilder.PxlBuilder().setColor(e.getColor()).setX(e.getPosition().getX()).setY(e.getPosition().getY()).build()).collect(Collectors.toSet());
+        return this.pixels.stream().map(e -> new PixelBuilder
+                .PxlBuilder().setColor(e.getColor())
+                .setX(e.getPosition().getX()).setY(e.getPosition().getY())
+                .build()).collect(Collectors.toSet());
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPixel(Set<Pixel> pixels) {
+    public void setPixel(final Set<Pixel> pixels) {
 
         for (Pixel pixel : pixels) {
             this.pixels.forEach(p -> {
