@@ -6,6 +6,7 @@ import it.unibo.pixArt.controller.animation.AnimationControllerImpl;
 import it.unibo.pixArt.controller.game.GameControllerImpl;
 import it.unibo.pixArt.controller.game.GameSetupControllerImpl;
 import it.unibo.pixArt.controller.login.LoginControllerImpl;
+import it.unibo.pixArt.controller.project.ProjectControllerImpl;
 import it.unibo.pixArt.controller.settings.SettingsControllerImpl;
 import it.unibo.pixArt.controller.workspace.WorkSpaceControllerImpl;
 
@@ -28,7 +29,7 @@ public enum Pages {
     /**
      * history view
      */
-    HISTORY("projects", new SimpleController()),
+    HISTORY("projects", new ProjectControllerImpl()),
 
     /**
      * Settings view
@@ -49,7 +50,6 @@ public enum Pages {
      * Game view
      */
     GAMEVIEW("game", new GameControllerImpl());
-
     private final String name;
 
     private final Controller controller;
