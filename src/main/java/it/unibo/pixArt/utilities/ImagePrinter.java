@@ -29,7 +29,7 @@ public final class ImagePrinter {
         return LazyHolder.SINGLETON;
     }
 
-    /**
+    /**.
      * Print all the frames of the project
      * @param project The project that need to be printed
      * @param scale The scale of the image
@@ -43,14 +43,14 @@ public final class ImagePrinter {
         });
     }
 
-    /**
+    /**.
      * Print one frame of the project
      * @param pixelGrid The grid of the frame that need to be printed
      * @param path The path where the image will be saved
      * @param fileType The string of type of the file(.png, .jpg. jpeg)
      * @param scale The scale of the image
      */
-    public void printOneFrame(Matrix pixelGrid, String path, String fileType, int scale) {
+    public void printOneFrame(final Matrix pixelGrid, final String path, final String fileType, final int scale) {
         this.imageSize = pixelGrid.getColumns();
         WritableImage wImg = new WritableImage(imageSize, imageSize);
         PixelWriter pWriter = wImg.getPixelWriter();
@@ -68,7 +68,7 @@ public final class ImagePrinter {
         imagePrint(wImg, fileType.toString(), path, scale);
     }
 
-    private void imagePrint(WritableImage wImg, String fileFormat, String path, int scale) {
+    private void imagePrint(final WritableImage wImg, final String fileFormat, final String path, final int scale) {
         try {
             BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
             BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
@@ -80,7 +80,7 @@ public final class ImagePrinter {
         }
     }
 
-    private void scaleImage(BufferedImage bImage, String path, int scale, String fileType) throws IOException{
+    private void scaleImage(final BufferedImage bImage, final String path, final int scale, final String fileType) throws IOException {
         int newSize = scale * imageSize;
         BufferedImage newImage = new BufferedImage(newSize, newSize, bImage.getType());
         Graphics2D graphics2d = newImage.createGraphics();

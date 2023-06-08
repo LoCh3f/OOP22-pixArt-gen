@@ -18,9 +18,9 @@ import java.util.Set;
 public class ColorStackTest {
     private final Matrix grid = new PixelMatrix.MatrixBuilder().setColumns(16).setRows(16).build();
     private MatrixConverter converter = new MatrixConverter();
-    private ColorStack stack; //= new ColorStackImpl(this.converter.apply(grid.getPixels()), grid.getPixels().size());
+    private ColorStack stack;
     private final ToolFactory toolFatory = new ToolFactoryImpl();
-    private AbstractTool tool = toolFatory.createTool("BUCKET", Color.BLACK, 2);
+    private AbstractTool tool = toolFatory.createTool("BUCKET", Color.BLACK, 1);
 
     /*Initially the grid is made up completelly of white pixels. Thus, we check that the stack's map
      * has only one entryset: K->Color.WHITE, V->256 white pixels.
@@ -37,10 +37,9 @@ public class ColorStackTest {
      */
     @Test
     void checkTwo() {
-        final Pixel p = grid.getPixels().stream().filter(e -> e.getPosition().getX() == 0 && e.getPosition().getY() == 0).findAny().get();
-        this.grid.setPixel(this.tool.updateGrid(p, this.grid.getPixels()));
-        final ColorStack stack = new ColorStackImpl(new MatrixConverter().apply(grid.getPixels()),grid.getPixels().size());
-        assertEquals(1, stack.getColorMap().entrySet().stream().filter(e -> e.getKey() == Color.WHITE).count());
+        this.grid.setPixel(this.tool.updateGrid(this.grid.getPixels().iterator().next(), this.grid.getPixels()));
+        this.stack = new ColorStackImpl(new MatrixConverter().apply(this.grid.getPixels()),grid.getPixels().size());
+        assertEquals(1, stack.getColorMap().entrySet().stream().filter(e -> e.getKey() == Color.BLACK).count());
         assertEquals(256, stack.getColorMap().values().stream().flatMap(Set::stream).count());
     }
    
