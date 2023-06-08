@@ -3,9 +3,11 @@ package it.unibo.pixArt.model.project;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
+/*
+ * Enum for all the possible image types.
+ */
 public enum FileTypes {
-    PNG(".png"),JPG(".jpg"),JPEG(".jpeg");
+    PNG(".png"), JPG(".jpg"), JPEG(".jpeg");
 
     private String type;
 
