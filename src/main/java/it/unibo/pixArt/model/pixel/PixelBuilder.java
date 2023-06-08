@@ -13,6 +13,9 @@ public final class PixelBuilder extends ImplPixel {
         setColor(color);
     }
 
+    /**
+     * Builder for the pixel.
+     */
     public static class PxlBuilder {
         private Integer x = -1;
         private Integer y = -1;

@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 /**
  * Simple implementation of Matrix.
  */
-public class PixelMatrix implements Matrix {
+public final class PixelMatrix implements Matrix {
     private final int rows;
     private final int columns;
     private final Set<Pixel> pixels;
@@ -34,12 +34,17 @@ public class PixelMatrix implements Matrix {
         }
     }
 
+    /**
+     * Builder for the matrix.
+     */
     public static final class MatrixBuilder {
         private int rows;
         private int columns;
-
         private Set<Pixel> toCopy;
 
+        /**
+         * Default constructor.
+         */
         public MatrixBuilder() {
             this.rows = 0;
             this.columns = 0;
@@ -92,7 +97,7 @@ public class PixelMatrix implements Matrix {
      * {@inheritDoc}
      */
     @Override
-    public void update(final Consumer<Pixel> consumer, Pixel pixel) {
+    public void update(final Consumer<Pixel> consumer, final Pixel pixel) {
         this.pixels.forEach(consumer);
     }
 
