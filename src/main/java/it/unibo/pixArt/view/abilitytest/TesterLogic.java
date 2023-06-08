@@ -6,15 +6,26 @@ import it.unibo.pixArt.utilities.mirror.Mirror;
 
 import java.util.Collection;
 
+/**
+ * Tester logic, strategy pattern for GameView.
+ */
 public class TesterLogic implements Logic {
 
 
     private final Mirror<Pixel> gridMirror;
 
+    /**
+     * Default constructor.
+     */
     public TesterLogic() {
         this.gridMirror = new GenericMirror<>();
     }
 
+    /**
+     * @param userGrid     draw made by the user, as a collection of pixels
+     * @param solutionGrid draw to be made, as a collection of pixels
+     * @return the path of the image to be shown
+     */
     public String test(final Collection<Pixel> userGrid, final Collection<Pixel> solutionGrid) {
         return templatePath(this.gridMirror.getDifference(solutionGrid, userGrid).size());
     }
