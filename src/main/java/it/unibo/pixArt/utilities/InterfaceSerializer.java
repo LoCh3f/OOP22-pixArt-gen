@@ -25,7 +25,7 @@ final class InterfaceSerializer<T> implements JsonSerializer<T>, JsonDeserialize
     public JsonElement serialize(final T value, final Type type, final JsonSerializationContext context) {
         final Type targetType = value != null 
                 ? value.getClass() 
-                : type;            
+                : type;
         return context.serialize(value, targetType);
     }
 

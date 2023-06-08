@@ -5,7 +5,7 @@ import java.io.File;
 import it.unibo.pixArt.controller.Controller;
 
 public interface ProjectController extends Controller {
-    
+
     /**
      * @param file the string with the name of the file
      * @return the path of the folder selected

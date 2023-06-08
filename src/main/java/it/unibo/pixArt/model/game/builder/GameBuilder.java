@@ -10,13 +10,13 @@ public interface GameBuilder {
      * @param gameType the type of the game
      * @return the game builder
      */
-    GameBuilder gameType(final GameType gameType);
+    GameBuilder gameType(GameType gameType);
 
     /**
      * @param gameTimer the timer of the game
      * @return the game builder
      */
-    GameBuilder gameTimer(final GameTimer gameTimer);
+    GameBuilder gameTimer(GameTimer gameTimer);
 
     /**
      * @return the game builded with the builder
