@@ -8,7 +8,7 @@ import it.unibo.pixArt.model.historyframe.HistoryFrameImpl;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ProjectImpl implements Project {
+public final class ProjectImpl implements Project {
     private String projectName;
     private String path;
     private String fileType;

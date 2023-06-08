@@ -46,6 +46,7 @@ public interface Project {
     List<HistoryFrame> getAllHistoryFrames();
 
     /**
+     * @param index
      * Method to create a new HistoryFrame.
      */
     void addNewHistoryFrame(int index);
