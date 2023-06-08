@@ -12,17 +12,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
-import static it.unibo.pixArt.view.components.StageDistribution.PREF_HEIGHT;
-import static it.unibo.pixArt.view.components.StageDistribution.PREF_WIDTH;
+public final class HomeView extends AbstractFXView {
 
-public class HomeView extends AbstractFXView {
-
-    public VBox buttonList;
+    private VBox buttonList;
     @FXML
     private ImageView imageView;
     @FXML
@@ -59,7 +53,6 @@ public class HomeView extends AbstractFXView {
     @Override
     public void init() {
 
-
       AnchorPane.setLeftAnchor(this.imageView,0d);
       this.imageView.fitWidthProperty().bind(this.getStage().widthProperty().divide(2));
       this.imageView.fitHeightProperty().bind(this.getStage().heightProperty());
@@ -75,14 +68,6 @@ public class HomeView extends AbstractFXView {
           b.maxHeight(Double.MAX_VALUE);
           b.setPadding(new Insets(10));
       });
-
-
-
-
-
     }
 
-    private HomeView getHomeController() {
-        return (HomeView) this.getController();
-    }
 }
