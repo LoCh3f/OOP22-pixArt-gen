@@ -23,14 +23,14 @@ public final class Bucket extends AbstractTool {
 
     @Override
     public Set<Pixel> updateGrid(final Pixel pixel, final Set<Pixel> frame) {
-        Map<Pair<Integer, Integer>, Pixel> frameMap = getFrameMap(frame);
-        Set<Pixel> newSet = new HashSet<>();
-        Color oldColor = pixel.getColor();
+        final Color oldColor = pixel.getColor();
 
         if (oldColor.equals(this.selectedColor)) {
             return Collections.emptySet(); 
         }
 
+        Map<Pair<Integer, Integer>, Pixel> frameMap = getFrameMap(frame);
+        Set<Pixel> newSet = new HashSet<>();
         Queue<Pixel> queue = new LinkedList<>();
         queue.add(pixel);
 

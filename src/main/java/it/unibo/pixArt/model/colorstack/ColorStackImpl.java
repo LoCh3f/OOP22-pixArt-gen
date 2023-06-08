@@ -1,12 +1,9 @@
 package it.unibo.pixArt.model.colorstack;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 import javafx.scene.paint.Color;
@@ -16,12 +13,6 @@ public class ColorStackImpl implements ColorStack {
     private int initialSize;
 
     public ColorStackImpl(final Map<Color, Set<Pixel>> colorMap, final int size) {
-        /*final List<Color> colors = pixels.stream().map(e -> e.getColor()).distinct().collect(Collectors.toList());
-        for (var elem : colors) {
-            final Set<Pixel> colorSet = pixels.stream().filter(e -> e.getColor().equals(elem))
-                    .collect(Collectors.toSet());
-            this.colorMap.put(elem, colorSet);
-        }*/
         this.colorMap = new HashMap<>(colorMap);
         this.initialSize = size;
     }

@@ -2,12 +2,10 @@ package it.unibo.pixArt.view.game;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.game.GameController;
 import it.unibo.pixArt.model.game.GameType;
-import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.timer.TimerThread;
 
 
@@ -15,19 +13,16 @@ import it.unibo.pixArt.utilities.parser.GridPaneParser;
 import it.unibo.pixArt.utilities.parser.PixelsParser;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.abilitytest.Logic;
-import it.unibo.pixArt.view.abilitytest.TesterEnum;
 import it.unibo.pixArt.view.abilitytest.TesterLogic;
 import it.unibo.pixArt.view.components.PixelsPane;
 import it.unibo.pixArt.view.components.StageDistribution;
-import it.unibo.pixArt.view.pages.PageLoader;
+import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
-import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -37,6 +32,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -45,6 +41,9 @@ import javafx.stage.Stage;
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
 
 public class GameView extends AbstractFXView {
+
+    public static final int WIDTHGAMEOVER = 200;
+    public static final int HEIGHTGAMEOVER = 150;
 
     @FXML
     private Label timer;
@@ -73,13 +72,13 @@ public class GameView extends AbstractFXView {
         if (this.getGameController().getTimer().isRunning()) {
             this.getGameController().getTimer().stop();
         }
-        PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
+        SceneManager.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
     }
 
     @Override
     public void init() {
-
         this.getGameController().setColorStack();
+
         final GridPane center = new PixelsPane.GridPaneBuilder()
                 .setColumns(this.getGameController().getFrameSize())
                 .setRows(this.getGameController().getFrameSize())
@@ -107,7 +106,6 @@ public class GameView extends AbstractFXView {
             this.getGameController().getTimer().start();
             new TimerThread(this.getGameController().getTimer(), this::onTimeFinish, this::OnTimeUpdate).start();
             associateButton(center);
-
         } else {
             tester = new TesterLogic();
             final var root = new HBox();
@@ -158,16 +156,26 @@ public class GameView extends AbstractFXView {
 
     private void gameOverPopUp() {
         String percentage = String.format("%.2f", this.getGameController().getPercentage());
-        final GameOverPopUp gameOverPopUp = new GameOverPopUp(percentage);
-        gameOverPopUp.onHomeClick(() -> {
-            gameOverPopUp.close();
-            Platform.runLater(() -> PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel()));
+        final var root = new VBox();
+        final Label gameOver = new Label("GAME OVER");
+        final Button homeButton = new Button("Home");
+        final Button newGameButton = new Button("New Game");
+        final Text correctPercentage = new Text("Correct: " + percentage + "%");
+        secondStage = new StageDistribution.ParallelStage(root, null, new Image(IMAGE_PATH + MAIN_ICON));
+        gameOver.setTextFill(Color.BLACK);
+        root.setAlignment(Pos.CENTER);
+        root.getChildren().addAll(gameOver, correctPercentage, homeButton, newGameButton);
+        homeButton.setOnMouseClicked(e -> {
+            secondStage.close();
+            Platform.runLater(() -> SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel()));
         });
-        gameOverPopUp.onNewGameClick(() -> {
-            gameOverPopUp.close();
-            Platform.runLater(() -> PageLoader.getInstance().switchPage(this.getStage(), Pages.GAMESETUP, this.getController().getModel()));
+        newGameButton.setOnMouseClicked(e -> {
+            secondStage.close();
+            Platform.runLater(() -> SceneManager.getInstance().switchPage(this.getStage(), Pages.GAMESETUP, this.getController().getModel()));
         });
-        gameOverPopUp.show();
+        secondStage.setWidth(WIDTHGAMEOVER);
+        secondStage.setHeight(HEIGHTGAMEOVER);
+        secondStage.show();
     }
 
     private String timeToString(final double remainingTime) {
@@ -176,7 +184,6 @@ public class GameView extends AbstractFXView {
         return String.format("%02d:%02d", (int) minutes, (int) seconds);
     }
 
-    /*Try to use streams */
     private List<Button> createColorPane() {
         this.availableColors = getGameController().getColorStack().entrySet()
                 .stream()
@@ -215,7 +222,7 @@ public class GameView extends AbstractFXView {
     }
 
     private void setPixelsLeft() {
-        final String numPixelsLeft = Integer.valueOf(this.getGameController().getColorStack().get(this.selectedColor).size()).toString();
+        final String numPixelsLeft = Integer.valueOf(this.getGameController().getColorStack().get(this.selectedColor).size()  - 1).toString();
         this.pixelsField.setText("Pixels left: " + numPixelsLeft);
     }
 

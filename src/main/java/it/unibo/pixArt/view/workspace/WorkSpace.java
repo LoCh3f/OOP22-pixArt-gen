@@ -7,7 +7,7 @@ import it.unibo.pixArt.utilities.parser.PixelsParser;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.components.MenuItemBuilder;
 import it.unibo.pixArt.view.components.PixelsPane;
-import it.unibo.pixArt.view.pages.PageLoader;
+import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -124,7 +124,7 @@ public class WorkSpace extends AbstractFXView {
         this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> {
             saveAndExit();
         }).build());
-        this.menubar.getMenus().get(0).getItems().get(1).addEventHandler(ActionEvent.ACTION, event -> PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel()));
+        this.menubar.getMenus().get(0).getItems().get(1).addEventHandler(ActionEvent.ACTION, event -> SceneManager.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel()));
         
         updateView(getWorkSpaceController().getCurrentFrame());
         updateHistoryFrames();
@@ -161,7 +161,7 @@ public class WorkSpace extends AbstractFXView {
 
     @FXML
     private void onAnimateClicked() {
-        PageLoader.getInstance().switchPage(getStage(), Pages.ANIMATION, this.getController().getModel());
+        SceneManager.getInstance().switchPage(getStage(), Pages.ANIMATION, this.getController().getModel());
     }
 
     private void color(final int x, final int y, final Color color) {
@@ -191,7 +191,7 @@ public class WorkSpace extends AbstractFXView {
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()){
             this.getWorkSpaceController().saveProject(Integer.parseInt(result.get()));
-            PageLoader.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
+            SceneManager.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
         }
     }
 

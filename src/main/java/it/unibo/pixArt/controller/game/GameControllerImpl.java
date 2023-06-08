@@ -14,7 +14,7 @@ import it.unibo.pixArt.model.timer.GameTimer;
 import it.unibo.pixArt.utilities.MatrixConverter;
 import javafx.scene.paint.Color;
 
-public class GameControllerImpl extends SimpleController implements GameController{
+public final class GameControllerImpl extends SimpleController implements GameController {
 
     private ColorStack colorStack;
     private boolean isDrawing;
@@ -30,7 +30,7 @@ public class GameControllerImpl extends SimpleController implements GameControll
     }
 
     @Override
-    public Map<Color,Set<Pixel>> getColorStack() {
+    public Map<Color, Set<Pixel>> getColorStack() {
         return this.colorStack.getColorMap();
     }
 
@@ -41,9 +41,9 @@ public class GameControllerImpl extends SimpleController implements GameControll
     }
 
     @Override
-    public boolean checkPixel(int x, int y, Color color) {
+    public boolean checkPixel(final int x, final int y, final Color color) {
         var pixel = new PixelBuilder.PxlBuilder().setColor(color).setX(x).setY(y).build();
-        if(this.colorStack.isPresent(pixel)) {
+        if (this.colorStack.isPresent(pixel)) {
             this.colorStack.removePixel(color, pixel);
             return true;
         }

@@ -8,7 +8,6 @@ import com.google.common.hash.Hashing;
 import it.unibo.pixArt.model.user.User;
 import it.unibo.pixArt.model.user.UserBuilderImpl;
 import it.unibo.pixArt.model.user.storage.UserDataStorage;
-import it.unibo.pixArt.model.user.storage.UserDataStorageImpl;
 
 public final class UserManagerImpl implements UserManager {
 
@@ -21,7 +20,7 @@ public final class UserManagerImpl implements UserManager {
     @Override
     public Optional<User> login(final String name, final String password) throws IOException {
 
-        Optional<User> users = this.dataStorage.getUser(name);
+        final Optional<User> users = this.dataStorage.getUser(name);
         if (users.isEmpty()) {
             return Optional.empty();
         }

@@ -7,7 +7,7 @@ import it.unibo.pixArt.model.game.GameImpl;
 import it.unibo.pixArt.model.game.GameType;
 import it.unibo.pixArt.model.timer.TimerType;
 import it.unibo.pixArt.view.AbstractFXView;
-import it.unibo.pixArt.view.pages.PageLoader;
+import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
@@ -37,13 +37,14 @@ public class GameSetupView extends AbstractFXView {
     private void onStartClicked() {
         this.getGameSetupController().setTimer(timerChoiceBox.getValue());
         this.getGameSetupController().setProject(projectsList.getSelectionModel().getSelectedIndex());
+        this.getGameSetupController().setGameType(this.typeChoiceBox.getSelectionModel().getSelectedItem());
         this.getGameSetupController().setGame();
-        PageLoader.getInstance().switchPage(getStage(), Pages.GAMEVIEW, this.getController().getModel());
+        SceneManager.getInstance().switchPage(getStage(), Pages.GAMEVIEW, this.getController().getModel());
     }
 
     @FXML
     private void onDiscardClicked() {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
+        SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 
     @Override
@@ -67,7 +68,7 @@ public class GameSetupView extends AbstractFXView {
 
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                gameDescription.setText(getGameSetupController().getGameTypes().get((Integer)newValue).getDescription());
+                gameDescription.setText(getGameSetupController().getGameTypes().get(typeChoiceBox.getSelectionModel().getSelectedIndex()).getDescription());
             }
             
         });

@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.animation.AnimationController;
 import it.unibo.pixArt.view.AbstractFXView;
-import it.unibo.pixArt.view.pages.PageLoader;
+import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -55,18 +55,18 @@ public class AnimationView extends AbstractFXView {
 
     @FXML
     public void onWorkSpaceClick() {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, this.getController().getModel());
+        SceneManager.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, this.getController().getModel());
     }
 
     @FXML
     public void onExitClick() {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
+        SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 
     @FXML
     public void onSaveClick() {
         getAnimationController().saveProject();
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
+        SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 
     @FXML

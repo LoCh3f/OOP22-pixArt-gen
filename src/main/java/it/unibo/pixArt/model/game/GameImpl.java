@@ -2,7 +2,7 @@ package it.unibo.pixArt.model.game;
 
 import it.unibo.pixArt.model.timer.GameTimer;
 
-public class GameImpl implements Game {
+public final class GameImpl implements Game {
     private GameType gameType;
     private GameTimer gameTimer;
 

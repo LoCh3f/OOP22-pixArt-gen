@@ -5,7 +5,7 @@ import it.unibo.pixArt.model.game.GameImpl;
 import it.unibo.pixArt.model.game.GameType;
 import it.unibo.pixArt.model.timer.GameTimer;
 
-public class GameBuilderImpl implements GameBuilder {
+public final class GameBuilderImpl implements GameBuilder {
 
     private GameType gameType;
     private GameTimer gameTimer;
