@@ -17,7 +17,7 @@ public class PixelBuilder extends ImplPixel {
         private Integer x = -1;
         private Integer y = -1;
 
-        private Color color = Color.TRANSPARENT;
+        private Color color = Color.WHITE;
 
         public PxlBuilder setX(final Integer x) {
             this.x = x;

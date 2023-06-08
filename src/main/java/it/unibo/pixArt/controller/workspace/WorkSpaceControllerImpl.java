@@ -50,9 +50,9 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     @Override
     public void setCurrentFrame(final int index) {
         final HistoryFrame currentHistoryFrame = getModel().getProject().getAllHistoryFrames().get(currentIndex);
-        currentHistoryFrame.setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + currentHistoryFrame.getIndex()  + getModel().getProject().getFileType());
+        currentHistoryFrame.setPath(getModel().getProject().getPath() + "/" + getModel().getProject().getName() + currentHistoryFrame.getIndex()  + getModel().getProject().getFileType());
         ImagePrinter.getInstance().printOneFrame(currentframe,
-                    getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + currentIndex + getModel().getProject().getFileType(),
+                    getModel().getProject().getPath() + "/" + getModel().getProject().getName() + currentIndex + getModel().getProject().getFileType(),
                     FileTypes.PNG.toString(), 4);
         this.currentIndex = index;
         this.currentframe = getModel().getProject().getAllFrames().get(index);
