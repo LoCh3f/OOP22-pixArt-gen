@@ -19,9 +19,7 @@ public class TimerThread extends Thread {
         this.remainingTime = remainingTime;
     }
 
-    /**
-     * Run timer.
-     */
+    @Override
     public void run() {
         while (this.timer.isRunning()) {
 

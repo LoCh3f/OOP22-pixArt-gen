@@ -23,15 +23,15 @@ public final class Bucket extends AbstractTool {
 
     @Override
     public Set<Pixel> updateGrid(final Pixel pixel, final Set<Pixel> frame) {
-        Map<Pair<Integer, Integer>, Pixel> frameMap = getFrameMap(frame);
-        Set<Pixel> newSet = new HashSet<>();
-        Color oldColor = pixel.getColor();
+        final Color oldColor = pixel.getColor();
 
         if (oldColor.equals(this.selectedColor)) {
             return Collections.emptySet(); 
         }
 
-        Queue<Pixel> queue = new LinkedList<>();
+        final Map<Pair<Integer, Integer>, Pixel> frameMap = getFrameMap(frame);
+        final Set<Pixel> newSet = new HashSet<>();
+        final Queue<Pixel> queue = new LinkedList<>();
         queue.add(pixel);
 
         while (!queue.isEmpty()) {
@@ -53,10 +53,7 @@ public final class Bucket extends AbstractTool {
 
     private boolean isValid(final Map<Pair<Integer, Integer>, Pixel> frame, 
                             final int x, final int y, final Color oldColor, final Color newColor) {
-        if (frame.get(new Pair<>(x, y)).getColor() != oldColor || frame.get(new Pair<>(x, y)).getColor() == newColor) {
-            return false;
-        }
-        return true;
+        return !(frame.get(new Pair<>(x, y)).getColor().equals(oldColor)) || frame.get(new Pair<>(x, y)).getColor().equals(newColor);
     }
 
     private Map<Pair<Integer, Integer>, Pixel> getFrameMap(final Set<Pixel> frame) {

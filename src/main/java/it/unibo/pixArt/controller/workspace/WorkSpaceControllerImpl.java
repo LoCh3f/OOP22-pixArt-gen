@@ -51,7 +51,9 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     public void setCurrentFrame(final int index) {
         final HistoryFrame currentHistoryFrame = getModel().getProject().getAllHistoryFrames().get(currentIndex);
         currentHistoryFrame.setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + currentHistoryFrame.getIndex()  + getModel().getProject().getFileType());
-        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + currentIndex + getModel().getProject().getFileType(), FileTypes.PNG);
+        ImagePrinter.getInstance().printOneFrame(currentframe,
+                    getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + currentIndex + getModel().getProject().getFileType(),
+                    FileTypes.PNG.toString(), 4);
         this.currentIndex = index;
         this.currentframe = getModel().getProject().getAllFrames().get(index);
     }
@@ -79,7 +81,9 @@ public class WorkSpaceControllerImpl extends SimpleController implements WorkSpa
     @Override
     public void addNewFrame() {
         final int lastIndex = getModel().getProject().getLastHistoryFrame().getIndex();
-        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + currentIndex + getModel().getProject().getFileType(), FileTypes.PNG);
+        ImagePrinter.getInstance().printOneFrame(currentframe,
+                getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + currentIndex + getModel().getProject().getFileType(),
+                FileTypes.PNG.toString(), 4);
         this.getHistoryFrames().get(currentIndex).setPath(getModel().getProject().getPath() + File.separatorChar + getModel().getProject().getName() + currentIndex + getModel().getProject().getFileType());
         this.getModel().getProject().addNewFrame();
         this.getModel().getProject().addNewHistoryFrame(lastIndex + 1);
