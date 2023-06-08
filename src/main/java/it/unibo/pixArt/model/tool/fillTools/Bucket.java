@@ -29,9 +29,9 @@ public final class Bucket extends AbstractTool {
             return Collections.emptySet(); 
         }
 
-        final Map<Pair<Integer, Integer>, Pixel> frameMap = getFrameMap(frame);
-        final Set<Pixel> newSet = new HashSet<>();
-        final Queue<Pixel> queue = new LinkedList<>();
+        Map<Pair<Integer, Integer>, Pixel> frameMap = getFrameMap(frame);
+        Set<Pixel> newSet = new HashSet<>();
+        Queue<Pixel> queue = new LinkedList<>();
         queue.add(pixel);
 
         while (!queue.isEmpty()) {
@@ -53,7 +53,10 @@ public final class Bucket extends AbstractTool {
 
     private boolean isValid(final Map<Pair<Integer, Integer>, Pixel> frame, 
                             final int x, final int y, final Color oldColor, final Color newColor) {
-        return !(frame.get(new Pair<>(x, y)).getColor().equals(oldColor)) || frame.get(new Pair<>(x, y)).getColor().equals(newColor);
+        if (frame.get(new Pair<>(x, y)).getColor() != oldColor || frame.get(new Pair<>(x, y)).getColor() == newColor) {
+            return false;
+        }
+        return true;
     }
 
     private Map<Pair<Integer, Integer>, Pixel> getFrameMap(final Set<Pixel> frame) {

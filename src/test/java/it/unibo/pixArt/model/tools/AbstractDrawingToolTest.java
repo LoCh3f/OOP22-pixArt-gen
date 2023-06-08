@@ -26,8 +26,8 @@ class AbstractDrawingToolTest {
 
     @Test
     void calculatePosition2() {
-        assertEquals(16, tool.calculatePosition(TEST_PIXEL2, 3, 16).getX());
-        assertEquals(12, tool.calculatePosition(TEST_PIXEL2, 3, 16).getY());
+        assertEquals(12, tool.calculatePosition(TEST_PIXEL2, 3, 16).getX());
+        assertEquals(16, tool.calculatePosition(TEST_PIXEL2, 3, 16).getY());
     }
 
 

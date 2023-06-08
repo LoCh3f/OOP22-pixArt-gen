@@ -1,5 +1,6 @@
 package it.unibo.pixArt.model.tool;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -22,7 +23,20 @@ public abstract class AbstractDrawingTool extends AbstractTool {
     }
 
     @Override
-    public abstract Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame);
+    public Set<Pixel> updateGrid(Pixel pixel, Set<Pixel> frame){
+        final Set<Pixel> newPixSet = new HashSet<>();
+        Pair<Integer, Integer> oppositePixPos = calculatePosition(pixel, getToolSize(), super.getFrameSize(frame));
+
+        for (var x: range(pixel.getPosition().getX(), oppositePixPos.getX())) {
+            for (var y: range(pixel.getPosition().getY(), oppositePixPos.getY())) {
+                this.updatePixel(frame, x, y, newPixSet);
+            }
+        }
+
+        return newPixSet;
+    }
+
+    public abstract void updatePixel(final Set<Pixel> frame, final int x, final int y, final Set<Pixel> newPixSet);
 
     /**
      * @param p pixel 

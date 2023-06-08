@@ -77,7 +77,6 @@ public final class FileHandler {
     }
 
     /**
-     * 
      * @param path The path of the folder or file to be deleted
      */
     public void deleteFile(final String path) {

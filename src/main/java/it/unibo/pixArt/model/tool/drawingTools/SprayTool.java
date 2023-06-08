@@ -3,10 +3,9 @@ package it.unibo.pixArt.model.tool.drawingTools;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
 import it.unibo.pixArt.model.tool.AbstractDrawingTool;
-import it.unibo.pixArt.utilities.Pair;
+
 import javafx.scene.paint.Color;
 
-import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
@@ -20,22 +19,14 @@ public final class SprayTool extends AbstractDrawingTool {
     }
 
     @Override
-    public Set<Pixel> updateGrid(final Pixel pixel, final Set<Pixel> frame) {
-        final Set<Pixel> newPixSet = new HashSet<>();
-        Pair<Integer, Integer> oppositePixPos = calculatePosition(pixel, super.getToolSize() * 2, super.getFrameSize(frame));
-        Pixel tempPix;
+    public void updatePixel(Set<Pixel> frame, int x, int y, Set<Pixel> newPixSet) {
+        final Pixel tempPix;
         Random rand = new Random();
-
-        for (var x : range(pixel.getPosition().getX(), oppositePixPos.getX())) {
-            for (var y : range(pixel.getPosition().getY(), oppositePixPos.getY())) {
-                tempPix = new PixelBuilder.PxlBuilder().setX(x).setY(y).build();
-                if (rand.nextBoolean()) {
-                    tempPix.setColor(selectedColor);
-                    newPixSet.add(tempPix);
-                }
-            }
+        tempPix = new PixelBuilder.PxlBuilder().setX(x).setY(y).build();
+        if (rand.nextBoolean()) {
+            tempPix.setColor(selectedColor);
+            newPixSet.add(tempPix);
         }
-        return newPixSet;
     }
 
 }

@@ -1,15 +1,11 @@
 package it.unibo.pixArt.controller.game;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.SimpleController;
-import it.unibo.pixArt.model.game.Game;
-import it.unibo.pixArt.model.game.GameImpl;
 import it.unibo.pixArt.model.game.GameLevels;
 import it.unibo.pixArt.model.game.GameType;
 import it.unibo.pixArt.model.game.builder.GameBuilderImpl;
