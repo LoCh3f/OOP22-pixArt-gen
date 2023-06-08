@@ -3,13 +3,15 @@ package it.unibo.pixArt.model.framestate;
 import java.util.Set;
 
 import it.unibo.pixArt.model.pixel.Pixel;
-
+/**
+ * doc.
+ */
 public interface FrameState {
     /**
-     * @param action Adds a new state in the state stack
+     * @param snapshot Adds a new state in the state stack.
      * 
      */
-    void setState(final Set<Pixel> snapshot);
+    void setState(Set<Pixel> snapshot);
 
     /**
      * @return Returns the previous state of the frame and pops it from the stack.
