@@ -1,9 +1,11 @@
 package it.unibo.pixArt.model;
-
 import it.unibo.pixArt.model.game.Game;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.user.User;
 
+/**
+ * interface for Model.
+ */
 public interface Model {
 
     /**
@@ -14,8 +16,9 @@ public interface Model {
     /**
      * @param name of the user
      * @param path where to save the files created by the user.
+     * @param password user's password.
      */
-    void setUser(final String name, final String password, final String path);
+    void setUser(String name, String password, String path);
 
     /**
      * @return the project the user is currently working on(null if no project has been selected).
@@ -25,15 +28,15 @@ public interface Model {
     /**
      * @param project set the project the use is working on.
      */
-    void setProject(final Project project);
+    void setProject(Project project);
 
     /**
-     * @return the game
+     * @return the game.
      */
     Game getGame();
 
     /**
-     * @param game the game
+     * @param game the game.
      */
-    void setGame(final Game game);
+    void setGame(Game game);
 }
