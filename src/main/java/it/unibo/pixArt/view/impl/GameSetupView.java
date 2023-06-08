@@ -78,7 +78,6 @@ public class GameSetupView extends AbstractFXView {
         this.gameDescription.setText(getGameSetupController().getGameTypes().get(0).getDescription());
         this.gameDescription.setWrapText(true);
         this.projectsList.getSelectionModel().select(0);
-        System.out.println(typeChoiceBox.getSelectionModel().getSelectedItem());
     }
 
     private GameSetupController getGameSetupController() {
