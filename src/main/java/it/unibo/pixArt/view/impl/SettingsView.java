@@ -40,7 +40,7 @@ public class SettingsView extends AbstractFXView {
         /*
          * Create the project based on the values taken from the javafx components.
          */
-        this.getSettingsController().createProject(projectName.getText(),pathName.getText() + File.separatorChar + projectName.getText(),
+        this.getSettingsController().createProject(projectName.getText(),pathName.getText() + "/" + projectName.getText(),
         fileFormat.getValue(),Integer.parseInt(sizeChoice.getValue()));
         if(FileHandler.getInstance().initProjectFolder(this.getController().getModel().getProject().getPath())){
             PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, this.getController().getModel());

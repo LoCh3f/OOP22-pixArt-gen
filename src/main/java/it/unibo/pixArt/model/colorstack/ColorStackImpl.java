@@ -16,12 +16,6 @@ public class ColorStackImpl implements ColorStack {
     private int initialSize;
 
     public ColorStackImpl(final Map<Color, Set<Pixel>> colorMap, final int size) {
-        /*final List<Color> colors = pixels.stream().map(e -> e.getColor()).distinct().collect(Collectors.toList());
-        for (var elem : colors) {
-            final Set<Pixel> colorSet = pixels.stream().filter(e -> e.getColor().equals(elem))
-                    .collect(Collectors.toSet());
-            this.colorMap.put(elem, colorSet);
-        }*/
         this.colorMap = new HashMap<>(colorMap);
         this.initialSize = size;
     }

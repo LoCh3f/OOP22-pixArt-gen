@@ -13,7 +13,7 @@ import java.io.IOException;
 
 
 public class PageLoader {
-    private final static String PATH_START = "pages" + File.separatorChar;
+    private final static String PATH_START = "pages/";
 
     private final static String PATH_END = ".fxml";
 
@@ -61,7 +61,7 @@ public class PageLoader {
         view.setController(controller);
         view.setStage(stage);
         view.init();
-
+        System.out.println("ciao");
 
         stage.show();
     }
