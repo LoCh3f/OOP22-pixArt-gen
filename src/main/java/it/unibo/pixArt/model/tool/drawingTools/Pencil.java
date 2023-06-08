@@ -17,7 +17,7 @@ public final class Pencil extends AbstractDrawingTool {
     }
 
     @Override
-    public void updatePixel(Set<Pixel> frame, int x, int y, Set<Pixel> newPixSet) {
+    public void updatePixel(final Set<Pixel> frame, final int x, final int y, final Set<Pixel> newPixSet) {
         final Pixel tempPix;
         tempPix = new PixelBuilder.PxlBuilder().setY(y).setX(x).build();
         tempPix.setColor(this.selectedColor);

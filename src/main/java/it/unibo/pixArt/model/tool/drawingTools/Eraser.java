@@ -14,7 +14,7 @@ public final class Eraser extends AbstractDrawingTool {
     }
 
     @Override
-    public void updatePixel(Set<Pixel> frame, int x, int y, Set<Pixel> newPixSet) {
+    public void updatePixel(final Set<Pixel> frame, final int x, final int y, final Set<Pixel> newPixSet) {
         final Pixel tempPix;
         tempPix = new PixelBuilder.PxlBuilder().setX(x).setY(y).build();
         tempPix.setColor(Color.WHITE);

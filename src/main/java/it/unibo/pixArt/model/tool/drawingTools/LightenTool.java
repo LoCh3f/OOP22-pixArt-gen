@@ -13,7 +13,7 @@ public final class LightenTool extends AbstractDrawingTool {
     }
 
     @Override
-    public void updatePixel(Set<Pixel> frame, int x, int y, Set<Pixel> newPixSet) {
+    public void updatePixel(final Set<Pixel> frame, final int x, final int y, final Set<Pixel> newPixSet) {
         final Pixel tempPix;
         tempPix = frame.stream().filter(p -> p.getPosition().equals(new Pair<>(x, y))).findFirst().get();
         tempPix.setColor(tempPix.getColor().brighter());

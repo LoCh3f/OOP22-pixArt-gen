@@ -1,6 +1,6 @@
 package it.unibo.pixArt.model.timer;
 
-public class TimerThread extends Thread {
+public final class TimerThread extends Thread {
 
     private static final long TIMESLEEP = 200;
 

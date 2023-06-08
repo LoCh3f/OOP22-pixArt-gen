@@ -2,12 +2,10 @@ package it.unibo.pixArt.view.game;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import it.unibo.pixArt.controller.game.GameController;
 import it.unibo.pixArt.model.game.GameType;
-import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.timer.TimerThread;
 
 
@@ -15,7 +13,6 @@ import it.unibo.pixArt.utilities.parser.GridPaneParser;
 import it.unibo.pixArt.utilities.parser.PixelsParser;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.abilitytest.Logic;
-import it.unibo.pixArt.view.abilitytest.TesterEnum;
 import it.unibo.pixArt.view.abilitytest.TesterLogic;
 import it.unibo.pixArt.view.components.PixelsPane;
 import it.unibo.pixArt.view.components.StageDistribution;
@@ -24,11 +21,8 @@ import it.unibo.pixArt.view.pages.Pages;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
-import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
