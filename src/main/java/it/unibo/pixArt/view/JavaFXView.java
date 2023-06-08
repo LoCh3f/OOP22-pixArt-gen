@@ -14,5 +14,8 @@ public interface JavaFXView extends View {
      */
     void setStage(Stage stage);
 
+    /**
+     * Method to execute some tasks after the stage switch.
+     */
     void init();
 }
