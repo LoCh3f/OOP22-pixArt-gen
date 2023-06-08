@@ -5,14 +5,19 @@ import java.util.Set;
 import java.util.Stack;
 
 import it.unibo.pixArt.model.pixel.Pixel;
-
-public class FrameStateImpl implements FrameState {
+/**
+ * doc.
+ */
+public final class FrameStateImpl implements FrameState {
     private Stack<Set<Pixel>> stateStack = new Stack<>();
 
+    /**
+     * Constructor for FrameStateImpl.
+     */
     public FrameStateImpl() {
-        
+
     }
-    
+
     @Override
     public void setState(final Set<Pixel> newState) {
        this.stateStack.push(newState);
@@ -37,7 +42,7 @@ public class FrameStateImpl implements FrameState {
     }
 
     @Override
-    public int size(){
+    public int size() {
         return stateStack.size();
     }
 
@@ -45,5 +50,5 @@ public class FrameStateImpl implements FrameState {
     public void emptyStack() {
         this.stateStack = new Stack<>();
     }
-    
+
 }
