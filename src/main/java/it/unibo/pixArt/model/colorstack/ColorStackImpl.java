@@ -1,12 +1,9 @@
 package it.unibo.pixArt.model.colorstack;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 import javafx.scene.paint.Color;
