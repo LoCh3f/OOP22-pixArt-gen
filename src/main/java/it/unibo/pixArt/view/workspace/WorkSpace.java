@@ -183,9 +183,9 @@ public class WorkSpace extends AbstractFXView {
         choices.add("16");
 
         ChoiceDialog<String> dialog = new ChoiceDialog<>("1", choices);
-        dialog.setTitle("Scelta scala");
+        dialog.setTitle("Choose the scale");
         dialog.setHeaderText(null);
-        dialog.setContentText("Seleziona la scala:");
+        dialog.setContentText("Select the scale:");
 
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()){
