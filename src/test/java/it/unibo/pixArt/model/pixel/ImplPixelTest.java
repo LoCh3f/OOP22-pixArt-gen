@@ -19,9 +19,10 @@ class ImplPixelTest {
 
     @Test
     void getColor() {
-        assertEquals(TEST_PIXEL.getColor(), Color.WHITE);
+        TEST_PIXEL.setColor(Color.WHITE);
+        assertEquals(Color.WHITE,TEST_PIXEL.getColor());
         TEST_PIXEL.setColor(Color.BLACK);
-        assertEquals(TEST_PIXEL.getColor(), Color.BLACK);
+        assertEquals(Color.BLACK,TEST_PIXEL.getColor());
     }
 
     @Test
