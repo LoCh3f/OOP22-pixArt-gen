@@ -12,9 +12,9 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
- * Simple implementation of Matrix;
+ * Simple implementation of Matrix.
  */
-public class PixelMatrix implements Matrix {
+public final class PixelMatrix implements Matrix {
     private final int rows;
     private final int columns;
     private final Set<Pixel> pixels;
@@ -34,34 +34,55 @@ public class PixelMatrix implements Matrix {
         }
     }
 
-    public static class MatrixBuilder {
+    /**
+     * Builder for the matrix.
+     */
+    public static final class MatrixBuilder {
         private int rows;
         private int columns;
+        private Set<Pixel> toCopy;
 
-        private final Set<Pixel> toCopy;
-
+        /**
+         * Default constructor.
+         */
         public MatrixBuilder() {
             this.rows = 0;
             this.columns = 0;
             this.toCopy = new HashSet<>();
         }
 
+        /**
+         * @param rows the number of rows of the matrix
+         * @return the builder
+         */
         public MatrixBuilder setRows(final int rows) {
             this.rows = rows;
             return this;
         }
 
 
+        /**
+         * @param columns the number of columns of the matrix
+         * @return the builder
+         */
         public MatrixBuilder setColumns(final int columns) {
             this.columns = columns;
             return this;
         }
 
+        /**
+         * @param p the pixel to copy
+         * @return the builder
+         */
         public MatrixBuilder setToCopy(final Pixel p) {
             this.toCopy.add(p);
             return this;
         }
 
+        /**
+         * @return the matrix
+         * @throws IllegalStateException if the rows or the columns are less than 16
+         */
         public PixelMatrix build() throws IllegalStateException {
             if (this.rows < 16 || this.columns < 16) {
                 throw new IllegalStateException("Rows and columns must be greater than 16");
@@ -76,7 +97,7 @@ public class PixelMatrix implements Matrix {
      * {@inheritDoc}
      */
     @Override
-    public void update(final Consumer<Pixel> consumer, Pixel pixel) {
+    public void update(final Consumer<Pixel> consumer, final Pixel pixel) {
         this.pixels.forEach(consumer);
     }
 
@@ -109,14 +130,17 @@ public class PixelMatrix implements Matrix {
      */
     @Override
     public Set<Pixel> getPixels() {
-        return this.pixels.stream().map(e -> new PixelBuilder.PxlBuilder().setColor(e.getColor()).setX(e.getPosition().getX()).setY(e.getPosition().getY()).build()).collect(Collectors.toSet());
+        return this.pixels.stream().map(e -> new PixelBuilder
+                .PxlBuilder().setColor(e.getColor())
+                .setX(e.getPosition().getX()).setY(e.getPosition().getY())
+                .build()).collect(Collectors.toSet());
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPixel(Set<Pixel> pixels) {
+    public void setPixel(final Set<Pixel> pixels) {
 
         for (Pixel pixel : pixels) {
             this.pixels.forEach(p -> {
