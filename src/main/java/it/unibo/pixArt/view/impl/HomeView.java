@@ -2,7 +2,7 @@ package it.unibo.pixArt.view.impl;
 
 import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.view.AbstractFXView;
-import it.unibo.pixArt.view.pages.PageLoader;
+import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,22 +38,22 @@ public class HomeView extends AbstractFXView {
 
     @FXML
     public void onNewGame(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.GAMESETUP, this.getController().getModel());
+        SceneManager.getInstance().switchPage(this.getStage(), Pages.GAMESETUP, this.getController().getModel());
     }
 
     @FXML
     public void onWorkSpaceClick(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.SETTINGS, this.getController().getModel());
+        SceneManager.getInstance().switchPage(this.getStage(), Pages.SETTINGS, this.getController().getModel());
     }
 
     @FXML
     public void onProjectHistoryClick(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.HISTORY, this.getController().getModel());
+        SceneManager.getInstance().switchPage(this.getStage(), Pages.HISTORY, this.getController().getModel());
     }
 
     @FXML
     public void onBackClick(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.LOGIN, new ModelImpl(null, null, null, null , null));
+        SceneManager.getInstance().switchPage(this.getStage(), Pages.LOGIN, new ModelImpl(null, null, null, null , null));
     }
 
     @Override

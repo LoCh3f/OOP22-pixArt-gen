@@ -10,7 +10,7 @@ import it.unibo.pixArt.controller.project.ProjectController;
 import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.view.AbstractFXView;
-import it.unibo.pixArt.view.pages.PageLoader;
+import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -44,7 +44,7 @@ public class ProjectView extends AbstractFXView {
     }
 
     public void onHomeClick(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
+        SceneManager.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
     }
 
     public void onEditClick(final ActionEvent event) {
@@ -52,7 +52,7 @@ public class ProjectView extends AbstractFXView {
             try {
                 Project project = FileHandler.getInstance().fromJsonToProject(new File(this.getProjectController().getJsonPath(selFolder)));
                 this.getController().getModel().setProject(project);
-                PageLoader.getInstance().switchPage(getStage(), Pages.WORKSPACE, this.getController().getModel());
+                SceneManager.getInstance().switchPage(getStage(), Pages.WORKSPACE, this.getController().getModel());
             } catch (IOException e) {
                 e.printStackTrace();
             }

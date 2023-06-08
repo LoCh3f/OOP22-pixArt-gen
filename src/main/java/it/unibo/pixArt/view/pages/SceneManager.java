@@ -8,26 +8,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
 
-public class PageLoader {
+public class SceneManager {
     private final static String PATH_START = "pages/";
 
     private final static String PATH_END = ".fxml";
 
-    private final static int ANIMATION_TIME = 300;
-
     private static class LazyHolder {
-        private static final PageLoader SINGLETON = new PageLoader();
+        private static final SceneManager SINGLETON = new SceneManager();
     }
 
 
-    private PageLoader() {
+    private SceneManager() {
     }
 
-    public static PageLoader getInstance() {
+    public static SceneManager getInstance() {
         return LazyHolder.SINGLETON;
     }
 

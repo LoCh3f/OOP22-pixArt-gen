@@ -6,7 +6,7 @@ import java.io.IOException;
 import it.unibo.pixArt.controller.login.LoginController;
 import it.unibo.pixArt.model.user.validator.ValidationResult;
 import it.unibo.pixArt.view.AbstractFXView;
-import it.unibo.pixArt.view.pages.PageLoader;
+import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -107,7 +107,7 @@ public final class LoginView extends AbstractFXView {
     public void onLoginClick(final ActionEvent event) throws IOException {
         if (this.loginValidate(this.usernameLoginField.getText(), this.passwordLoginField.getText())) {
             if (this.getLoginController().login(this.usernameLoginField.getText(), this.passwordLoginField.getText())) {
-                PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
+                SceneManager.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
             } else {
                 this.loginResult.setText("Username or password incorrect");
             }
@@ -121,7 +121,7 @@ public final class LoginView extends AbstractFXView {
             this.passwordRegisterField.getText(), this.pathField.getText())) {
             if (this.getLoginController().register(this.usernameRegisterField.getText(), 
                 this.passwordRegisterField.getText(), this.pathField.getText())) {
-                PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
+                SceneManager.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
             } else {
                 this.passwordValidation.setText(null);
                 this.usernameValidation.setText(null);
@@ -135,7 +135,7 @@ public final class LoginView extends AbstractFXView {
     public void onLoginAsGuestClick(final ActionEvent event) {
         if (this.guestLoginValidate(this.pathField.getText())) {
             this.getLoginController().guestLogin(this.pathField.getText());
-            PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
+            SceneManager.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
         }
         this.guestLoginResult.setText("Choose a path");
     }
