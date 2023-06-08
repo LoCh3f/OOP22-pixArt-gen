@@ -1,7 +1,7 @@
 package it.unibo.pixArt;
 
 import it.unibo.pixArt.model.ModelImpl;
-import it.unibo.pixArt.view.pages.PageLoader;
+import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -22,6 +22,6 @@ public class App extends Application {
         primaryStage.getIcons().add(new Image("image/mainIcon.png"));
 
 
-        PageLoader.getInstance().switchPage(primaryStage, Pages.LOGIN, new ModelImpl(null, null, null, null, null));
+        SceneManager.getInstance().switchPage(primaryStage, Pages.LOGIN, new ModelImpl(null, null, null, null, null));
     }
 }

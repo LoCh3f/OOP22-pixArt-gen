@@ -4,7 +4,7 @@ import java.io.File;
 import it.unibo.pixArt.controller.settings.SettingsController;
 import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.view.AbstractFXView;
-import it.unibo.pixArt.view.pages.PageLoader;
+import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,13 +43,13 @@ public class SettingsView extends AbstractFXView {
         this.getSettingsController().createProject(projectName.getText(),pathName.getText() + "/" + projectName.getText(),
         fileFormat.getValue(),Integer.parseInt(sizeChoice.getValue()));
         if(FileHandler.getInstance().initProjectFolder(this.getController().getModel().getProject().getPath())){
-            PageLoader.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, this.getController().getModel());
+            SceneManager.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, this.getController().getModel());
         }
     }
 
     @FXML
     public void discardProject(final ActionEvent event) {
-        PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
+        SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 
     @Override

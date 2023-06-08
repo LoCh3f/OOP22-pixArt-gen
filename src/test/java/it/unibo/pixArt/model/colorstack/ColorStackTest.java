@@ -40,7 +40,7 @@ public class ColorStackTest {
         final Pixel p = grid.getPixels().stream().filter(e -> e.getPosition().getX() == 0 && e.getPosition().getY() == 0).findAny().get();
         this.grid.setPixel(this.tool.updateGrid(p, this.grid.getPixels()));
         final ColorStack stack = new ColorStackImpl(new MatrixConverter().apply(grid.getPixels()),grid.getPixels().size());
-        assertEquals(1, stack.getColorMap().entrySet().stream().filter(e -> e.getKey() == Color.BLACK).count());
+        assertEquals(1, stack.getColorMap().entrySet().stream().filter(e -> e.getKey() == Color.WHITE).count());
         assertEquals(256, stack.getColorMap().values().stream().flatMap(Set::stream).count());
     }
    

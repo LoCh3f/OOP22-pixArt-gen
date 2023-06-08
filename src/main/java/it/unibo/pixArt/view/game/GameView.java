@@ -19,7 +19,7 @@ import it.unibo.pixArt.view.abilitytest.TesterEnum;
 import it.unibo.pixArt.view.abilitytest.TesterLogic;
 import it.unibo.pixArt.view.components.PixelsPane;
 import it.unibo.pixArt.view.components.StageDistribution;
-import it.unibo.pixArt.view.pages.PageLoader;
+import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -78,7 +78,7 @@ public class GameView extends AbstractFXView {
         if (this.getGameController().getTimer().isRunning()) {
             this.getGameController().getTimer().stop();
         }
-        PageLoader.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
+        SceneManager.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
     }
 
     @Override
@@ -173,11 +173,11 @@ public class GameView extends AbstractFXView {
         root.getChildren().addAll(gameOver, correctPercentage, homeButton, newGameButton);
         homeButton.setOnMouseClicked(e -> {
             secondStage.close();
-            Platform.runLater(() -> PageLoader.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel()));
+            Platform.runLater(() -> SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel()));
         });
         newGameButton.setOnMouseClicked(e -> {
             secondStage.close();
-            Platform.runLater(() -> PageLoader.getInstance().switchPage(this.getStage(), Pages.GAMESETUP, this.getController().getModel()));
+            Platform.runLater(() -> SceneManager.getInstance().switchPage(this.getStage(), Pages.GAMESETUP, this.getController().getModel()));
         });
         secondStage.setWidth(WIDTHGAMEOVER);
         secondStage.setHeight(HEIGHTGAMEOVER);
