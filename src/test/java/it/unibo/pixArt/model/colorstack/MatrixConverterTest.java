@@ -2,7 +2,6 @@ package it.unibo.pixArt.model.colorstack;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;

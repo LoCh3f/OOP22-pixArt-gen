@@ -12,13 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
-import static it.unibo.pixArt.view.components.StageDistribution.PREF_HEIGHT;
-import static it.unibo.pixArt.view.components.StageDistribution.PREF_WIDTH;
 
 public class HomeView extends AbstractFXView {
 

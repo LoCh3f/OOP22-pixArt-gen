@@ -1,7 +1,5 @@
 package it.unibo.pixArt.utilities.variables;
 
-import java.io.File;
-
 public class FXViewVariables {
 
     public static final String FX_BORDER_COLOR = "-fx-border-color:black";

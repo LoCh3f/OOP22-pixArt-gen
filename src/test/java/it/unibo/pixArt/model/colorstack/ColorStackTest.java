@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ColorStackTest {
     private final Matrix grid = new PixelMatrix.MatrixBuilder().setColumns(16).setRows(16).build();
@@ -46,7 +47,7 @@ public class ColorStackTest {
     /*Now we'll remove a pixel from a set, and check that the total number of pixels has decreased. */
     @Test
     void checkRemovePixel() {
-        Pixel p = grid.getPixels().stream().toList().get(0);
+        Pixel p = grid.getPixels().stream().collect(Collectors.toList()).get(0);
         this.stack = new ColorStackImpl(this.converter.apply(grid.getPixels()), grid.getPixels().size());
         this.stack.removePixel(Color.WHITE, p);
         assertEquals(1, stack.getColorMap().entrySet().stream().filter(e -> e.getKey() == Color.WHITE).count());

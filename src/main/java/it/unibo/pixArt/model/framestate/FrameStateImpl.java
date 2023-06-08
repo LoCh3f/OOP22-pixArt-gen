@@ -1,6 +1,5 @@
 package it.unibo.pixArt.model.framestate;
 
-import java.util.Collections;
 import java.util.EmptyStackException;
 import java.util.Set;
 import java.util.Stack;
