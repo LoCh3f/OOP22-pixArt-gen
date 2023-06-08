@@ -14,13 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Set;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class ColorStackTest {
     private final Matrix grid = new PixelMatrix.MatrixBuilder().setColumns(16).setRows(16).build();
     private MatrixConverter converter = new MatrixConverter();
-    private ColorStack stack; //= new ColorStackImpl(this.converter.apply(grid.getPixels()), grid.getPixels().size());
+    private ColorStack stack;
     private final ToolFactory toolFatory = new ToolFactoryImpl();
     private AbstractTool tool = toolFatory.createTool("BUCKET", Color.BLACK, 1);
 
