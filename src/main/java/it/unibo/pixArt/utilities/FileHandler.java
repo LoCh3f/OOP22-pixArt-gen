@@ -30,7 +30,6 @@ public final class FileHandler {
             .registerTypeAdapter(FrameState.class, InterfaceSerializer.interfaceSerializer(FrameStateImpl.class))
             .registerTypeAdapter(HistoryFrame.class, InterfaceSerializer.interfaceSerializer(HistoryFrameImpl.class))
             .create();
-    private char fileSeparator = File.separatorChar;
 
     private static class LazyHolder {
         private static final FileHandler SINGLETON = new FileHandler();
@@ -50,7 +49,7 @@ public final class FileHandler {
      * @throws IOException
      */
     public void fromProjectToJson(final Project project) throws IOException {
-        FileWriter fWriter = new FileWriter(new File(project.getPath() + fileSeparator + project.getName() + ".json"));
+        FileWriter fWriter = new FileWriter(new File(project.getPath() + File.separatorChar + project.getName() + ".json"));
         fWriter.write(gson.toJson(project));
         fWriter.flush();
         fWriter.close();
@@ -68,7 +67,7 @@ public final class FileHandler {
         StringBuilder sBuilder = new StringBuilder();
         String line = null;
         while ((line = fReader.readLine()) != null) {
-            sBuilder.append(line).append(fileSeparator);
+            sBuilder.append(line).append(File.separatorChar);
         }
         sBuilder.deleteCharAt(sBuilder.length() - 1);
         fReader.close();
