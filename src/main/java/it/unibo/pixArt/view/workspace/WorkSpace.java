@@ -6,8 +6,8 @@ import it.unibo.pixArt.utilities.parser.PixelsParser;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.components.MenuItemBuilder;
 import it.unibo.pixArt.view.components.PixelsPane;
-import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
+import it.unibo.pixArt.view.pages.SceneManager;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,14 +23,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
-import static it.unibo.pixArt.utilities.variables.FXViewVariables.*;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLOR;
+import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
 
 
 public class WorkSpace extends AbstractFXView {
@@ -58,7 +55,7 @@ public class WorkSpace extends AbstractFXView {
 
     @Override
     public void init() {
-        /*Set the first frame and the default tool. Add all the historyframes to the list view and add an event listener. */
+        /*Set the first frame and the default tool. Add all the history frames to the list view and add an event listener. */
         this.getWorkSpaceController().setFirstFrame();
         this.getWorkSpaceController().selectTool("PENCIL", colorPicker.getValue(), (int) toolSizeSlider.getValue());//select the default tool.
 
@@ -117,13 +114,11 @@ public class WorkSpace extends AbstractFXView {
         center.alignmentProperty().set(Pos.CENTER);
         center.prefWidthProperty().bind(root.widthProperty().subtract(leftPane.widthProperty().add(frames.widthProperty())));
         center.prefHeightProperty().bind(this.root.heightProperty().subtract(menubar.heightProperty()));
-        
+
         /*Add event listeners to the menu items */
-        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> {
-            saveAndExit();
-        }).build());
+        this.menubar.getMenus().get(0).getItems().add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> saveAndExit()).build());
         this.menubar.getMenus().get(0).getItems().get(1).addEventHandler(ActionEvent.ACTION, event -> SceneManager.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel()));
-        
+
         updateView(getWorkSpaceController().getCurrentFrame());
         updateHistoryFrames();
     }
@@ -147,14 +142,14 @@ public class WorkSpace extends AbstractFXView {
     private void onAddFrameClicked() {
         this.getWorkSpaceController().addNewFrame();
         updateView(this.getWorkSpaceController().getCurrentFrame());
-        Platform.runLater(() -> updateHistoryFrames());
+        Platform.runLater(this::updateHistoryFrames);
     }
 
     @FXML
     private void onDeleteClicked() {
         this.getWorkSpaceController().deleteCurrentFrame();
         updateView(this.getWorkSpaceController().getCurrentFrame());
-        Platform.runLater(() -> updateHistoryFrames());
+        Platform.runLater(this::updateHistoryFrames);
     }
 
     @FXML
@@ -187,7 +182,7 @@ public class WorkSpace extends AbstractFXView {
         dialog.setContentText("Select the scale:");
 
         Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()){
+        if (result.isPresent()) {
             this.getWorkSpaceController().saveProject(Integer.parseInt(result.get()));
             SceneManager.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
         }
