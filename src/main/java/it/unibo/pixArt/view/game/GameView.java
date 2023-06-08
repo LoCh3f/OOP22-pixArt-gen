@@ -244,7 +244,7 @@ public class GameView extends AbstractFXView {
             button.setText("");
             setPixelsLeft();
         }
-        if (getGameController().colorStackIsEmpty()) {
+        if (getGameController().getType() == GameType.COLORBOOK && getGameController().colorStackIsEmpty()) {
             onGameFinish();
         }
     }

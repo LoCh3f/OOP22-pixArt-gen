@@ -25,7 +25,7 @@ public abstract class AbstractDrawingTool extends AbstractTool {
     @Override
     public Set<Pixel> updateGrid(final Pixel pixel, final Set<Pixel> frame) {
         final Set<Pixel> newPixSet = new HashSet<>();
-        Pair<Integer, Integer> oppositePixPos = calculatePosition(pixel, getToolSize(), super.getFrameSize(frame));
+        final Pair<Integer, Integer> oppositePixPos = calculatePosition(pixel, getToolSize(), super.getFrameSize(frame));
 
         for (var x: range(pixel.getPosition().getX(), oppositePixPos.getX())) {
             for (var y: range(pixel.getPosition().getY(), oppositePixPos.getY())) {
@@ -55,8 +55,8 @@ public abstract class AbstractDrawingTool extends AbstractTool {
         int x;
         int y;
 
-        x = (p.getPosition().getX() + (increment - 1) > frameSize) ? frameSize : p.getPosition().getX() + (increment - 1);
-        y = (p.getPosition().getY() + (increment - 1) > frameSize) ? frameSize : p.getPosition().getY() + (increment - 1);
+        x = p.getPosition().getX() + (increment - 1) > frameSize ? frameSize : p.getPosition().getX() + (increment - 1);
+        y = p.getPosition().getY() + (increment - 1) > frameSize ? frameSize : p.getPosition().getY() + (increment - 1);
 
         return new Pair<>(x, y);
     }

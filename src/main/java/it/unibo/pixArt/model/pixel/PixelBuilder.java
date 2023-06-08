@@ -17,7 +17,7 @@ public final class PixelBuilder extends ImplPixel {
         private Integer x = -1;
         private Integer y = -1;
 
-        private Color color = Color.TRANSPARENT;
+        private Color color = Color.WHITE;
 
         /**
          * @param x the x coordinate of the pixel
