@@ -26,7 +26,7 @@ public enum GameLevels {
     }
 
     public String getPathToFile() throws IOException {
-        return fileInput();
+        return newPathToFile();
     }
 
     public String getPathToImg() {
@@ -37,7 +37,7 @@ public enum GameLevels {
         return Stream.of(values()).collect(Collectors.toList());
     }
 
-    private String fileInput() throws IOException {
+    private String newPathToFile() throws IOException {
         InputStream inputStream = this.getClass().getResourceAsStream(this.pathToFile);
         new File(System.getProperty("user.home") + File.separatorChar + "PixArtDatas").mkdir();
         File tempFile = new File(System.getProperty("user.home") + "/PixArtDatas/tempGame.json");
