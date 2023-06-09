@@ -6,11 +6,14 @@ import it.unibo.pixArt.model.project.builder.ProjectBuilderImpl;
 
 import java.util.List;
 
-public class SettingsControllerImpl extends SimpleController implements SettingsController {
-    static final String DEF_NAME = "Project1";
-    static final String dimensions[] = {"16", "32", "64"};
-    static final FileTypes DEF_FILETYPE = FileTypes.PNG;
-    static final int DEF_SIZE = 16;
+/**
+ * doc.
+ */
+public final class SettingsControllerImpl extends SimpleController implements SettingsController {
+    private static final String DEF_NAME = "Project1";
+    private static final List<String> DIMENSIONS = List.of("16", "32", "64");
+    private static final FileTypes DEF_FILETYPE = FileTypes.PNG;
+    private static final int DEF_SIZE = 16;
 
     @Override
     public List<String> getFileFormatsList() {
@@ -39,6 +42,6 @@ public class SettingsControllerImpl extends SimpleController implements Settings
 
     @Override
     public List<String> getAvailableSizeList() {
-        return List.of(dimensions);
+        return DIMENSIONS;
     }
 }
