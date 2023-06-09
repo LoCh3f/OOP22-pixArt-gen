@@ -19,7 +19,7 @@ import it.unibo.pixArt.utilities.FileHandler;
  * doc.
  */
 public final class GameSetupControllerImpl extends SimpleController implements GameSetupController {
-    
+
     private List<Project> projects;
     private GameTimer gameTimer;
     private GameType gameType;
@@ -77,5 +77,4 @@ public final class GameSetupControllerImpl extends SimpleController implements G
         getModel().setGame(new GameBuilderImpl().gameTimer(this.gameTimer).gameType(this.gameType).build());
         getModel().setProject(this.projects.get(this.selectedProject));
     }
-    
 }

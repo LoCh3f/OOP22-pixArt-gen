@@ -13,22 +13,22 @@ public class SimpleController implements Controller {
     private View view;
 
     @Override
-    public void setModel(final Model model) {
+    public final void setModel(final Model model) {
         this.model = model;
     }
 
     @Override
-    public void setView(final View view) {
+    public final void setView(final View view) {
         this.view = view;
     }
 
     @Override
-    public Model getModel() {
+    public final Model getModel() {
         return this.model;
     }
 
     @Override
-    public View getView() {
+    public final View getView() {
         return this.view;
     }
 }
