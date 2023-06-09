@@ -7,27 +7,34 @@ import javafx.scene.paint.Color;
 
 import java.util.List;
 import java.util.Set;
-
+/**
+ * interface for WorkSpaceController.
+ */
 public interface WorkSpaceController extends Controller {
 
     /**
      * Method to set the tool that is being currently used.
      *
      * @param toolName the new tool's name
+     * @param color
+     * @param toolSize
      */
-    void selectTool(final String toolName, final Color color, final int toolSize);
+    void selectTool(String toolName, Color color, int toolSize);
 
     /**
      * Method to select the current frame when clicked on the relative historyframe within the view.
      *
      * @param index the frame's index.
      */
-    void setCurrentFrame(final int index);
+    void setCurrentFrame(int index);
 
-   /**Method to color the pixels of the grid.TO BE DONE.
-    * 
+   /**
+    * Method to color the pixels of the grid.TO BE DONE.
+    * @param color
+    * @param x
+    * @param y
     */
-    void colorGrid(final int x, final int y, final Color color);
+    void colorGrid(int x, int y, Color color);
 
     /**
      *Method to get the previous state of the frame.
@@ -57,19 +64,18 @@ public interface WorkSpaceController extends Controller {
     void setIsDrawing();
 
     /**Method to get the value of the flag isDrawing.
-     * 
+     *
      * @return the boolean value of isDrawing.
      */
     boolean getIsDrawing();
 
-    
     /**
-     * @param scale The scale size
+     * @param scale The scale size.
      */
     void saveProject(int scale);
 
-    /** Method to get the current frame
-     * 
+    /** 
+     * Method to get the current frame.
      * @return the set of pixels that make up the curent frame.
      */
     Set<Pixel> getCurrentFrame();
@@ -79,14 +85,14 @@ public interface WorkSpaceController extends Controller {
      */
     void deleteCurrentFrame();
 
-    /*
+    /**
      * Method to set the first frame.
      */
     void setFirstFrame();
 
- /**
-  * Reset the current frame
-  */
+    /**
+    * Reset the current frame.
+    */
     void resetCurrentFrame();
 
 }
