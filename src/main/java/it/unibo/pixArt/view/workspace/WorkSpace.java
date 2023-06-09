@@ -40,7 +40,7 @@ import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLO
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
 
 /**
- * doc.
+ * View where the user edits his/her projects.
  */
 public final class WorkSpace extends AbstractFXView {
     private static final int MAX_WIDTH = 200;

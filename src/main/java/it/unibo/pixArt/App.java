@@ -10,12 +10,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * doc.
+ * Launcher.
  */
 public class App extends Application {
 
     /**
-     * doc.
      * @param args
      */
     public static void main(final String[] args) {

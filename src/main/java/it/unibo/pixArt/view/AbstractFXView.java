@@ -3,7 +3,7 @@ package it.unibo.pixArt.view;
 import javafx.stage.Stage;
 
 /**
- * doc.
+ * Abstract class that extends a SimpleView.
  */
 public abstract class AbstractFXView extends SimpleView implements JavaFXView {
     private Stage stage;

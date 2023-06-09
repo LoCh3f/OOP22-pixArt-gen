@@ -2,7 +2,7 @@ package it.unibo.pixArt.view;
 
 import it.unibo.pixArt.controller.Controller;
 /**
- * doc.
+ * Implementation of a basic view.
  */
 public class SimpleView implements View {
 

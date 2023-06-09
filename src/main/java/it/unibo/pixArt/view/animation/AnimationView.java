@@ -17,7 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- * doc.
+ * view for animating the images of a project.
  */
 public final class AnimationView extends AbstractFXView {
 
