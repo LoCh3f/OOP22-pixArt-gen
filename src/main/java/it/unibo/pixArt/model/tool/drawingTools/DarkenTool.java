@@ -6,9 +6,15 @@ import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.tool.AbstractDrawingTool;
 import it.unibo.pixArt.utilities.Pair;
 
-
+/**
+ * Implementation of Darken Tool.
+ */
 public final class DarkenTool extends AbstractDrawingTool {
 
+    /**
+     * Constructor.
+     * @param toolSize size of the tool.
+     */
     public DarkenTool(final int toolSize) {
         super(toolSize);
     }

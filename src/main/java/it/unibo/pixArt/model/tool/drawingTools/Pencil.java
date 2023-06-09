@@ -7,10 +7,18 @@ import javafx.scene.paint.Color;
 
 import java.util.Set;
 
+/**
+ * Implementation of Pencil. 
+ */
 public final class Pencil extends AbstractDrawingTool {
 
     private final Color selectedColor;
 
+    /**
+     * Constructor
+     * @param selectedColor 
+     * @param size size of the tool
+     */
     public Pencil(final Color selectedColor, final int size) {
         super(size);
         this.selectedColor = selectedColor;

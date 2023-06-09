@@ -7,6 +7,9 @@ import java.util.stream.IntStream;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.utilities.Pair;
 
+/**
+ * Class that implements the methods for generic tools.
+ */
 public abstract class AbstractDrawingTool extends AbstractTool {
 
     private final int toolSize;
@@ -22,6 +25,9 @@ public abstract class AbstractDrawingTool extends AbstractTool {
         return this.toolSize;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Set<Pixel> updateGrid(final Pixel pixel, final Set<Pixel> frame) {
         final Set<Pixel> newPixSet = new HashSet<>();

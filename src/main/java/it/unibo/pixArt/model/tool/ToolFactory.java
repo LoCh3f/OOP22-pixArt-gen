@@ -1,6 +1,9 @@
 package it.unibo.pixArt.model.tool;
 import javafx.scene.paint.Color;
 
+/**
+ * Factory for the creation of tools.
+ */
 public interface ToolFactory {
 
     /**

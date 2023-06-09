@@ -4,6 +4,9 @@ import java.util.Set;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 
+/**
+ * Abstract class for generic tools.
+ */
 public abstract class AbstractTool {
 
     /**

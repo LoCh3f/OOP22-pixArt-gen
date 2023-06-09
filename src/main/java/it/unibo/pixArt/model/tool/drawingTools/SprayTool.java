@@ -9,10 +9,18 @@ import javafx.scene.paint.Color;
 import java.util.Random;
 import java.util.Set;
 
+/**
+ * Implementation of spray tool.
+ */
 public final class SprayTool extends AbstractDrawingTool {
 
     private final Color selectedColor;
 
+    /**
+     * Constructor.
+     * @param selectedColor
+     * @param size size of the tool.
+     */
     public SprayTool(final Color selectedColor, final int size) {
         super(size);
         this.selectedColor = selectedColor;

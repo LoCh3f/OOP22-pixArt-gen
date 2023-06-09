@@ -1,5 +1,8 @@
 package it.unibo.pixArt.model.tool;
 
+/**
+ * Enum for all the variables of tools.
+ */
 public enum ToolEnum {
 
     /**

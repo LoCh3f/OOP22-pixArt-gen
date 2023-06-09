@@ -8,6 +8,9 @@ import it.unibo.pixArt.model.tool.drawingTools.SprayTool;
 import it.unibo.pixArt.model.tool.fillTools.Bucket;
 import javafx.scene.paint.Color;
 
+/**
+ * Implementation of ToolFactory.
+ */
 public final class ToolFactoryImpl implements ToolFactory {
 
     @Override

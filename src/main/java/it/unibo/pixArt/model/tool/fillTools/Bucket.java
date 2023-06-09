@@ -13,10 +13,17 @@ import it.unibo.pixArt.model.tool.AbstractTool;
 import it.unibo.pixArt.utilities.Pair;
 import javafx.scene.paint.Color;
 
+/**
+ * Implementation of Bucket.
+ */
 public final class Bucket extends AbstractTool {
 
     private final Color selectedColor;
 
+    /**
+     * Constructor.
+     * @param selectedColor
+     */
     public Bucket(final Color selectedColor) {
         this.selectedColor = selectedColor;
     }

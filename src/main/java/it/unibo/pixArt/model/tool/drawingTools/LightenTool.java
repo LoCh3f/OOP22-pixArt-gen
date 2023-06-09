@@ -6,8 +6,15 @@ import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.tool.AbstractDrawingTool;
 import it.unibo.pixArt.utilities.Pair;
 
+/**
+ * Implementation of the lighten tool.
+ */
 public final class LightenTool extends AbstractDrawingTool {
 
+    /**
+     * Constructor 
+     * @param toolSize size of the tool
+     */
     public LightenTool(final int toolSize) {
         super(toolSize);
     }
