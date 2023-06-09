@@ -2,6 +2,9 @@ package it.unibo.pixArt.view;
 
 import javafx.stage.Stage;
 
+/**
+ * doc.
+ */
 public interface JavaFXView extends View {
 
     /**
