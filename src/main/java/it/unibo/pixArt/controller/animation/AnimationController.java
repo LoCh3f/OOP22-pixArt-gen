@@ -6,7 +6,7 @@ import it.unibo.pixArt.controller.Controller;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 
 /**
- * doc.
+ * Controller for AnimationView.
  */
 public interface AnimationController extends Controller {
 

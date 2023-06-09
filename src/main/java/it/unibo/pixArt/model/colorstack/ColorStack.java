@@ -6,6 +6,9 @@ import java.util.Set;
 import it.unibo.pixArt.model.pixel.Pixel;
 import javafx.scene.paint.Color;
 
+/**
+ * Class that contains a Map in which K-> Color, V-> Set of pixels of color K.
+ */
 public interface ColorStack {
     /**
      * @return a map that has K->Color, V -> set of pixels of color K.

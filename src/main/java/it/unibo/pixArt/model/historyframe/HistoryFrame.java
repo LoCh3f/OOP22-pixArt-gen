@@ -1,7 +1,7 @@
 package it.unibo.pixArt.model.historyframe;
 
 /**
- * doc.
+ * interface for a HistoryFrame, a class that rappresenta an image correlated to a Matrix.
  */
 public interface HistoryFrame {
     /**

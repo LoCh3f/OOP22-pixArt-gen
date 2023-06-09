@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * doc.
+ * Implementation for WorkSpaceController.
  */
 public final class WorkSpaceControllerImpl extends SimpleController implements WorkSpaceController {
     private Matrix currentframe;

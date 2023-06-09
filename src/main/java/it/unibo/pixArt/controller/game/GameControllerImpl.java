@@ -15,7 +15,7 @@ import it.unibo.pixArt.utilities.MatrixConverter;
 import javafx.scene.paint.Color;
 
 /**
- * doc.
+ * Implementation for GameController.
  */
 public final class GameControllerImpl extends SimpleController implements GameController {
 

@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * doc.
+ * Implementation of Project interface.
  */
 public final class ProjectImpl implements Project {
     private String projectName;

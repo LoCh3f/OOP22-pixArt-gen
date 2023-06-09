@@ -7,7 +7,7 @@ import it.unibo.pixArt.model.project.builder.ProjectBuilderImpl;
 import java.util.List;
 
 /**
- * doc.
+ * Implementation for SettingsController.
  */
 public final class SettingsControllerImpl extends SimpleController implements SettingsController {
     private static final String DEF_NAME = "Project1";

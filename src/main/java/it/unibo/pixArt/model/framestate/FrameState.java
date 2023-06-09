@@ -4,7 +4,7 @@ import java.util.Set;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 /**
- * doc.
+ * A class that memorizes different states of a Matrix.
  */
 public interface FrameState {
     /**
