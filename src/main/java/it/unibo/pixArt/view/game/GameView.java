@@ -43,10 +43,13 @@ import static it.unibo.pixArt.utilities.variables.FXViewVariables.MAIN_ICON;
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLOR;
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
 
+/**
+ * doc.
+ */
 public final class GameView extends AbstractFXView {
 
-    public static final int WIDTHGAMEOVER = 200;
-    public static final int HEIGHTGAMEOVER = 150;
+    private static final int WIDTHGAMEOVER = 200;
+    private static final int HEIGHTGAMEOVER = 150;
     private static final int TIME_DIVISION = 60;
 
     @FXML
@@ -72,7 +75,7 @@ public final class GameView extends AbstractFXView {
     private List<Color> availableColors;
 
     @FXML
-    public void onMenuClick() {
+    private void onMenuClick() {
         if (this.getGameController().getTimer().isRunning()) {
             this.getGameController().getTimer().stop();
         }
@@ -175,7 +178,9 @@ public final class GameView extends AbstractFXView {
         });
         newGameButton.setOnMouseClicked(e -> {
             secondStage.close();
-            Platform.runLater(() -> SceneManager.getInstance().switchPage(this.getStage(), Pages.GAMESETUP, this.getController().getModel()));
+            Platform.runLater(() -> { 
+                SceneManager.getInstance().switchPage(this.getStage(), Pages.GAMESETUP, this.getController().getModel());
+        });
         });
         secondStage.setWidth(WIDTHGAMEOVER);
         secondStage.setHeight(HEIGHTGAMEOVER);
@@ -198,7 +203,10 @@ public final class GameView extends AbstractFXView {
         for (var elem : availableColors) {
             final Button btn = new Button();
             btn.setText(Integer.toString(availableColors.indexOf(elem)));
-            btn.setStyle("-fx-background-color: #" + elem.toString().substring(2) + ";" + FX_BORDER_WIDTH + ";" + FX_BORDER_COLOR);
+            btn.setStyle("-fx-background-color: #"
+            + elem.toString().substring(2)
+            + ";" + FX_BORDER_WIDTH + ";" + FX_BORDER_COLOR);
+            
             btn.addEventHandler(MouseEvent.MOUSE_CLICKED, h -> setSelectedColor(elem));
             btn.setMinWidth(WIDTHGAMEOVER);
             btnList.add(btn);

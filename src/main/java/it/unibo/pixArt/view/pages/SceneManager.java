@@ -60,7 +60,6 @@ public final class SceneManager {
         view.setController(controller);
         view.setStage(stage);
         view.init();
-        System.out.println("ciao");
 
         stage.show();
     }

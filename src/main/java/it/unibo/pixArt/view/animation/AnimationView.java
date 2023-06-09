@@ -46,7 +46,7 @@ public final class AnimationView extends AbstractFXView {
     private static final String STOP = "/image/stopBtn.png";
 
     @FXML
-    public void switchAnimation() {
+    private void switchAnimation() {
         this.getAnimationController().setAnimationIsRunning();
         if (this.getAnimationController().getAnimationIsRunning()) {
             switchBtn.setGraphic(new ImageView(new Image(STOP)));
@@ -56,23 +56,23 @@ public final class AnimationView extends AbstractFXView {
     }
 
     @FXML
-    public void onWorkSpaceClick() {
+    private void onWorkSpaceClick() {
         SceneManager.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, this.getController().getModel());
     }
 
     @FXML
-    public void onExitClick() {
+    private void onExitClick() {
         SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 
     @FXML
-    public void onSaveClick() {
+    private void onSaveClick() {
         getAnimationController().saveProject();
         SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 
     @FXML
-    public void setDuration() {
+    private void setDuration() {
         this.getAnimationController().setFrameDuration(Integer.parseInt(selectedFrame.getText()),
         Integer.parseInt(frameDurationField.getText()));
     }
@@ -92,8 +92,8 @@ public final class AnimationView extends AbstractFXView {
 
         this.frameList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ImageView>() {
 
-            @Override
-            public void changed(final ObservableValue<? extends ImageView> observable, final ImageView oldValue, final ImageView newValue) {
+        @Override
+        public void changed(final ObservableValue<? extends ImageView> observable, final ImageView oldValue, final ImageView newValue) {
                 imageContainer.setImage(frameList.getSelectionModel().getSelectedItem().getImage());
                 selectedFrame.setText(Integer.toString(frameList.getSelectionModel().getSelectedIndex()));
                 selectedFrameDuration.setText(getAnimationController().getHistoryFrames()
@@ -106,6 +106,10 @@ public final class AnimationView extends AbstractFXView {
         });
     }
 
+    /**
+     * Maethod to display an image.
+     * @param path
+     */
     public void displayImage(final String path) {
         imageContainer.setImage(new Image("file:" + path)); 
     }
