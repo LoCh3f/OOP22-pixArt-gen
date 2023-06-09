@@ -1,7 +1,7 @@
 package it.unibo.pixArt.model.timer;
 
 /**
- * Implementation of GameTimer
+ * Implementation of GameTimer.
  **/
 public final class GameTimerImpl implements GameTimer {
 
@@ -10,7 +10,7 @@ public final class GameTimerImpl implements GameTimer {
     private long initialTime;
 
     /**
-     * Constructor 
+     * Constructor.
      * @param timerType
      */
     public GameTimerImpl(final long timerType) {

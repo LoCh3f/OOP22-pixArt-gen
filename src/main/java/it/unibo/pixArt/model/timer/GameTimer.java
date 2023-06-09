@@ -1,5 +1,8 @@
 package it.unibo.pixArt.model.timer;
 
+/**
+ * Interface representing the timer of the game.
+ */
 public interface GameTimer {
 
     /**

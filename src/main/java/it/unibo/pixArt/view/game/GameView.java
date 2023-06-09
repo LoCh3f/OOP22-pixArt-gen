@@ -111,7 +111,7 @@ public final class GameView extends AbstractFXView {
 
         if (getGameController().getType() == GameType.COLORBOOK) {
             this.getGameController().getTimer().start();
-            new TimerThread(this.getGameController().getTimer(), this::onTimeFinish, this::OnTimeUpdate).start();
+            new TimerThread(this.getGameController().getTimer(), this::onTimeFinish, this::onTimeUpdate).start();
             associateButton(center);
         } else {
             tester = new TesterLogic();
@@ -145,7 +145,7 @@ public final class GameView extends AbstractFXView {
         setSelectedColor(availableColors.get(0));
     }
 
-    private void OnTimeUpdate() {
+    private void onTimeUpdate() {
         Platform.runLater(() -> {
             this.timer.setText(timeToString(this.getGameController().getTimer().getRemainingTime()));
         });
@@ -174,7 +174,9 @@ public final class GameView extends AbstractFXView {
         root.getChildren().addAll(gameOver, correctPercentage, homeButton, newGameButton);
         homeButton.setOnMouseClicked(e -> {
             secondStage.close();
-            Platform.runLater(() -> SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel()));
+            Platform.runLater(() -> SceneManager
+                                    .getInstance()
+                                    .switchPage(this.getStage(), Pages.MENU, this.getController().getModel()));
         });
         newGameButton.setOnMouseClicked(e -> {
             secondStage.close();
@@ -218,7 +220,8 @@ public final class GameView extends AbstractFXView {
         for (var btn : grid.getChildren()) {
             for (var entry : getGameController().getColorStack().entrySet()) {
                 for (var pixel : entry.getValue()) {
-                    if (pixel.getPosition().getX() == GridPane.getColumnIndex(btn) && pixel.getPosition().getY() == GridPane.getRowIndex(btn)) {
+                    if (pixel.getPosition().getX() == GridPane.getColumnIndex(btn) 
+                            && pixel.getPosition().getY() == GridPane.getRowIndex(btn)) {
                         final int number = this.availableColors.indexOf(entry.getKey());
                         ((Button) btn).setText(Integer.valueOf(number).toString());
                     }
@@ -234,7 +237,9 @@ public final class GameView extends AbstractFXView {
     }
 
     private void setPixelsLeft() {
-        final String numPixelsLeft = Integer.valueOf(this.getGameController().getColorStack().get(this.selectedColor).size()  - 1).toString();
+        final String numPixelsLeft = Integer.valueOf(this.getGameController()
+                                                    .getColorStack()
+                                                    .get(this.selectedColor).size()  - 1).toString();
         this.pixelsField.setText("Pixels left: " + numPixelsLeft);
     }
 
@@ -250,9 +255,11 @@ public final class GameView extends AbstractFXView {
 
     private void colorButton(final Event event) {
         final var button = (Button) event.getSource();
-        boolean checkPixel = getGameController().checkPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), selectedColor);
+        boolean checkPixel = getGameController()
+                            .checkPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), selectedColor);
         if (checkPixel) {
-            button.setStyle("-fx-background-color: #" + selectedColor.toString().substring(2) + ";" + FX_BORDER_WIDTH + ";" + FX_BORDER_COLOR);
+            button.setStyle("-fx-background-color: #" + selectedColor.toString().substring(2) 
+                            + ";" + FX_BORDER_WIDTH + ";" + FX_BORDER_COLOR);
             button.setText("");
             setPixelsLeft();
         }
