@@ -22,6 +22,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.Alert.AlertType;
 
+/**The view for the Projects History Stage.
+ */
 public final class ProjectView extends AbstractFXView {
 
     @FXML
@@ -44,11 +46,13 @@ public final class ProjectView extends AbstractFXView {
         });
     }
 
-    public void onHomeClick(final ActionEvent event) {
+    @FXML
+    private void onHomeClick(final ActionEvent event) {
         SceneManager.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
     }
 
-    public void onEditClick(final ActionEvent event) {
+    @FXML
+    private void onEditClick(final ActionEvent event) {
         if (selFolder != null) {
             try {
                 Project project = FileHandler.getInstance().fromJsonToProject(
@@ -61,7 +65,8 @@ public final class ProjectView extends AbstractFXView {
         }
     }
 
-    public void onDeleteClick(final ActionEvent event) {
+    @FXML
+    private void onDeleteClick(final ActionEvent event) {
         if (selFolder != null) {
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Delete File");
