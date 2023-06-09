@@ -12,18 +12,17 @@ import it.unibo.pixArt.utilities.ImagePrinter;
 import it.unibo.pixArt.view.animation.AnimationView;
 import javafx.scene.control.ChoiceDialog;
 
-
-public class AnimationControllerImpl extends SimpleController implements AnimationController {
+/**
+ * doc.
+ */
+public final class AnimationControllerImpl extends SimpleController implements AnimationController {
     private Boolean isRunning = false;
     private int index = 0;
-
-    public AnimationControllerImpl() {
-    }
 
     private class Animator extends Thread {
         @Override
         public void run() {
-            while(isRunning){
+            while (isRunning) {
                 final HistoryFrame currentFrame = getCurrentImage();
                 getAnimationView().displayImage(currentFrame.getPath());
                 try {
@@ -43,7 +42,7 @@ public class AnimationControllerImpl extends SimpleController implements Animati
 
     @Override
     public void setAnimationIsRunning() {
-        if(!this.isRunning) {
+        if (!this.isRunning) {
             this.index = 0;
             final Thread th = new Animator();
             th.start();
@@ -53,7 +52,7 @@ public class AnimationControllerImpl extends SimpleController implements Animati
 
     @Override
     public HistoryFrame getCurrentImage() { 
-        if(this.index == getHistoryFrames().size()  || this.index == 0) {
+        if (this.index == getHistoryFrames().size()  || this.index == 0) {
             this.index = 0;
         }
         final int prev = this.index;
@@ -65,12 +64,12 @@ public class AnimationControllerImpl extends SimpleController implements Animati
     public List<HistoryFrame> getHistoryFrames() {
         return this.getModel().getProject().getAllHistoryFrames();
     }
-    
+
     @Override
     public boolean getAnimationIsRunning() {
         return this.isRunning;
     }
-    
+
     @Override
     public void saveProject() {
         List<String> choices = new ArrayList<>();
@@ -84,7 +83,7 @@ public class AnimationControllerImpl extends SimpleController implements Animati
         dialog.setContentText("Seleziona la scala:");
 
         Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()){
+        if (result.isPresent()) {
             ImagePrinter.getInstance().printAllFrames(getModel().getProject(), Integer.parseInt(result.get()));
         try {
             FileHandler.getInstance().fromProjectToJson(this.getModel().getProject());
