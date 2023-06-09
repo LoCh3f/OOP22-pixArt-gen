@@ -1,15 +1,18 @@
 package it.unibo.pixArt.utilities;
 
-/*
+/**
  * A standard generic Pair<X,Y>, with getters, hashCode, equals, and toString well implemented.
  * From OOP lab exam.
  */
-
 public class Pair<X, Y> {
 
     private final X x;
     private final Y y;
 
+    /** Constructor.
+     * @param x
+     * @param y
+     */
     public Pair(final X x, final Y y) {
         super();
         this.x = x;

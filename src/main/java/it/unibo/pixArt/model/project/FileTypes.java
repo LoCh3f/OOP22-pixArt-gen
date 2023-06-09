@@ -11,10 +11,18 @@ public enum FileTypes {
 
     private String type;
 
+    /**
+     * constructor.
+     * @param type
+     */
     FileTypes(final String type) {
         this.type = type;
     }
 
+    /**
+     * 
+     * @return file type.
+     */
     public String getType() {
         return this.type;
     }
