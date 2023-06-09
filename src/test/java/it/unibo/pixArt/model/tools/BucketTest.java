@@ -18,14 +18,17 @@ import javafx.scene.paint.Color;
 class BucketTest {
 
     private static final AbstractTool TEST_BUCKET = new Bucket(Color.RED);
-    private static final Set<Pixel> TEST_FRAME = new HashSet<>();
+    private static final Set<Pixel> TEST_FRAME1 = new HashSet<>();
+    private static final Set<Pixel> TEST_FRAME2 = new HashSet<>();
+    private static final Set<Pixel> TEST_FRAME3 = new HashSet<>();
+
 
     private void createFrameTest1() {
         Pixel tempPix;
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
                 tempPix = new PixelBuilder.PxlBuilder().setX(i).setY(j).build();
-                TEST_FRAME.add(tempPix);
+                TEST_FRAME1.add(tempPix);
             }
         }
     }
@@ -39,7 +42,7 @@ class BucketTest {
                 || (j == 12 && (i == 12 || i == 13 || i == 14 || i == 15))) {
                         tempPix.setColor(Color.BLACK);
                 }
-                TEST_FRAME.add(tempPix);
+                TEST_FRAME2.add(tempPix);
             }
         }
     }
@@ -50,7 +53,7 @@ class BucketTest {
             for (int j = 0; j < 16; j++) {
                 tempPix = new PixelBuilder.PxlBuilder().setX(i).setY(j).build();
                 tempPix.setColor(Color.BLACK);
-                TEST_FRAME.add(tempPix);
+                TEST_FRAME3.add(tempPix);
             }
         }
     }
@@ -59,7 +62,7 @@ class BucketTest {
     public void updateGridTest1() {
         this.createFrameTest1();
         Pixel pixel = new PixelBuilder.PxlBuilder().setX(2).setY(2).build();
-        Set<Pixel> newSet = TEST_BUCKET.updateGrid(pixel, TEST_FRAME);
+        Set<Pixel> newSet = TEST_BUCKET.updateGrid(pixel, TEST_FRAME1);
         for (Pixel p : newSet) {
             assertEquals(Color.RED, p.getColor());
             assertTrue(p.getPosition().getX() >= 0 && p.getPosition().getX() < 16);
@@ -71,7 +74,7 @@ class BucketTest {
     public void updateGridTest2() {
         this.createFrameTest2();
         Pixel pixel = new PixelBuilder.PxlBuilder().setX(13).setY(13).build();
-        Set<Pixel> newSet = TEST_BUCKET.updateGrid(pixel, TEST_FRAME);
+        Set<Pixel> newSet = TEST_BUCKET.updateGrid(pixel, TEST_FRAME2);
         for (Pixel p : newSet) {
             assertEquals(Color.RED, p.getColor());
             assertTrue(p.getPosition().getX() >= 13 && p.getPosition().getX() <= 15);
@@ -84,7 +87,7 @@ class BucketTest {
         this.createFrameTest3();
         Pixel pixel = new PixelBuilder.PxlBuilder().setX(2).setY(2).build();
         pixel.setColor(Color.BLACK);
-        Set<Pixel> newSet = TEST_BUCKET.updateGrid(pixel, TEST_FRAME);
+        Set<Pixel> newSet = TEST_BUCKET.updateGrid(pixel, TEST_FRAME3);
         for (Pixel p : newSet) {
             assertEquals(Color.RED, p.getColor());
             assertTrue(p.getPosition().getX() >= 0 && p.getPosition().getX() < 16);
