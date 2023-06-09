@@ -9,6 +9,9 @@ import it.unibo.pixArt.model.user.manager.UserManagerImpl;
 import it.unibo.pixArt.model.user.storage.UserDataStorageImpl;
 import it.unibo.pixArt.model.user.validator.ValidationResult;
 
+/**
+ * Implementation of LoginController.
+ **/
 public final class LoginControllerImpl extends SimpleController implements LoginController {
 
     private static final int PASS_MIN_LENGTH = 8;

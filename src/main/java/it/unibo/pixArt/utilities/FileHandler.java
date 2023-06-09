@@ -22,6 +22,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * The class that manage the Json Files and directories.
+ */
 public final class FileHandler {
     private Gson gson = new GsonBuilder().setLenient()
             .registerTypeAdapter(Project.class, InterfaceSerializer.interfaceSerializer(ProjectImpl.class))

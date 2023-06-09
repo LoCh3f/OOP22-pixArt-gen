@@ -1,11 +1,18 @@
 package it.unibo.pixArt.model.timer;
 
+/**
+ * Implementation of GameTimer
+ **/
 public final class GameTimerImpl implements GameTimer {
 
     private boolean isRunning = true;
     private final long timerType;
     private long initialTime;
 
+    /**
+     * Constructor 
+     * @param timerType
+     */
     public GameTimerImpl(final long timerType) {
         this.timerType = timerType;
     }

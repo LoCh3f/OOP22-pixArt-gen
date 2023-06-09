@@ -3,6 +3,9 @@ package it.unibo.pixArt.model.pixel;
 import it.unibo.pixArt.utilities.Pair;
 import javafx.scene.paint.Color;
 
+/**
+ * The interface of the Pixel
+ */
 public interface Pixel {
 
 
@@ -19,13 +22,13 @@ public interface Pixel {
     /**
      * @param color to set for the pixel.
      */
-    void setColor(final Color color);
+    void setColor(Color color);
 
     /**
      * @param pixel to compare to this pixel,
      * @return true if pixel coordinates are the same otherwise false;
      */
-    boolean comparePixel(final Pixel pixel);
+    boolean comparePixel(Pixel pixel);
 
 
 }
