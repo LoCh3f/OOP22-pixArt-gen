@@ -5,6 +5,9 @@ import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.user.User;
 import it.unibo.pixArt.model.user.UserImpl;
 
+/**
+ * doc.
+ */
 public final class ModelImpl implements Model {
     private Project project;
     private User user;

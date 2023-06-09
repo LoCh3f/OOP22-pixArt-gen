@@ -17,19 +17,34 @@ public enum GameType {
 
     private String name;
     private String description;
+
+    /**
+     * Constructor.
+     * @param name
+     * @param description
+     */
     GameType(final String name, final String description) {
         this.name = name;
         this.description = description;
     }
 
+    /**
+     * @return name.
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * @return description.
+     */
     public String getDescription() {
         return this.description;
     }
 
+    /**
+     * @return list of all game modes.
+     */
     public static List<GameType> getGameTypes() {
         return Stream.of(values()).collect(Collectors.toList());
     }

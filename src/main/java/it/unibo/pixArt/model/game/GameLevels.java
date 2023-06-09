@@ -20,19 +20,35 @@ public enum GameLevels {
     private String pathToFile;
     private String pathToImg;
 
+    /**
+     * Constructor.
+     * @param pathToFile
+     * @param pathToImg
+     */
     GameLevels(final String pathToFile, final String pathToImg) {
         this.pathToFile = pathToFile;
         this.pathToImg = pathToImg;
     }
 
+    /**
+     * Method to get the path to file.
+     * @return
+     * @throws IOException
+     */
     public String getPathToFile() throws IOException {
         return newPathToFile();
     }
 
+    /**
+     * @return pathToImg
+     */
     public String getPathToImg() {
         return this.pathToImg;
     }
 
+    /**
+     * @return list of all available levels.
+     */
     public static List<GameLevels> getAllLevels() {
         return Stream.of(values()).collect(Collectors.toList());
     }
