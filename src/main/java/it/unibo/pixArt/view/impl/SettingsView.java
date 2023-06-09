@@ -25,17 +25,7 @@ public final class SettingsView extends AbstractFXView {
     private ChoiceBox<String> sizeChoice;
 
     @FXML
-    public void setName() {
-
-    }
-
-    @FXML
-    public void setPath() {
-
-    }
-
-    @FXML
-    public void createProject() {
+    private void createProject() {
         /*
          * Create the project based on the values taken from the javafx components.
          */
@@ -47,7 +37,7 @@ public final class SettingsView extends AbstractFXView {
     }
 
     @FXML
-    public void discardProject(final ActionEvent event) {
+    private void discardProject(final ActionEvent event) {
         SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 
