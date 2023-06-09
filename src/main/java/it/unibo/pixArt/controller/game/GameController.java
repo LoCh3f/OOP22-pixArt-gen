@@ -9,6 +9,9 @@ import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.timer.GameTimer;
 import javafx.scene.paint.Color;
 
+/**
+ * interface for a gameplay controller.
+ */
 public interface GameController extends Controller {
 
     /**

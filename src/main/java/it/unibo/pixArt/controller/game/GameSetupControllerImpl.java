@@ -15,7 +15,10 @@ import it.unibo.pixArt.model.timer.GameTimerImpl;
 import it.unibo.pixArt.model.timer.TimerType;
 import it.unibo.pixArt.utilities.FileHandler;
 
-public class GameSetupControllerImpl extends SimpleController implements GameSetupController {
+/**
+ * doc.
+ */
+public final class GameSetupControllerImpl extends SimpleController implements GameSetupController {
     
     private List<Project> projects;
     private GameTimer gameTimer;

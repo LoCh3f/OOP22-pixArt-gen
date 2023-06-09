@@ -5,6 +5,9 @@ import java.util.List;
 import it.unibo.pixArt.model.game.GameType;
 import it.unibo.pixArt.model.timer.TimerType;
 
+/**
+ * doc.
+ */
 public interface GameSetupController {
     /**
      * Method to initialize the list of projects.

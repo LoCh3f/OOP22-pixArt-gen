@@ -3,6 +3,9 @@ package  it.unibo.pixArt.controller;
 import it.unibo.pixArt.model.Model;
 import it.unibo.pixArt.view.View;
 
+/**
+ * interface for a generic Controller.
+ */
 public interface Controller  {
     /**
      *
@@ -13,7 +16,7 @@ public interface Controller  {
     /**
      * @param model to set for this controller
      */
-    void setModel(final Model model);
+    void setModel(Model model);
 
     /**
      * @return the view of this controller
@@ -23,5 +26,5 @@ public interface Controller  {
     /**
      * @param view to set for this controller
      */
-    void  setView(final View view);
+    void  setView(View view);
 }

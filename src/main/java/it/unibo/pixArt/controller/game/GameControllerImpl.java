@@ -14,6 +14,9 @@ import it.unibo.pixArt.model.timer.GameTimer;
 import it.unibo.pixArt.utilities.MatrixConverter;
 import javafx.scene.paint.Color;
 
+/**
+ * doc.
+ */
 public final class GameControllerImpl extends SimpleController implements GameController {
 
     private ColorStack colorStack;
