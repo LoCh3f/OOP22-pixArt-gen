@@ -35,7 +35,7 @@
                       <Font name="System Italic" size="10.0" />
                   </font>
               </Button>
-              <Button fx:id="BackToLogin" alignment="CENTER" mnemonicParsing="false" onAction="#onBackClick" prefHeight="22.0" prefWidth="184.0" text="Logout" textOverrun="WORD_ELLIPSIS">
+              <Button fx:id="backToLogin" alignment="CENTER" mnemonicParsing="false" onAction="#onBackClick" prefHeight="22.0" prefWidth="184.0" text="Logout" textOverrun="WORD_ELLIPSIS">
                   <font>
                       <Font name="System Italic" size="10.0" />
                   </font>
