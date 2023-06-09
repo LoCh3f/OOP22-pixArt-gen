@@ -3,12 +3,19 @@ package it.unibo.pixArt.model.pixel;
 import it.unibo.pixArt.utilities.Pair;
 import javafx.scene.paint.Color;
 
+/**
+ * The implementation Class of the Pixel
+ */
 public class ImplPixel implements Pixel {
 
     private Color color;
 
     private final Pair<Integer, Integer> position;
 
+    /**
+     * @param x The x coordinate
+     * @param y The y coordinate
+     */
     protected ImplPixel(final Integer x, final Integer y) {
         this.position = new Pair<>(x, y);
         color = Color.WHITE;

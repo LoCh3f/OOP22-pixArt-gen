@@ -18,7 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- * doc.
+ * View in which the user selects the game mode, timer and game level.
  */
 public final class GameSetupView extends AbstractFXView {
 

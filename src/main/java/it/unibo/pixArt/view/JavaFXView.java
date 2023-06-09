@@ -3,7 +3,7 @@ package it.unibo.pixArt.view;
 import javafx.stage.Stage;
 
 /**
- * doc.
+ * Interface for a basic JavaFXView.
  */
 public interface JavaFXView extends View {
 

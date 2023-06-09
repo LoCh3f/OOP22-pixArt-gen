@@ -44,7 +44,7 @@ import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_COLO
 import static it.unibo.pixArt.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;
 
 /**
- * doc.
+ * Main view for gameplay.
  */
 public final class GameView extends AbstractFXView {
 

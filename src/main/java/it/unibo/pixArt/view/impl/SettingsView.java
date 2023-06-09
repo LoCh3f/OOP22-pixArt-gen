@@ -10,6 +10,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
+/**
+ * View in which the user selects the attributes for a project.
+ */
 public final class SettingsView extends AbstractFXView {
 
     @FXML

@@ -11,11 +11,17 @@ public final class GameImpl implements Game {
         this.gameType = gameType;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GameType getGameType() {
         return this.gameType;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GameTimer getGameTimer() {
         return this.gameTimer;

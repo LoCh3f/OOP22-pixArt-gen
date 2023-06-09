@@ -13,6 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Menu view, in which the user selects the next action.
+ */
 public final class HomeView extends AbstractFXView {
 
     @FXML

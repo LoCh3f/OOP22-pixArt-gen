@@ -4,6 +4,9 @@ import it.unibo.pixArt.model.game.Game;
 import it.unibo.pixArt.model.game.GameType;
 import it.unibo.pixArt.model.timer.GameTimer;
 
+/**
+ * The interface of the GameBuilder 
+ */
 public interface GameBuilder {
 
     /**

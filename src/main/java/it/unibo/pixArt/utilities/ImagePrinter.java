@@ -14,6 +14,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.stream.IntStream;
 
+/**
+ * The class ImagePrinter needed to print the Images
+ */
 public final class ImagePrinter {
 
     private int imageSize;
@@ -25,6 +28,9 @@ public final class ImagePrinter {
     private ImagePrinter() {
     }
 
+    /**
+     * @return The ImagePrinter
+     */
     public static ImagePrinter getInstance() {
         return LazyHolder.SINGLETON;
     }
