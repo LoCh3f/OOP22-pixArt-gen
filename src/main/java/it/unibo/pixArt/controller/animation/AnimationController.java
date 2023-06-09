@@ -5,16 +5,20 @@ import java.util.List;
 import it.unibo.pixArt.controller.Controller;
 import it.unibo.pixArt.model.historyframe.HistoryFrame;
 
+/**
+ * doc.
+ */
 public interface AnimationController extends Controller {
 
     /**
-     * @param frameIndex the frame's index in the list
-     * @param duration animation's duration in miliseconds
+     * @param frameIndex the frame's index in the list.
+     * @param duration animation's duration in miliseconds.
      */
-    void setFrameDuration(final int frameIndex, final int duration);
+    void setFrameDuration(int frameIndex, int duration);
 
 
-    /**Method to set wether the animation is on or off.
+    /**
+     * Method to set wether the animation is on or off.
      * 
      */
     void setAnimationIsRunning();
@@ -25,7 +29,7 @@ public interface AnimationController extends Controller {
     boolean getAnimationIsRunning();
 
     /**
-     * @return get current Image
+     * @return get current Image.
      */
     HistoryFrame getCurrentImage();
 

@@ -23,6 +23,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * doc.
+ */
 public final class WorkSpaceControllerImpl extends SimpleController implements WorkSpaceController {
     private Matrix currentframe;
     private final ToolFactory toolFactory = new ToolFactoryImpl();
@@ -30,6 +33,7 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
     private boolean isDrawing;
     private int currentIndex;
 
+    /**Constructor for WorkSpaceControllerImpl. */
     public WorkSpaceControllerImpl() {
     }
 

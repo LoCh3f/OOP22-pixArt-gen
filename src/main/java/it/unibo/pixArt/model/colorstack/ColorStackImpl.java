@@ -8,10 +8,18 @@ import java.util.Set;
 import it.unibo.pixArt.model.pixel.Pixel;
 import javafx.scene.paint.Color;
 
+/**
+ * doc.
+ */
 public final class ColorStackImpl implements ColorStack {
     private  Map<Color, Set<Pixel>> colorMap = new HashMap<>();
     private int initialSize;
 
+    /**
+     * Constructor.
+     * @param colorMap
+     * @param size
+     */
     public ColorStackImpl(final Map<Color, Set<Pixel>> colorMap, final int size) {
         this.colorMap = new HashMap<>(colorMap);
         this.initialSize = size;
