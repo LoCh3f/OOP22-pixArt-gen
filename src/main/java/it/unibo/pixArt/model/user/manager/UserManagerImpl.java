@@ -9,10 +9,17 @@ import it.unibo.pixArt.model.user.User;
 import it.unibo.pixArt.model.user.UserBuilderImpl;
 import it.unibo.pixArt.model.user.storage.UserDataStorage;
 
+/**
+ * Implementation of UserManager.
+ */
 public final class UserManagerImpl implements UserManager {
 
     private final UserDataStorage dataStorage;
 
+    /**
+     * Constructor.
+     * @param dataStorage
+     */
     public UserManagerImpl(final UserDataStorage dataStorage) {
         this.dataStorage = dataStorage;
     }

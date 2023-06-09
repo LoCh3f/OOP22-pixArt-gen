@@ -1,5 +1,8 @@
 package it.unibo.pixArt.model.user;
 
+/**
+ * Implementation of UserBuilder.
+ */
 public final class UserBuilderImpl implements UserBuilder {
 
     private String name;

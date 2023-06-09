@@ -15,7 +15,7 @@ public final class Pencil extends AbstractDrawingTool {
     private final Color selectedColor;
 
     /**
-     * Constructor
+     * Constructor.
      * @param selectedColor 
      * @param size size of the tool
      */

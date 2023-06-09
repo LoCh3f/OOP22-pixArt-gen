@@ -12,7 +12,7 @@ import it.unibo.pixArt.utilities.Pair;
 public final class LightenTool extends AbstractDrawingTool {
 
     /**
-     * Constructor 
+     * Constructor.
      * @param toolSize size of the tool
      */
     public LightenTool(final int toolSize) {

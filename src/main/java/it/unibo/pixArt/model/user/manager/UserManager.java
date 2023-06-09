@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import it.unibo.pixArt.model.user.User;
 
+/**
+ * Interface to manage login and registration of the user.
+ */
 public interface UserManager {
 
     /**

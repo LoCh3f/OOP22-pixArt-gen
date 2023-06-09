@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import it.unibo.pixArt.model.user.User;
 
+/**
+ * Interface for saving user data.
+ */
 public interface UserDataStorage {
 
     /**

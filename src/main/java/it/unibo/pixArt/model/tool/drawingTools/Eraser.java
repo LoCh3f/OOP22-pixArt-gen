@@ -7,8 +7,14 @@ import javafx.scene.paint.Color;
 
 import java.util.Set;
 
+/**
+ * Implementation of the eraser.
+ */
 public final class Eraser extends AbstractDrawingTool {
 
+    /**
+     * @param toolSize size of the tool.
+     */
     public Eraser(final int toolSize) {
         super(toolSize);
     }

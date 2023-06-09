@@ -1,5 +1,8 @@
 package it.unibo.pixArt.model.user;
 
+/**
+ * Interface representing the user who needs to register or login.
+ */
 public interface User {
 
     /**

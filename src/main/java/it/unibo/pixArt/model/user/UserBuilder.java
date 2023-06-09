@@ -1,5 +1,8 @@
 package it.unibo.pixArt.model.user;
 
+/**
+ * Interface representing the user builder.
+ */
 public interface UserBuilder {
 
     /**

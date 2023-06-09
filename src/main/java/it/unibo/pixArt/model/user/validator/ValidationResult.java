@@ -1,5 +1,8 @@
 package it.unibo.pixArt.model.user.validator;
 
+/**
+ * Enumeration for the validation result.
+ */
 public enum ValidationResult {
 
     /**
@@ -28,6 +31,9 @@ public enum ValidationResult {
         this.description = description;
     }
 
+    /**
+     * @return the description of the validation result. 
+     */
     public String getDescription() {
         return this.description;
     }

@@ -1,11 +1,20 @@
 package it.unibo.pixArt.model.user;
 
+/**
+ * Implementation of User.
+ */
 public final class UserImpl implements User {
 
     private String name;
     private String password;
     private String pathToFile;
 
+    /**
+     * Constructor.
+     * @param name username of the user
+     * @param password password of the user
+     * @param path path to save user projects
+     */
     public UserImpl(final String name, final String password, final String path) {
         this.name = name;
         this.password = password;

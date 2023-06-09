@@ -14,6 +14,9 @@ public abstract class AbstractDrawingTool extends AbstractTool {
 
     private final int toolSize;
 
+    /**
+     * @param toolSize size of the tool.
+     */
     public AbstractDrawingTool(final int toolSize) {
         this.toolSize = toolSize;
     }
