@@ -32,13 +32,13 @@ public final class ProjectView extends AbstractFXView {
     public void init() {
         listView.getItems().clear();
         listView.getItems().addAll(Stream.of((new File(this.getController().getModel().getUser().getPathToFile()).listFiles()))
-                                  .filter(file -> file.isDirectory() && !file.isHidden() &&
-                                   this.getProjectController().checkIfJsonInFolder(file))
+                                  .filter(file -> file.isDirectory() && !file.isHidden() 
+                                  && this.getProjectController().checkIfJsonInFolder(file))
                                   .map(File::getName).collect(Collectors.toList()));
 
         MultipleSelectionModel<String> selModel = listView.getSelectionModel();
         selModel.selectedItemProperty().addListener(new ChangeListener<String>() {
-            public void changed(ObservableValue<? extends String> changed, final String oldVal, final String newVal) {
+            public void changed(final ObservableValue<? extends String> changed, final String oldVal, final String newVal) {
                 selFolder = listView.getSelectionModel().getSelectedItems().toString();
             }
         });
@@ -51,7 +51,8 @@ public final class ProjectView extends AbstractFXView {
     public void onEditClick(final ActionEvent event) {
         if (selFolder != null) {
             try {
-                Project project = FileHandler.getInstance().fromJsonToProject(new File(this.getProjectController().getJsonPath(selFolder)));
+                Project project = FileHandler.getInstance().fromJsonToProject(
+                    new File(this.getProjectController().getJsonPath(selFolder)));
                 this.getController().getModel().setProject(project);
                 SceneManager.getInstance().switchPage(getStage(), Pages.WORKSPACE, this.getController().getModel());
             } catch (IOException e) {

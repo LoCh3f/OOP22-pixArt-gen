@@ -51,7 +51,6 @@ public final class FileHandler {
     public void fromProjectToJson(final Project project) throws IOException {
         FileWriter fWriter = new FileWriter(new File(project.getPath() + File.separatorChar + project.getName() + ".json"));
         fWriter.write(gson.toJson(project));
-        fWriter.flush();
         fWriter.close();
     }
 
