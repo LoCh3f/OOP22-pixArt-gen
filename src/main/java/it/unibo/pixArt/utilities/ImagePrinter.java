@@ -80,12 +80,16 @@ public final class ImagePrinter {
         }
     }
 
-    private void scaleImage(final BufferedImage bImage, final String path, final int scale, final String fileType) throws IOException {
+    private void scaleImage(final BufferedImage bImage, final String path, final int scale, final String fileType) {
         int newSize = scale * imageSize;
         BufferedImage newImage = new BufferedImage(newSize, newSize, bImage.getType());
         Graphics2D graphics2d = newImage.createGraphics();
         graphics2d.drawImage(bImage, 0, 0, newSize, newSize, null);
         graphics2d.dispose();
-        ImageIO.write(newImage, fileType, new File(path));
+        try {
+            ImageIO.write(newImage, fileType, new File(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

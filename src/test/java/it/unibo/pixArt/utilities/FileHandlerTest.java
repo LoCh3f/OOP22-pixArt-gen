@@ -44,8 +44,8 @@ public class FileHandlerTest {
 
     @Test
     void fromJsonToProjectTest() throws IOException {
-        FileWriter testFileWriter = new FileWriter
-                                    (new File(PROJECT.getPath() + File.separatorChar + PROJECT.getName() + ".json"));
+        FileWriter testFileWriter = new FileWriter(
+            new File(PROJECT.getPath() + File.separatorChar + PROJECT.getName() + ".json"));
         testFileWriter.write(gson.toJson(PROJECT));
         testFileWriter.flush();
         testFileWriter.close();

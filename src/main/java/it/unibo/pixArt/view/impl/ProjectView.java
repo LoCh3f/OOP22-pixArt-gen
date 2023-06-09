@@ -22,7 +22,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.Alert.AlertType;
 
-public class ProjectView extends AbstractFXView {
+public final class ProjectView extends AbstractFXView {
 
     @FXML
     private ListView<String> listView = new ListView<>();
@@ -32,7 +32,8 @@ public class ProjectView extends AbstractFXView {
     public void init() {
         listView.getItems().clear();
         listView.getItems().addAll(Stream.of((new File(this.getController().getModel().getUser().getPathToFile()).listFiles()))
-                                  .filter(file -> file.isDirectory() && !file.isHidden() && this.getProjectController().checkIfJsonInFolder(file))
+                                  .filter(file -> file.isDirectory() && !file.isHidden() &&
+                                   this.getProjectController().checkIfJsonInFolder(file))
                                   .map(File::getName).collect(Collectors.toList()));
 
         MultipleSelectionModel<String> selModel = listView.getSelectionModel();
@@ -73,7 +74,7 @@ public class ProjectView extends AbstractFXView {
         }
     }
 
-    private ProjectController getProjectController(){
+    private ProjectController getProjectController() {
         return (ProjectController) this.getController();
     }
 }
