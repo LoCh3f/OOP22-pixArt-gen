@@ -27,7 +27,7 @@ public interface GameController extends Controller {
     Map<Color, Set<Pixel>> getColorStack();
 
     /**
-     * Set the color stack to be used
+     * Set the color stack to be used.
      */
     void setColorStack();
 
@@ -40,12 +40,12 @@ public interface GameController extends Controller {
     boolean checkPixel(int x, int y, Color color);
 
     /**
-     * @return True if the color stack is empty
+     * @return True if the color stack is empty.
      */
     boolean colorStackIsEmpty();
 
     /**
-     * @return The percentage of the pixel left withing the map
+     * @return The percentage of the pixel left withing the map.
      */
     double getPercentage();
 

@@ -91,8 +91,7 @@ public final class FileHandler {
         }
     }
 
-    /**
-     * Initialize the project in the selected path
+    /**Initialize the project in the selected path.
      * @param path The path where the project will be created
      * @return True if the folder doesn't exist and is created, otherwise false
      */
@@ -104,8 +103,7 @@ public final class FileHandler {
         return false;
     }
 
-    /**
-     * Check if the folder exist
+    /**Check if the folder exist.
      * @param folder the file to be check
      * @return If the folder don't exist or if the folder exist and 
      * the User decide to delete it return True, otherwisw return False
