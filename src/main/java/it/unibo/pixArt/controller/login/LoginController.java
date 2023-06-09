@@ -5,6 +5,9 @@ import java.io.IOException;
 import it.unibo.pixArt.controller.Controller;
 import it.unibo.pixArt.model.user.validator.ValidationResult;
 
+/**
+ * Controller for LoginView.
+ **/
 public interface LoginController extends Controller {
 
     /**
