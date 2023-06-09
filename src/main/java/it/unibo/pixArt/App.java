@@ -9,14 +9,21 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * doc.
+ */
 public class App extends Application {
 
+    /**
+     * doc.
+     * @param args
+     */
     public static void main(final String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(final Stage primaryStage) throws IOException {
+    public final void start(final Stage primaryStage) throws IOException {
         primaryStage.setResizable(true);
         primaryStage.setTitle("PixArt-geN");
         primaryStage.getIcons().add(new Image("image/mainIcon.png"));
