@@ -6,9 +6,14 @@ import it.unibo.pixArt.model.pixel.PixelBuilder;
 import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * The Test class of the PixelMatrix class
+ */
 public class PixelMatrixTest {
 
     private static final ImplPixel TEST_PIXEL = new PixelBuilder.PxlBuilder().setX(0).setY(0).build();

@@ -3,14 +3,14 @@ package it.unibo.pixArt.utilities.mirror;
 import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.model.pixel.PixelBuilder;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GenericMirrorTest {
 
-    private final static Mirror<Pixel> PIXEL_MIRROR = new GenericMirror<>();
+    private static final Mirror<Pixel> PIXEL_MIRROR = new GenericMirror<>();
 
     private static final int SIZE_EXPECTED = 3;
     @Test

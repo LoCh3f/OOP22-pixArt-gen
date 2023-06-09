@@ -4,12 +4,13 @@ import it.unibo.pixArt.utilities.Pair;
 import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ImplPixelTest {
 
-    private  final  static  Pixel TEST_PIXEL = new ImplPixel(0, 0);
+    private static final Pixel TEST_PIXEL = new ImplPixel(0, 0);
 
     @Test
     void getPosition() {
@@ -20,9 +21,9 @@ class ImplPixelTest {
     @Test
     void getColor() {
         TEST_PIXEL.setColor(Color.WHITE);
-        assertEquals(Color.WHITE,TEST_PIXEL.getColor());
+        assertEquals(Color.WHITE, TEST_PIXEL.getColor());
         TEST_PIXEL.setColor(Color.BLACK);
-        assertEquals(Color.BLACK,TEST_PIXEL.getColor());
+        assertEquals(Color.BLACK, TEST_PIXEL.getColor());
     }
 
     @Test

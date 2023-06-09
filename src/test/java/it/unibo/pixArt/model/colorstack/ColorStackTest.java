@@ -16,6 +16,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * The Test class for the ColorStack class
+ */
 public class ColorStackTest {
     private final Matrix grid = new PixelMatrix.MatrixBuilder().setColumns(16).setRows(16).build();
     private MatrixConverter converter = new MatrixConverter();
@@ -28,7 +31,7 @@ public class ColorStackTest {
      */
     @Test
     void checkOne() {
-        final ColorStack stack = new ColorStackImpl(new MatrixConverter().apply(grid.getPixels()),grid.getPixels().size());
+        final ColorStack stack = new ColorStackImpl(new MatrixConverter().apply(grid.getPixels()), grid.getPixels().size());
         assertEquals(1, stack.getColorMap().entrySet().stream().filter(e -> e.getKey() == Color.WHITE).count());
         assertEquals(256, stack.getColorMap().entrySet().stream().mapToInt(e -> e.getValue().size()).sum());
     }
@@ -39,11 +42,11 @@ public class ColorStackTest {
     @Test
     void checkTwo() {
         this.grid.setPixel(this.tool.updateGrid(this.grid.getPixels().iterator().next(), this.grid.getPixels()));
-        this.stack = new ColorStackImpl(new MatrixConverter().apply(this.grid.getPixels()),grid.getPixels().size());
+        this.stack = new ColorStackImpl(new MatrixConverter().apply(this.grid.getPixels()), grid.getPixels().size());
         assertEquals(1, stack.getColorMap().entrySet().stream().filter(e -> e.getKey() == Color.BLACK).count());
         assertEquals(256, stack.getColorMap().values().stream().flatMap(Set::stream).count());
     }
-   
+
     /*Now we'll remove a pixel from a set, and check that the total number of pixels has decreased. */
     @Test
     void checkRemovePixel() {
@@ -59,7 +62,7 @@ public class ColorStackTest {
     void checkEntrySetRemoved() {
         this.stack = new ColorStackImpl(this.converter.apply(grid.getPixels()), grid.getPixels().size());
         assertTrue(!this.stack.isEmpty());
-        for(var elem : this.grid.getPixels()) {
+        for (var elem : this.grid.getPixels()) {
             this.stack.removePixel(elem.getColor(), elem);
         }
         assertTrue(this.stack.isEmpty());
@@ -71,6 +74,6 @@ public class ColorStackTest {
         this.stack = new ColorStackImpl(this.converter.apply(grid.getPixels()), grid.getPixels().size());
         assertTrue(this.stack.getPercentage() < 1);
         this.grid.getPixels().stream().forEach(e -> this.stack.removePixel(e.getColor(), e));
-        assertEquals(100,this.stack.getPercentage());
+        assertEquals(100, this.stack.getPercentage());
     }
 }

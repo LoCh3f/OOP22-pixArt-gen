@@ -13,6 +13,9 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * The Test class for the FrameState class
+ */
 public class FrameStateTest {
     private static final int SIZE = 16;
     private Matrix grid = new PixelMatrix.MatrixBuilder().setColumns(SIZE).setRows(SIZE).build();
@@ -23,37 +26,45 @@ public class FrameStateTest {
     void singleFrameStateTest() {
         //Sets initial state to white and checks if all the pixels are white.
         this.memento.setState(createSet(Color.WHITE));
-        assertEquals(this.memento.peekState().stream().map(e -> e.getColor()).collect(Collectors.toList()), this.createSet(Color.WHITE).stream().map(e -> e.getColor()).collect(Collectors.toList()));
+        assertEquals(this.memento.peekState().stream().map(e -> e.getColor()).collect(Collectors.toList()),
+                    this.createSet(Color.WHITE).stream().map(e -> e.getColor()).collect(Collectors.toList()));
 
         //Sets the next state to Red, and checks if all the pixels are red.
         this.memento.setState(createSet(Color.RED));
-        assertEquals(this.memento.peekState().stream().map(e -> e.getColor()).collect(Collectors.toList()), this.createSet(Color.RED).stream().map(e -> e.getColor()).collect(Collectors.toList()));
+        assertEquals(this.memento.peekState().stream().map(e -> e.getColor()).collect(Collectors.toList()),
+                    this.createSet(Color.RED).stream().map(e -> e.getColor()).collect(Collectors.toList()));
 
         //Reverts back to previous state, thus controls that all the pixels are white.
         this.memento.getState();
-        assertEquals(this.memento.peekState().stream().map(e -> e.getColor()).collect(Collectors.toList()), this.createSet(Color.WHITE).stream().map(e -> e.getColor()).collect(Collectors.toList()));
+        assertEquals(this.memento.peekState().stream().map(e -> e.getColor()).collect(Collectors.toList()),
+                    this.createSet(Color.WHITE).stream().map(e -> e.getColor()).collect(Collectors.toList()));
 
         this.memento.setState(createSet(Color.BLUE));
-        assertEquals(this.memento.peekState().stream().map(e -> e.getColor()).collect(Collectors.toList()), this.createSet(Color.BLUE).stream().map(e -> e.getColor()).collect(Collectors.toList()));
+        assertEquals(this.memento.peekState().stream().map(e -> e.getColor()).collect(Collectors.toList()),
+                    this.createSet(Color.BLUE).stream().map(e -> e.getColor()).collect(Collectors.toList()));
     }
 
 
     @Test
     void frameStateWithinGridTest() {
         //La grid è bianca e il memento vuoto
-        assertEquals(createSet(Color.WHITE).stream().map(e -> e.getColor()).collect(Collectors.toList()), grid.getPixels().stream().map(e -> e.getColor()).collect(Collectors.toList()));
+        assertEquals(createSet(Color.WHITE).stream().map(e -> e.getColor()).collect(Collectors.toList()),
+                    grid.getPixels().stream().map(e -> e.getColor()).collect(Collectors.toList()));
         assertEquals(0, grid.getMemento().size());
 
         //Salvo lo state precedente(set bianco) e faccio la grid rossa
         grid.getMemento().setState(grid.getPixels());
         grid.setPixel(createSet(Color.RED));
-        assertEquals(createSet(Color.RED).stream().map(e -> e.getColor()).collect(Collectors.toList()), grid.getPixels().stream().map(e -> e.getColor()).collect(Collectors.toList()));
-        assertEquals(createSet(Color.WHITE).stream().map(e -> e.getColor()).collect(Collectors.toList()), grid.getMemento().peekState().stream().map(e -> e.getColor()).collect(Collectors.toList()));
+        assertEquals(createSet(Color.RED).stream().map(e -> e.getColor()).collect(Collectors.toList()),
+                    grid.getPixels().stream().map(e -> e.getColor()).collect(Collectors.toList()));
+        assertEquals(createSet(Color.WHITE).stream().map(e -> e.getColor()).collect(Collectors.toList()),
+                    grid.getMemento().peekState().stream().map(e -> e.getColor()).collect(Collectors.toList()));
         assertEquals(1, grid.getMemento().size());
 
         //Ritorno allo stato precedente
         grid.revert();
-        assertEquals(createSet(Color.WHITE).stream().map(e -> e.getColor()).collect(Collectors.toList()), grid.getPixels().stream().map(e -> e.getColor()).collect(Collectors.toList()));
+        assertEquals(createSet(Color.WHITE).stream().map(e -> e.getColor()).collect(Collectors.toList()),
+                    grid.getPixels().stream().map(e -> e.getColor()).collect(Collectors.toList()));
         assertEquals(0, grid.getMemento().size());
 
     }

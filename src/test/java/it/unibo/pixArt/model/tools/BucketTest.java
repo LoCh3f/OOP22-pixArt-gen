@@ -16,14 +16,14 @@ import javafx.scene.paint.Color;
 
 
 class BucketTest {
-    
-    private AbstractTool TEST_BUCKET = new Bucket(Color.RED);
-    private Set<Pixel> TEST_FRAME = new HashSet<>();
+
+    private static final AbstractTool TEST_BUCKET = new Bucket(Color.RED);
+    private static final Set<Pixel> TEST_FRAME = new HashSet<>();
 
     private void createFrameTest1() {
         Pixel tempPix;
-        for(int i = 0; i < 16; i++) {
-            for(int j = 0; j < 16; j++) {
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
                 tempPix = new PixelBuilder.PxlBuilder().setX(i).setY(j).build();
                 TEST_FRAME.add(tempPix);
             }
@@ -32,11 +32,11 @@ class BucketTest {
 
     private void createFrameTest2() {
         Pixel tempPix;
-        for(int i = 0; i < 16; i++) {
-            for(int j = 0; j < 16; j++) {
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
                 tempPix = new PixelBuilder.PxlBuilder().setX(i).setY(j).build();
-                if((i == 12 && (j == 12 || j == 13 || j == 14 || j == 15))||
-                    (j == 12 && (i == 12 || i == 13 || i == 14 || i == 15))){
+                if ((i == 12 && (j == 12 || j == 13 || j == 14 || j == 15))
+                || (j == 12 && (i == 12 || i == 13 || i == 14 || i == 15))) {
                         tempPix.setColor(Color.BLACK);
                 }
                 TEST_FRAME.add(tempPix);
@@ -46,8 +46,8 @@ class BucketTest {
 
     private void createFrameTest3() {
         Pixel tempPix;
-        for(int i = 0; i < 16; i++) {
-            for(int j = 0; j < 16; j++) {
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
                 tempPix = new PixelBuilder.PxlBuilder().setX(i).setY(j).build();
                 tempPix.setColor(Color.BLACK);
                 TEST_FRAME.add(tempPix);
@@ -74,8 +74,8 @@ class BucketTest {
         Set<Pixel> newSet = TEST_BUCKET.updateGrid(pixel, TEST_FRAME);
         for (Pixel p : newSet) {
             assertEquals(Color.RED, p.getColor());
-            assertTrue(p.getPosition().getX() >= 13 && p.getPosition().getX() <=15);
-            assertTrue(p.getPosition().getY() >= 13 && p.getPosition().getY() <=15);
+            assertTrue(p.getPosition().getX() >= 13 && p.getPosition().getX() <= 15);
+            assertTrue(p.getPosition().getY() >= 13 && p.getPosition().getY() <= 15);
         }
     }
 

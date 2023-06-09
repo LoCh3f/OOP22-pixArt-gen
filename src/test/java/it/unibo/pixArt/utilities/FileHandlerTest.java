@@ -25,6 +25,9 @@ import it.unibo.pixArt.model.project.Project;
 import it.unibo.pixArt.model.project.ProjectImpl;
 import it.unibo.pixArt.model.project.builder.ProjectBuilderImpl;
 
+/**
+ * The Test class of the FileHandler class
+ */
 public class FileHandlerTest {
     private static final Project PROJECT = new ProjectBuilderImpl().fileType(FileTypes.JPEG.toString()).frames(16)
                             .path(System.getProperty("user.home")).projectName("Test").build();

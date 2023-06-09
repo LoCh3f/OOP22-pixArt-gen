@@ -14,17 +14,17 @@ import javafx.scene.paint.Color;
 
 class PencilTest {
 
-    private final Pencil TEST_PENCIL = new Pencil(Color.BLACK, 4);
-    private Set<Pixel> TEST_FRAME = new HashSet<>();
+    private static final Pencil TEST_PENCIL = new Pencil(Color.BLACK, 4);
+    private static final Set<Pixel> TEST_FRAME = new HashSet<>();
 
     private void createFrame() {
-        for(int i = 0; i < 16; i++) {
-            for(int j = 0; j < 16; j++) {
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
                 TEST_FRAME.add(new PixelBuilder.PxlBuilder().setX(i).setY(j).build());
             }
         }
     }
-    
+
 
     @Test
     void updateGrid() {
@@ -35,9 +35,9 @@ class PencilTest {
         assertEquals(16, newSet.size());
         for (Pixel p : newSet) {
             assertEquals(Color.BLACK, p.getColor());
-            assertTrue(p.getPosition().getX()>=2 && p.getPosition().getX() <=5);
-            assertTrue(p.getPosition().getY()>=2 && p.getPosition().getY() <=5);
+            assertTrue(p.getPosition().getX() >= 2 && p.getPosition().getX() <= 5);
+            assertTrue(p.getPosition().getY() >= 2 && p.getPosition().getY() <= 5);
         }
     }
-    
+
 }
