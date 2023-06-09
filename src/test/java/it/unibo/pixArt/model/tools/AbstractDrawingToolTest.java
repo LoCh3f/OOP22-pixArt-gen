@@ -13,8 +13,8 @@ class AbstractDrawingToolTest {
 
     private ToolFactory toolFactory = new ToolFactoryImpl();
     private AbstractDrawingTool tool = (AbstractDrawingTool) toolFactory.createTool("PENCIL", null, 2);
-    private Pixel TEST_PIXEL1 = new PixelBuilder.PxlBuilder().setY(13).setX(13).build();
-    private Pixel TEST_PIXEL2 = new PixelBuilder.PxlBuilder().setY(15).setX(10).build();
+    private static final Pixel TEST_PIXEL1 = new PixelBuilder.PxlBuilder().setY(13).setX(13).build();
+    private static final Pixel TEST_PIXEL2 = new PixelBuilder.PxlBuilder().setY(15).setX(10).build();
 
     @Test
     void calculatePosition() {

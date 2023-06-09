@@ -14,23 +14,26 @@ import it.unibo.pixArt.model.pixel.Pixel;
 import it.unibo.pixArt.utilities.MatrixConverter;
 import javafx.scene.paint.Color;
 
+/**
+ * The Test class of the MatrixConverter class
+ */
 public class MatrixConverterTest {
-    private static final Matrix grid = new PixelMatrix.MatrixBuilder().setRows(16).setColumns(16).build();
-    
+    private static final Matrix GRID = new PixelMatrix.MatrixBuilder().setRows(16).setColumns(16).build();
+
     @Test
     void integrityTest() {
-        final Map<Color,Set<Pixel>> map = new MatrixConverter().apply(grid.getPixels());
-        for(var key : map.keySet()) {
+        final Map<Color, Set<Pixel>> map = new MatrixConverter().apply(GRID.getPixels());
+        for (var key : map.keySet()) {
             assertEquals(Color.WHITE, key);
         }
-        assertEquals(1,map.keySet().size());
+        assertEquals(1, map.keySet().size());
         assertEquals(256, map.values().stream().flatMap(Set::stream).count());
     }
 
     @Test
     void emptyMap() {
-        final Map<Color,Set<Pixel>> map = new MatrixConverter().apply(Collections.emptySet());
-        assertEquals(0,map.keySet().size());
+        final Map<Color, Set<Pixel>> map = new MatrixConverter().apply(Collections.emptySet());
+        assertEquals(0, map.keySet().size());
         assertEquals(0, map.values().stream().flatMap(Set::stream).count());
     }
 }

@@ -17,20 +17,20 @@ class AbstractToolTest {
 
     private ToolFactory toolFactory = new ToolFactoryImpl();
     private AbstractTool tool = toolFactory.createTool("PENCIL", null, 2);
-    private Set<Pixel> TEST_FRAME = new HashSet<>();
+    private Set<Pixel> testFrame = new HashSet<>();
 
     private void createFrame() {
-        for(int i = 0; i < 16; i++) {
-            for(int j = 0; j < 16; j++) {
-                TEST_FRAME.add(new PixelBuilder.PxlBuilder().setX(i).setY(j).build());
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
+                testFrame.add(new PixelBuilder.PxlBuilder().setX(i).setY(j).build());
             }
         }
     }
 
     @Test
-    void getFrameSize(){
+    void getFrameSize() {
         this.createFrame();
-        assertEquals(16, tool.getFrameSize(TEST_FRAME));
+        assertEquals(16, tool.getFrameSize(testFrame));
     }
-    
+
 }

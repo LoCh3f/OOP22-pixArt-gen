@@ -14,28 +14,33 @@ import it.unibo.pixArt.model.user.manager.UserManager;
 import it.unibo.pixArt.model.user.manager.UserManagerImpl;
 import it.unibo.pixArt.model.user.storage.UserDataStorageImpl;
 
-public class UserManagerImplTest {
+/**
+ * The Test class of the UserManagerImpl class
+ */
+public final class UserManagerImplTest {
 
-    private final char fileSeparator = File.separatorChar;
-    private String USERDATAPATH = System.getProperty("user.home") + fileSeparator + "userData" + fileSeparator + "users.json"; 
+    private static final char FILESEPARATOR = File.separatorChar;
+    private static final String USERDATAPATH = System.getProperty("user.home") + FILESEPARATOR + "userData" + FILESEPARATOR + "users.json"; 
 
     private UserManager userManager;
-    private final User user1 = new UserImpl("luigiBianchi", "luigi001", System.getProperty("user.dir") + File.separator + "Downloads");
-    private final User user2 = new UserImpl("marcoRossi", "marco002", System.getProperty("user.dir") + File.separator + "Downloads");
-    
+    private final User user1 = new UserImpl("luigiBianchi", "luigi001",
+                                System.getProperty("user.dir") + File.separator + "Downloads");
+    private final User user2 = new UserImpl("marcoRossi", "marco002",
+                                System.getProperty("user.dir") + File.separator + "Downloads");
+
     public void createUserManager(){
         this.userManager = new UserManagerImpl(new UserDataStorageImpl());
     }
 
     @Test
-    public void loginWithEmptyFile() throws IOException{
+    public void loginWithEmptyFile() throws IOException {
         createUserManager();
         assertEquals(Optional.empty(), this.userManager.login("giovanni", "giovanni000"));
         this.deleteFile();
     }
 
     @Test 
-    public void login() throws IOException{
+    public void login() throws IOException {
         createUserManager();
         this.userManager.register(user1.getName(), user1.getPassword(), user1.getPathToFile());
         assertEquals(user1.getName(), this.userManager.login(user1.getName(), user1.getPassword()).get().getName());
@@ -43,7 +48,7 @@ public class UserManagerImplTest {
     }
 
     @Test
-    public void registerExistentUser() throws IOException{
+    public void registerExistentUser() throws IOException {
         createUserManager();
         this.userManager.register(user2.getName(), user2.getPassword(), user2.getPathToFile());
         assertEquals(user2.getName(), this.userManager.login(user2.getName(), user2.getPassword()).get().getName());
@@ -51,7 +56,7 @@ public class UserManagerImplTest {
         this.deleteFile();
     }
 
-    private void deleteFile() throws IOException{
+    private void deleteFile() throws IOException {
         Files.deleteIfExists(Path.of(USERDATAPATH));
     }
 
