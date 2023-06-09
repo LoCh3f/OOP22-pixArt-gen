@@ -3,7 +3,7 @@ package it.unibo.pixArt.model.historyframe;
 import java.io.File;
 
 /**
- * doc.
+ * Implementation for HistoryFrame.
  */
 public final class HistoryFrameImpl implements HistoryFrame {
     private static final int DEF_DELAY = 100;

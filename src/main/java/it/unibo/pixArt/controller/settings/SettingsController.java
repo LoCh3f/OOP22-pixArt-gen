@@ -3,7 +3,7 @@ package it.unibo.pixArt.controller.settings;
 import java.util.List;
 
 /**
- * doc.
+ * Interface for SettingsView.
  */
 public interface SettingsController {
 

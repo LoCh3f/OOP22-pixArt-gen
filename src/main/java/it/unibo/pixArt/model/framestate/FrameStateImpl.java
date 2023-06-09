@@ -6,7 +6,7 @@ import java.util.Stack;
 
 import it.unibo.pixArt.model.pixel.Pixel;
 /**
- * doc.
+ * Implementation of FrameState.
  */
 public final class FrameStateImpl implements FrameState {
     private Stack<Set<Pixel>> stateStack = new Stack<>();

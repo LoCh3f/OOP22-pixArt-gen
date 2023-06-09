@@ -6,7 +6,7 @@ import it.unibo.pixArt.model.user.User;
 import it.unibo.pixArt.model.user.UserImpl;
 
 /**
- * doc.
+ * Implementation of Model interface.
  */
 public final class ModelImpl implements Model {
     private Project project;

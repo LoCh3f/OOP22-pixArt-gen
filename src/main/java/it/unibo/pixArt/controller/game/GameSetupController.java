@@ -6,7 +6,7 @@ import it.unibo.pixArt.model.game.GameType;
 import it.unibo.pixArt.model.timer.TimerType;
 
 /**
- * doc.
+ * Controller for GameSetupView.
  */
 public interface GameSetupController {
     /**

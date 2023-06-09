@@ -16,7 +16,7 @@ import it.unibo.pixArt.model.timer.TimerType;
 import it.unibo.pixArt.utilities.FileHandler;
 
 /**
- * doc.
+ * Implementation for GameSetupController.
  */
 public final class GameSetupControllerImpl extends SimpleController implements GameSetupController {
 

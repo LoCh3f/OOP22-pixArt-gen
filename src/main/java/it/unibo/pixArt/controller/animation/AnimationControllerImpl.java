@@ -13,7 +13,7 @@ import it.unibo.pixArt.view.animation.AnimationView;
 import javafx.scene.control.ChoiceDialog;
 
 /**
- * doc.
+ * Implementation for AnimationController.
  */
 public final class AnimationControllerImpl extends SimpleController implements AnimationController {
     private Boolean isRunning = false;
