@@ -25,14 +25,14 @@ public interface GameSetupController {
     List<TimerType> getTimers();
 
     /**
-     * @param time the index of timer for this game.
+     * @param timer the index of timer for this game.
      */
-    void setTimer(final String timer);
+    void setTimer(String timer);
 
     /**
      * @param project the index of the project for this game.
      */
-    void setProject(final int project);
+    void setProject(int project);
 
     /**
      * @return the list of all game types.
@@ -42,7 +42,7 @@ public interface GameSetupController {
     /**
      * @param type the game type.
      */
-    void setGameType(final String type);
+    void setGameType(String type);
 
     /**
      * Method to set a game instance.

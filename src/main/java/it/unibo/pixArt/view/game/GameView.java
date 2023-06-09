@@ -127,7 +127,7 @@ public final class GameView extends AbstractFXView {
             final var incredibleView = new ImageView(new Image(tester.test(new GridPaneParser().apply(parallelGrid),
                     getGameController().getModel().getProject().getAllFrames().get(0).getPixels())));
                     root.getChildren().add(0, incredibleView);
-            root.getChildren().add(1,parallelGrid);
+            root.getChildren().add(1, parallelGrid);
             incredibleView.fitHeightProperty().bind(root.heightProperty());
             incredibleView.fitWidthProperty().bind(root.widthProperty().divide(2));
             parallelGrid.prefHeightProperty().bind(root.heightProperty());
@@ -206,7 +206,7 @@ public final class GameView extends AbstractFXView {
             btn.setStyle("-fx-background-color: #"
             + elem.toString().substring(2)
             + ";" + FX_BORDER_WIDTH + ";" + FX_BORDER_COLOR);
-            
+
             btn.addEventHandler(MouseEvent.MOUSE_CLICKED, h -> setSelectedColor(elem));
             btn.setMinWidth(WIDTHGAMEOVER);
             btnList.add(btn);
