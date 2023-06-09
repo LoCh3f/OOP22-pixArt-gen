@@ -85,7 +85,6 @@ public final class ImagePrinter {
         BufferedImage newImage = new BufferedImage(newSize, newSize, bImage.getType());
         Graphics2D graphics2d = newImage.createGraphics();
         graphics2d.drawImage(bImage, 0, 0, newSize, newSize, null);
-        graphics2d.dispose();
         try {
             ImageIO.write(newImage, fileType, new File(path));
         } catch (IOException e) {
