@@ -45,8 +45,11 @@ public final class AnimationView extends AbstractFXView {
     private static final String START = "/image/startBtn.png";
     private static final String STOP = "/image/stopBtn.png";
 
+    /**
+     * Method to start/stop animation.
+     */
     @FXML
-    private void switchAnimation() {
+    public void switchAnimation() {
         this.getAnimationController().setAnimationIsRunning();
         if (this.getAnimationController().isAnimationIsRunning()) {
             switchBtn.setGraphic(new ImageView(new Image(STOP)));
@@ -55,24 +58,36 @@ public final class AnimationView extends AbstractFXView {
         }
     }
 
+    /**
+     * Method to go back to WorkSPace.
+     */
     @FXML
-    private void onWorkSpaceClick() {
+    public void onWorkSpaceClick() {
         SceneManager.getInstance().switchPage(this.getStage(), Pages.WORKSPACE, this.getController().getModel());
     }
 
+    /**
+     * Method to exit to Home.
+     */
     @FXML
-    private void onExitClick() {
+    public void onExitClick() {
         SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 
+    /**
+     * Method to save project.
+     */
     @FXML
-    private void onSaveClick() {
+    public void onSaveClick() {
         getAnimationController().saveProject();
         SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 
+    /**
+     * Method to set the aniamtion delay of a HistoryFrame.
+     */
     @FXML
-    private void setDuration() {
+    public void setDuration() {
         this.getAnimationController().setFrameDuration(Integer.parseInt(selectedFrame.getText()),
         Integer.parseInt(frameDurationField.getText()));
     }
