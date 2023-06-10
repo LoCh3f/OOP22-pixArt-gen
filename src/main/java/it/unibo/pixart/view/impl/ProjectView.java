@@ -26,7 +26,7 @@ import javafx.scene.control.Alert.AlertType;
 public final class ProjectView extends AbstractFXView {
 
     @FXML
-    private ListView<String> listView = new ListView<>();
+    private final ListView<String> listView = new ListView<>();
     private String selFolder;
 
     @Override
@@ -46,13 +46,19 @@ public final class ProjectView extends AbstractFXView {
         });
     }
 
+    /**
+     * Method to swith to Home.
+     */
     @FXML
-    private void onHomeClick() {
+    public void onHomeClick() {
         SceneManager.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
     }
 
+    /**
+     * Method to switch to WorkSpace.
+     */
     @FXML
-    private void onEditClick() {
+    public void onEditClick() {
         if (selFolder != null) {
             try {
                 final Project project = FileHandler.getInstance().fromJsonToProject(
@@ -65,8 +71,11 @@ public final class ProjectView extends AbstractFXView {
         }
     }
 
+    /**
+     * Method to delete a project folder.
+     */
     @FXML
-    private void onDeleteClick() {
+    public void onDeleteClick() {
         if (selFolder != null) {
             final Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Delete File");
