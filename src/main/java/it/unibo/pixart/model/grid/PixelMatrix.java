@@ -1,16 +1,15 @@
 package it.unibo.pixart.model.grid;
 
+import it.unibo.pixart.model.framestate.FrameState;
+import it.unibo.pixart.model.framestate.FrameStateImpl;
+import it.unibo.pixart.model.pixel.Pixel;
+import it.unibo.pixart.model.pixel.PixelBuilder;
 import javafx.scene.paint.Color;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
-
-import it.unibo.pixart.model.framestate.FrameState;
-import it.unibo.pixart.model.framestate.FrameStateImpl;
-import it.unibo.pixart.model.pixel.Pixel;
-import it.unibo.pixart.model.pixel.PixelBuilder;
 
 /**
  * Simple implementation of Matrix.
@@ -41,7 +40,7 @@ public final class PixelMatrix implements Matrix {
     public static final class MatrixBuilder {
         private int rows;
         private int columns;
-        private Set<Pixel> toCopy;
+        private final Set<Pixel> toCopy = new HashSet<>();
 
         /**
          * Default constructor.
@@ -49,7 +48,7 @@ public final class PixelMatrix implements Matrix {
         public MatrixBuilder() {
             this.rows = 0;
             this.columns = 0;
-            this.toCopy = new HashSet<>();
+            this.toCopy.clear();
         }
 
         /**
@@ -143,7 +142,7 @@ public final class PixelMatrix implements Matrix {
     @Override
     public void setPixel(final Set<Pixel> pixels) {
 
-        for (Pixel pixel : pixels) {
+        for (final Pixel pixel : pixels) {
             this.pixels.forEach(p -> {
                 if (p.comparePixel(pixel)) {
                     p.setColor(pixel.getColor());
