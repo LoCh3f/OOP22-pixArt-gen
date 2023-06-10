@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.google.common.escape.UnicodeEscaper;
+import com.google.common.util.concurrent.UncheckedExecutionException;
+
 import it.unibo.pixart.controller.SimpleController;
 import it.unibo.pixart.model.historyframe.HistoryFrame;
 import it.unibo.pixart.utilities.FileHandler;
@@ -29,7 +32,7 @@ public final class AnimationControllerImpl extends SimpleController implements A
                     Thread.sleep(currentFrame.getAnimationDuration());
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    System.out.println(e);
                 }
             }
         }
