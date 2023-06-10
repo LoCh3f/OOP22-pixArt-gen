@@ -124,14 +124,12 @@ public final class WorkSpace extends AbstractFXView {
 
         this.toolBox.getSelectionModel()
                 .selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> {
-                    getWorkSpaceController().selectTool(newValue, colorPicker.getValue(), (int) toolSizeSlider.getValue());
-                });
+                .addListener((observable, oldValue, newValue) -> getWorkSpaceController().selectTool(newValue, colorPicker.getValue(), (int) toolSizeSlider.getValue()));
 
-        this.toolSizeLabel.setText("Size: " + Integer.toString((int) toolSizeSlider.getValue()));
+        this.toolSizeLabel.setText("Size: " + (int) toolSizeSlider.getValue());
         this.toolSizeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(), (int) toolSizeSlider.getValue());
-            this.toolSizeLabel.setText("Size: " + Integer.toString((int) toolSizeSlider.getValue()));
+            this.toolSizeLabel.setText("Size: " + (int) toolSizeSlider.getValue());
         });
 
         /*Init GridPane and add an event listeners to all the buttons. */
@@ -185,9 +183,7 @@ public final class WorkSpace extends AbstractFXView {
                 .add(0, new MenuItemBuilder.Builder().setName("Save").setEventH(event -> saveAndExit()).build());
 
         this.menubar.getMenus().get(0).getItems().get(1)
-                .addEventHandler(ActionEvent.ACTION, event -> {
-                    SceneManager.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
-                });
+                .addEventHandler(ActionEvent.ACTION, event -> SceneManager.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel()));
 
         updateView(getWorkSpaceController().getCurrentFrame());
         updateHistoryFrames();
@@ -201,7 +197,7 @@ public final class WorkSpace extends AbstractFXView {
     /**
      * Method to update the gridpane and the matrix while coloring.
      *
-     * @param toUpdate
+     * @param toUpdate the pixels to update.
      */
     public void updateView(final Set<Pixel> toUpdate) {
         final var center = (GridPane) this.root.getCenter();
