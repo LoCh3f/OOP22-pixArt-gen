@@ -4,13 +4,6 @@ package it.unibo.pixart.utilities.variables;
  * Classe che contiene le variabili per la gestione dello stile della view.
  */
 public class FXViewVariables {
-
-    /**
-     * Private constructor.
-     */
-    private FXViewVariables() {
-    }
-
     /**
      * String for set style of the border.
      */
@@ -75,6 +68,12 @@ public class FXViewVariables {
      * String for the image path.
      */
     public static final String IMAGE_WASTED = "wasted.jpg";
+
+    /**
+     * Private constructor.
+     */
+    private FXViewVariables() {
+    }
 
 
 }
