@@ -108,7 +108,8 @@ public final class AnimationView extends AbstractFXView {
         this.frameList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ImageView>() {
 
         @Override
-        public void changed(final ObservableValue<? extends ImageView> observable, final ImageView oldValue, final ImageView newValue) {
+        public void changed(final ObservableValue<? extends ImageView> observable, 
+                                final ImageView oldValue, final ImageView newValue) {
                 imageContainer.setImage(frameList.getSelectionModel().getSelectedItem().getImage());
                 selectedFrame.setText(Integer.toString(frameList.getSelectionModel().getSelectedIndex()));
                 selectedFrameDuration.setText(getAnimationController().getHistoryFrames()

@@ -7,7 +7,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import it.unibo.pixart.model.pixel.Pixel;
 import it.unibo.pixart.model.pixel.PixelBuilder;
-import it.unibo.pixart.model.tool.drawingTools.Pencil;
+import it.unibo.pixart.model.tool.drawingtools.Pencil;
 import javafx.scene.paint.Color;
 
 class PencilTest {

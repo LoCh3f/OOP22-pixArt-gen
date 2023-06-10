@@ -5,7 +5,7 @@ package it.unibo.pixart;
  */
 public final class PixArt {
     /**
-     * Main maethod.
+     * Main method.
      * @param args
      */
     public static void main(final String[] args) {
