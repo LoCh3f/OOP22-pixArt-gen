@@ -7,7 +7,18 @@ import java.util.stream.Stream;
  * Enum for all the possible image types.
  */
 public enum FileTypes {
-    PNG(".png"), JPG(".jpg"), JPEG(".jpeg");
+    /**
+     * .png format.
+     */
+    PNG(".png"),
+    /**
+     * .jpg format.
+     */
+    JPG(".jpg"),
+    /**
+     * .jpeg format.
+     */
+    JPEG(".jpeg");
 
     private String type;
 
