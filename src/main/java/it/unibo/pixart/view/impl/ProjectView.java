@@ -24,13 +24,14 @@ import javafx.scene.control.Alert.AlertType;
  */
 public final class ProjectView extends AbstractFXView {
 
+    //CHECKSTYLE: OFF
     @FXML
-    private ListView<String> listView;
+    private ListView<String> listView = new ListView<>(); //NOPMD
+    //CHECKSTYLE: ON
     private String selFolder;
 
     @Override
     public void init() {
-        listView = new ListView<>();
         listView.getItems().clear();
         listView.getItems().addAll(Stream.of(new File(this.getController().getModel().getUser().getPathToFile()).listFiles())
                                   .filter(file -> file.isDirectory() && !file.isHidden() 

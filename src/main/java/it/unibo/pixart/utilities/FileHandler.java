@@ -70,8 +70,7 @@ public final class FileHandler {
     public Project fromJsonToProject(final File jsonFile) throws IOException {
         final BufferedReader fReader = new BufferedReader(new FileReader(jsonFile));
         final StringBuilder sBuilder = new StringBuilder();
-        String line;
-        while ((line = fReader.readLine()) != null) {
+        for (String line = fReader.readLine(); line != null; line = fReader.readLine()) {
             sBuilder.append(line).append(File.separatorChar);
         }
         sBuilder.deleteCharAt(sBuilder.length() - 1);
