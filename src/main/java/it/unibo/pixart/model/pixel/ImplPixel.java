@@ -60,7 +60,14 @@ public class ImplPixel implements Pixel {
      */
     @Override
     public boolean equals(final Object obj) {
-        final var pixel = (Pixel) obj;
+        if (!(obj instanceof Pixel pixel)) {
+            return false;
+        }
         return comparePixel(pixel) && 0 == pixel.getColor().toString().compareTo(this.color.toString());
+    }
+
+    @Override
+    public int hashCode() {
+        return this.position.hashCode() + this.color.hashCode();
     }
 }
