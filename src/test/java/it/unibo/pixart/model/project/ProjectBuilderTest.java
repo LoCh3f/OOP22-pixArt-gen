@@ -8,7 +8,7 @@ import it.unibo.pixart.model.project.builder.ProjectBuilderImpl;
 
 /** The Test class of the ProjectBuilder class.
  */
-public class ProjectBuilderTest {
+class ProjectBuilderTest {
     private static final String FILE = ".PNG";
     private static final String NAME = "First";
     private static final String PATH = "/user";
@@ -16,7 +16,7 @@ public class ProjectBuilderTest {
 
     @Test
     void integrityTest() {
-        Project project = new ProjectBuilderImpl().fileType(FILE).projectName(NAME).path(PATH).frames(SIZE).build();
+        final Project project = new ProjectBuilderImpl().fileType(FILE).projectName(NAME).path(PATH).frames(SIZE).build();
         assertEquals(NAME, project.getName());
         assertEquals(PATH, project.getPath());
         assertEquals(FILE, project.getFileType());

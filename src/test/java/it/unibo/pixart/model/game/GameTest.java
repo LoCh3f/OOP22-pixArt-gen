@@ -10,18 +10,18 @@ import it.unibo.pixart.model.timer.GameTimerImpl;
 
 /**The Test class of the Game.
  */
-public class GameTest {
+class GameTest {
     private static GameType gameType = GameType.MIRROR;
     private static GameTimer gameTimer = new GameTimerImpl(100);
     private final Game testGame = new GameBuilderImpl().gameType(gameType).gameTimer(gameTimer).build();
 
     @Test
-    void getGameTimer() {
+    void gameTimerGetterTest() {
         assertEquals(gameTimer, testGame.getGameTimer());
     }
 
     @Test
-    void getGameType() {
+    void gameTypeGetterTest() {
         assertEquals(gameType, testGame.getGameType());
     }
 }

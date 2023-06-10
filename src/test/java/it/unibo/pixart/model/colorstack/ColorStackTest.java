@@ -12,6 +12,7 @@ import it.unibo.pixart.model.tool.ToolFactoryImpl;
 import it.unibo.pixart.utilities.MatrixConverter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Set;
@@ -19,12 +20,12 @@ import java.util.stream.Collectors;
 
 /** The Test class for the ColorStack class.
  */
-public class ColorStackTest {
+class ColorStackTest {
     private final Matrix grid = new PixelMatrix.MatrixBuilder().setColumns(16).setRows(16).build();
-    private MatrixConverter converter = new MatrixConverter();
+    private final MatrixConverter converter = new MatrixConverter();
     private ColorStack stack;
     private final ToolFactory toolFatory = new ToolFactoryImpl();
-    private AbstractTool tool = toolFatory.createTool("BUCKET", Color.BLACK, 1);
+    private final AbstractTool tool = toolFatory.createTool("BUCKET", Color.BLACK, 1);
     private static final int PIXELNUMBER = 256;
     private static final int PIXELNUMBER2 = 255;
 
@@ -52,7 +53,7 @@ public class ColorStackTest {
     /*Now we'll remove a pixel from a set, and check that the total number of pixels has decreased. */
     @Test
     void checkRemovePixel() {
-        Pixel p = grid.getPixels().stream().collect(Collectors.toList()).get(0);
+        final Pixel p = grid.getPixels().stream().collect(Collectors.toList()).get(0);
         this.stack = new ColorStackImpl(this.converter.apply(grid.getPixels()), grid.getPixels().size());
         this.stack.removePixel(Color.WHITE, p);
         assertEquals(1, stack.getColorMap().entrySet().stream().filter(e -> e.getKey() == Color.WHITE).count());
@@ -63,8 +64,8 @@ public class ColorStackTest {
     @Test
     void checkEntrySetRemoved() {
         this.stack = new ColorStackImpl(this.converter.apply(grid.getPixels()), grid.getPixels().size());
-        assertTrue(!this.stack.isEmpty());
-        for (var elem : this.grid.getPixels()) {
+        assertFalse(this.stack.isEmpty());
+        for (final var elem : this.grid.getPixels()) {
             this.stack.removePixel(elem.getColor(), elem);
         }
         assertTrue(this.stack.isEmpty());

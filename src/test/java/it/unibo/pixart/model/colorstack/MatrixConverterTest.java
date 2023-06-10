@@ -16,14 +16,14 @@ import javafx.scene.paint.Color;
 
 /** The Test class of the MatrixConverter class.
  */
-public class MatrixConverterTest {
+class MatrixConverterTest {
     private static final Matrix GRID = new PixelMatrix.MatrixBuilder().setRows(16).setColumns(16).build();
     private static final int MATRIXSIZE = 256;
 
     @Test
     void integrityTest() {
         final Map<Color, Set<Pixel>> map = new MatrixConverter().apply(GRID.getPixels());
-        for (var key : map.keySet()) {
+        for (final var key : map.keySet()) {
             assertEquals(Color.WHITE, key);
         }
         assertEquals(1, map.keySet().size());

@@ -14,13 +14,13 @@ class ImplPixelTest {
     private static final Pixel TEST_PIXEL = new ImplPixel(0, 0);
 
     @Test
-    void getPosition() {
+    void positionGetterTest() {
         assertEquals(TEST_PIXEL.getPosition().getX(), new Pair<>(0, 0).getX());
         assertEquals(TEST_PIXEL.getPosition().getY(), new Pair<>(0, 0).getY());
     }
 
     @Test
-    void getColor() {
+    void colorGetterTest() {
         TEST_PIXEL.setColor(Color.WHITE);
         assertEquals(Color.WHITE, TEST_PIXEL.getColor());
         TEST_PIXEL.setColor(Color.BLACK);

@@ -16,10 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /** The Test class for the FrameState class.
  */
-public class FrameStateTest {
+class FrameStateTest {
     private static final int SIZE = 16;
-    private Matrix grid = new PixelMatrix.MatrixBuilder().setColumns(SIZE).setRows(SIZE).build();
-    private FrameState memento = new FrameStateImpl();
+    private final Matrix grid = new PixelMatrix.MatrixBuilder().setColumns(SIZE).setRows(SIZE).build();
+    private final FrameState memento = new FrameStateImpl();
 
 
     @Test
@@ -70,7 +70,7 @@ public class FrameStateTest {
     }
 
     private Set<Pixel> createSet(final Color color) {
-        Set<Pixel> newSet = new HashSet<>();
+        final Set<Pixel> newSet = new HashSet<>();
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 final Pixel p = new PixelBuilder.PxlBuilder().setY(i).setX(j).build();
