@@ -33,4 +33,5 @@ public enum FileTypes {
     public static List<String> getAllTypes() {
        return Stream.of(values()).map(e -> e.getType()).collect(Collectors.toList());
     }
+
 }

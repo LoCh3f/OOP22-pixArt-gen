@@ -40,7 +40,7 @@ public final class SettingsView extends AbstractFXView {
     }
 
     @FXML
-    private void discardProject(final ActionEvent event) {
+    private void discardProject() {
         SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 

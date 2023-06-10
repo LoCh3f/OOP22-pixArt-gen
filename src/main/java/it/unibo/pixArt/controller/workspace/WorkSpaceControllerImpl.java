@@ -33,10 +33,6 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
     private boolean isDrawing;
     private int currentIndex;
 
-    /**Constructor for WorkSpaceControllerImpl. */
-    public WorkSpaceControllerImpl() {
-    }
-
     @Override
     public void selectTool(final String toolName, final Color color, final int toolSize) {
         this.tool = this.toolFactory.createTool(toolName, color, toolSize);
@@ -66,7 +62,8 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
         ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath()
         + File.separatorChar + getModel().getProject().getName()
         + currentIndex
-        + getModel().getProject().getFileType(), FileTypes.PNG.toString(), 4);
+        + getModel().getProject().getFileType(),
+        getModel().getProject().getFileType(), 4);
 
         this.currentIndex = index;
         this.currentframe = getModel().getProject().getAllFrames().get(index);
@@ -98,7 +95,8 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
         ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() 
         + File.separatorChar + getModel().getProject().getName() 
         + currentIndex 
-        + getModel().getProject().getFileType(), FileTypes.PNG.toString(), 4);
+        + getModel().getProject().getFileType(),
+        getModel().getProject().getFileType(), 4);
 
         this.getHistoryFrames().get(currentIndex).setPath(getModel().getProject().getPath() 
         + File.separatorChar + getModel().getProject().getName() 
