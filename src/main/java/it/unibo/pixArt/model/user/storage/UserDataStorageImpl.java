@@ -38,7 +38,7 @@ public final class UserDataStorageImpl implements UserDataStorage {
         if (Files.notExists(Path.of(USERDATAPATH))) {
             Files.createDirectory(Path.of(USERDATAPATH));
         }
-        JsonArray obj = new JsonArray();
+        final JsonArray obj = new JsonArray();
         final File file = new File(USERDATAPATH + FILESEPARATOR + USERDATAFILE);
         if (!file.exists()) {
             try (FileWriter fw = new FileWriter(file)) {

@@ -36,8 +36,8 @@ public abstract class AbstractDrawingTool extends AbstractTool {
         final Set<Pixel> newPixSet = new HashSet<>();
         final Pair<Integer, Integer> oppositePixPos = calculatePosition(pixel, getToolSize(), super.getFrameSize(frame));
 
-        for (var x: range(pixel.getPosition().getX(), oppositePixPos.getX())) {
-            for (var y: range(pixel.getPosition().getY(), oppositePixPos.getY())) {
+        for (final var x: range(pixel.getPosition().getX(), oppositePixPos.getX())) {
+            for (final var y: range(pixel.getPosition().getY(), oppositePixPos.getY())) {
                 this.updatePixel(frame, x, y, newPixSet);
             }
         }

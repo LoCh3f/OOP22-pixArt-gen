@@ -70,7 +70,7 @@ public final class UserImpl implements User {
         if (this.getClass() != o.getClass()) {
             return false;
         }
-        UserImpl user = (UserImpl) o;
+        final UserImpl user = (UserImpl) o;
         return name.equals(user.name);
     }
 

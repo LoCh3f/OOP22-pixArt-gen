@@ -162,7 +162,7 @@ public final class GameView extends AbstractFXView {
     }
 
     private void gameOverPopUp() {
-        String percentage = String.format("%.2f", this.getGameController().getPercentage());
+        final String percentage = String.format("%.2f", this.getGameController().getPercentage());
         final var root = new VBox();
         final Label gameOver = new Label("GAME OVER");
         final Button homeButton = new Button("Home");
@@ -190,8 +190,8 @@ public final class GameView extends AbstractFXView {
     }
 
     private String timeToString(final double remainingTime) {
-        double minutes = remainingTime / TIME_DIVISION;
-        double seconds = remainingTime % TIME_DIVISION;
+        final double minutes = remainingTime / TIME_DIVISION;
+        final double seconds = remainingTime % TIME_DIVISION;
         return String.format("%02d:%02d", (int) minutes, (int) seconds);
     }
 
@@ -217,9 +217,9 @@ public final class GameView extends AbstractFXView {
     }
 
     private void associateButton(final GridPane grid) {
-        for (var btn : grid.getChildren()) {
-            for (var entry : getGameController().getColorStack().entrySet()) {
-                for (var pixel : entry.getValue()) {
+        for (final var btn : grid.getChildren()) {
+            for (final var entry : getGameController().getColorStack().entrySet()) {
+                for (final var pixel : entry.getValue()) {
                     if (pixel.getPosition().getX() == GridPane.getColumnIndex(btn) 
                             && pixel.getPosition().getY() == GridPane.getRowIndex(btn)) {
                         final int number = this.availableColors.indexOf(entry.getKey());
@@ -255,7 +255,7 @@ public final class GameView extends AbstractFXView {
 
     private void colorButton(final Event event) {
         final var button = (Button) event.getSource();
-        boolean checkPixel = getGameController()
+        final boolean checkPixel = getGameController()
                             .checkPixel(GridPane.getColumnIndex(button), GridPane.getRowIndex(button), selectedColor);
         if (checkPixel) {
             button.setStyle("-fx-background-color: #" + selectedColor.toString().substring(2) 
