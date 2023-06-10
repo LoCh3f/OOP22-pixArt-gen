@@ -6,8 +6,8 @@ import it.unibo.pixart.model.timer.GameTimer;
  * The implementation class of the Game
  */
 public final class GameImpl implements Game {
-    private GameType gameType;
-    private GameTimer gameTimer;
+    private final GameType gameType;
+    private final GameTimer gameTimer;
 
     /**
      * The game constructor

@@ -14,7 +14,6 @@ import it.unibo.pixart.view.pages.Pages;
 import it.unibo.pixart.view.pages.SceneManager;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -33,13 +32,14 @@ public final class ProjectView extends AbstractFXView {
     @Override
     public void init() {
         listView.getItems().clear();
-        listView.getItems().addAll(Stream.of((new File(this.getController().getModel().getUser().getPathToFile()).listFiles()))
+        listView.getItems().addAll(Stream.of(new File(this.getController().getModel().getUser().getPathToFile()).listFiles())
                                   .filter(file -> file.isDirectory() && !file.isHidden() 
                                   && this.getProjectController().checkIfJsonInFolder(file))
                                   .map(File::getName).collect(Collectors.toList()));
 
-        MultipleSelectionModel<String> selModel = listView.getSelectionModel();
+        final MultipleSelectionModel<String> selModel = listView.getSelectionModel();
         selModel.selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
             public void changed(final ObservableValue<? extends String> changed, final String oldVal, final String newVal) {
                 selFolder = listView.getSelectionModel().getSelectedItems().toString();
             }
@@ -47,15 +47,15 @@ public final class ProjectView extends AbstractFXView {
     }
 
     @FXML
-    private void onHomeClick(final ActionEvent event) {
+    private void onHomeClick() {
         SceneManager.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
     }
 
     @FXML
-    private void onEditClick(final ActionEvent event) {
+    private void onEditClick() {
         if (selFolder != null) {
             try {
-                Project project = FileHandler.getInstance().fromJsonToProject(
+                final Project project = FileHandler.getInstance().fromJsonToProject(
                     new File(this.getProjectController().getJsonPath(selFolder)));
                 this.getController().getModel().setProject(project);
                 SceneManager.getInstance().switchPage(getStage(), Pages.WORKSPACE, this.getController().getModel());
@@ -66,14 +66,14 @@ public final class ProjectView extends AbstractFXView {
     }
 
     @FXML
-    private void onDeleteClick(final ActionEvent event) {
+    private void onDeleteClick() {
         if (selFolder != null) {
-            Alert alert = new Alert(AlertType.CONFIRMATION);
+            final Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Delete File");
             alert.setHeaderText("Are you sure to delete" + selFolder.replace('[', ' ')
                                 .substring(0, selFolder.length() - 1) + "?");
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) { 
+            final Optional<ButtonType> result = alert.showAndWait();
+            if (result.get().equals(ButtonType.OK)) { 
                 FileHandler.getInstance().deleteFile(this.getProjectController().getDirPath(selFolder));
                 init();
             }

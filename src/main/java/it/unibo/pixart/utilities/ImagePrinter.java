@@ -58,8 +58,8 @@ public final class ImagePrinter {
      */
     public void printOneFrame(final Matrix pixelGrid, final String path, final String fileType, final int scale) {
         this.imageSize = pixelGrid.getColumns();
-        WritableImage wImg = new WritableImage(imageSize, imageSize);
-        PixelWriter pWriter = wImg.getPixelWriter();
+        final WritableImage wImg = new WritableImage(imageSize, imageSize);
+        final PixelWriter pWriter = wImg.getPixelWriter();
 
         IntStream.range(0, imageSize).forEach(x -> {
             IntStream.range(0, imageSize).forEach(y -> {
@@ -71,25 +71,25 @@ public final class ImagePrinter {
             });
         });
 
-        imagePrint(wImg, fileType.toString(), path, scale);
+        imagePrint(wImg, fileType, path, scale);
     }
 
     private void imagePrint(final WritableImage wImg, final String fileFormat, final String path, final int scale) {
         try {
-            BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
-            BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
+            final BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
+            final BufferedImage jpgImage = new BufferedImage(imageSize, imageSize, BufferedImage.TYPE_INT_RGB);
             jpgImage.createGraphics().drawImage(bImg, 0, 0, null);
-            ImageIO.write(jpgImage, fileFormat.toString().replace(".", ""), new File(path));
-            scaleImage(jpgImage, path, scale, fileFormat.toString().replace(".", ""));
+            ImageIO.write(jpgImage, fileFormat.replace(".", ""), new File(path));
+            scaleImage(jpgImage, path, scale, fileFormat.replace(".", ""));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private void scaleImage(final BufferedImage bImage, final String path, final int scale, final String fileType) {
-        int newSize = scale * imageSize;
-        BufferedImage newImage = new BufferedImage(newSize, newSize, bImage.getType());
-        Graphics2D graphics2d = newImage.createGraphics();
+        final int newSize = scale * imageSize;
+        final BufferedImage newImage = new BufferedImage(newSize, newSize, bImage.getType());
+        final Graphics2D graphics2d = newImage.createGraphics();
         graphics2d.drawImage(bImage, 0, 0, newSize, newSize, null);
         try {
             ImageIO.write(newImage, fileType, new File(path));

@@ -64,9 +64,9 @@ public enum GameLevels {
     }
 
     private String newPathToFile() throws IOException {
-        InputStream inputStream = this.getClass().getResourceAsStream(this.pathToFile);
+        final InputStream inputStream = this.getClass().getResourceAsStream(this.pathToFile);
         new File(System.getProperty("user.home") + File.separatorChar + "PixArtDatas").mkdir();
-        File tempFile = new File(System.getProperty("user.home") + "/PixArtDatas/tempGame.json");
+        final File tempFile = new File(System.getProperty("user.home") + "/PixArtDatas/tempGame.json");
 
         Files.copy(inputStream, tempFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
