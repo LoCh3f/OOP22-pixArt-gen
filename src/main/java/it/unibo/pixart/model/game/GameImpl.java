@@ -3,14 +3,14 @@ package it.unibo.pixart.model.game;
 import it.unibo.pixart.model.timer.GameTimer;
 
 /**
- * The implementation class of the Game
+ * The implementation class of the Game.
  */
 public final class GameImpl implements Game {
     private final GameType gameType;
     private final GameTimer gameTimer;
 
     /**
-     * The game constructor
+     * The game constructor.
      * @param gameType
      * @param gameTimer
      */
