@@ -26,7 +26,7 @@ public final class MenuItemBuilder extends MenuItem {
 
         private String name;
 
-        private EventHandler<ActionEvent> e = null;
+        private EventHandler<ActionEvent> e;
 
         /**
          * @param e the event handler
