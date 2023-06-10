@@ -3,14 +3,8 @@ package it.unibo.pixart.utilities;
 /**
  * A standard generic Pair<X,Y>, with getters, hashCode, equals, and toString well implemented.
  * From OOP lab exam.
-<<<<<<< HEAD
  * @param <X>
  * @param <Y>
-=======
- *
- * @param <X> type of the first elem
- * @param <Y> type of the second elem
->>>>>>> 93f82aab9e7162f5f7aad6b4dd81e6057172d4ed
  */
 public final class Pair<X, Y> {
 
@@ -30,22 +24,14 @@ public final class Pair<X, Y> {
     }
 
     /**
-<<<<<<< HEAD
-     * @return x
-=======
      * @return elem X
->>>>>>> 93f82aab9e7162f5f7aad6b4dd81e6057172d4ed
      */
     public X getX() {
         return x;
     }
 
     /**
-<<<<<<< HEAD
-     * @return y
-=======
-     * @return
->>>>>>> 93f82aab9e7162f5f7aad6b4dd81e6057172d4ed
+     * @return elem y
      */
     public Y getY() {
         return y;
