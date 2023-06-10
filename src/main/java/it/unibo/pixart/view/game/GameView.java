@@ -221,10 +221,10 @@ public final class GameView extends AbstractFXView {
         for (final var btn : grid.getChildren()) {
             for (final var entry : getGameController().getColorStack().entrySet()) {
                 for (final var pixel : entry.getValue()) {
-                    if (pixel.getPosition().getX() == GridPane.getColumnIndex(btn) 
-                            && pixel.getPosition().getY() == GridPane.getRowIndex(btn)) {
+                    if (pixel.getPosition().getX().equals(GridPane.getColumnIndex(btn)) 
+                            && pixel.getPosition().getY().equals(GridPane.getRowIndex(btn))) {
                         final int number = this.availableColors.indexOf(entry.getKey());
-                        ((Button) btn).setText(Integer.valueOf(number).toString());
+                        ((Button) btn).setText(Integer.toString(number));
                     }
                 }
             }
@@ -238,9 +238,9 @@ public final class GameView extends AbstractFXView {
     }
 
     private void setPixelsLeft() {
-        final String numPixelsLeft = Integer.valueOf(this.getGameController()
+        final String numPixelsLeft = Integer.toString(this.getGameController()
                                                     .getColorStack()
-                                                    .get(this.selectedColor).size()  - 1).toString();
+                                                    .get(this.selectedColor).size()  - 1);
         this.pixelsField.setText("Pixels left: " + numPixelsLeft);
     }
 
