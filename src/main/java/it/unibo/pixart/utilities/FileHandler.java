@@ -41,6 +41,9 @@ public final class FileHandler {
     private FileHandler() {
     }
 
+    /**
+     * @return a SINGLETON of this class.
+     */
     public static FileHandler getInstance() {
         return LazyHolder.SINGLETON;
     }
