@@ -5,7 +5,6 @@ import it.unibo.pixArt.utilities.FileHandler;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.SceneManager;
 import it.unibo.pixArt.view.pages.Pages;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;

@@ -4,7 +4,6 @@ import it.unibo.pixArt.model.ModelImpl;
 import it.unibo.pixArt.view.AbstractFXView;
 import it.unibo.pixArt.view.pages.Pages;
 import it.unibo.pixArt.view.pages.SceneManager;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
