@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
  * Implementation of ColorStack.
  */
 public final class ColorStackImpl implements ColorStack {
-    private  Map<Color, Set<Pixel>> colorMap;
+    private final Map<Color, Set<Pixel>> colorMap;
     private final int initialSize;
 
     /**
