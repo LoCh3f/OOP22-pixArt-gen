@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.pixart.controller.SimpleController;
 import it.unibo.pixart.model.game.GameLevels;
 import it.unibo.pixart.model.game.GameType;
@@ -72,6 +73,7 @@ public final class GameSetupControllerImpl extends SimpleController implements G
         this.gameType = GameType.getGameTypes().stream().filter(e -> e.getName().equals(type)).findAny().get();
     }
 
+    @SuppressFBWarnings
     @Override
     public void setGame() {
         getModel().setGame(new GameBuilderImpl().gameTimer(this.gameTimer).gameType(this.gameType).build());

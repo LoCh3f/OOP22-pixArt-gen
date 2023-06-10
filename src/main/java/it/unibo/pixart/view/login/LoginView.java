@@ -3,6 +3,7 @@ package it.unibo.pixart.view.login;
 import java.io.File;
 import java.io.IOException;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.pixart.controller.login.LoginController;
 import it.unibo.pixart.model.user.validator.ValidationResult;
 import it.unibo.pixart.view.AbstractFXView;
@@ -170,6 +171,7 @@ public final class LoginView extends AbstractFXView {
         }
     }
 
+    @SuppressFBWarnings
     @Override
     public void init() {
         this.logoImageView.setImage(new Image("/image/nameLogo.png"));

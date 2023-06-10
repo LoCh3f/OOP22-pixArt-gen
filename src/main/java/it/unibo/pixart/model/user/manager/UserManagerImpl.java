@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import com.google.common.hash.Hashing;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.pixart.model.user.User;
 import it.unibo.pixart.model.user.UserBuilderImpl;
 import it.unibo.pixart.model.user.storage.UserDataStorage;
@@ -20,6 +21,7 @@ public final class UserManagerImpl implements UserManager {
      * Constructor.
      * @param dataStorage
      */
+    @SuppressFBWarnings
     public UserManagerImpl(final UserDataStorage dataStorage) {
         this.dataStorage = dataStorage;
     }
