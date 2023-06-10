@@ -4,6 +4,9 @@ import java.io.File;
 
 import it.unibo.pixart.controller.Controller;
 
+/**
+ * interface for Projects view controller.
+ */
 public interface ProjectController extends Controller {
 
     /**
