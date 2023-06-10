@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 /**
  * Enum for all the available game levels.
  */
@@ -63,6 +65,7 @@ public enum GameLevels {
         return Stream.of(values()).collect(Collectors.toList());
     }
 
+    @SuppressFBWarnings
     private String newPathToFile() throws IOException {
         final InputStream inputStream = this.getClass().getResourceAsStream(this.pathToFile);
         new File(System.getProperty("user.home") + File.separatorChar + "PixArtDatas").mkdir();

@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.pixart.model.pixel.Pixel;
 import javafx.scene.paint.Color;
 
@@ -17,6 +18,7 @@ import javafx.scene.paint.Color;
 public final class MatrixConverter implements Function<Set<Pixel>, Map<Color, Set<Pixel>>>  {
     private final Map<Color, Set<Pixel>> colorMap = new HashMap<>();
 
+    @SuppressFBWarnings
     @Override
     public Map<Color, Set<Pixel>> apply(final Set<Pixel> pixels) {
         final List<Color> colors = pixels.stream().map(e -> e.getColor()).distinct().collect(Collectors.toList());
