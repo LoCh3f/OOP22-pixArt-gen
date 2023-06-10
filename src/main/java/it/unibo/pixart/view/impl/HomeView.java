@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
  * Menu view, in which the user selects the next action.
  */
 public final class HomeView extends AbstractFXView {
-
+    private static final double SIZE = 20d;
     @FXML
     private VBox buttonList;
     @FXML
@@ -78,7 +78,7 @@ public final class HomeView extends AbstractFXView {
         this.buttonList.prefHeightProperty().bind(this.getStage().heightProperty());
         this.buttonList.getChildren().forEach(c -> {
             final var b = (Button) c;
-            b.prefWidthProperty().bind(this.buttonList.widthProperty().subtract(20d));
+            b.prefWidthProperty().bind(this.buttonList.widthProperty().subtract(SIZE));
             b.maxHeight(Double.MAX_VALUE);
             b.setPadding(new Insets(10));
         });
