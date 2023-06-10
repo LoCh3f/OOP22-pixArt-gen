@@ -6,6 +6,12 @@ package it.unibo.pixart.utilities.variables;
 public class FXViewVariables {
 
     /**
+     * Private constructor.
+     */
+    private FXViewVariables() {
+    }
+
+    /**
      * String for set style of the border.
      */
     public static final String FX_BORDER_COLOR = "-fx-border-color:black";
