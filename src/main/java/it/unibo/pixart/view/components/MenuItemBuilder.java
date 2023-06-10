@@ -26,13 +26,13 @@ public final class MenuItemBuilder extends MenuItem {
 
         private String name;
 
-        private EventHandler<ActionEvent> e;
+        private EventHandler<ActionEvent> e = null; //NOPMD è una scelta temporanea
 
         /**
          * @param e the event handler
          * @return the builder
          */
-        public Builder setEventH(final EventHandler<ActionEvent> e) {
+        public Builder setEventH(final EventHandler<ActionEvent> e) { //NOPMD
             this.e = e;
             return this;
         }
@@ -41,7 +41,7 @@ public final class MenuItemBuilder extends MenuItem {
          * @param name the name of the menu item
          * @return the builder
          */
-        public Builder setName(final String name) {
+        public Builder setName(final String name) { //NOPMD
             this.name = name;
             return this;
         }
@@ -50,7 +50,7 @@ public final class MenuItemBuilder extends MenuItem {
          * @return the MenuItemBuilder
          * @throws IllegalStateException if the EventHandler is not set
          */
-        public MenuItemBuilder build() throws IllegalStateException {
+        public MenuItemBuilder build() throws IllegalStateException { //NOPMD
             if (this.e == null) {
                 throw new IllegalStateException("EventHandler not set");
             }

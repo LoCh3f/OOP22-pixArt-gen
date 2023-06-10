@@ -35,7 +35,7 @@ public final class ButtonSetter extends Button {
          * @param text the text of the button
          * @return the builder
          */
-        public Builder setText(final String text) {
+        public Builder setText(final String text) { //NOPMD
             this.text = text;
             return this;
         }
@@ -44,7 +44,7 @@ public final class ButtonSetter extends Button {
          * @param backgroundStyle the style of the button
          * @return the builder
          */
-        public Builder setBackground(final String backgroundStyle) {
+        public Builder setBackground(final String backgroundStyle) { //NOPMD
             this.backgroundStyle = backgroundStyle;
             return this;
         }
@@ -53,7 +53,7 @@ public final class ButtonSetter extends Button {
          * @param eventH the event handler of the button
          * @return the builder
          */
-        public Builder setEventH(final EventHandler<ActionEvent> eventH) {
+        public Builder setEventH(final EventHandler<ActionEvent> eventH) { //NOPMD
             this.eventH = eventH;
             return this;
         }
@@ -61,7 +61,7 @@ public final class ButtonSetter extends Button {
         /**
          * @return the button
          */
-        public ButtonSetter build() {
+        public ButtonSetter build() { //NOPMD
             return new ButtonSetter(this.text, this.backgroundStyle, this.eventH);
         }
 

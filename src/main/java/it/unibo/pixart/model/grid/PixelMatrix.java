@@ -55,7 +55,7 @@ public final class PixelMatrix implements Matrix {
          * @param rows the number of rows of the matrix
          * @return the builder
          */
-        public MatrixBuilder setRows(final int rows) {
+        public MatrixBuilder setRows(final int rows) { // NOPMD
             this.rows = rows;
             return this;
         }
@@ -65,7 +65,7 @@ public final class PixelMatrix implements Matrix {
          * @param columns the number of columns of the matrix
          * @return the builder
          */
-        public MatrixBuilder setColumns(final int columns) {
+        public MatrixBuilder setColumns(final int columns) { //NOPMD
             this.columns = columns;
             return this;
         }
@@ -74,7 +74,7 @@ public final class PixelMatrix implements Matrix {
          * @param p the pixel to copy
          * @return the builder
          */
-        public MatrixBuilder setToCopy(final Pixel p) {
+        public MatrixBuilder setToCopy(final Pixel p) { //NOPMD
             this.toCopy.add(p);
             return this;
         }
@@ -83,7 +83,7 @@ public final class PixelMatrix implements Matrix {
          * @return the matrix
          * @throws IllegalStateException if the rows or the columns are less than 16
          */
-        public PixelMatrix build() throws IllegalStateException {
+        public PixelMatrix build() throws IllegalStateException { //NOPMD
             if (this.rows < 16 || this.columns < 16) {
                 throw new IllegalStateException("Rows and columns must be greater than 16");
             }

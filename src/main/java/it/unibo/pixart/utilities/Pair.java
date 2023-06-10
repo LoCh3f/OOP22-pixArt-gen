@@ -3,15 +3,23 @@ package it.unibo.pixart.utilities;
 /**
  * A standard generic Pair<X,Y>, with getters, hashCode, equals, and toString well implemented.
  * From OOP lab exam.
+<<<<<<< HEAD
  * @param <X>
  * @param <Y>
+=======
+ *
+ * @param <X> type of the first elem
+ * @param <Y> type of the second elem
+>>>>>>> 93f82aab9e7162f5f7aad6b4dd81e6057172d4ed
  */
 public final class Pair<X, Y> {
 
     private final X x;
     private final Y y;
 
-    /** Constructor.
+    /**
+     * Constructor.
+     *
      * @param x
      * @param y
      */
@@ -22,19 +30,30 @@ public final class Pair<X, Y> {
     }
 
     /**
+<<<<<<< HEAD
      * @return x
+=======
+     * @return elem X
+>>>>>>> 93f82aab9e7162f5f7aad6b4dd81e6057172d4ed
      */
     public X getX() {
         return x;
     }
 
     /**
+<<<<<<< HEAD
      * @return y
+=======
+     * @return
+>>>>>>> 93f82aab9e7162f5f7aad6b4dd81e6057172d4ed
      */
     public Y getY() {
         return y;
     }
 
+    /**
+     * @return
+     */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -47,23 +66,33 @@ public final class Pair<X, Y> {
     @SuppressWarnings("rawtypes")
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
-        Pair other = (Pair) obj;
+        }
+        final Pair other = (Pair) obj;
         if (x == null) {
-            if (other.x != null)
+            if (other.x != null) {
                 return false;
-        } else if (!x.equals(other.x))
+            }
+        } else if (!x.equals(other.x)) {
             return false;
+        }
         if (y == null) {
             return other.y == null;
-        } else return y.equals(other.y);
+        } else {
+            return y.equals(other.y);
+        }
     }
 
+    /**
+     * @return the pair string rappresentations
+     */
     @Override
     public String toString() {
         return "Pair [x=" + x + ", y=" + y + "]";

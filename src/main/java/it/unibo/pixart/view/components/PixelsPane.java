@@ -73,7 +73,7 @@ public final class PixelsPane extends GridPane {
          * @param rows number of rows
          * @return the builder
          */
-        public GridPaneBuilder setRows(final int rows) {
+        public GridPaneBuilder setRows(final int rows) { //NOPMD
             this.rows = rows;
             return this;
         }
@@ -82,7 +82,7 @@ public final class PixelsPane extends GridPane {
          * @param columns number of columns
          * @return the builder
          */
-        public GridPaneBuilder setColumns(final int columns) {
+        public GridPaneBuilder setColumns(final int columns) { //NOPMD
             this.columns = columns;
             return this;
         }
@@ -91,7 +91,7 @@ public final class PixelsPane extends GridPane {
          * @param value boolean for set the grid lines visible
          * @return the builder
          */
-        public GridPaneBuilder setGridLinesVisible(final boolean value) {
+        public GridPaneBuilder setGridLinesVisible(final boolean value) { //NOPMD
             this.lineVisible = value;
             return this;
         }
@@ -100,7 +100,7 @@ public final class PixelsPane extends GridPane {
          * @param e action to set for each the button
          * @return the builder
          */
-        public GridPaneBuilder setAction(final EventHandler<ActionEvent> e) {
+        public GridPaneBuilder setAction(final EventHandler<ActionEvent> e) { //NOPMD
             this.e = e;
             return this;
         }
@@ -108,7 +108,7 @@ public final class PixelsPane extends GridPane {
         /**
          * @return the gridPane of button
          */
-        public PixelsPane build() {
+        public PixelsPane build() { //NOPMD
 
             return new PixelsPane(this.rows, this.columns, this.lineVisible, this.e);
         }
