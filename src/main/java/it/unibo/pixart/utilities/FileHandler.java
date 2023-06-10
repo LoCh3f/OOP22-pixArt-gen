@@ -49,13 +49,13 @@ public final class FileHandler {
         return LazyHolder.SINGLETON;
     }
 
-    @SuppressFBWarnings
     /**
      * Turns the project into a Json file.
      *
      * @param project The project to convert in a Json File
      * @throws IOException
      */
+    @SuppressFBWarnings
     public void fromProjectToJson(final Project project) throws IOException {
         final FileWriter fWriter = new FileWriter(new File(project.getPath() + File.separatorChar + project.getName() + ".json"));
         fWriter.write(gson.toJson(project));
