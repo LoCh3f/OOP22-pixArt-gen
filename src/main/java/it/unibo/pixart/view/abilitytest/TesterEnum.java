@@ -11,12 +11,12 @@ public enum TesterEnum {
     /**
      *
      */
-    VERY_GOOD(0, IMAGE_PATH + IMAGE_VERY_GOOD),
+    VERY_GOOD(1, IMAGE_PATH + IMAGE_VERY_GOOD),
 
     /**
      *
      */
-    GOOD(40, IMAGE_PATH + IMAGE_GOOD),
+    GOOD(30, IMAGE_PATH + IMAGE_GOOD),
 
     /**
      *

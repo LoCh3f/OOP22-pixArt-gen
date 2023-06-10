@@ -1,10 +1,10 @@
 package it.unibo.pixart.view.abilitytest;
 
-import java.util.Collection;
-
 import it.unibo.pixart.model.pixel.Pixel;
 import it.unibo.pixart.utilities.mirror.GenericMirror;
 import it.unibo.pixart.utilities.mirror.Mirror;
+
+import java.util.Collection;
 
 /**
  * Tester logic, strategy pattern for GameView.
@@ -32,7 +32,7 @@ public class TesterLogic implements Logic {
 
 
     private String templatePath(final int difference) {
-        if (difference == TesterEnum.VERY_GOOD.getLimit()) {
+        if (difference <= TesterEnum.VERY_GOOD.getLimit()) {
             return TesterEnum.VERY_GOOD.getPath();
         } else if (difference < TesterEnum.GOOD.getLimit()) {
             return TesterEnum.GOOD.getPath();
