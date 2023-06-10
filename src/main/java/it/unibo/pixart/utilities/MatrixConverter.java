@@ -20,7 +20,7 @@ public final class MatrixConverter implements Function<Set<Pixel>, Map<Color, Se
     @Override
     public Map<Color, Set<Pixel>> apply(final Set<Pixel> pixels) {
         final List<Color> colors = pixels.stream().map(e -> e.getColor()).distinct().collect(Collectors.toList());
-        for (var elem : colors) {
+        for (final var elem : colors) {
             final Set<Pixel> colorSet = pixels.stream().filter(e -> e.getColor().equals(elem)).collect(Collectors.toSet());
             this.colorMap.put(elem, colorSet);
         }
