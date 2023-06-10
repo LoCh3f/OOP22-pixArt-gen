@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import com.google.common.escape.UnicodeEscaper;
-import com.google.common.util.concurrent.UncheckedExecutionException;
+import java.util.logging.LogManager;
 
 import it.unibo.pixart.controller.SimpleController;
 import it.unibo.pixart.model.historyframe.HistoryFrame;
