@@ -1,6 +1,11 @@
 package it.unibo.pixart.model.tools;
 
-import it.unibo.pixart.model.tools.drawingtools.*;
+
+import it.unibo.pixart.model.tools.drawingtools.DarkenTool;
+import it.unibo.pixart.model.tools.drawingtools.Eraser;
+import it.unibo.pixart.model.tools.drawingtools.LightenTool;
+import it.unibo.pixart.model.tools.drawingtools.Pencil;
+import it.unibo.pixart.model.tools.drawingtools.SprayTool;
 import it.unibo.pixart.model.tools.filltools.Bucket;
 import javafx.scene.paint.Color;
 
