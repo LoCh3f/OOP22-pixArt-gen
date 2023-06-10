@@ -3,6 +3,8 @@ package it.unibo.pixart.model.pixel;
 import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
+import it.unibo.pixart.model.pixel.ImplPixel;
+import it.unibo.pixart.model.pixel.Pixel;
 import it.unibo.pixart.utilities.Pair;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

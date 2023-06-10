@@ -67,5 +67,5 @@ tasks.withType<Test> {
 application {
     // Define the main class for the application
 
-    mainClass.set("it.unibo.pixart.PixArt")
+    mainClass.set("it.unibo.pixArt.PixArt")
 }

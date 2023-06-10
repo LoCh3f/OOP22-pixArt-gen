@@ -6,6 +6,8 @@ import java.io.File;
 
 import org.junit.jupiter.api.Test;
 
+import it.unibo.pixart.model.project.FileTypes;
+import it.unibo.pixart.model.project.Project;
 import it.unibo.pixart.model.project.builder.ProjectBuilderImpl;
 
 /** The Test class of the Project class.

@@ -6,6 +6,9 @@ import java.io.File;
 
 import org.junit.jupiter.api.Test;
 
+import it.unibo.pixart.model.user.User;
+import it.unibo.pixart.model.user.UserImpl;
+
 /**
  * The Test class of th e UserImpl class.
  */

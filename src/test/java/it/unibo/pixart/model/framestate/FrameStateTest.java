@@ -3,6 +3,8 @@ package it.unibo.pixart.model.framestate;
 import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
+import it.unibo.pixart.model.framestate.FrameState;
+import it.unibo.pixart.model.framestate.FrameStateImpl;
 import it.unibo.pixart.model.grid.Matrix;
 import it.unibo.pixart.model.grid.PixelMatrix;
 import it.unibo.pixart.model.pixel.Pixel;

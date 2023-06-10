@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
+
+import it.unibo.pixart.model.user.User;
+import it.unibo.pixart.model.user.UserImpl;
 import it.unibo.pixart.model.user.storage.UserDataStorage;
 import it.unibo.pixart.model.user.storage.UserDataStorageImpl;
 
