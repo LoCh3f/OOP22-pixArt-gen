@@ -21,6 +21,10 @@ class BucketTest {
     private static final Set<Pixel> TEST_FRAME1 = new HashSet<>();
     private static final Set<Pixel> TEST_FRAME2 = new HashSet<>();
     private static final Set<Pixel> TEST_FRAME3 = new HashSet<>();
+    private static final int CONSTCOORD = 12;
+    private static final int CONSTCOORD2 = 13;
+    private static final int CONSTCOORD3 = 14;
+    private static final int CONSTCOORD4 = 15;
 
 
     private void createFrameTest1() {
@@ -38,8 +42,8 @@ class BucketTest {
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
                 tempPix = new PixelBuilder.PxlBuilder().setX(i).setY(j).build();
-                if ((i == 12 && (j == 12 || j == 13 || j == 14 || j == 15))
-                || (j == 12 && (i == 12 || i == 13 || i == 14 || i == 15))) {
+                if ((i == CONSTCOORD && (j == CONSTCOORD || j == CONSTCOORD2 || j == CONSTCOORD3 || j == CONSTCOORD4))
+                || (j == CONSTCOORD && (i == CONSTCOORD || i == CONSTCOORD2 || i == CONSTCOORD3 || i == CONSTCOORD4))) {
                         tempPix.setColor(Color.BLACK);
                 }
                 TEST_FRAME2.add(tempPix);
@@ -73,12 +77,12 @@ class BucketTest {
     @Test
     public void updateGridTest2() {
         this.createFrameTest2();
-        Pixel pixel = new PixelBuilder.PxlBuilder().setX(13).setY(13).build();
+        Pixel pixel = new PixelBuilder.PxlBuilder().setX(CONSTCOORD2).setY(CONSTCOORD2).build();
         Set<Pixel> newSet = TEST_BUCKET.updateGrid(pixel, TEST_FRAME2);
         for (Pixel p : newSet) {
             assertEquals(Color.RED, p.getColor());
-            assertTrue(p.getPosition().getX() >= 13 && p.getPosition().getX() <= 15);
-            assertTrue(p.getPosition().getY() >= 13 && p.getPosition().getY() <= 15);
+            assertTrue(p.getPosition().getX() >= CONSTCOORD2 && p.getPosition().getX() <= CONSTCOORD4);
+            assertTrue(p.getPosition().getY() >= CONSTCOORD2 && p.getPosition().getY() <= CONSTCOORD4);
         }
     }
 

@@ -8,8 +8,7 @@ import it.unibo.pixArt.model.game.builder.GameBuilderImpl;
 import it.unibo.pixArt.model.timer.GameTimer;
 import it.unibo.pixArt.model.timer.GameTimerImpl;
 
-/**
- * The Test class of the Game
+/**The Test class of the Game.
  */
 public class GameTest {
     private static GameType gameType = GameType.MIRROR;

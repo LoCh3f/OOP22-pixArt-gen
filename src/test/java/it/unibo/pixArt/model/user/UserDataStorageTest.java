@@ -16,13 +16,13 @@ import java.nio.file.Files;
 import it.unibo.pixArt.model.user.storage.UserDataStorage;
 import it.unibo.pixArt.model.user.storage.UserDataStorageImpl;
 
-/**
- * The Test class of the UserDataStorage class
+/** The Test class of the UserDataStorage class.
  */
 public class UserDataStorageTest {
 
-    private final char fileSeparator = File.separatorChar;
-    private final String USERDATAPATH = System.getProperty("user.home") + fileSeparator + "userData" + fileSeparator + "users.json"; 
+    private static final char FILESEPARATOR = File.separatorChar;
+    private static final String USERDATAPATH = System.getProperty("user.home") + FILESEPARATOR 
+                                        + "userData" + FILESEPARATOR + "users.json"; 
 
     private final User user1 = new UserImpl("luigiBianchi", "luigi001",
                                 System.getProperty("user.dir") + File.separator + "Downloads");
@@ -37,8 +37,8 @@ public class UserDataStorageTest {
     }
 
     /**
-     * The test for the getUser method
      * @throws IOException
+     * The test for the getUser method
      */
     @Test
     public void getUserTest() throws IOException {
@@ -49,8 +49,8 @@ public class UserDataStorageTest {
     }
 
     /**
-     * The test for the exist method
      * @throws IOException
+     * The test for the exist method
      */
     @Test
     public void existsTest() throws IOException {

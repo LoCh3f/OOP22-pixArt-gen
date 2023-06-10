@@ -14,13 +14,13 @@ import it.unibo.pixArt.model.user.manager.UserManager;
 import it.unibo.pixArt.model.user.manager.UserManagerImpl;
 import it.unibo.pixArt.model.user.storage.UserDataStorageImpl;
 
-/**
- * The Test class of the UserManagerImpl class
+/** The Test class of the UserManagerImpl class.
  */
 public final class UserManagerImplTest {
 
     private static final char FILESEPARATOR = File.separatorChar;
-    private static final String USERDATAPATH = System.getProperty("user.home") + FILESEPARATOR + "userData" + FILESEPARATOR + "users.json"; 
+    private static final String USERDATAPATH = System.getProperty("user.home") + FILESEPARATOR 
+                                                + "userData" + FILESEPARATOR + "users.json"; 
 
     private UserManager userManager;
     private final User user1 = new UserImpl("luigiBianchi", "luigi001",
@@ -28,10 +28,16 @@ public final class UserManagerImplTest {
     private final User user2 = new UserImpl("marcoRossi", "marco002",
                                 System.getProperty("user.dir") + File.separator + "Downloads");
 
-    public void createUserManager(){
+    /** Creates a new User Manager.
+     */
+    public void createUserManager() {
         this.userManager = new UserManagerImpl(new UserDataStorageImpl());
     }
 
+    /**
+     * @throws IOException
+     * Test the login with empty file
+     */
     @Test
     public void loginWithEmptyFile() throws IOException {
         createUserManager();
@@ -39,6 +45,10 @@ public final class UserManagerImplTest {
         this.deleteFile();
     }
 
+    /** 
+     * @throws IOException
+     * Test the login
+     */
     @Test 
     public void login() throws IOException {
         createUserManager();
@@ -47,6 +57,10 @@ public final class UserManagerImplTest {
         this.deleteFile();
     }
 
+    /** 
+     * @throws IOException
+     * Test register an existing user
+     */
     @Test
     public void registerExistentUser() throws IOException {
         createUserManager();
@@ -60,6 +74,4 @@ public final class UserManagerImplTest {
         Files.deleteIfExists(Path.of(USERDATAPATH));
     }
 
-
-    
 }

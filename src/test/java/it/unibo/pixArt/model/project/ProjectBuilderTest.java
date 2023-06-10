@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import it.unibo.pixArt.model.project.builder.ProjectBuilderImpl;
 
-/**
- * The Test class of the ProjectBuilder class
+/** The Test class of the ProjectBuilder class.
  */
 public class ProjectBuilderTest {
     private static final String FILE = ".PNG";

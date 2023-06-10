@@ -16,6 +16,8 @@ class PencilTest {
 
     private static final Pencil TEST_PENCIL = new Pencil(Color.BLACK, 4);
     private static final Set<Pixel> TEST_FRAME = new HashSet<>();
+    private static final int FRAMESIZE = 256;
+    private static final int CONSTCOORD = 5;
 
     private void createFrame() {
         for (int i = 0; i < 16; i++) {
@@ -29,14 +31,14 @@ class PencilTest {
     @Test
     void updateGrid() {
         this.createFrame();
-        assertEquals(256, TEST_FRAME.size());
+        assertEquals(FRAMESIZE, TEST_FRAME.size());
         Pixel pixel = new PixelBuilder.PxlBuilder().setX(2).setY(2).build();
         Set<Pixel> newSet = TEST_PENCIL.updateGrid(pixel, TEST_FRAME);
         assertEquals(16, newSet.size());
         for (Pixel p : newSet) {
             assertEquals(Color.BLACK, p.getColor());
-            assertTrue(p.getPosition().getX() >= 2 && p.getPosition().getX() <= 5);
-            assertTrue(p.getPosition().getY() >= 2 && p.getPosition().getY() <= 5);
+            assertTrue(p.getPosition().getX() >= 2 && p.getPosition().getX() <= CONSTCOORD);
+            assertTrue(p.getPosition().getY() >= 2 && p.getPosition().getY() <= CONSTCOORD);
         }
     }
 
