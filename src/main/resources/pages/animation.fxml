@@ -13,13 +13,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixart.view.animation.AnimationView">
    <children>
-      <Button fx:id="switchBtn" layoutX="367.0" layoutY="422.0" mnemonicParsing="false" onAction="#switchAnimation" prefHeight="26.0" prefWidth="78.0" AnchorPane.topAnchor="422.0" />
+      <Button fx:id="switchBtn" layoutX="367.0" layoutY="422.0" mnemonicParsing="false" onAction="#switchAnimation" prefHeight="26.0" prefWidth="78.0" AnchorPane.bottomAnchor="137.6" AnchorPane.rightAnchor="392.6" />
       <AnchorPane layoutX="259.0" layoutY="58.0" prefHeight="292.0" prefWidth="294.0">
          <children>
-            <ImageView fx:id="imageContainer" fitHeight="292.0" fitWidth="294.0" layoutX="-4.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageContainer" fitHeight="300.0" fitWidth="300.0" layoutX="-4.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="4.399999999999977" />
          </children>
       </AnchorPane>
-      <ListView fx:id="frameList" layoutX="652.0" layoutY="58.0" prefHeight="470.0" prefWidth="149.0" />
+      <ListView fx:id="frameList" layoutX="652.0" layoutY="58.0" prefHeight="470.0" prefWidth="149.0" AnchorPane.rightAnchor="36.400000000000006" />
       <Label layoutX="32.0" layoutY="186.0" text="Selected Frame:">
          <font>
             <Font size="14.0" />
@@ -39,8 +39,8 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="setDurationBtn" layoutX="33.0" layoutY="422.0" mnemonicParsing="false" onAction="#setDuration" prefHeight="26.0" prefWidth="106.0" text="Change" />
-      <MenuBar prefHeight="40.0" prefWidth="838.0">
+      <Button fx:id="setDurationBtn" layoutX="33.0" layoutY="422.0" mnemonicParsing="false" onAction="#setDuration" prefHeight="26.0" prefWidth="106.0" text="Change" AnchorPane.bottomAnchor="137.6" />
+      <MenuBar prefHeight="40.0" prefWidth="838.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.39999999999997726">
         <menus>
           <Menu mnemonicParsing="false" text="Workspace">
             <items>
