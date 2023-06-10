@@ -7,7 +7,7 @@ import java.io.File;
 import org.junit.jupiter.api.Test;
 
 /**
- * The Test class of th e UserImpl class
+ * The Test class of th e UserImpl class.
  */
 public class UserImplTest {
 
@@ -15,6 +15,9 @@ public class UserImplTest {
     private final String password = "luigi003";
     private final String path = System.getProperty("user.dir") + File.separator + "Downloads";
 
+    /**
+     * Test for get methods of UserImpl.
+     */
     @Test
     public void userTest() {
         User user = new UserImpl(name, password, path);

@@ -14,12 +14,16 @@ import javafx.scene.paint.Color;
 
 class PencilTest {
 
-    private static final Pencil TEST_PENCIL = new Pencil(Color.BLACK, 4);
+    private static final int TOOL_SIZE = 4;
+    private static final Pencil TEST_PENCIL = new Pencil(Color.BLACK, TOOL_SIZE);
     private static final Set<Pixel> TEST_FRAME = new HashSet<>();
+    private static final int FRAME_SIZE = 16;
+    private static final int PIXEL_X = 2;
+    private static final int PIXEL_Y = 2;
 
     private void createFrame() {
-        for (int i = 0; i < 16; i++) {
-            for (int j = 0; j < 16; j++) {
+        for (int i = 0; i < FRAME_SIZE; i++) {
+            for (int j = 0; j < FRAME_SIZE; j++) {
                 TEST_FRAME.add(new PixelBuilder.PxlBuilder().setX(i).setY(j).build());
             }
         }
@@ -29,14 +33,14 @@ class PencilTest {
     @Test
     void updateGrid() {
         this.createFrame();
-        assertEquals(256, TEST_FRAME.size());
-        Pixel pixel = new PixelBuilder.PxlBuilder().setX(2).setY(2).build();
+        assertEquals(FRAME_SIZE * FRAME_SIZE, TEST_FRAME.size());
+        Pixel pixel = new PixelBuilder.PxlBuilder().setX(PIXEL_X).setY(PIXEL_Y).build();
         Set<Pixel> newSet = TEST_PENCIL.updateGrid(pixel, TEST_FRAME);
-        assertEquals(16, newSet.size());
+        assertEquals(FRAME_SIZE, newSet.size());
         for (Pixel p : newSet) {
             assertEquals(Color.BLACK, p.getColor());
-            assertTrue(p.getPosition().getX() >= 2 && p.getPosition().getX() <= 5);
-            assertTrue(p.getPosition().getY() >= 2 && p.getPosition().getY() <= 5);
+            assertTrue(p.getPosition().getX() >= PIXEL_X && p.getPosition().getX() <= PIXEL_X + TOOL_SIZE - 1);
+            assertTrue(p.getPosition().getY() >= PIXEL_Y && p.getPosition().getY() <= PIXEL_Y + TOOL_SIZE - 1);
         }
     }
 

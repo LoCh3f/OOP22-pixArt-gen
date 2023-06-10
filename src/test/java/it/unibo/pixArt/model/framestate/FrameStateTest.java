@@ -13,8 +13,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * The Test class for the FrameState class
+/** The Test class for the FrameState class.
  */
 public class FrameStateTest {
     private static final int SIZE = 16;

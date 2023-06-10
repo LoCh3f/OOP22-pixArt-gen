@@ -11,18 +11,18 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-/**
- * The Test class of the PixelMatrix class
+/** The Test class of the PixelMatrix class.
  */
 public class PixelMatrixTest {
 
+    private static final int CONSTCOORD = 15;
     private static final ImplPixel TEST_PIXEL = new PixelBuilder.PxlBuilder().setX(0).setY(0).build();
 
     @Test
     void testBuilder() {
-        assertThrows(IllegalStateException.class, () -> new MatrixBuilder().setRows(15).setColumns(15).build());
-        assertThrows(IllegalStateException.class, () -> new MatrixBuilder().setRows(15).setColumns(16).build());
-        assertThrows(IllegalStateException.class, () -> new MatrixBuilder().setRows(16).setColumns(15).build());
+        assertThrows(IllegalStateException.class, () -> new MatrixBuilder().setRows(CONSTCOORD).setColumns(CONSTCOORD).build());
+        assertThrows(IllegalStateException.class, () -> new MatrixBuilder().setRows(CONSTCOORD).setColumns(16).build());
+        assertThrows(IllegalStateException.class, () -> new MatrixBuilder().setRows(16).setColumns(CONSTCOORD).build());
         assertDoesNotThrow(() -> new MatrixBuilder().setRows(16).setColumns(16).build());
     }
 

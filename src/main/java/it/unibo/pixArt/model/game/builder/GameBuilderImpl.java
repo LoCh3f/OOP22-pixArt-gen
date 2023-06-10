@@ -4,8 +4,7 @@ import it.unibo.pixArt.model.game.Game;
 import it.unibo.pixArt.model.game.GameImpl;
 import it.unibo.pixArt.model.game.GameType;
 import it.unibo.pixArt.model.timer.GameTimer;
-/**
- * The implementation of the GameBuilder
+/** The implementation of the GameBuilder.
  */
 public final class GameBuilderImpl implements GameBuilder {
 

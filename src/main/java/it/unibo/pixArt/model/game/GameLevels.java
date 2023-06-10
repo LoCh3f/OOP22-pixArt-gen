@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 public enum GameLevels {
 
     SKULL("/games/Skull/Skull.json", "/games/Skull/Skull0.png"),
+    EGG("/games/Egg/Egg.json", "/games/Egg/Egg0.png"),
     SHREK("/games/Shrek/Shrek.json", "/games/Shrek/Shrek0.png");
 
     private String pathToFile;
