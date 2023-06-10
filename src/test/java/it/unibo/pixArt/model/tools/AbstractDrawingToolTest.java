@@ -11,10 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AbstractDrawingToolTest {
 
-    private static final int CONSTCOORD = 13;
-    private static final int CONSTCOORD2 = 15;
-    private static final int CONSTCOORD3 = 5;
-    private static final int CONSTCOORD4 = 12;
     private ToolFactory toolFactory = new ToolFactoryImpl();
     private AbstractDrawingTool tool = (AbstractDrawingTool) toolFactory.createTool("PENCIL", null, 2);
     private static final int PIXEL1_X = 13;

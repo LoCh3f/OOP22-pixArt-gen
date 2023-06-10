@@ -21,9 +21,6 @@ class PencilTest {
     private static final int PIXEL_X = 2;
     private static final int PIXEL_Y = 2;
 
-    private static final int FRAMESIZE = 256;
-    private static final int CONSTCOORD = 5;
-
     private void createFrame() {
         for (int i = 0; i < FRAME_SIZE; i++) {
             for (int j = 0; j < FRAME_SIZE; j++) {
