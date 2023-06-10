@@ -158,7 +158,7 @@ public final class WorkSpace extends AbstractFXView {
     }
 
     @FXML
-    private void onColorChanged(final ActionEvent event) {
+    private void onColorChanged() {
         this.getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(), (int) toolSizeSlider.getValue());
     }
 
@@ -205,17 +205,17 @@ public final class WorkSpace extends AbstractFXView {
     }
 
     private void saveAndExit() {
-        List<String> choices = new ArrayList<>();
+        final List<String> choices = new ArrayList<>();
         choices.add("1");
         choices.add("4");
         choices.add("16");
 
-        ChoiceDialog<String> dialog = new ChoiceDialog<>("1", choices);
+        final ChoiceDialog<String> dialog = new ChoiceDialog<>("1", choices);
         dialog.setTitle("Choose the scale");
         dialog.setHeaderText(null);
         dialog.setContentText("Select the scale:");
 
-        Optional<String> result = dialog.showAndWait();
+        final Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             this.getWorkSpaceController().saveProject(Integer.parseInt(result.get()));
             SceneManager.getInstance().switchPage(getStage(), Pages.MENU, getController().getModel());
