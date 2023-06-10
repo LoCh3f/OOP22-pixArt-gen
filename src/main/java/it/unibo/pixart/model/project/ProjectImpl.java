@@ -48,7 +48,6 @@ public final class ProjectImpl implements Project {
         return this.frames;
     }
 
-    @SuppressWarnings ("EI_EXPOSE_REP") 
     @Override
     public List<HistoryFrame> getAllHistoryFrames() {
         return this.historyFrames;
