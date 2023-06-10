@@ -17,7 +17,7 @@ import javafx.scene.control.ChoiceDialog;
  */
 public final class AnimationControllerImpl extends SimpleController implements AnimationController {
     private Boolean isRunning = false;
-    private int index = 0;
+    private int index;
 
     private class Animator extends Thread {
         @Override
