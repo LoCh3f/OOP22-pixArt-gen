@@ -4,7 +4,7 @@ import it.unibo.pixart.utilities.Pair;
 import javafx.scene.paint.Color;
 
 /**
- * The interface of the Pixel
+ * The interface of the Pixel.
  */
 public interface Pixel {
 

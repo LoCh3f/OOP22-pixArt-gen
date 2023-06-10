@@ -1,18 +1,27 @@
 package it.unibo.pixart.view.components;
 
-import static it.unibo.pixart.utilities.variables.FXViewVariables.*;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
-public class PixelsPane extends GridPane {
+import static it.unibo.pixart.utilities.variables.FXViewVariables.*;
+
+/**
+ * usefull class for create a grid of button.
+ */
+public final class PixelsPane extends GridPane {
 
 
     private static final Double MAX_SIZE = 1080.0;
 
 
+    /**
+     * @param rows        number of rows
+     * @param columns     number of columns
+     * @param lineVisible boolean for set the grid lines visible
+     * @param e           action to set for each the button
+     */
     private PixelsPane(final int rows,
                        final int columns,
                        final boolean lineVisible,
@@ -35,7 +44,10 @@ public class PixelsPane extends GridPane {
         setStyle(FX_BORDER_COLOR + ";" + FX_BORDER_WIDTH);
     }
 
-    public static class GridPaneBuilder {
+    /**
+     * Builder for build a grid of button.
+     */
+    public static final class GridPaneBuilder {
 
         private boolean lineVisible;
 
@@ -46,6 +58,9 @@ public class PixelsPane extends GridPane {
 
         private EventHandler<ActionEvent> e;
 
+        /**
+         * constructor.
+         */
         public GridPaneBuilder() {
             this.columns = 0;
             this.rows = 0;
@@ -53,26 +68,45 @@ public class PixelsPane extends GridPane {
 
         }
 
+        /**
+         * @param rows number of rows
+         * @return the builder
+         */
         public GridPaneBuilder setRows(final int rows) {
             this.rows = rows;
             return this;
         }
 
+        /**
+         * @param columns number of columns
+         * @return the builder
+         */
         public GridPaneBuilder setColumns(final int columns) {
             this.columns = columns;
             return this;
         }
 
+        /**
+         * @param value boolean for set the grid lines visible
+         * @return the builder
+         */
         public GridPaneBuilder setGridLinesVisible(final boolean value) {
             this.lineVisible = value;
             return this;
         }
 
+        /**
+         * @param e action to set for each the button
+         * @return the builder
+         */
         public GridPaneBuilder setAction(final EventHandler<ActionEvent> e) {
             this.e = e;
             return this;
         }
 
+        /**
+         * @return the gridPane of button
+         */
         public PixelsPane build() {
 
             return new PixelsPane(this.rows, this.columns, this.lineVisible, this.e);

@@ -4,7 +4,7 @@ import it.unibo.pixart.utilities.Pair;
 import javafx.scene.paint.Color;
 
 /**
- * The implementation Class of the Pixel
+ * The implementation Class of the Pixel.
  */
 public class ImplPixel implements Pixel {
 
@@ -60,7 +60,17 @@ public class ImplPixel implements Pixel {
      */
     @Override
     public boolean equals(final Object obj) {
-        final var pixel = (Pixel) obj;
+        if (!(obj instanceof Pixel pixel)) {
+            return false;
+        }
         return comparePixel(pixel) && 0 == pixel.getColor().toString().compareTo(this.color.toString());
+    }
+
+    /**
+     * @return the hash code of the pixel.
+     */
+    @Override
+    public int hashCode() {
+        return this.position.hashCode() + this.color.hashCode();
     }
 }
