@@ -1,8 +1,12 @@
 package it.unibo.pixart.model.user.storage;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import it.unibo.pixart.model.user.User;
+import it.unibo.pixart.model.user.UserImpl;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,13 +16,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.reflect.TypeToken;
-
-import it.unibo.pixart.model.user.User;
-import it.unibo.pixart.model.user.UserImpl;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Implementation of UserDataStorage.
@@ -26,14 +26,16 @@ import it.unibo.pixart.model.user.UserImpl;
 public final class UserDataStorageImpl implements UserDataStorage {
 
     private static final char FILESEPARATOR = File.separatorChar;
-    private static final String USERDATAPATH = System.getProperty("user.home") + FILESEPARATOR + "userData"; 
+    private static final String USERDATAPATH = System.getProperty("user.home") + FILESEPARATOR + "userData";
     private static final String USERDATAFILE = "users.json";
 
-    private final Type userListType = new TypeToken<List<UserImpl>>() { }.getType();
+    private final Type userListType = new TypeToken<List<UserImpl>>() {
+    }.getType();
     private List<User> userList;
     private final Charset charset = StandardCharsets.UTF_8;
 
     @SuppressWarnings("PMD.AvoidPrintStackTrace")
+    @SuppressFBWarnings
     private void createJsonFile() throws IOException {
         if (Files.notExists(Path.of(USERDATAPATH))) {
             Files.createDirectory(Path.of(USERDATAPATH));
@@ -49,6 +51,7 @@ public final class UserDataStorageImpl implements UserDataStorage {
         }
     }
 
+    @SuppressFBWarnings
     private void load() throws IOException {
         if (userList == null) {
             this.createJsonFile();
