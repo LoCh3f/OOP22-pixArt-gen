@@ -8,9 +8,8 @@ import javafx.scene.paint.Color;
 import java.util.Collection;
 import java.util.function.Function;
 
-import static it.unibo.pixart.utilities.variables.FXViewVariables.FX_BACKGROUND_COLOR_START;
-import static it.unibo.pixart.utilities.variables.FXViewVariables.FX_BORDER_COLOR;
-import static it.unibo.pixart.utilities.variables.FXViewVariables.FX_BORDER_WIDTH;;
+//CHECKSTYLE: AvoidStarImport OFF
+import static it.unibo.pixart.utilities.variables.FXViewVariables.*;
 
 /**
  * This class is used to convert a Collection<Pixel>,
