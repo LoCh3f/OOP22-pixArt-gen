@@ -9,21 +9,21 @@ import org.junit.jupiter.api.Test;
 /**
  * The Test class of th e UserImpl class.
  */
-public class UserImplTest {
+class UserImplTest {
 
-    private final String name = "LuigiBianchi";
-    private final String password = "luigi003";
-    private final String path = System.getProperty("user.dir") + File.separator + "Downloads";
+    private static final String NAME = "LuigiBianchi";
+    private static final String PASSWORD = "luigi003";
+    private static final String PATH = System.getProperty("user.dir") + File.separator + "Downloads";
 
     /**
      * Test for get methods of UserImpl.
      */
     @Test
-    public void userTest() {
-        User user = new UserImpl(name, password, path);
-        assertEquals(name, user.getName());
-        assertEquals(password, user.getPassword());
-        assertEquals(path, user.getPathToFile());
+    void userTest() {
+        final User user = new UserImpl(NAME, PASSWORD, PATH);
+        assertEquals(NAME, user.getName());
+        assertEquals(PASSWORD, user.getPassword());
+        assertEquals(PATH, user.getPathToFile());
     }
 
 }
