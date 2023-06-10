@@ -1,5 +1,6 @@
 package it.unibo.pixart.view.abilitytest;
 
+//CHECKSTYLE: AvoidStarImport OFF
 import static it.unibo.pixart.utilities.variables.FXViewVariables.*;
 
 /**

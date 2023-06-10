@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import java.util.Collection;
 import java.util.function.Function;
 
+//CHECKSTYLE: AvoidStarImport OFF
 import static it.unibo.pixart.utilities.variables.FXViewVariables.*;
 
 /**
