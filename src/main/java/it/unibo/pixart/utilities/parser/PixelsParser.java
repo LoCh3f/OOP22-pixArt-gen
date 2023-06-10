@@ -22,7 +22,7 @@ public final class PixelsParser implements Function<Collection<Pixel>, GridPane>
     @Override
     public GridPane apply(final Collection<Pixel> pixels) {
         final var gridPane = new GridPane();
-        for (Pixel p : pixels) {
+        for (final Pixel p : pixels) {
             gridPane.add(new Button(), p.getPosition().getX(), p.getPosition().getY());
             gridPane.getChildren().get(gridPane.getChildren().size() - 1).setStyle(parseColor(p.getColor()));
         }
