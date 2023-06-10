@@ -26,7 +26,7 @@ public class TesterLogic implements Logic {
      * @param solutionGrid draw to be made, as a collection of pixels
      * @return the path of the image to be shown
      */
-    public String test(final Collection<Pixel> userGrid, final Collection<Pixel> solutionGrid) {
+    public String test(final Collection<Pixel> userGrid, final Collection<Pixel> solutionGrid) { //NOPMD this is not a test
         return templatePath(this.gridMirror.getDifference(solutionGrid, userGrid).size());
     }
 

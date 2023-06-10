@@ -26,7 +26,7 @@ public final class PixelBuilder extends ImplPixel {
          * @param x the x coordinate of the pixel
          * @return the builder
          */
-        public PxlBuilder setX(final Integer x) {
+        public PxlBuilder setX(final Integer x) { //NOPMD
             this.x = x;
             return this;
         }
@@ -35,7 +35,7 @@ public final class PixelBuilder extends ImplPixel {
          * @param y the y coordinate of the pixel
          * @return the builder
          */
-        public PxlBuilder setY(final Integer y) {
+        public PxlBuilder setY(final Integer y) { //NOPMD
             this.y = y;
             return this;
         }
@@ -44,7 +44,7 @@ public final class PixelBuilder extends ImplPixel {
          * @param color the color of the pixel
          * @return the builder
          */
-        public PxlBuilder setColor(final Color color) {
+        public PxlBuilder setColor(final Color color) { //NOPMD
             this.color = color;
             return this;
         }
@@ -53,7 +53,7 @@ public final class PixelBuilder extends ImplPixel {
          * @return the pixel
          * @throws IllegalStateException if x or y are < 0
          */
-        public PixelBuilder build() throws IllegalStateException {
+        public PixelBuilder build() throws IllegalStateException { //NOPMD
             if (this.x < -1 || this.y < -1) {
                 throw new IllegalStateException(" X and Y can't be < 0");
             }
