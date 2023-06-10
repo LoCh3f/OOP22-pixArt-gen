@@ -17,12 +17,13 @@ import it.unibo.pixArt.model.user.storage.UserDataStorage;
 import it.unibo.pixArt.model.user.storage.UserDataStorageImpl;
 
 /**
- * The Test class of the UserDataStorage class
+ * The Test class of the UserDataStorage class.
  */
 public class UserDataStorageTest {
 
     private final char fileSeparator = File.separatorChar;
-    private final String USERDATAPATH = System.getProperty("user.home") + fileSeparator + "userData" + fileSeparator + "users.json"; 
+    private final String userDataPath = System.getProperty("user.home") 
+                                        + fileSeparator + "userData" + fileSeparator + "users.json"; 
 
     private final User user1 = new UserImpl("luigiBianchi", "luigi001",
                                 System.getProperty("user.dir") + File.separator + "Downloads");
@@ -37,7 +38,7 @@ public class UserDataStorageTest {
     }
 
     /**
-     * The test for the getUser method
+     * The test for the getUser method.
      * @throws IOException
      */
     @Test
@@ -49,7 +50,7 @@ public class UserDataStorageTest {
     }
 
     /**
-     * The test for the exist method
+     * The test for the exist method.
      * @throws IOException
      */
     @Test
@@ -61,7 +62,7 @@ public class UserDataStorageTest {
     }
 
     private void deleteFile() throws IOException {
-        Files.deleteIfExists(Path.of(USERDATAPATH));
+        Files.deleteIfExists(Path.of(userDataPath));
     }
 
 }

@@ -13,21 +13,29 @@ class AbstractDrawingToolTest {
 
     private ToolFactory toolFactory = new ToolFactoryImpl();
     private AbstractDrawingTool tool = (AbstractDrawingTool) toolFactory.createTool("PENCIL", null, 2);
-    private static final Pixel TEST_PIXEL1 = new PixelBuilder.PxlBuilder().setY(13).setX(13).build();
-    private static final Pixel TEST_PIXEL2 = new PixelBuilder.PxlBuilder().setY(15).setX(10).build();
+    private static final int PIXEL1_X = 13;
+    private static final int PIXEL1_Y = 13;
+    private static final int PIXEL2_X = 10;
+    private static final int PIXEL2_Y = 15;
+    private static final Pixel TEST_PIXEL1 = new PixelBuilder.PxlBuilder().setY(PIXEL1_Y).setX(PIXEL1_X).build(); 
+    private static final Pixel TEST_PIXEL2 = new PixelBuilder.PxlBuilder().setY(PIXEL2_Y).setX(PIXEL2_X).build(); 
+    private static final int FRAMESIZE = 16;
 
     @Test
     void calculatePosition() {
-        assertEquals(15, tool.calculatePosition(TEST_PIXEL1, 3, 16).getX());
-        assertEquals(15, tool.calculatePosition(TEST_PIXEL1, 3, 16).getY());
-        assertEquals(16, tool.calculatePosition(TEST_PIXEL1, 5, 16).getX());
-        assertEquals(16, tool.calculatePosition(TEST_PIXEL1, 5, 16).getY());
+        final int increment1 = 3;
+        final int increment2 = 5;
+        assertEquals(PIXEL1_X + increment1 - 1, tool.calculatePosition(TEST_PIXEL1, increment1, FRAMESIZE).getX()); 
+        assertEquals(PIXEL1_Y + increment1 - 1, tool.calculatePosition(TEST_PIXEL1, increment1, FRAMESIZE).getY()); 
+        assertEquals(FRAMESIZE, tool.calculatePosition(TEST_PIXEL1, increment2, FRAMESIZE).getX()); 
+        assertEquals(FRAMESIZE, tool.calculatePosition(TEST_PIXEL1, increment2, FRAMESIZE).getY()); 
     }
 
     @Test
     void calculatePosition2() {
-        assertEquals(12, tool.calculatePosition(TEST_PIXEL2, 3, 16).getX());
-        assertEquals(16, tool.calculatePosition(TEST_PIXEL2, 3, 16).getY());
+        final int increment = 3;
+        assertEquals(PIXEL2_X + increment - 1, tool.calculatePosition(TEST_PIXEL2, increment, FRAMESIZE).getX()); //
+        assertEquals(FRAMESIZE, tool.calculatePosition(TEST_PIXEL2, increment, FRAMESIZE).getY());
     }
 
 
