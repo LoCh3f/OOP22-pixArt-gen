@@ -1,9 +1,9 @@
 package it.unibo.pixart.view.impl;
 
-import it.unibo.pixArt.model.ModelImpl;
-import it.unibo.pixArt.view.AbstractFXView;
-import it.unibo.pixArt.view.pages.Pages;
-import it.unibo.pixArt.view.pages.SceneManager;
+import it.unibo.pixart.model.ModelImpl;
+import it.unibo.pixart.view.AbstractFXView;
+import it.unibo.pixart.view.pages.Pages;
+import it.unibo.pixart.view.pages.SceneManager;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
