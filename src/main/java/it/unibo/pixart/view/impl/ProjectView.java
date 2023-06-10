@@ -57,6 +57,7 @@ public final class ProjectView extends AbstractFXView {
     /**
      * Method to switch to WorkSpace.
      */
+    @SuppressWarnings("PMD.AvoidPrintStackTrace")
     @FXML
     public void onEditClick() {
         if (selFolder != null) {

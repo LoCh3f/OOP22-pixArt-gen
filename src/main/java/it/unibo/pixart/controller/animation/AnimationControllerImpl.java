@@ -20,6 +20,7 @@ public final class AnimationControllerImpl extends SimpleController implements A
     private int index;
 
     private class Animator extends Thread {
+        @SuppressWarnings("PMD.AvoidPrintStackTrace")
         @Override
         public void run() {
             while (isRunning) {
@@ -28,7 +29,6 @@ public final class AnimationControllerImpl extends SimpleController implements A
                 try {
                     Thread.sleep(currentFrame.getAnimationDuration());
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -70,6 +70,7 @@ public final class AnimationControllerImpl extends SimpleController implements A
         return this.isRunning;
     }
 
+    @SuppressWarnings("PMD.AvoidPrintStackTrace")
     @Override
     public void saveProject() {
         final List<String> choices = new ArrayList<>();
@@ -88,7 +89,6 @@ public final class AnimationControllerImpl extends SimpleController implements A
         try {
             FileHandler.getInstance().fromProjectToJson(this.getModel().getProject());
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         }

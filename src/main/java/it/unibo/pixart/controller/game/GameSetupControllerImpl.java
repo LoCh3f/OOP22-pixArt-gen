@@ -25,6 +25,7 @@ public final class GameSetupControllerImpl extends SimpleController implements G
     private GameType gameType;
     private int selectedProject;
 
+    @SuppressWarnings("PMD.AvoidPrintStackTrace")
     @Override
     public void setProjects() {
         this.projects = GameLevels.getAllLevels().stream().
@@ -32,7 +33,6 @@ public final class GameSetupControllerImpl extends SimpleController implements G
             try {
                 return FileHandler.getInstance().fromJsonToProject(new File(e.getPathToFile()));
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
             return null;
