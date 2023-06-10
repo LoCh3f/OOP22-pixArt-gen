@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+//CHECKSTYLE: AvoidStarImport OFF
 import static it.unibo.pixart.utilities.variables.FXViewVariables.*;
 
 /**

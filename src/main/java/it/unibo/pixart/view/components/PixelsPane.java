@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
+//CHECKSTYLE: AvoidStarImport OFF
 import static it.unibo.pixart.utilities.variables.FXViewVariables.*;
 
 /**
