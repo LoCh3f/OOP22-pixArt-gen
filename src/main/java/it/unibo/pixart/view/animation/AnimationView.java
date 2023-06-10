@@ -2,6 +2,7 @@ package it.unibo.pixart.view.animation;
 
 import java.util.stream.Collectors;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.pixart.controller.animation.AnimationController;
 import it.unibo.pixart.view.AbstractFXView;
 import it.unibo.pixart.view.pages.Pages;
@@ -48,6 +49,7 @@ public final class AnimationView extends AbstractFXView {
     /**
      * Method to start/stop animation.
      */
+    @SuppressFBWarnings
     @FXML
     public void switchAnimation() {
         this.getAnimationController().setAnimationIsRunning();
@@ -92,6 +94,7 @@ public final class AnimationView extends AbstractFXView {
         Integer.parseInt(frameDurationField.getText()));
     }
 
+    @SuppressFBWarnings
     @Override
     public void init() {
         this.frameDurationField.setDisable(true);

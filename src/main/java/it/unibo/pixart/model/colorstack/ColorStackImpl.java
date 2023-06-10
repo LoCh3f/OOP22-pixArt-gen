@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.pixart.model.pixel.Pixel;
 import javafx.scene.paint.Color;
 
@@ -25,6 +26,7 @@ public final class ColorStackImpl implements ColorStack {
         this.initialSize = size;
     }
 
+    @SuppressFBWarnings
     @Override
     public Map<Color, Set<Pixel>> getColorMap() {
         return this.colorMap;

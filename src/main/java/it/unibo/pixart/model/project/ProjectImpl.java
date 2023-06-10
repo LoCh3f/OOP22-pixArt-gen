@@ -3,6 +3,7 @@ package it.unibo.pixart.model.project;
 import java.util.LinkedList;
 import java.util.List;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.pixart.model.grid.Matrix;
 import it.unibo.pixart.model.grid.PixelMatrix;
 import it.unibo.pixart.model.historyframe.HistoryFrame;
@@ -25,6 +26,7 @@ public final class ProjectImpl implements Project {
      * @param fileType
      * @param frames
      */
+    @SuppressFBWarnings
     public ProjectImpl(final String projectName, final String path, final String fileType, final List<Matrix> frames) {
         this.projectName = projectName;
         this.path = path;
@@ -43,11 +45,13 @@ public final class ProjectImpl implements Project {
         return this.path;
     }
 
+    @SuppressFBWarnings
     @Override
     public List<Matrix> getAllFrames() {
         return this.frames;
     }
 
+    @SuppressFBWarnings
     @Override
     public List<HistoryFrame> getAllHistoryFrames() {
         return this.historyFrames;
