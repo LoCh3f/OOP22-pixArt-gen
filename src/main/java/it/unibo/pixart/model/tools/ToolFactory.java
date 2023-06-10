@@ -1,4 +1,5 @@
-package it.unibo.pixart.model.tool;
+package it.unibo.pixart.model.tools;
+
 import javafx.scene.paint.Color;
 
 /**
@@ -7,10 +8,10 @@ import javafx.scene.paint.Color;
 public interface ToolFactory {
 
     /**
-     * @param toolType name of the tool
+     * @param toolType      name of the tools
      * @param selectedColor selected color
-     * @param toolSize size of the tool
-     * @return the tool
+     * @param toolSize      size of the tools
+     * @return the tools
      */
     AbstractTool createTool(String toolType, Color selectedColor, int toolSize);
 

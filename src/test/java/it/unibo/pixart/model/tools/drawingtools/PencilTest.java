@@ -1,14 +1,15 @@
-package it.unibo.pixart.model.tools;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+package it.unibo.pixart.model.tools.drawingtools;
+
+import it.unibo.pixart.model.pixel.Pixel;
+import it.unibo.pixart.model.pixel.PixelBuilder;
+import javafx.scene.paint.Color;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.junit.jupiter.api.Test;
-import it.unibo.pixart.model.pixel.Pixel;
-import it.unibo.pixart.model.pixel.PixelBuilder;
-import it.unibo.pixart.model.tool.drawingTools.Pencil;
-import javafx.scene.paint.Color;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PencilTest {
 

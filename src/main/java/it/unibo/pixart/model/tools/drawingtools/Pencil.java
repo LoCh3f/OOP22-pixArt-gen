@@ -1,15 +1,14 @@
-package it.unibo.pixart.model.tool.drawingTools;
+package it.unibo.pixart.model.tools.drawingtools;
 
+import it.unibo.pixart.model.pixel.Pixel;
+import it.unibo.pixart.model.pixel.PixelBuilder;
+import it.unibo.pixart.model.tools.AbstractDrawingTool;
 import javafx.scene.paint.Color;
 
 import java.util.Set;
 
-import it.unibo.pixart.model.pixel.Pixel;
-import it.unibo.pixart.model.pixel.PixelBuilder;
-import it.unibo.pixart.model.tool.AbstractDrawingTool;
-
 /**
- * Implementation of Pencil. 
+ * Implementation of Pencil.
  */
 public final class Pencil extends AbstractDrawingTool {
 
@@ -17,8 +16,9 @@ public final class Pencil extends AbstractDrawingTool {
 
     /**
      * Constructor.
-     * @param selectedColor 
-     * @param size size of the tool
+     *
+     * @param selectedColor
+     * @param size          size of the tools
      */
     public Pencil(final Color selectedColor, final int size) {
         super(size);

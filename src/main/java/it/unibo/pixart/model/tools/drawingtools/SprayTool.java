@@ -1,16 +1,15 @@
-package it.unibo.pixart.model.tool.drawingTools;
+package it.unibo.pixart.model.tools.drawingtools;
 
+import it.unibo.pixart.model.pixel.Pixel;
+import it.unibo.pixart.model.pixel.PixelBuilder;
+import it.unibo.pixart.model.tools.AbstractDrawingTool;
 import javafx.scene.paint.Color;
 
 import java.util.Random;
 import java.util.Set;
 
-import it.unibo.pixart.model.pixel.Pixel;
-import it.unibo.pixart.model.pixel.PixelBuilder;
-import it.unibo.pixart.model.tool.AbstractDrawingTool;
-
 /**
- * Implementation of spray tool.
+ * Implementation of spray tools.
  */
 public final class SprayTool extends AbstractDrawingTool {
 
@@ -18,8 +17,9 @@ public final class SprayTool extends AbstractDrawingTool {
 
     /**
      * Constructor.
+     *
      * @param selectedColor
-     * @param size size of the tool.
+     * @param size          size of the tools.
      */
     public SprayTool(final Color selectedColor, final int size) {
         super(size);

@@ -24,9 +24,6 @@ import it.unibo.pixart.model.project.FileTypes;
 import it.unibo.pixart.model.project.Project;
 import it.unibo.pixart.model.project.ProjectImpl;
 import it.unibo.pixart.model.project.builder.ProjectBuilderImpl;
-import it.unibo.pixart.utilities.FileHandler;
-import it.unibo.pixart.utilities.InterfaceSerializer;
-
 /** The Test class of the FileHandler class.
  */
 class FileHandlerTest {

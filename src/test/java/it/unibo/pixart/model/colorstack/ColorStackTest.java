@@ -3,24 +3,21 @@ package it.unibo.pixart.model.colorstack;
 import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
-import it.unibo.pixart.model.colorstack.ColorStack;
-import it.unibo.pixart.model.colorstack.ColorStackImpl;
 import it.unibo.pixart.model.grid.Matrix;
 import it.unibo.pixart.model.grid.PixelMatrix;
 import it.unibo.pixart.model.pixel.Pixel;
-import it.unibo.pixart.model.tool.AbstractTool;
-import it.unibo.pixart.model.tool.ToolFactory;
-import it.unibo.pixart.model.tool.ToolFactoryImpl;
+import it.unibo.pixart.model.tools.AbstractTool;
+import it.unibo.pixart.model.tools.ToolFactory;
+import it.unibo.pixart.model.tools.ToolFactoryImpl;
 import it.unibo.pixart.utilities.MatrixConverter;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/** The Test class for the ColorStack class.
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * The Test class for the ColorStack class.
  */
 class ColorStackTest {
     private final Matrix grid = new PixelMatrix.MatrixBuilder().setColumns(16).setRows(16).build();
@@ -41,7 +38,7 @@ class ColorStackTest {
         assertEquals(PIXELNUMBER, stack.getColorMap().entrySet().stream().mapToInt(e -> e.getValue().size()).sum());
     }
 
-    /*Now, using a bucket tool we color the grid in black, and check that the stack's map
+    /*Now, using a bucket tools we color the grid in black, and check that the stack's map
      * has only one entryset: K->Color.BLACK, V->256 vlack pixels.
      */
     @Test

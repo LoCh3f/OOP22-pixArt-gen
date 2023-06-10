@@ -16,6 +16,7 @@ public final class FrameStateImpl implements FrameState {
        this.stateStack.push(newState);
     }
 
+    @SuppressWarnings("PMD.AvoidCatchingThrowable")
     @Override
     public Set<Pixel> getState() {
         try {
@@ -25,6 +26,7 @@ public final class FrameStateImpl implements FrameState {
         }
     }
 
+    @SuppressWarnings("PMD.AvoidCatchingThrowable")
     @Override
     public Set<Pixel> peekState() {
         try {

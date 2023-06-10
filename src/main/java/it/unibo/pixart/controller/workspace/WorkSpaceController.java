@@ -1,22 +1,22 @@
 package it.unibo.pixart.controller.workspace;
 
+import it.unibo.pixart.controller.Controller;
+import it.unibo.pixart.model.historyframe.HistoryFrame;
+import it.unibo.pixart.model.pixel.Pixel;
 import javafx.scene.paint.Color;
 
 import java.util.List;
 import java.util.Set;
 
-import it.unibo.pixart.controller.Controller;
-import it.unibo.pixart.model.historyframe.HistoryFrame;
-import it.unibo.pixart.model.pixel.Pixel;
 /**
  * interface for WorkSpaceController.
  */
 public interface WorkSpaceController extends Controller {
 
     /**
-     * Method to set the tool that is being currently used.
+     * Method to set the tools that is being currently used.
      *
-     * @param toolName the new tool's name
+     * @param toolName the new tools's name
      * @param color
      * @param toolSize
      */
@@ -29,17 +29,18 @@ public interface WorkSpaceController extends Controller {
      */
     void setCurrentFrame(int index);
 
-   /**
-    * Method to color the pixels of the grid.TO BE DONE.
-    * @param color
-    * @param x
-    * @param y
-    */
+    /**
+     * Method to color the pixels of the grid.TO BE DONE.
+     *
+     * @param color
+     * @param x
+     * @param y
+     */
     void colorGrid(int x, int y, Color color);
 
     /**
-     *Method to get the previous state of the frame.
-
+     * Method to get the previous state of the frame.
+     *
      * @return A set of pixels representing the previous state of the frame.
      */
     Set<Pixel> getPreviousState();
@@ -64,7 +65,8 @@ public interface WorkSpaceController extends Controller {
      */
     void setIsDrawing();
 
-    /**Method to get the value of the flag isDrawing.
+    /**
+     * Method to get the value of the flag isDrawing.
      *
      * @return the boolean value of isDrawing.
      */
@@ -75,14 +77,15 @@ public interface WorkSpaceController extends Controller {
      */
     void saveProject(int scale);
 
-    /** 
+    /**
      * Method to get the current frame.
+     *
      * @return the set of pixels that make up the curent frame.
      */
     Set<Pixel> getCurrentFrame();
 
     /**
-     * Method to delete current frame. 
+     * Method to delete current frame.
      */
     void deleteCurrentFrame();
 
@@ -92,8 +95,8 @@ public interface WorkSpaceController extends Controller {
     void setFirstFrame();
 
     /**
-    * Reset the current frame.
-    */
+     * Reset the current frame.
+     */
     void resetCurrentFrame();
 
 }

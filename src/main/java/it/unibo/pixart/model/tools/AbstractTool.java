@@ -1,8 +1,8 @@
-package it.unibo.pixart.model.tool;
-
-import java.util.Set;
+package it.unibo.pixart.model.tools;
 
 import it.unibo.pixart.model.pixel.Pixel;
+
+import java.util.Set;
 
 /**
  * Abstract class for generic tools.

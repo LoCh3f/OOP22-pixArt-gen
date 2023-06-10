@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import it.unibo.pixart.model.project.Project;
 import it.unibo.pixart.model.project.builder.ProjectBuilderImpl;
 
 /** The Test class of the ProjectBuilder class.

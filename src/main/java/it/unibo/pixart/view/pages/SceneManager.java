@@ -55,6 +55,7 @@ public final class SceneManager {
      * @param page
      * @param controller
      */
+    @SuppressWarnings("PMD.AvoidPrintStackTrace")
     public void switchPageWithSpecificController(final Stage stage, final Pages page, final Controller controller) {
 
         final FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource(PATH_START + page.getName() + PATH_END));

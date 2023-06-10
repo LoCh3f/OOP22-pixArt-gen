@@ -74,6 +74,7 @@ public final class ImagePrinter {
         imagePrint(wImg, fileType, path, scale);
     }
 
+    @SuppressWarnings("PMD.AvoidPrintStackTrace")
     private void imagePrint(final WritableImage wImg, final String fileFormat, final String path, final int scale) {
         try {
             final BufferedImage bImg = SwingFXUtils.fromFXImage(wImg, null);
@@ -86,6 +87,7 @@ public final class ImagePrinter {
         }
     }
 
+    @SuppressWarnings("PMD.AvoidPrintStackTrace")
     private void scaleImage(final BufferedImage bImage, final String path, final int scale, final String fileType) {
         final int newSize = scale * imageSize;
         final BufferedImage newImage = new BufferedImage(newSize, newSize, bImage.getType());

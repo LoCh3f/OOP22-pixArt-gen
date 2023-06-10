@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import it.unibo.pixart.model.game.Game;
-import it.unibo.pixart.model.game.GameType;
 import it.unibo.pixart.model.game.builder.GameBuilderImpl;
 import it.unibo.pixart.model.timer.GameTimer;
 import it.unibo.pixart.model.timer.GameTimerImpl;

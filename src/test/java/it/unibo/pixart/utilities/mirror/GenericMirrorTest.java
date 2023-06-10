@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import it.unibo.pixart.model.pixel.Pixel;
 import it.unibo.pixart.model.pixel.PixelBuilder;
-import it.unibo.pixart.utilities.mirror.GenericMirror;
-import it.unibo.pixart.utilities.mirror.Mirror;
 
 import java.util.List;
 

@@ -1,15 +1,13 @@
 package it.unibo.pixart.model.tools;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import it.unibo.pixart.model.pixel.Pixel;
+import it.unibo.pixart.model.pixel.PixelBuilder;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.junit.jupiter.api.Test;
-import it.unibo.pixart.model.pixel.Pixel;
-import it.unibo.pixart.model.pixel.PixelBuilder;
-import it.unibo.pixart.model.tool.AbstractTool;
-import it.unibo.pixart.model.tool.ToolFactory;
-import it.unibo.pixart.model.tool.ToolFactoryImpl;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class AbstractToolTest {

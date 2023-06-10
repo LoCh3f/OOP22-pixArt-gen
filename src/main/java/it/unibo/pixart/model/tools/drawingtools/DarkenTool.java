@@ -1,21 +1,22 @@
-package it.unibo.pixart.model.tool.drawingTools;
+package it.unibo.pixart.model.tools.drawingtools;
+
+import it.unibo.pixart.model.pixel.Pixel;
+import it.unibo.pixart.model.tools.AbstractDrawingTool;
+import it.unibo.pixart.utilities.Pair;
 
 import java.util.Set;
 
-import it.unibo.pixart.model.pixel.Pixel;
-import it.unibo.pixart.model.tool.AbstractDrawingTool;
-import it.unibo.pixart.utilities.Pair;
-
 /**
- * Implementation of the lighten tool.
+ * Implementation of Darken Tool.
  */
-public final class LightenTool extends AbstractDrawingTool {
+public final class DarkenTool extends AbstractDrawingTool {
 
     /**
      * Constructor.
-     * @param toolSize size of the tool
+     *
+     * @param toolSize size of the tools.
      */
-    public LightenTool(final int toolSize) {
+    public DarkenTool(final int toolSize) {
         super(toolSize);
     }
 
@@ -23,8 +24,9 @@ public final class LightenTool extends AbstractDrawingTool {
     public void updatePixel(final Set<Pixel> frame, final int x, final int y, final Set<Pixel> newPixSet) {
         final Pixel tempPix;
         tempPix = frame.stream().filter(p -> p.getPosition().equals(new Pair<>(x, y))).findFirst().get();
-        tempPix.setColor(tempPix.getColor().brighter());
+        tempPix.setColor(tempPix.getColor().darker());
         newPixSet.add(tempPix);
     }
+
 
 }

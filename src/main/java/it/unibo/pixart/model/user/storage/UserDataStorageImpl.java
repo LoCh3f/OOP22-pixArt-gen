@@ -33,6 +33,7 @@ public final class UserDataStorageImpl implements UserDataStorage {
     private List<User> userList;
     private final Charset charset = StandardCharsets.UTF_8;
 
+    @SuppressWarnings("PMD.AvoidPrintStackTrace")
     private void createJsonFile() throws IOException {
         if (Files.notExists(Path.of(USERDATAPATH))) {
             Files.createDirectory(Path.of(USERDATAPATH));

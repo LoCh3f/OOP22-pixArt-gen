@@ -1,11 +1,7 @@
-package it.unibo.pixart.model.tool;
+package it.unibo.pixart.model.tools;
 
-import it.unibo.pixart.model.tool.drawingTools.DarkenTool;
-import it.unibo.pixart.model.tool.drawingTools.Eraser;
-import it.unibo.pixart.model.tool.drawingTools.LightenTool;
-import it.unibo.pixart.model.tool.drawingTools.Pencil;
-import it.unibo.pixart.model.tool.drawingTools.SprayTool;
-import it.unibo.pixart.model.tool.fillTools.Bucket;
+import it.unibo.pixart.model.tools.drawingtools.*;
+import it.unibo.pixart.model.tools.filltools.Bucket;
 import javafx.scene.paint.Color;
 
 /**
@@ -33,5 +29,5 @@ public final class ToolFactoryImpl implements ToolFactory {
         }
         return null;
     }
- 
+
 }

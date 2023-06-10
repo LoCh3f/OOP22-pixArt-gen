@@ -22,6 +22,7 @@ public final class TimerThread extends Thread {
         this.remainingTime = remainingTime;
     }
 
+    @SuppressWarnings("PMD.AvoidPrintStackTrace")
     @Override
     public void run() {
         while (this.timer.isRunning()) {

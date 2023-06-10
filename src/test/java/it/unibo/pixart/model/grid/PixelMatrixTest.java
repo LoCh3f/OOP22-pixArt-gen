@@ -3,7 +3,6 @@ package it.unibo.pixart.model.grid;
 import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
-import it.unibo.pixart.model.grid.PixelMatrix;
 import it.unibo.pixart.model.grid.PixelMatrix.MatrixBuilder;
 import it.unibo.pixart.model.pixel.ImplPixel;
 import it.unibo.pixart.model.pixel.PixelBuilder;

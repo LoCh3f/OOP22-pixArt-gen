@@ -1,18 +1,13 @@
-package it.unibo.pixart.model.tool.fillTools;
-
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+package it.unibo.pixart.model.tools.filltools;
 
 import it.unibo.pixart.model.pixel.Pixel;
-import it.unibo.pixart.model.tool.AbstractTool;
+import it.unibo.pixart.model.tools.AbstractTool;
 import it.unibo.pixart.utilities.Pair;
 import javafx.scene.paint.Color;
+
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * Implementation of Bucket.
@@ -23,6 +18,7 @@ public final class Bucket extends AbstractTool {
 
     /**
      * Constructor.
+     *
      * @param selectedColor
      */
     public Bucket(final Color selectedColor) {
@@ -34,7 +30,7 @@ public final class Bucket extends AbstractTool {
         final Color oldColor = pixel.getColor();
 
         if (oldColor.equals(this.selectedColor)) {
-            return Collections.emptySet(); 
+            return Collections.emptySet();
         }
 
         final Map<Pair<Integer, Integer>, Pixel> frameMap = getFrameMap(frame);
@@ -44,8 +40,8 @@ public final class Bucket extends AbstractTool {
 
         while (!queue.isEmpty()) {
             final Pixel temp = queue.poll();
-            if (temp == null 
-                || !isValid(frameMap, temp.getPosition().getX(), temp.getPosition().getY(), oldColor, selectedColor)) {
+            if (temp == null
+                    || !isValid(frameMap, temp.getPosition().getX(), temp.getPosition().getY(), oldColor, selectedColor)) {
                 continue;
             } else {
                 temp.setColor(selectedColor);
@@ -59,10 +55,10 @@ public final class Bucket extends AbstractTool {
         return newSet;
     }
 
-    private boolean isValid(final Map<Pair<Integer, Integer>, Pixel> frame, 
+    private boolean isValid(final Map<Pair<Integer, Integer>, Pixel> frame,
                             final int x, final int y, final Color oldColor, final Color newColor) {
-        return !(!frame.get(new Pair<>(x, y)).getColor().equals(oldColor) 
-                    || frame.get(new Pair<>(x, y)).getColor().equals(newColor));
+        return !(!frame.get(new Pair<>(x, y)).getColor().equals(oldColor)
+                || frame.get(new Pair<>(x, y)).getColor().equals(newColor));
     }
 
     private Map<Pair<Integer, Integer>, Pixel> getFrameMap(final Set<Pixel> frame) {
