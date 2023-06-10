@@ -15,9 +15,9 @@ import it.unibo.pixArt.model.tool.ToolFactoryImpl;
 
 class AbstractToolTest {
 
-    private ToolFactory toolFactory = new ToolFactoryImpl();
-    private AbstractTool tool = toolFactory.createTool("PENCIL", null, 2);
-    private Set<Pixel> testFrame = new HashSet<>();
+    private final ToolFactory toolFactory = new ToolFactoryImpl();
+    private final AbstractTool tool = toolFactory.createTool("PENCIL", null, 2);
+    private final Set<Pixel> testFrame = new HashSet<>();
 
     private void createFrame() {
         for (int i = 0; i < 16; i++) {
@@ -28,7 +28,7 @@ class AbstractToolTest {
     }
 
     @Test
-    void getFrameSize() {
+    void testGetFrameSize() {
         this.createFrame();
         assertEquals(16, tool.getFrameSize(testFrame));
     }

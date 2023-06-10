@@ -19,7 +19,7 @@ import it.unibo.pixArt.model.user.storage.UserDataStorageImpl;
 /**
  * The Test class of the UserDataStorage class.
  */
-public class UserDataStorageTest {
+class UserDataStorageTest {
 
     private final char fileSeparator = File.separatorChar;
     private final String userDataPath = System.getProperty("user.home") 
@@ -42,7 +42,7 @@ public class UserDataStorageTest {
      * @throws IOException
      */
     @Test
-    public void getUserTest() throws IOException {
+    void testGetUser() throws IOException {
         createUserList();
         assertEquals(Optional.of(user1), userDataStorage.getUser(user1.getName()));
         assertEquals(Optional.of(user2), userDataStorage.getUser(user2.getName()));
@@ -54,7 +54,7 @@ public class UserDataStorageTest {
      * @throws IOException
      */
     @Test
-    public void existsTest() throws IOException {
+    void existsTest() throws IOException {
         createUserList();
         assertTrue(userDataStorage.exists(user1.getName()));
         assertFalse(userDataStorage.exists("franco"));

@@ -34,10 +34,10 @@ class PencilTest {
     void updateGrid() {
         this.createFrame();
         assertEquals(FRAME_SIZE * FRAME_SIZE, TEST_FRAME.size());
-        Pixel pixel = new PixelBuilder.PxlBuilder().setX(PIXEL_X).setY(PIXEL_Y).build();
-        Set<Pixel> newSet = TEST_PENCIL.updateGrid(pixel, TEST_FRAME);
+        final Pixel pixel = new PixelBuilder.PxlBuilder().setX(PIXEL_X).setY(PIXEL_Y).build();
+        final Set<Pixel> newSet = TEST_PENCIL.updateGrid(pixel, TEST_FRAME);
         assertEquals(FRAME_SIZE, newSet.size());
-        for (Pixel p : newSet) {
+        for (final Pixel p : newSet) {
             assertEquals(Color.BLACK, p.getColor());
             assertTrue(p.getPosition().getX() >= PIXEL_X && p.getPosition().getX() <= PIXEL_X + TOOL_SIZE - 1);
             assertTrue(p.getPosition().getY() >= PIXEL_Y && p.getPosition().getY() <= PIXEL_Y + TOOL_SIZE - 1);

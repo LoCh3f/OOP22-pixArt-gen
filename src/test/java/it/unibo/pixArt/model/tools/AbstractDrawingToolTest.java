@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AbstractDrawingToolTest {
 
-    private ToolFactory toolFactory = new ToolFactoryImpl();
-    private AbstractDrawingTool tool = (AbstractDrawingTool) toolFactory.createTool("PENCIL", null, 2);
+    private final ToolFactory toolFactory = new ToolFactoryImpl();
+    private final AbstractDrawingTool tool = (AbstractDrawingTool) toolFactory.createTool("PENCIL", null, 2);
     private static final int PIXEL1_X = 13;
     private static final int PIXEL1_Y = 13;
     private static final int PIXEL2_X = 10;
