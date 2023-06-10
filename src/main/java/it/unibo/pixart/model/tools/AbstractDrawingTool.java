@@ -1,11 +1,11 @@
-package it.unibo.pixart.model.tool;
+package it.unibo.pixart.model.tools;
+
+import it.unibo.pixart.model.pixel.Pixel;
+import it.unibo.pixart.utilities.Pair;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.IntStream;
-
-import it.unibo.pixart.model.pixel.Pixel;
-import it.unibo.pixart.utilities.Pair;
 
 /**
  * Class that implements the methods for generic tools.
@@ -15,14 +15,14 @@ public abstract class AbstractDrawingTool extends AbstractTool {
     private final int toolSize;
 
     /**
-     * @param toolSize size of the tool.
+     * @param toolSize size of the tools.
      */
     public AbstractDrawingTool(final int toolSize) {
         this.toolSize = toolSize;
     }
 
     /**
-     * @return the size of the tool
+     * @return the size of the tools
      */
     public int getToolSize() {
         return this.toolSize;
@@ -36,8 +36,8 @@ public abstract class AbstractDrawingTool extends AbstractTool {
         final Set<Pixel> newPixSet = new HashSet<>();
         final Pair<Integer, Integer> oppositePixPos = calculatePosition(pixel, getToolSize(), super.getFrameSize(frame));
 
-        for (final var x: range(pixel.getPosition().getX(), oppositePixPos.getX())) {
-            for (final var y: range(pixel.getPosition().getY(), oppositePixPos.getY())) {
+        for (final var x : range(pixel.getPosition().getX(), oppositePixPos.getX())) {
+            for (final var y : range(pixel.getPosition().getY(), oppositePixPos.getY())) {
                 this.updatePixel(frame, x, y, newPixSet);
             }
         }
@@ -46,17 +46,17 @@ public abstract class AbstractDrawingTool extends AbstractTool {
     }
 
     /**
-     * @param frame pixel grid
-     * @param x 
+     * @param frame     pixel grid
+     * @param x
      * @param y
      * @param newPixSet new set of pixel
-     * update the color of the pixel.
+     *                  update the color of the pixel.
      */
     public abstract void updatePixel(Set<Pixel> frame, int x, int y, Set<Pixel> newPixSet);
 
     /**
-     * @param p pixel 
-     * @param increment tool size
+     * @param p         pixel
+     * @param increment tools size
      * @param frameSize size of the frame
      * @return the position of the opposite pixel
      */

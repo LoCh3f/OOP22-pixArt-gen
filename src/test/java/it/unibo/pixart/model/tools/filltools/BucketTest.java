@@ -1,16 +1,17 @@
-package it.unibo.pixart.model.tools;
+package it.unibo.pixart.model.tools.filltools;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import it.unibo.pixart.model.pixel.Pixel;
+import it.unibo.pixart.model.pixel.PixelBuilder;
+import it.unibo.pixart.model.tools.AbstractTool;
+import it.unibo.pixart.model.tools.fillTools.Bucket;
+import javafx.scene.paint.Color;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.junit.jupiter.api.Test;
-import it.unibo.pixart.model.pixel.Pixel;
-import it.unibo.pixart.model.pixel.PixelBuilder;
-import it.unibo.pixart.model.tool.AbstractTool;
-import it.unibo.pixart.model.tool.fillTools.Bucket;
-import javafx.scene.paint.Color;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class BucketTest {
@@ -41,8 +42,8 @@ class BucketTest {
             for (int j = 0; j < FRAME_DIM; j++) {
                 tempPix = new PixelBuilder.PxlBuilder().setX(i).setY(j).build();
                 if (i == x && (j == y || j == y + 1 || j == y + 2 || j == y + 3)
-                || j == y && (i == x || i == x + 1 || i == x + 2 || i == x + 3)) {
-                        tempPix.setColor(Color.BLACK);
+                        || j == y && (i == x || i == x + 1 || i == x + 2 || i == x + 3)) {
+                    tempPix.setColor(Color.BLACK);
                 }
                 TEST_FRAME2.add(tempPix);
             }

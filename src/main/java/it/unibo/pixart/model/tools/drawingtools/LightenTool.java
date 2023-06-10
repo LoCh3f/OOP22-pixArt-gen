@@ -1,19 +1,20 @@
-package it.unibo.pixart.model.tool.drawingTools;
+package it.unibo.pixart.model.tools.drawingTools;
+
+import it.unibo.pixart.model.pixel.Pixel;
+import it.unibo.pixart.model.tools.AbstractDrawingTool;
+import it.unibo.pixart.utilities.Pair;
 
 import java.util.Set;
 
-import it.unibo.pixart.model.pixel.Pixel;
-import it.unibo.pixart.model.tool.AbstractDrawingTool;
-import it.unibo.pixart.utilities.Pair;
-
 /**
- * Implementation of the lighten tool.
+ * Implementation of the lighten tools.
  */
 public final class LightenTool extends AbstractDrawingTool {
 
     /**
      * Constructor.
-     * @param toolSize size of the tool
+     *
+     * @param toolSize size of the tools
      */
     public LightenTool(final int toolSize) {
         super(toolSize);

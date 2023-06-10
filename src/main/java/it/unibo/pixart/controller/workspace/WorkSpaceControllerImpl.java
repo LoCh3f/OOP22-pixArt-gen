@@ -1,5 +1,18 @@
 package it.unibo.pixart.controller.workspace;
 
+import it.unibo.pixart.controller.SimpleController;
+import it.unibo.pixart.model.grid.Matrix;
+import it.unibo.pixart.model.grid.PixelMatrix;
+import it.unibo.pixart.model.historyframe.HistoryFrame;
+import it.unibo.pixart.model.pixel.Pixel;
+import it.unibo.pixart.model.pixel.PixelBuilder;
+import it.unibo.pixart.model.tools.AbstractTool;
+import it.unibo.pixart.model.tools.ToolEnum;
+import it.unibo.pixart.model.tools.ToolFactory;
+import it.unibo.pixart.model.tools.ToolFactoryImpl;
+import it.unibo.pixart.utilities.FileHandler;
+import it.unibo.pixart.utilities.ImagePrinter;
+import it.unibo.pixart.view.workspace.WorkSpace;
 import javafx.scene.paint.Color;
 
 import java.io.File;
@@ -8,20 +21,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import it.unibo.pixart.controller.SimpleController;
-import it.unibo.pixart.model.grid.Matrix;
-import it.unibo.pixart.model.grid.PixelMatrix;
-import it.unibo.pixart.model.historyframe.HistoryFrame;
-import it.unibo.pixart.model.pixel.Pixel;
-import it.unibo.pixart.model.pixel.PixelBuilder;
-import it.unibo.pixart.model.tool.AbstractTool;
-import it.unibo.pixart.model.tool.ToolEnum;
-import it.unibo.pixart.model.tool.ToolFactory;
-import it.unibo.pixart.model.tool.ToolFactoryImpl;
-import it.unibo.pixart.utilities.FileHandler;
-import it.unibo.pixart.utilities.ImagePrinter;
-import it.unibo.pixart.view.workspace.WorkSpace;
 
 /**
  * Implementation for WorkSpaceController.
@@ -41,9 +40,9 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
     @Override
     public void colorGrid(final int x, final int y, final Color color) {
         final Pixel p = this.currentframe.getPixels().stream()
-        .filter(e -> e.comparePixel(new PixelBuilder.PxlBuilder().setX(x).setY(y).setColor(color).build()))
-        .findAny()
-        .get();
+                .filter(e -> e.comparePixel(new PixelBuilder.PxlBuilder().setX(x).setY(y).setColor(color).build()))
+                .findAny()
+                .get();
 
         final Set<Pixel> result = tool.updateGrid(p, this.currentframe.getPixels());
         this.currentframe.getMemento().setState(currentframe.getPixels());
@@ -54,16 +53,16 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
     @Override
     public void setCurrentFrame(final int index) {
         final HistoryFrame currentHistoryFrame = getModel().getProject().getAllHistoryFrames().get(currentIndex);
-        currentHistoryFrame.setPath(getModel().getProject().getPath() 
-          + "/" + getModel().getProject().getName()
-          + currentHistoryFrame.getIndex()
-          + getModel().getProject().getFileType());
+        currentHistoryFrame.setPath(getModel().getProject().getPath()
+                + "/" + getModel().getProject().getName()
+                + currentHistoryFrame.getIndex()
+                + getModel().getProject().getFileType());
 
         ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath()
-        + File.separatorChar + getModel().getProject().getName()
-        + currentIndex
-        + getModel().getProject().getFileType(),
-        getModel().getProject().getFileType(), 4);
+                        + File.separatorChar + getModel().getProject().getName()
+                        + currentIndex
+                        + getModel().getProject().getFileType(),
+                getModel().getProject().getFileType(), 4);
 
         this.currentIndex = index;
         this.currentframe = getModel().getProject().getAllFrames().get(index);
@@ -78,8 +77,8 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
     @Override
     public void resetCurrentFrame() {
         this.currentframe = new PixelMatrix.MatrixBuilder()
-        .setColumns(this.getModel().getProject().getAllFrames().get(0).getColumns())
-        .setRows(this.getModel().getProject().getAllFrames().get(0).getRows()).build();
+                .setColumns(this.getModel().getProject().getAllFrames().get(0).getColumns())
+                .setRows(this.getModel().getProject().getAllFrames().get(0).getRows()).build();
         this.getWorkSpaceView().updateView(this.currentframe.getPixels());
     }
 
@@ -92,16 +91,16 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
     @Override
     public void addNewFrame() {
         final int lastIndex = getModel().getProject().getLastHistoryFrame().getIndex();
-        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath() 
-        + File.separatorChar + getModel().getProject().getName() 
-        + currentIndex 
-        + getModel().getProject().getFileType(),
-        getModel().getProject().getFileType(), 4);
+        ImagePrinter.getInstance().printOneFrame(currentframe, getModel().getProject().getPath()
+                        + File.separatorChar + getModel().getProject().getName()
+                        + currentIndex
+                        + getModel().getProject().getFileType(),
+                getModel().getProject().getFileType(), 4);
 
-        this.getHistoryFrames().get(currentIndex).setPath(getModel().getProject().getPath() 
-        + File.separatorChar + getModel().getProject().getName() 
-        + currentIndex 
-        + getModel().getProject().getFileType());
+        this.getHistoryFrames().get(currentIndex).setPath(getModel().getProject().getPath()
+                + File.separatorChar + getModel().getProject().getName()
+                + currentIndex
+                + getModel().getProject().getFileType());
 
         this.getModel().getProject().addNewFrame();
         this.getModel().getProject().addNewHistoryFrame(lastIndex + 1);
