@@ -1,5 +1,6 @@
 package it.unibo.pixart.controller.workspace;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.pixart.controller.SimpleController;
 import it.unibo.pixart.model.grid.Matrix;
 import it.unibo.pixart.model.grid.PixelMatrix;
@@ -37,6 +38,7 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
         this.tool = this.toolFactory.createTool(toolName, color, toolSize);
     }
 
+    @SuppressFBWarnings
     @Override
     public void colorGrid(final int x, final int y, final Color color) {
         final Pixel p = this.currentframe.getPixels().stream()
