@@ -40,6 +40,10 @@ public final class UserManagerImplTest {
      * Test for login method when the user file is empty.
      * @throws IOException
      */
+    /**
+     * @throws IOException
+     * Test the login with empty file
+     */
     @Test
     public void loginWithEmptyFile() throws IOException {
         createUserManager();
