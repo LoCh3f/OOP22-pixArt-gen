@@ -27,10 +27,10 @@ import it.unibo.pixart.model.project.builder.ProjectBuilderImpl;
 
 /** The Test class of the FileHandler class.
  */
-public class FileHandlerTest {
+class FileHandlerTest {
     private static final Project PROJECT = new ProjectBuilderImpl().fileType(FileTypes.JPEG.toString()).frames(16)
                             .path(System.getProperty("user.home")).projectName("Test").build();
-    private Gson gson = new GsonBuilder()
+    private final Gson gson = new GsonBuilder()
                         .registerTypeAdapter(Project.class, InterfaceSerializer.interfaceSerializer(ProjectImpl.class))
                         .registerTypeAdapter(Matrix.class, InterfaceSerializer.interfaceSerializer(PixelMatrix.class))
                         .registerTypeAdapter(Pixel.class, InterfaceSerializer.interfaceSerializer(ImplPixel.class))
@@ -39,19 +39,19 @@ public class FileHandlerTest {
                         .create();
     @Test
     void initProjectFolderTest() {
-        File testFolder = new File(System.getProperty("user.home") + File.separatorChar + "testFolder");
+        final File testFolder = new File(System.getProperty("user.home") + File.separatorChar + "testFolder");
         assertTrue(FileHandler.getInstance().initProjectFolder(testFolder.getAbsolutePath()));
         testFolder.delete();
     }
 
     @Test
     void fromJsonToProjectTest() throws IOException {
-        FileWriter testFileWriter = new FileWriter(
+        final FileWriter testFileWriter = new FileWriter(
             new File(PROJECT.getPath() + File.separatorChar + PROJECT.getName() + ".json"));
         testFileWriter.write(gson.toJson(PROJECT));
         testFileWriter.flush();
         testFileWriter.close();
-        Project p = FileHandler.getInstance()
+        final Project p = FileHandler.getInstance()
                     .fromJsonToProject(new File(PROJECT.getPath() + File.separatorChar + PROJECT.getName() + ".json"));
         assertEquals(PROJECT.getName(), p.getName());
         assertEquals(PROJECT.getPath(), p.getPath());

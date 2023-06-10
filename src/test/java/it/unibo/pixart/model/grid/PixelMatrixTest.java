@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /** The Test class of the PixelMatrix class.
  */
-public class PixelMatrixTest {
+class PixelMatrixTest {
 
     private static final int CONSTCOORD = 15;
     private static final ImplPixel TEST_PIXEL = new PixelBuilder.PxlBuilder().setX(0).setY(0).build();
@@ -38,7 +38,6 @@ public class PixelMatrixTest {
         matrix.getPixels().forEach(p -> {
             if (p.comparePixel(TEST_PIXEL)) {
                 assertEquals(p.getColor(), TEST_PIXEL.getColor());
-                System.out.println(p.getColor());
             } else {
                 assertEquals(p.getColor(), Color.WHITE);
             }

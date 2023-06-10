@@ -10,7 +10,7 @@ import it.unibo.pixart.model.project.builder.ProjectBuilderImpl;
 
 /** The Test class of the Project class.
  */
-public class ProjectTest {
+class ProjectTest {
     private static final int DEF_DELAY = 100;
     private static final String DEF_IMAGE = File.separatorChar + "image" + File.separatorChar + "def-historyFrame.png";
     private static final int FRAMESIZE = 17;
@@ -29,22 +29,22 @@ public class ProjectTest {
                                                             .frames(FRAMESIZE)
                                                             .build();
     @Test
-    void getProjectName() {
+    void projectNameGetterTest() {
         assertEquals(PROJECT_NAME, TEST_PROJECT.getName());
     }
 
     @Test
-    void getPath() {
+    void pathGetterTest() {
         assertEquals(PROJECT_PATH, TEST_PROJECT.getPath());
     }
 
     @Test
-    void getFileType() {
+    void fileTypeGetterTest() {
         assertEquals(PROJECT_FILE.getType(), TEST_PROJECT.getFileType());
     }
 
     @Test
-    void getFrames() {
+    void framesGetterTest() {
         assertEquals(null, TEST_PROJECT.getAllFrames());
     }
 

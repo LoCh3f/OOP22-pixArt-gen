@@ -18,7 +18,7 @@ class GenericMirrorTest {
 
     private static final int SIZE_EXPECTED = 3;
     @Test
-    void getDifference() {
+    void differencesTest() {
         final var mirror = PIXEL_MIRROR.getDifference(
                 List.of(new PixelBuilder.PxlBuilder().setX(1).setY(1).build(),
                         new PixelBuilder.PxlBuilder().setX(2).setY(2).build(),
