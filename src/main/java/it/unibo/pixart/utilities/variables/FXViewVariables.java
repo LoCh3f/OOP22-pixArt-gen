@@ -3,7 +3,7 @@ package it.unibo.pixart.utilities.variables;
 /**
  * Classe che contiene le variabili per la gestione dello stile della view.
  */
-public class FXViewVariables {
+public final class FXViewVariables {
     /**
      * String for set style of the border.
      */
