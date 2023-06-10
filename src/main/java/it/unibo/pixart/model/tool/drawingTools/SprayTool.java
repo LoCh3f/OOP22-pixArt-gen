@@ -1,4 +1,4 @@
-package it.unibo.pixart.model.tool.drawingTools;
+package it.unibo.pixart.model.tool.drawingtools;
 
 import javafx.scene.paint.Color;
 

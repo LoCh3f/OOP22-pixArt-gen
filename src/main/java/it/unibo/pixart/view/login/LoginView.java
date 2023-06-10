@@ -106,6 +106,11 @@ public final class LoginView extends AbstractFXView {
         return false;
     }
 
+    /**
+     * Method to login.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void onLoginClick(final ActionEvent event) throws IOException {
         if (this.loginValidate(this.usernameLoginField.getText(), this.passwordLoginField.getText())) {
@@ -118,6 +123,11 @@ public final class LoginView extends AbstractFXView {
     }
 
 
+    /**
+     * Method to register.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void onRegisterClick(final ActionEvent event) throws IOException {
         if (this.registerValidate(this.usernameRegisterField.getText(), 
@@ -134,6 +144,10 @@ public final class LoginView extends AbstractFXView {
         }
     }
 
+    /**
+     * Method to login as a guest.
+     * @param event
+     */
     @FXML
     public void onLoginAsGuestClick(final ActionEvent event) {
         if (this.guestLoginValidate(this.pathField.getText())) {
@@ -143,6 +157,10 @@ public final class LoginView extends AbstractFXView {
         this.guestLoginResult.setText("Choose a path");
     }
 
+    /**
+     * Method to select the path.
+     * @param event
+     */
     @FXML
     public void onSelectDirClick(final ActionEvent event) {
         final DirectoryChooser directoryChooser = new DirectoryChooser();

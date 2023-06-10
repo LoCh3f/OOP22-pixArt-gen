@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import it.unibo.pixart.model.pixel.Pixel;
 import it.unibo.pixart.model.pixel.PixelBuilder;
 import it.unibo.pixart.model.tool.AbstractTool;
-import it.unibo.pixart.model.tool.fillTools.Bucket;
+import it.unibo.pixart.model.tool.filltools.Bucket;
 import javafx.scene.paint.Color;
 
 

@@ -74,7 +74,8 @@ public final class GameSetupView extends AbstractFXView {
         this.typeChoiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 
             @Override
-            public void changed(final ObservableValue<? extends Number> observable, final Number oldValue, final Number newValue) {
+            public void changed(final ObservableValue<? extends Number> observable, 
+                                        final Number oldValue, final Number newValue) {
                 gameDescription.setText(getGameSetupController()
                                         .getGameTypes()
                                         .get(typeChoiceBox.getSelectionModel().getSelectedIndex())
