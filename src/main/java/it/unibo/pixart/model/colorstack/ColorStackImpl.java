@@ -12,8 +12,8 @@ import javafx.scene.paint.Color;
  * Implementation of ColorStack.
  */
 public final class ColorStackImpl implements ColorStack {
-    private  Map<Color, Set<Pixel>> colorMap = new HashMap<>();
-    private int initialSize;
+    private  Map<Color, Set<Pixel>> colorMap;
+    private final int initialSize;
 
     /**
      * Constructor.

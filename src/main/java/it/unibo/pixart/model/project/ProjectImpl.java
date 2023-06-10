@@ -12,11 +12,11 @@ import it.unibo.pixart.model.historyframe.HistoryFrameImpl;
  * Implementation of Project interface.
  */
 public final class ProjectImpl implements Project {
-    private String projectName;
-    private String path;
-    private String fileType;
-    private List<Matrix> frames;
-    private List<HistoryFrame> historyFrames = new LinkedList<>();
+    private final String projectName;
+    private final String path;
+    private final String fileType;
+    private final List<Matrix> frames;
+    private final List<HistoryFrame> historyFrames = new LinkedList<>();
 
     /**
      * Constructor for ProjectImpl.

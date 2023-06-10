@@ -55,7 +55,7 @@ public interface GameController extends Controller {
     /**
      * @return tha value of the isDrawing flag.
      */
-    boolean getIsDrawing();
+    boolean isDrawing();
 
     /**
      * Sets the value of the isDrawing flag.

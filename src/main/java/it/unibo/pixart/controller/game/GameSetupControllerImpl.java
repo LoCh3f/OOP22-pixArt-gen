@@ -52,9 +52,9 @@ public final class GameSetupControllerImpl extends SimpleController implements G
 
     @Override
     public void setTimer(final String timer) {
-        this.gameTimer = (new GameTimerImpl(TimerType.getAllTypes().stream()
+        this.gameTimer = new GameTimerImpl(TimerType.getAllTypes().stream()
                                                                     .filter(e -> e.getDescription() == timer)
-                                                                    .findAny().get().getTime()));
+                                                                    .findAny().get().getTime());
     }
 
     @Override

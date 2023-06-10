@@ -33,6 +33,7 @@ public interface Project {
     /**
      * @return String format of a project.
      */
+    @Override
     String toString();
 
     /**

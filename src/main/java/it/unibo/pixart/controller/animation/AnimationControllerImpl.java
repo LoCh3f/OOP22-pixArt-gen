@@ -66,23 +66,23 @@ public final class AnimationControllerImpl extends SimpleController implements A
     }
 
     @Override
-    public boolean getAnimationIsRunning() {
+    public boolean isAnimationIsRunning() {
         return this.isRunning;
     }
 
     @Override
     public void saveProject() {
-        List<String> choices = new ArrayList<>();
+        final List<String> choices = new ArrayList<>();
         choices.add("1");
         choices.add("4");
         choices.add("16");
 
-        ChoiceDialog<String> dialog = new ChoiceDialog<>("1", choices);
+        final ChoiceDialog<String> dialog = new ChoiceDialog<>("1", choices);
         dialog.setTitle("Scelta scala");
         dialog.setHeaderText(null);
         dialog.setContentText("Seleziona la scala:");
 
-        Optional<String> result = dialog.showAndWait();
+        final Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             ImagePrinter.getInstance().printAllFrames(getModel().getProject(), Integer.parseInt(result.get()));
         try {

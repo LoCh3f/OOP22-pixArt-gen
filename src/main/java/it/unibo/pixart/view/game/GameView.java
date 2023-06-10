@@ -96,7 +96,7 @@ public final class GameView extends AbstractFXView {
 
 
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
-            if (getGameController().getIsDrawing()) {
+            if (getGameController().isDrawing()) {
                 colorButton(event);
             }
         }));
@@ -200,7 +200,7 @@ public final class GameView extends AbstractFXView {
                 .collect(Collectors.toList());
 
         final List<Button> btnList = new LinkedList<>();
-        for (var elem : availableColors) {
+        for (final var elem : availableColors) {
             final Button btn = new Button();
             btn.setText(Integer.toString(availableColors.indexOf(elem)));
             btn.setStyle("-fx-background-color: #"
@@ -242,13 +242,12 @@ public final class GameView extends AbstractFXView {
     }
 
     private EventHandler<ActionEvent> getEvent() {
-        final var e = new EventHandler<ActionEvent>() {
+        return new EventHandler<ActionEvent>() {
             @Override
             public void handle(final ActionEvent event) {
                 colorButton(event);
             }
         };
-        return e;
     }
 
     private void colorButton(final Event event) {

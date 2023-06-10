@@ -68,7 +68,7 @@ public interface WorkSpaceController extends Controller {
      *
      * @return the boolean value of isDrawing.
      */
-    boolean getIsDrawing();
+    boolean isDrawing();
 
     /**
      * @param scale The scale size.

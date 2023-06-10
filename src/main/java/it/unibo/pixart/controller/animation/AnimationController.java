@@ -26,7 +26,7 @@ public interface AnimationController extends Controller {
     /**
      * @return if the animation is running.
      */
-    boolean getAnimationIsRunning();
+    boolean isAnimationIsRunning();
 
     /**
      * @return get current Image.

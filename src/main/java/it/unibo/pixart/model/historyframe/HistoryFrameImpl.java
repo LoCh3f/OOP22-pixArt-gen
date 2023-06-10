@@ -10,7 +10,7 @@ public final class HistoryFrameImpl implements HistoryFrame {
     private static final String DEF_IMAGE = File.separatorChar + "image" + File.separatorChar + "def-historyFrame.png";
     private String imagePath;
     private int animationDuration;
-    private int index;
+    private final int index;
 
     /**
      * Constructor for HistoryFrameImpl.

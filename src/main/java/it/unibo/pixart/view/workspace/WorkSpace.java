@@ -123,7 +123,7 @@ public final class WorkSpace extends AbstractFXView {
         this.root.setCenter(center);
 
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
-            if (getWorkSpaceController().getIsDrawing()) {
+            if (getWorkSpaceController().isDrawing()) {
                 final var button = (Button) event.getSource();
                 color(GridPane.getColumnIndex(button),
                 GridPane.getRowIndex(button),

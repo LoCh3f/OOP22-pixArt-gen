@@ -14,8 +14,17 @@ import java.util.stream.Stream;
  */
 public enum GameLevels {
 
+    /**
+     * Skull project.
+     */
     SKULL("/games/Skull/Skull.json", "/games/Skull/Skull0.png"),
+    /**
+     * Egg project.
+     */
     EGG("/games/Egg/Egg.json", "/games/Egg/Egg0.png"),
+    /**
+     * Shrek project.
+     */
     SHREK("/games/Shrek/Shrek.json", "/games/Shrek/Shrek0.png");
 
     private String pathToFile;
@@ -33,7 +42,7 @@ public enum GameLevels {
 
     /**
      * Method to get the path to file.
-     * @return
+     * @return path to file.
      * @throws IOException
      */
     public String getPathToFile() throws IOException {

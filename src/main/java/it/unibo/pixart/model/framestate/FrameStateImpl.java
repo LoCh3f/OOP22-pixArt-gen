@@ -11,13 +11,6 @@ import it.unibo.pixart.model.pixel.Pixel;
 public final class FrameStateImpl implements FrameState {
     private Stack<Set<Pixel>> stateStack = new Stack<>();
 
-    /**
-     * Constructor for FrameStateImpl.
-     */
-    public FrameStateImpl() {
-
-    }
-
     @Override
     public void setState(final Set<Pixel> newState) {
        this.stateStack.push(newState);
@@ -28,7 +21,7 @@ public final class FrameStateImpl implements FrameState {
         try {
             return this.stateStack.pop(); 
         } catch (EmptyStackException e) {
-            throw new EmptyStackException();
+            throw e;
         }
     }
 
@@ -37,7 +30,7 @@ public final class FrameStateImpl implements FrameState {
         try {
             return this.stateStack.peek(); 
         } catch (EmptyStackException e) {
-            throw new EmptyStackException();
+            throw e;
         }
     }
 

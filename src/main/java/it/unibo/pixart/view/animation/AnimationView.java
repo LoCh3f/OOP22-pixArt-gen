@@ -48,7 +48,7 @@ public final class AnimationView extends AbstractFXView {
     @FXML
     private void switchAnimation() {
         this.getAnimationController().setAnimationIsRunning();
-        if (this.getAnimationController().getAnimationIsRunning()) {
+        if (this.getAnimationController().isAnimationIsRunning()) {
             switchBtn.setGraphic(new ImageView(new Image(STOP)));
         } else {
             switchBtn.setGraphic(new ImageView(new Image(START)));

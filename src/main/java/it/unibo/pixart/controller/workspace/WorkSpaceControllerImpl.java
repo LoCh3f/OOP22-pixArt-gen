@@ -125,7 +125,7 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
     }
 
     @Override
-    public boolean getIsDrawing() {
+    public boolean isDrawing() {
         return this.isDrawing;
     }
 
@@ -167,5 +167,4 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
     private WorkSpace getWorkSpaceView() {
         return (WorkSpace) getView();
     }
-
 }
