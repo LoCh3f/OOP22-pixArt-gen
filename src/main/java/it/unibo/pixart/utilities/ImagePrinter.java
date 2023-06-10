@@ -87,9 +87,9 @@ public final class ImagePrinter {
     }
 
     private void scaleImage(final BufferedImage bImage, final String path, final int scale, final String fileType) {
-        int newSize = scale * imageSize;
-        BufferedImage newImage = new BufferedImage(newSize, newSize, bImage.getType());
-        Graphics2D graphics2d = newImage.createGraphics();
+        final int newSize = scale * imageSize;
+        final BufferedImage newImage = new BufferedImage(newSize, newSize, bImage.getType());
+        final Graphics2D graphics2d = newImage.createGraphics();
         graphics2d.drawImage(bImage, 0, 0, newSize, newSize, null);
         try {
             ImageIO.write(newImage, fileType, new File(path));

@@ -37,8 +37,9 @@ public final class ProjectView extends AbstractFXView {
                                   && this.getProjectController().checkIfJsonInFolder(file))
                                   .map(File::getName).collect(Collectors.toList()));
 
-        MultipleSelectionModel<String> selModel = listView.getSelectionModel();
+        final MultipleSelectionModel<String> selModel = listView.getSelectionModel();
         selModel.selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
             public void changed(final ObservableValue<? extends String> changed, final String oldVal, final String newVal) {
                 selFolder = listView.getSelectionModel().getSelectedItems().toString();
             }
