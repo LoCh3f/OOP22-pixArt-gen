@@ -1,5 +1,6 @@
 package it.unibo.pixart.view.pages;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.pixart.controller.Controller;
 import it.unibo.pixart.controller.SimpleController;
 import it.unibo.pixart.controller.animation.AnimationControllerImpl;
@@ -10,7 +11,7 @@ import it.unibo.pixart.controller.project.ProjectControllerImpl;
 import it.unibo.pixart.controller.settings.SettingsControllerImpl;
 import it.unibo.pixart.controller.workspace.WorkSpaceControllerImpl;
 
-/** 
+/**
  * Enum containing all availbale pages.
  */
 public enum Pages {
@@ -76,6 +77,7 @@ public enum Pages {
     /**
      * @return the controller of the view.
      */
+    @SuppressFBWarnings
     public Controller getController() {
         return this.controller;
     }
