@@ -32,23 +32,35 @@ public final class HomeView extends AbstractFXView {
     @FXML
     private Button projectHistory;
 
+    /**
+     * Method to switch to GameSetup.
+     */
     @FXML
-    private void onNewGame() {
+    public void onNewGame() {
         SceneManager.getInstance().switchPage(this.getStage(), Pages.GAMESETUP, this.getController().getModel());
     }
 
+    /**
+     * Method to switch to SettingsView.
+     */
     @FXML
-    private void onWorkSpaceClick() {
+    public void onWorkSpaceClick() {
         SceneManager.getInstance().switchPage(this.getStage(), Pages.SETTINGS, this.getController().getModel());
     }
 
+    /**
+     * Method to switch to Projects.
+     */
     @FXML
-    private void onProjectHistoryClick() {
+    public void onProjectHistoryClick() {
         SceneManager.getInstance().switchPage(this.getStage(), Pages.HISTORY, this.getController().getModel());
     }
 
+    /**
+     * Method to log out.
+     */
     @FXML
-    private void onBackClick() {
+    public void onBackClick() {
         SceneManager.getInstance().switchPage(this.getStage(), Pages.LOGIN, new ModelImpl(null, null, null, null, null));
     }
 

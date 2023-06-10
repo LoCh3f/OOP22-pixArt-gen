@@ -34,8 +34,11 @@ public final class GameSetupView extends AbstractFXView {
     @FXML
     private TextArea gameDescription;
 
+    /**
+     * Method to start gameplay.
+     */
     @FXML
-    private void onStartClicked() {
+    public void onStartClicked() {
         this.getGameSetupController().setTimer(timerChoiceBox.getValue());
         this.getGameSetupController().setProject(projectsList.getSelectionModel().getSelectedIndex());
         this.getGameSetupController().setGameType(this.typeChoiceBox.getSelectionModel().getSelectedItem());
@@ -43,8 +46,11 @@ public final class GameSetupView extends AbstractFXView {
         SceneManager.getInstance().switchPage(getStage(), Pages.GAMEVIEW, this.getController().getModel());
     }
 
+    /**
+     * Method to exit GameSetupView.
+     */
     @FXML
-    private void onDiscardClicked() {
+    public void onDiscardClicked() {
         SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 

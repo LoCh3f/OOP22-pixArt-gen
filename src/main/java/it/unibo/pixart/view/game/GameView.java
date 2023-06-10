@@ -72,8 +72,11 @@ public final class GameView extends AbstractFXView {
 
     private List<Color> availableColors;
 
+    /**
+     * Method to go exit gameplay.
+     */
     @FXML
-    private void onMenuClick() {
+    public void onMenuClick() {
         if (this.getGameController().getTimer().isRunning()) {
             this.getGameController().getTimer().stop();
         }

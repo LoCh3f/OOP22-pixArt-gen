@@ -66,6 +66,57 @@ public final class WorkSpace extends AbstractFXView {
 
     private PixelsParser pixelsParser;
 
+    /**
+     * Method to discard the matrix.
+     */
+    @FXML
+    public void discardMatrix() {
+        getWorkSpaceController().resetCurrentFrame();
+    }
+
+    /**
+     * Method to change selected color.
+     */
+    @FXML
+    public void onColorChanged() {
+        this.getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(), (int) toolSizeSlider.getValue());
+    }
+
+   /**
+     * Method to undo actions.
+     */
+     @FXML
+    public void onUndoClicked() {
+        this.updateView(this.getWorkSpaceController().getPreviousState());
+    }
+
+    /**
+     * Method to add a new frame.
+     */
+    @FXML
+    public void onAddFrameClicked() {
+        this.getWorkSpaceController().addNewFrame();
+        updateView(this.getWorkSpaceController().getCurrentFrame());
+        Platform.runLater(this::updateHistoryFrames);
+    }
+
+    /**
+     * Method to delete a frame.
+     */
+    @FXML
+    public void onDeleteClicked() {
+        this.getWorkSpaceController().deleteCurrentFrame();
+        updateView(this.getWorkSpaceController().getCurrentFrame());
+        Platform.runLater(this::updateHistoryFrames);
+    }
+
+    /**
+     * Method to switch to Animation view.
+     */
+    @FXML
+    public void onAnimateClicked() {
+        SceneManager.getInstance().switchPage(getStage(), Pages.ANIMATION, this.getController().getModel());
+    }
 
     @Override
     public void init() {
@@ -154,39 +205,6 @@ public final class WorkSpace extends AbstractFXView {
         updateHistoryFrames();
     }
 
-    @FXML
-    private void discardMatrix() {
-        getWorkSpaceController().resetCurrentFrame();
-    }
-
-    @FXML
-    private void onColorChanged() {
-        this.getWorkSpaceController().selectTool(toolBox.getValue(), colorPicker.getValue(), (int) toolSizeSlider.getValue());
-    }
-
-    @FXML
-    private void onUndoClicked() {
-        this.updateView(this.getWorkSpaceController().getPreviousState());
-    }
-
-    @FXML
-    private void onAddFrameClicked() {
-        this.getWorkSpaceController().addNewFrame();
-        updateView(this.getWorkSpaceController().getCurrentFrame());
-        Platform.runLater(this::updateHistoryFrames);
-    }
-
-    @FXML
-    private void onDeleteClicked() {
-        this.getWorkSpaceController().deleteCurrentFrame();
-        updateView(this.getWorkSpaceController().getCurrentFrame());
-        Platform.runLater(this::updateHistoryFrames);
-    }
-
-    @FXML
-    private void onAnimateClicked() {
-        SceneManager.getInstance().switchPage(getStage(), Pages.ANIMATION, this.getController().getModel());
-    }
 
     private void color(final int x, final int y, final Color color) {
         this.getWorkSpaceController().colorGrid(x, y, color);

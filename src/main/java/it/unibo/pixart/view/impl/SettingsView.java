@@ -26,8 +26,11 @@ public final class SettingsView extends AbstractFXView {
     @FXML
     private ChoiceBox<String> sizeChoice;
 
+    /**
+     * Method to create a project and switch to WorkSpace.
+     */
     @FXML
-    private void createProject() {
+    public void createProject() {
         /*
          * Create the project based on the values taken from the javafx components.
          */
@@ -38,8 +41,11 @@ public final class SettingsView extends AbstractFXView {
         }
     }
 
+    /**
+     * Method to discad project and switch back to Home.
+     */
     @FXML
-    private void discardProject() {
+    public void discardProject() {
         SceneManager.getInstance().switchPage(this.getStage(), Pages.MENU, this.getController().getModel());
     }
 
