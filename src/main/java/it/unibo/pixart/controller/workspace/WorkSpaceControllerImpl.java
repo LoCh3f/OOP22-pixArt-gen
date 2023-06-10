@@ -133,6 +133,7 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
         return this.currentframe.getPixels();
     }
 
+    @SuppressWarnings("PMD.AvoidPrintStackTrace")
     @Override
     public void saveProject(final int scale) {
         this.currentframe.getMemento().emptyStack();
@@ -140,7 +141,6 @@ public final class WorkSpaceControllerImpl extends SimpleController implements W
         try {
             FileHandler.getInstance().fromProjectToJson(this.getModel().getProject());
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
