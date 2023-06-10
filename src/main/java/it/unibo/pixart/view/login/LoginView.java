@@ -107,7 +107,7 @@ public final class LoginView extends AbstractFXView {
     }
 
     @FXML
-    private void onLoginClick(final ActionEvent event) throws IOException {
+    public void onLoginClick(final ActionEvent event) throws IOException {
         if (this.loginValidate(this.usernameLoginField.getText(), this.passwordLoginField.getText())) {
             if (this.getLoginController().login(this.usernameLoginField.getText(), this.passwordLoginField.getText())) {
                 SceneManager.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
@@ -119,7 +119,7 @@ public final class LoginView extends AbstractFXView {
 
 
     @FXML
-    private void onRegisterClick(final ActionEvent event) throws IOException {
+    public void onRegisterClick(final ActionEvent event) throws IOException {
         if (this.registerValidate(this.usernameRegisterField.getText(), 
             this.passwordRegisterField.getText(), this.pathField.getText())) {
             if (this.getLoginController().register(this.usernameRegisterField.getText(), 
@@ -135,7 +135,7 @@ public final class LoginView extends AbstractFXView {
     }
 
     @FXML
-    private void onLoginAsGuestClick(final ActionEvent event) {
+    public void onLoginAsGuestClick(final ActionEvent event) {
         if (this.guestLoginValidate(this.pathField.getText())) {
             this.getLoginController().guestLogin(this.pathField.getText());
             SceneManager.getInstance().switchPage(getStage(), Pages.MENU, this.getController().getModel());
@@ -144,7 +144,7 @@ public final class LoginView extends AbstractFXView {
     }
 
     @FXML
-    private void onSelectDirClick(final ActionEvent event) {
+    public void onSelectDirClick(final ActionEvent event) {
         final DirectoryChooser directoryChooser = new DirectoryChooser();
         final File selectedDirectory = directoryChooser.showDialog(getStage());
         if (selectedDirectory != null) {
