@@ -1,5 +1,6 @@
 package it.unibo.pixart.model.grid;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.pixart.model.framestate.FrameState;
 import it.unibo.pixart.model.framestate.FrameStateImpl;
 import it.unibo.pixart.model.pixel.Pixel;
@@ -120,6 +121,7 @@ public final class PixelMatrix implements Matrix {
     /**
      * {@inheritDoc}
      */
+    @SuppressFBWarnings
     @Override
     public FrameState getMemento() {
         return this.memento;

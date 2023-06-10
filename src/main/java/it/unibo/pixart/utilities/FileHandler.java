@@ -3,6 +3,7 @@ package it.unibo.pixart.utilities;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.pixart.model.framestate.FrameState;
 import it.unibo.pixart.model.framestate.FrameStateImpl;
 import it.unibo.pixart.model.grid.Matrix;
@@ -48,6 +49,7 @@ public final class FileHandler {
         return LazyHolder.SINGLETON;
     }
 
+    @SuppressFBWarnings
     /**
      * Turns the project into a Json file.
      *
@@ -67,6 +69,7 @@ public final class FileHandler {
      * @return The Project with the Json file spec
      * @throws IOException
      */
+    @SuppressFBWarnings
     public Project fromJsonToProject(final File jsonFile) throws IOException {
         final BufferedReader fReader = new BufferedReader(new FileReader(jsonFile));
         final StringBuilder sBuilder = new StringBuilder();
@@ -82,6 +85,7 @@ public final class FileHandler {
     /**
      * @param path The path of the folder or file to be deleted
      */
+    @SuppressFBWarnings
     public void deleteFile(final String path) {
         final File fileToDelete = new File(path);
         if (fileToDelete.isDirectory()) {
