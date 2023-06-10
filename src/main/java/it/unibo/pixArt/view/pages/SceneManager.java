@@ -14,9 +14,9 @@ import java.io.IOException;
  * Class whose job is to switch between scenes,views and controllers. Inspired from PageLoader class from Jhaturanga.
  */
 public final class SceneManager {
-    private final static String PATH_START = "pages/";
+    private static final String PATH_START = "pages/";
 
-    private final static String PATH_END = ".fxml";
+    private static final String PATH_END = ".fxml";
 
     private static class LazyHolder {
         private static final SceneManager SINGLETON = new SceneManager();
@@ -26,10 +26,20 @@ public final class SceneManager {
     private SceneManager() {
     }
 
+    /**
+     * 
+     * @return a singleton of SceneManager.
+     */
     public static SceneManager getInstance() {
         return LazyHolder.SINGLETON;
     }
 
+    /**
+     * Method to switch stage.
+     * @param stage
+     * @param page
+     * @param applicationInstance
+     */
     public void switchPage(final Stage stage,
                            final Pages page,
                            final Model applicationInstance) {
@@ -39,8 +49,13 @@ public final class SceneManager {
 
     }
 
+    /**
+     * Method to switch stage with a specific controller.
+     * @param stage
+     * @param page
+     * @param controller
+     */
     public void switchPageWithSpecificController(final Stage stage, final Pages page, final Controller controller) {
-
 
         final FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource(PATH_START + page.getName() + PATH_END));
         Parent root = null;
@@ -63,16 +78,5 @@ public final class SceneManager {
 
         stage.show();
     }
-
-    public void newPage(final Pages page, final Model model) {
-        final Stage stage = new Stage();
-        this.switchPage(stage, page, model);
-    }
-
-    public void newPageWithSpecifiedController(final Pages page, final Controller controller) {
-        final Stage stage = new Stage();
-        this.switchPageWithSpecificController(stage, page, controller);
-    }
-
 
 }
