@@ -1,4 +1,4 @@
-package it.unibo.pixart.model.tool.filltools;
+package it.unibo.pixart.model.tool.fillTools;
 
 import java.util.Collections;
 import java.util.HashSet;
