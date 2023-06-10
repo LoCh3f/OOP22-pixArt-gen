@@ -45,7 +45,7 @@ public final class GameControllerImpl extends SimpleController implements GameCo
 
     @Override
     public boolean checkPixel(final int x, final int y, final Color color) {
-        var pixel = new PixelBuilder.PxlBuilder().setColor(color).setX(x).setY(y).build();
+        final var pixel = new PixelBuilder.PxlBuilder().setColor(color).setX(x).setY(y).build();
         if (this.colorStack.isPresent(pixel)) {
             this.colorStack.removePixel(color, pixel);
             return true;
@@ -64,7 +64,7 @@ public final class GameControllerImpl extends SimpleController implements GameCo
     }
 
     @Override
-    public boolean getIsDrawing() {
+    public boolean isDrawing() {
         return this.isDrawing;
     }
 

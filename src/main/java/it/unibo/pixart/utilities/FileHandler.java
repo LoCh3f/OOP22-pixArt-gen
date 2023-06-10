@@ -26,7 +26,7 @@ import java.util.Optional;
 /** The class that manage the Json Files and directories.
  */
 public final class FileHandler {
-    private Gson gson = new GsonBuilder().setLenient()
+    private final Gson gson = new GsonBuilder().setLenient()
             .registerTypeAdapter(Project.class, InterfaceSerializer.interfaceSerializer(ProjectImpl.class))
             .registerTypeAdapter(Matrix.class, InterfaceSerializer.interfaceSerializer(PixelMatrix.class))
             .registerTypeAdapter(Pixel.class, InterfaceSerializer.interfaceSerializer(ImplPixel.class))
@@ -52,7 +52,7 @@ public final class FileHandler {
      * @throws IOException
      */
     public void fromProjectToJson(final Project project) throws IOException {
-        FileWriter fWriter = new FileWriter(new File(project.getPath() + File.separatorChar + project.getName() + ".json"));
+        final FileWriter fWriter = new FileWriter(new File(project.getPath() + File.separatorChar + project.getName() + ".json"));
         fWriter.write(gson.toJson(project));
         fWriter.close();
     }
@@ -65,10 +65,10 @@ public final class FileHandler {
      * @throws IOException
      */
     public Project fromJsonToProject(final File jsonFile) throws IOException {
-        BufferedReader fReader = new BufferedReader(new FileReader(jsonFile));
-        StringBuilder sBuilder = new StringBuilder();
-        String line = null;
-        while ((line = fReader.readLine()) != null) {
+        final BufferedReader fReader = new BufferedReader(new FileReader(jsonFile));
+        final StringBuilder sBuilder = new StringBuilder();
+        String line;
+        while (!(line = fReader.readLine()).equals(null)) {
             sBuilder.append(line).append(File.separatorChar);
         }
         sBuilder.deleteCharAt(sBuilder.length() - 1);
@@ -81,10 +81,10 @@ public final class FileHandler {
      * @param path The path of the folder or file to be deleted
      */
     public void deleteFile(final String path) {
-        File fileToDelete = new File(path);
+        final File fileToDelete = new File(path);
         if (fileToDelete.isDirectory()) {
-            File[] files = fileToDelete.listFiles();
-            for (var f : files) {
+            final File[] files = fileToDelete.listFiles();
+            for (final var f : files) {
                 f.delete();
             }
             fileToDelete.delete();
@@ -98,7 +98,7 @@ public final class FileHandler {
      * @return True if the folder doesn't exist and is created, otherwise false
      */
     public boolean initProjectFolder(final String path) {
-        File folder = new File(path);
+        final File folder = new File(path);
         if (checkFolderExist(folder)) {
             return folder.mkdir();
         }
@@ -112,12 +112,12 @@ public final class FileHandler {
      */
     private boolean checkFolderExist(final File folder) {
         if (folder.exists()) {
-            Alert alert = new Alert(AlertType.CONFIRMATION);
+            final Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Error");
             alert.setHeaderText("Error: The name is already taken");
             alert.setContentText("Press OK to overwrite the existing project or press CANCEL to go back and change name");
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) { 
+            final Optional<ButtonType> result = alert.showAndWait();
+            if (result.get().equals(ButtonType.OK)) { 
                 deleteFile(folder.getAbsolutePath());
             } else {
                 return false;

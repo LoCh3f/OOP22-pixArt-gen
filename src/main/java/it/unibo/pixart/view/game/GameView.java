@@ -96,7 +96,7 @@ public final class GameView extends AbstractFXView {
 
 
         center.getChildren().forEach(b -> b.addEventHandler(MouseEvent.MOUSE_ENTERED, event -> {
-            if (getGameController().getIsDrawing()) {
+            if (getGameController().isDrawing()) {
                 colorButton(event);
             }
         }));
