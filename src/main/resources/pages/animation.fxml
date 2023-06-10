@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixArt.view.animation.AnimationView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.pixart.view.animation.AnimationView">
    <children>
       <Button fx:id="switchBtn" layoutX="367.0" layoutY="422.0" mnemonicParsing="false" onAction="#switchAnimation" prefHeight="26.0" prefWidth="78.0" AnchorPane.topAnchor="422.0" />
       <AnchorPane layoutX="259.0" layoutY="58.0" prefHeight="292.0" prefWidth="294.0">
