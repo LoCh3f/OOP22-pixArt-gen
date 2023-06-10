@@ -1,6 +1,5 @@
 package it.unibo.pixart.model.framestate;
 
-import java.util.EmptyStackException;
 import java.util.Set;
 import java.util.Stack;
 
@@ -19,21 +18,13 @@ public final class FrameStateImpl implements FrameState {
     @SuppressWarnings("PMD.AvoidCatchingThrowable")
     @Override
     public Set<Pixel> getState() {
-        try {
-            return this.stateStack.pop(); 
-        } catch (EmptyStackException e) {
-            throw e;
-        }
+        return this.stateStack.pop();
     }
 
     @SuppressWarnings("PMD.AvoidCatchingThrowable")
     @Override
     public Set<Pixel> peekState() {
-        try {
-            return this.stateStack.peek(); 
-        } catch (EmptyStackException e) {
-            throw e;
-        }
+        return this.stateStack.peek();
     }
 
     @Override

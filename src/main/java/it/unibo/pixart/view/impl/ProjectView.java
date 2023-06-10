@@ -3,7 +3,6 @@ package it.unibo.pixart.view.impl;
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import it.unibo.pixart.controller.project.ProjectController;
@@ -26,16 +25,17 @@ import javafx.scene.control.Alert.AlertType;
 public final class ProjectView extends AbstractFXView {
 
     @FXML
-    private final ListView<String> listView = new ListView<>();
+    private ListView<String> listView;
     private String selFolder;
 
     @Override
     public void init() {
+        listView = new ListView<>();
         listView.getItems().clear();
         listView.getItems().addAll(Stream.of(new File(this.getController().getModel().getUser().getPathToFile()).listFiles())
                                   .filter(file -> file.isDirectory() && !file.isHidden() 
                                   && this.getProjectController().checkIfJsonInFolder(file))
-                                  .map(File::getName).collect(Collectors.toList()));
+                                  .map(File::getName).toList());
 
         final MultipleSelectionModel<String> selModel = listView.getSelectionModel();
         selModel.selectedItemProperty().addListener(new ChangeListener<String>() {
